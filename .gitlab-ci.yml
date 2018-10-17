@@ -1,0 +1,15 @@
+image: node:latest
+
+build:
+  stage: build
+  script: yarn build
+
+test:
+  stage: test
+  script: yarn test
+
+deploy:
+  stage: deploy
+  script: yarn deploy
+  only:
+    - master

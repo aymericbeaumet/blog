@@ -8,7 +8,8 @@
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --config .prettierrc --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "netlify deploy --prod --dir public/"
   },
   "dependencies": {
     "gatsby": "2.0.0",
@@ -39,6 +40,7 @@
     "react-helmet": "5.2.0"
   },
   "devDependencies": {
+    "netlify-cli": "2.1.1",
     "prettier": "1.14.2"
   }
 }
