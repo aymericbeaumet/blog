@@ -1,0 +1,52 @@
+.Index {
+  h1 {
+    font-family: Lato;
+    font-size: 46px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    margin-top: 135px;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    display: inline;
+    font-family: Lato;
+    font-size: 26px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+    background-image: linear-gradient(to right, #3023ae, #53a0fd);
+    padding: 4px;
+  }
+
+  p {
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: normal;
+    color: #3e3e3e;
+  }
+
+  a {
+    border-radius: 8px;
+    box-shadow: 2px 4px 8px 0 #3942c233;
+    background-color: #ffffff;
+    text-decoration: none;
+    color: #3e3e3e;
+    padding: 0 3px;
+
+    &:hover {
+      box-shadow: 2px 4px 8px 0 #53a0fd;
+    }
+  }
+}

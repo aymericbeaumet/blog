@@ -1,0 +1,63 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d8d8d8;
+  height: 90px;
+
+  ul > li {
+    display: inline;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+
+    & + li {
+      margin-left: 40px;
+    }
+
+    a {
+      font-family: Lato;
+      font-size: 16px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #000000;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+
+  .contact {
+    li + li {
+      margin-left: 24px;
+    }
+  }
+
+  .icon {
+    &.e {
+      width: 23px;
+      height: 23px;
+    }
+
+    &.t {
+      width: 23px;
+      height: 23px;
+    }
+
+    &.m {
+      width: 23px;
+      height: 23;
+    }
+  }
+
+  .active {
+    color: #3e53cd;
+  }
+}

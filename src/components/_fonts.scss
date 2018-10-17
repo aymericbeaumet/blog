@@ -1,0 +1,84 @@
+// Generated with https://transfonter.org
+
+// TODO: move to src/assets/fonts once this is fixed
+// https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-sass#relative-paths--url
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato-LightItalic'),
+    url('../assets/fonts/Lato-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Bold'), local('Lato-Bold'),
+    url('../assets/fonts/Lato-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'),
+    url('../assets/fonts/Lato-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Italic'), local('Lato-Italic'),
+    url('../assets/fonts/Lato-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Black Italic'), local('Lato-BlackItalic'),
+    url('../assets/fonts/Lato-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Black'), local('Lato-Black'),
+    url('../assets/fonts/Lato-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato-Light'),
+    url('../assets/fonts/Lato-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato Hairline';
+  src: local('Lato-HairlineItalic'),
+    url('../assets/fonts/Lato-HairlineItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Lato Hairline';
+  src: local('Lato-Hairline'),
+    url('../assets/fonts/Lato-Hairline.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato Regular'), local('Lato-Regular'),
+    url('../assets/fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

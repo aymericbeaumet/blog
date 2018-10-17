@@ -1,0 +1,23 @@
+/* TEAM */
+
+	Webmaster: Aymeric Beaumet
+	Email: hi@aymericbeaumet.com
+  Twitter: @aymericbeaumet
+  Mastodon: @aymericbeaumet@mastodon.social
+	From: Paris, France
+
+/* THANKS */
+
+	Feedbacks: Kim-Jenny Dinh
+	Twitter: @kjennyd
+	From: Paris, France
+
+	UI, UX, Design: Vincent Bauclin
+	Twitter: @vincearch
+	From: Paris, France
+
+/* SITE */
+
+	Language: English
+	Stack: Gatsby, React, Webpack, HTML5, CSS3
+	Tools: MacOS X, Visual Studio Code
