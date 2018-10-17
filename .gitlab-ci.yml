@@ -1,5 +1,15 @@
 image: node:latest
 
+stages:
+  - install
+  - build
+  - test
+  - deploy
+
+install:
+  stage: install
+  script: yarn
+
 build:
   stage: build
   script: yarn build
