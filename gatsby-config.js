@@ -5,12 +5,12 @@ const siteMetadata = {
   author: 'Aymeric Beaumet',
   menu: [
     {
-      name: '--ab',
-      url: '/',
-    },
-    {
       name: 'articles & talks',
       url: '/articles-and-talks',
+    },
+    {
+      name: 'notes',
+      url: '/notes',
     },
     {
       name: 'links',
@@ -44,6 +44,7 @@ const plugins = [
   'gatsby-plugin-feed',
   'gatsby-plugin-catch-links',
   'gatsby-plugin-sharp', // required by gatsby-remark-images
+  'gatsby-plugin-react-svg',
   'gatsby-plugin-robots-txt',
   `gatsby-plugin-sass`,
   {
@@ -80,9 +81,9 @@ const plugins = [
             noInlineHighlight: false,
           },
         },
-        { resolve: 'gatsby-remark-smartypants' },
-        { resolve: 'gatsby-remark-responsive-iframe' },
-        { resolve: 'gatsby-remark-autolink-headers' },
+        { resolve: 'gatsby-remark-smartypants', },
+        { resolve: 'gatsby-remark-responsive-iframe', },
+        { resolve: 'gatsby-remark-autolink-headers', },
       ],
     },
   },

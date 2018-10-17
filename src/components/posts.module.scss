@@ -13,13 +13,15 @@
     min-width: 32.75%;
     max-width: 32.75%;
     margin-bottom: 30px;
+    overflow: hidden;
 
     & > a {
       text-decoration: none;
 
       img {
-        border: 1px solid black;
         margin-bottom: 10px;
+        width: 266px;
+        height: 160px;
       }
 
       h2 {
@@ -33,6 +35,14 @@
         color: #000000;
         text-decoration: none;
         margin-bottom: 20px;
+      }
+    }
+
+    // transition: all 1s;
+    &:hover {
+      transition: all 1s;
+      img {
+        transform: scale(1.1);
       }
     }
   }

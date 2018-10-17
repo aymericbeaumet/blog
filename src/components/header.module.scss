@@ -28,9 +28,24 @@
       font-stretch: normal;
       line-height: normal;
       letter-spacing: normal;
-      color: #000000;
       text-transform: uppercase;
       text-decoration: none;
+
+      color: #000000;
+      transition: 0.2s color;
+      path {
+        fill: #000000;
+        transition: 0.2s fill;
+      }
+
+      &:hover {
+        color: #3e53cd;
+        transition: 0.2s color;
+        path {
+          fill: #3e53cd;
+          transition: 0.2s fill;
+        }
+      }
     }
   }
 
@@ -53,11 +68,14 @@
 
     &.m {
       width: 23px;
-      height: 23;
+      height: 23px;
     }
   }
 
   .active {
     color: #3e53cd;
+    path {
+      fill: #3e53cd;
+    }
   }
 }

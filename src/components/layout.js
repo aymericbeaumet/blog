@@ -1,10 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, } from 'gatsby'
 import './layout.scss'
 import Header from './header'
+import Footer from './footer'
 
-function Layout({ children, data }) {
+function Layout({ children, footer = true, data, }) {
   return (
     <React.Fragment>
       <Helmet>
@@ -16,11 +17,12 @@ function Layout({ children, data }) {
       </Helmet>
       <Header />
       <main>{children}</main>
+      {footer ? <Footer /> : null}
     </React.Fragment>
   )
 }
 
-export default function({ children }) {
+export default function({ ...props }) {
   return (
     <StaticQuery
       query={graphql`
@@ -33,7 +35,7 @@ export default function({ children }) {
           }
         }
       `}
-      render={data => <Layout children={children} data={data} />}
+      render={data => <Layout {...props} data={data} />}
     />
   )
 }

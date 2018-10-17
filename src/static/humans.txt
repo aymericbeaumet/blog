@@ -8,12 +8,12 @@
 
 /* THANKS */
 
-	Feedbacks: Kim-Jenny Dinh
-	Twitter: @kjennyd
-	From: Paris, France
-
 	UI, UX, Design: Vincent Bauclin
 	Twitter: @vincearch
+	From: Paris, France
+
+	Feedbacks: Kim-Jenny Dinh
+	Twitter: @kjennyd
 	From: Paris, France
 
 /* SITE */

@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, } from 'gatsby'
 import Layout from '../components/layout'
 import classes from './index.module.scss'
 
@@ -15,7 +15,7 @@ export const pageQuery = graphql`
 
 export default function Index() {
   return (
-    <Layout>
+    <Layout footer={false}>
       <section className={classes.Index}>
         <h1>Hey traveler,</h1>
         <h2>Welcome on my part of the internet</h2>

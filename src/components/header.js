@@ -1,16 +1,22 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { Link, StaticQuery, graphql, } from 'gatsby'
 import classes from './header.module.scss'
-import twitter from '../images/twitter-brands.svg'
-import mastodon from '../images/mastodon-brands.svg'
-import envelope from '../images/envelope-regular.svg'
+import Twitter from '../images/twitter-brands.svg'
+import Mastodon from '../images/mastodon-brands.svg'
+import Envelope from '../images/envelope-regular.svg'
+import Logo from '../images/aymericbeaumet-logo.svg'
 
-function Header({ data }) {
+function Header({ data, }) {
   return (
     <header className={classes.Header}>
       <nav role="navigation">
         <ul>
-          {data.site.siteMetadata.menu.map(({ name, url }) => (
+          <li key="aymericbeaumet-logo">
+            <Link to="/" activeClassName={classes.active}>
+              <Logo />
+            </Link>
+          </li>
+          {data.site.siteMetadata.menu.map(({ name, url, }) => (
             <li key={name}>
               <Link to={url} activeClassName={classes.active}>
                 {name}
@@ -23,29 +29,17 @@ function Header({ data }) {
         <ul>
           <li>
             <a href="mailto:hi@aymericbeaumet.com">
-              <img
-                className={`${classes.icon} ${classes.e}`}
-                src={envelope}
-                alt="Email!"
-              />
+              <Envelope className={`${classes.icon} ${classes.e}`} />
             </a>
           </li>
           <li>
             <a href="https://twitter.com/aymericbeaumet">
-              <img
-                className={`${classes.icon} ${classes.t}`}
-                src={twitter}
-                alt="Tweet!"
-              />
+              <Twitter className={`${classes.icon} ${classes.t}`} />
             </a>
           </li>
           <li>
             <a href="https://mastodon.social/@aymericbeaumet">
-              <img
-                className={`${classes.icon} ${classes.m}`}
-                src={mastodon}
-                alt="Toot!"
-              />
+              <Mastodon className={`${classes.icon} ${classes.m}`} />
             </a>
           </li>
         </ul>
