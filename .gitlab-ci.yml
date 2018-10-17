@@ -1,25 +1,12 @@
 image: node:latest
 
-stages:
-  - install
-  - build
-  - test
-  - deploy
-
-install:
-  stage: install
-  script: yarn
-
-build:
-  stage: build
-  script: yarn build
-
-test:
-  stage: test
-  script: yarn test
-
 deploy:
   stage: deploy
-  script: yarn deploy
+  before_script:
+    - yarn
+    - yarn test
+    - yarn build
+  script:
+    - yarn deploy
   only:
     - master
