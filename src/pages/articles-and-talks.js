@@ -2,7 +2,7 @@ import Posts from '../components/posts'
 import React from 'react'
 import Layout from '../components/layout'
 import Helmet from 'react-helmet'
-import { graphql, } from 'gatsby'
+import { graphql } from 'gatsby'
 import classes from './articles-and-talks.module.scss'
 import Title from '../components/title'
 
@@ -28,7 +28,7 @@ export const pageQuery = graphql`
   }
 `
 
-export default function ArticlesAndTalks({ data, }) {
+export default function ArticlesAndTalks({ data }) {
   return (
     <Layout>
       <Helmet>

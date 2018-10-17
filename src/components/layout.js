@@ -1,10 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql, } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import './layout.scss'
 import Header from './header'
 
-function Layout({ children, data, }) {
+function Layout({ children, data }) {
   return (
     <React.Fragment>
       <Helmet>
@@ -20,7 +20,7 @@ function Layout({ children, data, }) {
   )
 }
 
-export default function({ children, }) {
+export default function({ children }) {
   return (
     <StaticQuery
       query={graphql`

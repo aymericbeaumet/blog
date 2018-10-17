@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link, graphql, } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
-import { Helmet, } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import urlFromTag from '../utils/urlFromTag'
 import './post.scss'
 import Title from '../components/title'
@@ -32,10 +32,10 @@ export const pageQuery = graphql`
   }
 `
 
-export default function Post({ data, }) {
-  const { markdownRemark, } = data
-  const { frontmatter, html, timeToRead, } = markdownRemark
-  const { timeToWatch, } = frontmatter
+export default function Post({ data }) {
+  const { markdownRemark } = data
+  const { frontmatter, html, timeToRead } = markdownRemark
+  const { timeToWatch } = frontmatter
   const attachments = frontmatter.attachments || []
   const tags = frontmatter.tags || []
   return (
@@ -57,7 +57,7 @@ export default function Post({ data, }) {
           <React.Fragment>
             <p>Attachments</p>
             <ul>
-              {attachments.map(({ id, publicURL, name, extension, }) => (
+              {attachments.map(({ id, publicURL, name, extension }) => (
                 <li key={id}>
                   <a href={publicURL}>
                     {name}.{extension}
@@ -81,7 +81,7 @@ export default function Post({ data, }) {
         ) : null}
         <div
           className="post-content"
-          dangerouslySetInnerHTML={{ __html: html, }}
+          dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>
     </Layout>

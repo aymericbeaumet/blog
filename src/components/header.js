@@ -1,16 +1,16 @@
 import React from 'react'
-import { Link, StaticQuery, graphql, } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import classes from './header.module.scss'
 import twitter from '../images/twitter-brands.svg'
 import mastodon from '../images/mastodon-brands.svg'
 import envelope from '../images/envelope-regular.svg'
 
-function Header({ data, }) {
+function Header({ data }) {
   return (
     <header className={classes.Header}>
       <nav role="navigation">
         <ul>
-          {data.site.siteMetadata.menu.map(({ name, url, }) => (
+          {data.site.siteMetadata.menu.map(({ name, url }) => (
             <li key={name}>
               <Link to={url} activeClassName={classes.active}>
                 {name}

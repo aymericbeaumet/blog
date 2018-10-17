@@ -4,11 +4,10 @@
   "license": "UNLICENSED",
   "version": "1.0.0",
   "scripts": {
-    "build": "gatsby build",
     "develop": "gatsby develop",
-    "serve": "gatsby serve",
     "format": "prettier --config .prettierrc --write '**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "exit 0",
+    "build": "gatsby build",
     "deploy": "netlify deploy --prod --dir public/"
   },
   "dependencies": {

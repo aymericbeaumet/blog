@@ -1,7 +1,7 @@
 import React from 'react'
-import { graphql, } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
-import { Helmet, } from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Posts from '../components/posts'
 import Title from '../components/title'
 
@@ -21,7 +21,7 @@ export const pageQuery = graphql`
   }
 `
 
-export default function Tag({ pageContext, data, }) {
+export default function Tag({ pageContext, data }) {
   return (
     <Layout>
       <Helmet>

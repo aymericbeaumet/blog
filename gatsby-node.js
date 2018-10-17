@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, actions }) => {
       const categorySlug = singular(
         path
           .relative(__dirname, node.fileAbsolutePath)
-          .replace(/^src\/data\/([^/]+)\/.*$/, '$1')
+          .replace(/^src\/data\/([^/]+)\/.*$/, '$1'),
       )
       const category = capitalize(categorySlug)
       createNodeField({ node, name: 'category', value: category })
@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve('./src/templates/post.js'),
-      context: node.fields
+      context: node.fields,
     })
     node.frontmatter.tags.forEach(tag => {
       if (!tagsIndex.includes(tag)) {
@@ -56,7 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
         createPage({
           path: urlFromTag(tag),
           component: path.resolve('./src/templates/tag.js'),
-          context: { tag }
+          context: { tag },
         })
       }
     })

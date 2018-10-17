@@ -6,25 +6,25 @@ const siteMetadata = {
   menu: [
     {
       name: '--ab',
-      url: '/'
+      url: '/',
     },
     {
       name: 'articles & talks',
-      url: '/articles-and-talks'
+      url: '/articles-and-talks',
     },
     {
       name: 'links',
-      url: '/links'
-    }
-  ]
+      url: '/links',
+    },
+  ],
 }
 
 const plugins = [
   {
     resolve: 'gatsby-source-filesystem',
     options: {
-      path: `${__dirname}/src/data/`
-    }
+      path: `${__dirname}/src/data/`,
+    },
   },
   'gatsby-plugin-react-helmet',
   {
@@ -36,8 +36,8 @@ const plugins = [
       background_color: '#663399',
       theme_color: '#663399',
       display: 'minimal-ui',
-      icon: `${__dirname}/src/images/aymericbeaumet.png`
-    }
+      icon: `${__dirname}/src/images/aymericbeaumet.png`,
+    },
   },
   'gatsby-plugin-offline',
   'gatsby-plugin-sitemap',
@@ -54,21 +54,21 @@ const plugins = [
           resolve: 'gatsby-remark-external-links',
           options: {
             target: '_self',
-            rel: 'nofollow noopener noreferrer'
-          }
+            rel: 'nofollow noopener noreferrer',
+          },
         },
         {
           resolve: 'gatsby-remark-images',
           options: {
             maxWidth: 590,
-            withWebp: true
-          }
+            withWebp: true,
+          },
         },
         {
           resolve: 'gatsby-remark-copy-linked-files',
           options: {
-            destinationDir: './static/'
-          }
+            destinationDir: './static/',
+          },
         },
         {
           resolve: 'gatsby-remark-prismjs',
@@ -77,18 +77,18 @@ const plugins = [
             inlineCodeMarker: null,
             aliases: {},
             showLineNumbers: false,
-            noInlineHighlight: false
-          }
+            noInlineHighlight: false,
+          },
         },
         { resolve: 'gatsby-remark-smartypants' },
         { resolve: 'gatsby-remark-responsive-iframe' },
-        { resolve: 'gatsby-remark-autolink-headers' }
-      ]
-    }
-  }
+        { resolve: 'gatsby-remark-autolink-headers' },
+      ],
+    },
+  },
 ]
 
 module.exports = {
   siteMetadata,
-  plugins
+  plugins,
 }
