@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link, graphql, } from 'gatsby'
 import Layout from '../components/layout'
-import { Helmet } from 'react-helmet'
+import { Helmet, } from 'react-helmet'
 import urlFromTag from '../utils/urlFromTag'
-import './post.scss'
-import Title from '../components/title'
+import classes from './post.module.scss'
+import LeftArrow from '../images/left-arrow.svg'
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -32,10 +32,10 @@ export const pageQuery = graphql`
   }
 `
 
-export default function Post({ data }) {
-  const { markdownRemark } = data
-  const { frontmatter, html, timeToRead } = markdownRemark
-  const { timeToWatch } = frontmatter
+export default function Post({ data, }) {
+  const { markdownRemark, } = data
+  const { frontmatter, html, timeToRead, } = markdownRemark
+  const { timeToWatch, } = frontmatter
   const attachments = frontmatter.attachments || []
   const tags = frontmatter.tags || []
   return (
@@ -45,28 +45,21 @@ export default function Post({ data }) {
           data.site.siteMetadata.title
         }`}</title>
       </Helmet>
-      <div className="post">
-        <Title>{frontmatter.title}</Title>
+      <section className={classes.Post}>
+        <LeftArrow onClick={() => window.history.back()} />
+        <h1>{frontmatter.title}</h1>
         <time>{frontmatter.date}</time>
         {timeToWatch ? (
-          <p>{timeToWatch} minutes (watch)</p>
+          <p>
+            {timeToWatch}
+            min. watch
+          </p>
         ) : (
-          <p>{timeToRead} minutes (read)</p>
+          <p>
+            {timeToRead}
+            min. read
+          </p>
         )}
-        {attachments.length > 0 ? (
-          <React.Fragment>
-            <p>Attachments</p>
-            <ul>
-              {attachments.map(({ id, publicURL, name, extension }) => (
-                <li key={id}>
-                  <a href={publicURL}>
-                    {name}.{extension}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </React.Fragment>
-        ) : null}
         {tags.length > 0 ? (
           <React.Fragment>
             <p>Tags</p>
@@ -79,11 +72,25 @@ export default function Post({ data }) {
             </ul>
           </React.Fragment>
         ) : null}
-        <div
+        {attachments.length > 0 ? (
+          <React.Fragment>
+            <p>Attachments</p>
+            <ul>
+              {attachments.map(({ id, publicURL, name, extension, }) => (
+                <li key={id}>
+                  <a href={publicURL}>
+                    {name}.{extension}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </React.Fragment>
+        ) : null}
+        <section
           className="post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
+          dangerouslySetInnerHTML={{ __html: html, }}
         />
-      </div>
+      </section>
     </Layout>
   )
 }

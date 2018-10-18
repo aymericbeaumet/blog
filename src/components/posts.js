@@ -33,7 +33,7 @@ export default function Posts({ allMarkdownRemark, }) {
       <ul className={classes.tagsList}>
         {tags.map(tag => (
           <li className={classes.tag} key={tag}>
-            <Link to={urlFromTag(tag)}>{tag}</Link>
+            <Link to={urlFromTag(tag)}>#{tag}</Link>
           </li>
         ))}
       </ul>

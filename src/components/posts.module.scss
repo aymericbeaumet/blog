@@ -14,35 +14,35 @@
     max-width: 32.75%;
     margin-bottom: 30px;
     overflow: hidden;
+    border-bottom: 1px solid #d8d8d8;
 
     & > a {
       text-decoration: none;
 
       img {
-        margin-bottom: 10px;
+        max-width: 100%;
         width: 266px;
         height: 160px;
+        transition: all 0.2s;
       }
 
       h2 {
+        margin: 0 0 5px 0;
         font-family: Lato;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
         font-style: normal;
         font-stretch: normal;
         line-height: normal;
         letter-spacing: normal;
-        color: #000000;
-        text-decoration: none;
-        margin-bottom: 20px;
+        color: #3e53cd;
       }
-    }
 
-    // transition: all 1s;
-    &:hover {
-      transition: all 1s;
-      img {
-        transform: scale(1.1);
+      &:hover {
+        img {
+          transition: all 0.2s;
+          transform: scale(1.025);
+        }
       }
     }
   }
@@ -52,24 +52,21 @@
 
   .tag {
     display: inline-block;
-    border-radius: 8px;
-    background-color: #3e53cd;
 
     & + .tag {
-      margin-left: 10px;
+      margin-left: 5px;
     }
 
     a {
       font-family: Lato;
-      font-size: 14px;
-      font-weight: normal;
+      font-size: 12px;
+      font-weight: bold;
       font-style: normal;
       font-stretch: normal;
       line-height: normal;
       letter-spacing: normal;
-      color: #ffffff;
+      color: #3e3e3e;
       text-decoration: none;
-      padding: 8px;
     }
   }
 }

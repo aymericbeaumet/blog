@@ -6,7 +6,7 @@ function Footer() {
     <footer className={classes.Footer}>
       <p>
         <strong>Aymeric Beaumet</strong>
-        {', Software Enginner, Currently living in Paris'}
+        {', Software Engineer, Currently living in Paris'}
       </p>
     </footer>
   )
