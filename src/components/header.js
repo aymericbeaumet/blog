@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link, StaticQuery, graphql, } from 'gatsby'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import classes from './header.module.scss'
 import Twitter from '../images/twitter-brands.svg'
 import Mastodon from '../images/mastodon-brands.svg'
 import Envelope from '../images/envelope-regular.svg'
 import Logo from '../images/aymericbeaumet-logo.svg'
 
-function Header({ data, }) {
+function Header({ data }) {
   return (
     <header className={classes.Header}>
       <nav role="navigation">
@@ -16,7 +16,7 @@ function Header({ data, }) {
               <Logo />
             </Link>
           </li>
-          {data.site.siteMetadata.menu.map(({ name, url, }) => (
+          {data.site.siteMetadata.menu.map(({ name, url }) => (
             <li key={name}>
               <Link to={url} activeClassName={classes.active}>
                 {name}
@@ -25,7 +25,7 @@ function Header({ data, }) {
           ))}
         </ul>
       </nav>
-      <nav class={classes.contact}>
+      <nav className={classes.contact}>
         <ul>
           <li>
             <a href="mailto:hi@aymericbeaumet.com">
