@@ -28,17 +28,29 @@ function Header({ data }) {
       <nav className={classes.contact}>
         <ul>
           <li>
-            <a href="mailto:hi@aymericbeaumet.com">
+            <a
+              href="mailto:hi@aymericbeaumet.com"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
               <Envelope className={`${classes.icon} ${classes.e}`} />
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/aymericbeaumet">
+            <a
+              href="https://twitter.com/aymericbeaumet"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
               <Twitter className={`${classes.icon} ${classes.t}`} />
             </a>
           </li>
           <li>
-            <a href="https://mastodon.social/@aymericbeaumet">
+            <a
+              href="https://mastodon.social/@aymericbeaumet"
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+            >
               <Mastodon className={`${classes.icon} ${classes.m}`} />
             </a>
           </li>

@@ -6,6 +6,7 @@ import urlFromTag from '../utils/urlFromTag'
 import classes from './post.module.scss'
 import LeftArrow from '../images/left-arrow.svg'
 import { DiscussionEmbed } from 'disqus-react'
+import format from 'date-fns/format'
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -38,6 +39,8 @@ export default class Post extends React.Component {
     showComments: false,
   }
 
+  back = () => window.history.back()
+
   showComments = () => this.setState({ showComments: true })
 
   render() {
@@ -55,62 +58,78 @@ export default class Post extends React.Component {
           }`}</title>
         </Helmet>
         <section className={classes.Post}>
-          <LeftArrow onClick={() => window.history.back()} />
-          <h1>{frontmatter.title}</h1>
-          <time>{frontmatter.date}</time>
-          {timeToWatch ? (
-            <p>
-              {timeToWatch}
-              min. watch
-            </p>
-          ) : (
-            <p>
-              {timeToRead}
-              min. read
-            </p>
-          )}
-          {tags.length > 0 ? (
-            <React.Fragment>
-              <p>Tags</p>
-              <ul>
-                {tags.map(tag => (
-                  <li key={tag}>
-                    <Link to={urlFromTag(tag)}>{tag}</Link>
-                  </li>
-                ))}
-              </ul>
-            </React.Fragment>
-          ) : null}
-          {attachments.length > 0 ? (
-            <React.Fragment>
-              <p>Attachments</p>
-              <ul>
-                {attachments.map(({ id, publicURL, name, extension }) => (
-                  <li key={id}>
-                    <a href={publicURL}>
-                      {name}.{extension}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </React.Fragment>
-          ) : null}
+          <LeftArrow className={classes.back} onClick={this.back} />
+          <header>
+            <h1>{frontmatter.title}</h1>
+            <ul>
+              <li>
+                <time>{format(frontmatter.date, 'YYYY MMM. Do')}</time>
+              </li>
+              {timeToWatch ? (
+                <li>
+                  {timeToWatch}
+                  min. watch
+                </li>
+              ) : (
+                <li>
+                  {timeToRead}
+                  min. read
+                </li>
+              )}
+              {tags.length > 0 ? (
+                <li>
+                  <ul>
+                    {tags.map(tag => (
+                      <li key={tag}>
+                        <Link to={urlFromTag(tag)}>#{tag}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : null}
+              {attachments.length > 0 ? (
+                <li>
+                  <ul>
+                    {attachments.map(({ id, publicURL, name, extension }) => (
+                      <li key={id}>
+                        <a href={publicURL}>
+                          @{name}.{extension}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ) : null}
+            </ul>
+          </header>
           <section
-            className="post-content"
+            className={classes.content}
             dangerouslySetInnerHTML={{ __html: html }}
           />
-          {!this.state.showComments ? (
-            <button onClick={this.showComments}>View comments</button>
-          ) : (
-            <DiscussionEmbed
-              shortname="aymericbeaumet"
-              config={{
-                url: window.location.href,
-                identifier: window.location.href,
-                title: frontmatter.title,
-              }}
-            />
-          )}
+          <footer>
+            {!this.state.showComments ? (
+              <button
+                className={classes.showComments}
+                onClick={this.showComments}
+              >
+                View comments
+              </button>
+            ) : (
+              <DiscussionEmbed
+                shortname="aymericbeaumet"
+                config={{
+                  url: window.location.href,
+                  identifier: window.location.href,
+                  title: frontmatter.title,
+                }}
+              />
+            )}
+            <p>
+              Want more articles?
+              <p>Previous article</p>
+              <p>Next article</p>
+            </p>
+          </footer>
         </section>
       </Layout>
     )

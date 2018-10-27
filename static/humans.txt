@@ -2,8 +2,8 @@
 
 	Webmaster: Aymeric Beaumet
 	Email: hi@aymericbeaumet.com
-  Twitter: @aymericbeaumet
-  Mastodon: @aymericbeaumet@mastodon.social
+	Twitter: @aymericbeaumet
+	Mastodon: @aymericbeaumet@mastodon.social
 	From: Paris, France
 
 /* THANKS */
@@ -19,5 +19,5 @@
 /* SITE */
 
 	Language: English
-	Stack: Gatsby, React, Webpack, HTML5, CSS3
-	Tools: MacOS X, Visual Studio Code
+	Stack: Gatsby, React, Webpack, Babel, HTML5, SCSS
+	Tools: MacOS X, Visual Studio Code, Mozilla Firefox

@@ -1,11 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql, } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import './layout.scss'
 import Header from './header'
 import Footer from './footer'
 
-function Layout({ children, footer = true, data, }) {
+function Layout({ children, footer = true, data }) {
   return (
     <React.Fragment>
       <Helmet>
