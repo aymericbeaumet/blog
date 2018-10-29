@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 import urlFromTag from '../utils/urlFromTag'
 import classes from './post.module.scss'
 import LeftArrow from '../images/left-arrow.svg'
-import { DiscussionEmbed } from 'disqus-react'
 import format from 'date-fns/format'
 
 export const pageQuery = graphql`
@@ -106,30 +105,6 @@ export default class Post extends React.Component {
             className={classes.content}
             dangerouslySetInnerHTML={{ __html: html }}
           />
-          <footer>
-            {!this.state.showComments ? (
-              <button
-                className={classes.showComments}
-                onClick={this.showComments}
-              >
-                View comments
-              </button>
-            ) : (
-              <DiscussionEmbed
-                shortname="aymericbeaumet"
-                config={{
-                  url: window.location.href,
-                  identifier: window.location.href,
-                  title: frontmatter.title,
-                }}
-              />
-            )}
-            <p>
-              Want more articles?
-              <p>Previous article</p>
-              <p>Next article</p>
-            </p>
-          </footer>
         </section>
       </Layout>
     )

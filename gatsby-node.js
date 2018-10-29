@@ -11,7 +11,7 @@ exports.onCreateNode = ({ node, actions }) => {
       const categorySlug = singular(
         path
           .relative(__dirname, node.fileAbsolutePath)
-          .replace(/^src\/data\/([^/]+)\/.*$/, '$1'),
+          .replace(/^data\/([^/]+)\/.*$/, '$1'),
       )
       const category = capitalize(categorySlug)
       createNodeField({ node, name: 'category', value: category })
@@ -19,7 +19,7 @@ exports.onCreateNode = ({ node, actions }) => {
       // Define title slug
       const slug = path
         .relative(__dirname, node.fileAbsolutePath)
-        .replace(/^src\/data\/[^/]+\/([^/]+)\/.*$/, '$1')
+        .replace(/^data\/[^/]+\/([^/]+)\/.*$/, '$1')
       createNodeField({ node, name: 'slug', value: slug })
       break
   }

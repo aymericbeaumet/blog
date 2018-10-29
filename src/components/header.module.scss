@@ -3,7 +3,11 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #d8d8d8;
-  height: 90px;
+  height: 89px;
+
+  nav[role='navigation'] li + li {
+    margin-left: 30px;
+  }
 
   ul > li {
     display: inline;
@@ -15,10 +19,6 @@
     line-height: normal;
     letter-spacing: normal;
     color: #000000;
-
-    & + li {
-      margin-left: 40px;
-    }
 
     a {
       font-family: Lato;
@@ -50,25 +50,29 @@
   }
 
   .contact {
-    li + li {
-      margin-left: 24px;
-    }
-  }
+    margin-bottom: -15px;
 
-  .icon {
-    &.e {
-      width: 23px;
-      height: 23px;
-    }
+    .icon {
+      &.e {
+        width: 29px;
+        height: 19px;
+        object-fit: contain;
+      }
 
-    &.t {
-      width: 23px;
-      height: 23px;
-    }
+      &.t {
+        margin-left: 26px;
+        width: 26px;
+        height: 21px;
+        object-fit: contain;
+      }
 
-    &.m {
-      width: 23px;
-      height: 23px;
+      &.m {
+        margin-left: 24px;
+        margin-bottom: -2px;
+        width: 23px;
+        height: 25px;
+        object-fit: contain;
+      }
     }
   }
 

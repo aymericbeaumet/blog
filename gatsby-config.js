@@ -12,14 +12,6 @@ const siteMetadata = {
       name: 'talks',
       url: '/talks',
     },
-    {
-      name: 'notes',
-      url: '/notes',
-    },
-    {
-      name: 'links',
-      url: '/links',
-    },
   ],
 }
 
@@ -27,7 +19,7 @@ const plugins = [
   {
     resolve: 'gatsby-source-filesystem',
     options: {
-      path: `${__dirname}/src/data/`,
+      path: `${__dirname}/data/`,
     },
   },
   'gatsby-plugin-react-helmet',

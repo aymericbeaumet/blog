@@ -8,12 +8,11 @@
     line-height: normal;
     letter-spacing: normal;
     color: #000000;
-    margin-top: 135px;
-    margin-bottom: 8px;
+    margin-top: 75px;
+    margin-bottom: 0;
   }
 
   h2 {
-    display: inline;
     font-family: Lato;
     font-size: 26px;
     font-weight: bold;
@@ -23,7 +22,10 @@
     letter-spacing: normal;
     color: #ffffff;
     background-image: linear-gradient(to right, #3023ae, #53a0fd);
-    padding: 4px;
+    padding: 0 4px;
+    display: inline-block;
+    margin-top: 11px;
+    margin-bottom: 20px;
   }
 
   p {
@@ -35,6 +37,7 @@
     line-height: 1.4;
     letter-spacing: normal;
     color: #3e3e3e;
+    margin-top: 20px;
   }
 
   a {

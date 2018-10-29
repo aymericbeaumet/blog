@@ -56,8 +56,7 @@ export default function Index() {
             advise
           </a>
           {' people and regularly '}
-          <Link to="/articles-and-talks">write</Link> or{' '}
-          <Link to="/articles-and-talk">speak</Link>
+          <Link to="/articles">write</Link> or <Link to="/talks">speak</Link>
           {' about my experiences.'}
         </p>
 
