@@ -27,7 +27,9 @@ export default function Posts({ allMarkdownRemark }) {
   ].map(({ node: { fields: { slug }, frontmatter: { title, tags } } }) => (
     <li className={classes.post} key={slug}>
       <Link to={slug}>
-        <img src="https://cdn.pixabay.com/photo/2016/12/05/11/39/fox-1883658_1280.jpg" />
+        <div>
+          <img src="https://cdn.pixabay.com/photo/2016/12/05/11/39/fox-1883658_1280.jpg" />
+        </div>
         <h2>{title}</h2>
       </Link>
       <ul className={classes.tagsList}>

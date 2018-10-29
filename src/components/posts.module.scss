@@ -10,24 +10,29 @@
   }
 
   .post {
-    min-width: 32.75%;
-    max-width: 32.75%;
-    margin-bottom: 30px;
-    overflow: hidden;
+    min-width: 255px;
+    max-width: 255px;
+    margin-top: 30px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #d8d8d8;
 
     & > a {
       text-decoration: none;
 
-      img {
+      div {
         max-width: 100%;
         width: 266px;
         height: 160px;
+        overflow: hidden;
+      }
+
+      img {
+        max-width: 100%;
         transition: all 0.2s;
       }
 
       h2 {
-        margin: 0 0 5px 0;
+        margin: 5px 0 0px 0;
         font-family: Lato;
         font-size: 16px;
         font-weight: bold;
@@ -48,6 +53,7 @@
   }
 
   .tagsList {
+    margin-top: 5px;
   }
 
   .tag {

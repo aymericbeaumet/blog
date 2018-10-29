@@ -5,8 +5,7 @@ function Footer() {
   return (
     <footer className={classes.Footer}>
       <p>
-        <strong>Aymeric Beaumet</strong>
-        {', Software Engineer, Currently living in Paris'}
+        Aymeric Beaumet - Software Engineer - <a href="#top">To the top</a>
       </p>
     </footer>
   )
