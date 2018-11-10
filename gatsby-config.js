@@ -17,6 +17,8 @@ const siteMetadata = {
 }
 
 const plugins = [
+  'gatsby-plugin-sharp', // required by gatsby-remark-images
+  'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -40,7 +42,6 @@ const plugins = [
   'gatsby-plugin-sitemap',
   'gatsby-plugin-feed',
   'gatsby-plugin-catch-links',
-  'gatsby-plugin-sharp', // required by gatsby-remark-images
   'gatsby-plugin-react-svg',
   'gatsby-plugin-robots-txt',
   `gatsby-plugin-sass`,

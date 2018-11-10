@@ -1,6 +1,7 @@
 ---
 title: 'Resilience: why, how, what?'
 date: 2018-09-27
+thumbnail: ./thumbnail.png
 tags:
   - Resilience
   - Node.js

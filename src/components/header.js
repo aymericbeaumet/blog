@@ -6,6 +6,10 @@ import Mastodon from '../images/mastodon-brands.svg'
 import Envelope from '../images/envelope-regular.svg'
 import Logo from '../images/aymericbeaumet-logo.svg'
 
+function getProps({ isPartiallyCurrent }) {
+  return isPartiallyCurrent ? { className: classes.active } : null
+}
+
 function Header({ data }) {
   return (
     <header className={classes.Header}>
@@ -18,7 +22,7 @@ function Header({ data }) {
           </li>
           {data.site.siteMetadata.menu.map(({ name, url }) => (
             <li key={name}>
-              <Link to={url} activeClassName={classes.active}>
+              <Link to={url} getProps={getProps}>
                 {name}
               </Link>
             </li>

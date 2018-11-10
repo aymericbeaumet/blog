@@ -1,6 +1,7 @@
 ---
 title: Properly shim AngularJS applications using Browserify
 date: 2014-10-12
+thumbnail: ./thumbnail.png
 tags:
   - AngularJS
   - Browserify
@@ -12,8 +13,6 @@ attachments:
 _Edit (March 5th 2015): the frontend community has evolved in the last few
 months and tends to be less hostile to the CommonsJS style (e.g.: Angular is
 now available on npm). This article has been rewritten accordingly._
-
-![AngularJS & Browserify](./browserify-angular.png)
 
 [AngularJS](https://angularjs.org/) is a frontend framework developed by
 folks at Google. It allows to build advanced web applications in a modular
@@ -84,8 +83,7 @@ And finally create a basic `index.html` to load it:
   <head>
     <script src="bundle.js"></script>
   </head>
-  <body ng-app="app">
-  </body>
+  <body ng-app="app"></body>
 </html>
 ```
 

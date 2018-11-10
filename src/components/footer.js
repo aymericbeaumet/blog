@@ -4,9 +4,7 @@ import React from 'react'
 function Footer() {
   return (
     <footer className={classes.Footer}>
-      <p>
-        Aymeric Beaumet - Software Engineer - <a href="#top">To the top</a>
-      </p>
+      <p>Aymeric Beaumet - Software Engineer</p>
     </footer>
   )
 }
