@@ -8,7 +8,6 @@ tags:
   - JavaScript
 attachments:
   - ./slides.pdf
-  - ./subtitles.vtt
 timeToWatch: 27
 ---
 
