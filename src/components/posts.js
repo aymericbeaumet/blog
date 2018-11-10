@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby'
 import urlFromTag from '../utils/urlFromTag'
 import classes from './posts.module.scss'
 
-const NUMBER_OF_POSTS_PER_LINE = 3
+const POSTS_PER_LINE = 3
 
 export const componentFragment = graphql`
   fragment PostsRequirements on MarkdownRemarkConnection {
@@ -62,7 +62,7 @@ export default function Posts({ allMarkdownRemark }) {
   )
   // Push some placeholders so that the lines looks perfect
   for (
-    let i = 0, max = posts.length % NUMBER_OF_POSTS_PER_LINE;
+    let i = 0, max = POSTS_PER_LINE - (posts.length % POSTS_PER_LINE);
     i < max;
     i += 1
   ) {
