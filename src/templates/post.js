@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import urlFromTag from '../utils/urlFromTag'
 import classes from './post.module.scss'
 import LeftArrow from '../images/left-arrow.svg'
-import format from 'date-fns/format'
+import formatDate from 'date-fns/format'
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -57,12 +57,14 @@ export default class Post extends React.Component {
           }`}</title>
         </Helmet>
         <section className={classes.Post}>
-          <LeftArrow className={classes.back} onClick={this.back} />
           <header>
+            <nav>
+              <LeftArrow className={classes.back} onClick={this.back} />
+            </nav>
             <h1>{frontmatter.title}</h1>
             <ul>
               <li>
-                <time>{format(frontmatter.date, 'YYYY MMM. Do')}</time>
+                <time>{formatDate(frontmatter.date, 'YYYY MMM. Do')}</time>
               </li>
               {timeToWatch ? (
                 <li>
@@ -76,7 +78,7 @@ export default class Post extends React.Component {
                 </li>
               )}
               {tags.length > 0 ? (
-                <li>
+                <li className={classes.tags}>
                   <ul>
                     {tags.map(tag => (
                       <li key={tag}>
@@ -87,7 +89,7 @@ export default class Post extends React.Component {
                 </li>
               ) : null}
               {attachments.length > 0 ? (
-                <li>
+                <li className={classes.files}>
                   <ul>
                     {attachments.map(({ id, publicURL, name, extension }) => (
                       <li key={id}>
