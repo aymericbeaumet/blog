@@ -5,26 +5,17 @@
 
   header {
     h1 {
-      font-family: Lato;
       font-size: 22px;
       font-weight: bold;
-      font-style: normal;
-      font-stretch: normal;
       line-height: normal;
-      letter-spacing: normal;
       text-align: center;
-      color: #000000;
     }
 
     ul {
       display: inline-block;
-      font-family: Lato;
       font-size: 14px;
       font-weight: bold;
-      font-style: normal;
-      font-stretch: normal;
       line-height: 2;
-      letter-spacing: normal;
       text-align: right;
       color: #3e3e3e;
     }
@@ -53,35 +44,21 @@
   }
 
   .content {
-    font-family: Lato;
     font-size: 16px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
     line-height: 1.75;
-    letter-spacing: normal;
     color: #3e3e3e;
 
     h2 {
-      font-family: Lato;
       font-size: 20px;
       font-weight: bold;
-      font-style: normal;
-      font-stretch: normal;
       line-height: normal;
-      letter-spacing: normal;
-      color: #000000;
     }
 
     h3 {
       height: 19px;
-      font-family: Lato;
       font-size: 16px;
       font-weight: bold;
-      font-style: normal;
-      font-stretch: normal;
       line-height: normal;
-      letter-spacing: normal;
       color: #3e3e3e;
     }
   }
@@ -91,13 +68,9 @@
     padding: 10px;
     border-radius: 8px;
     border: solid 1px #3e53cd;
-    font-family: Lato;
     font-size: 16px;
     font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
     line-height: normal;
-    letter-spacing: normal;
     text-align: center;
     color: #3e53cd;
     background: inherit;

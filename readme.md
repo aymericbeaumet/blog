@@ -1,5 +1,12 @@
 # aymericbeaumet.com
 
+## Development
+
+```
+yarn
+yarn develop
+```
+
 ## CI/CD
 
 The following variables must be set in the [GitLab interface](https://gitlab.com/aymericbeaumet/aymericbeaumet.com/settings/ci_cd):

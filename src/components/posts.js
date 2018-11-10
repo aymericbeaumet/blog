@@ -24,6 +24,9 @@ export default function Posts({ allMarkdownRemark }) {
     ...allMarkdownRemark.edges,
     ...allMarkdownRemark.edges,
     ...allMarkdownRemark.edges,
+    ...allMarkdownRemark.edges,
+    ...allMarkdownRemark.edges,
+    ...allMarkdownRemark.edges,
   ].map(({ node: { fields: { slug }, frontmatter: { title, tags } } }) => (
     <li className={classes.post} key={slug}>
       <Link to={slug}>
