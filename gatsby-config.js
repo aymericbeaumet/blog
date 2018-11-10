@@ -8,10 +8,12 @@ const siteMetadata = {
     {
       name: 'articles',
       url: '/articles',
+      categorySlug: 'article',
     },
     {
       name: 'talks',
       url: '/talks',
+      categorySlug: 'talk',
     },
   ],
 }

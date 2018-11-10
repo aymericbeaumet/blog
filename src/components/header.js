@@ -5,10 +5,7 @@ import Twitter from '../images/twitter-brands.svg'
 import Mastodon from '../images/mastodon-brands.svg'
 import Envelope from '../images/envelope-regular.svg'
 import Logo from '../images/aymericbeaumet-logo.svg'
-
-function getProps({ isPartiallyCurrent }) {
-  return isPartiallyCurrent ? { className: classes.active } : null
-}
+import CategoryLink from './category-link'
 
 function Header({ data }) {
   return (
@@ -20,11 +17,15 @@ function Header({ data }) {
               <Logo />
             </Link>
           </li>
-          {data.site.siteMetadata.menu.map(({ name, url }) => (
+          {data.site.siteMetadata.menu.map(({ name, url, categorySlug }) => (
             <li key={name}>
-              <Link to={url} getProps={getProps}>
+              <CategoryLink
+                to={url}
+                activeClassName={classes.active}
+                categorySlug={categorySlug}
+              >
                 {name}
-              </Link>
+              </CategoryLink>
             </li>
           ))}
         </ul>
@@ -83,6 +84,7 @@ export default function() {
               menu {
                 name
                 url
+                categorySlug
               }
             }
           }

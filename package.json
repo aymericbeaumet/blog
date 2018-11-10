@@ -12,8 +12,6 @@
   },
   "dependencies": {
     "date-fns": "1.29.0",
-    "gatsby-image": "2.0.20",
-    "gatsby-transformer-sharp": "2.1.8",
     "normalize.css": "8.0.1",
     "prismjs": "1.15.0",
     "react": "16.6.1",
@@ -22,6 +20,7 @@
   },
   "devDependencies": {
     "gatsby": "2.0.45",
+    "gatsby-image": "2.0.20",
     "gatsby-plugin-catch-links": "2.0.8",
     "gatsby-plugin-feed": "2.0.9",
     "gatsby-plugin-manifest": "2.0.8",
@@ -41,6 +40,7 @@
     "gatsby-remark-smartypants": "2.0.6",
     "gatsby-source-filesystem": "2.0.8",
     "gatsby-transformer-remark": "2.1.12",
+    "gatsby-transformer-sharp": "2.1.8",
     "lodash": "4.17.11",
     "netlify-cli": "2.2.1",
     "node-sass": "4.10.0",

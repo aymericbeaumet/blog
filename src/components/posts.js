@@ -12,6 +12,7 @@ export const componentFragment = graphql`
       node {
         fields {
           slug
+          categorySlug
         }
         frontmatter {
           title
@@ -33,15 +34,10 @@ export const componentFragment = graphql`
 `
 
 export default function Posts({ allMarkdownRemark }) {
-  const posts = [
-    ...allMarkdownRemark.edges,
-    ...allMarkdownRemark.edges,
-    ...allMarkdownRemark.edges,
-    ...allMarkdownRemark.edges,
-  ].map(
+  const posts = allMarkdownRemark.edges.map(
     ({
       node: {
-        fields: { slug },
+        fields: { slug, categorySlug },
         frontmatter: { title, tags, thumbnail },
       },
     }) => (
