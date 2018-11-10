@@ -3,6 +3,7 @@ const siteMetadata = {
   description: "I'm a from Paris, France.",
   siteUrl: `https://${process.env.HOSTNAME || 'aymericbeaumet.com'}`,
   author: 'Aymeric Beaumet',
+  email: 'hi@aymericbeaumet.com',
   menu: [
     {
       name: 'articles',

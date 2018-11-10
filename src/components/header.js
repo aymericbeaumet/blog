@@ -29,7 +29,15 @@ function Header({ data }) {
         <ul>
           <li>
             <a
-              href="mailto:hi@aymericbeaumet.com"
+              onClick={function(event) {
+                window.open(
+                  `mailto:${data.site.siteMetadata.email}`,
+                  data.site.siteMetadata.email,
+                  'noopener',
+                )
+                event.preventDefault()
+              }}
+              href={`mailto:${data.site.siteMetadata.email}`}
               target="_blank"
               rel="nofollow noopener noreferrer"
             >
@@ -67,6 +75,7 @@ export default function() {
         query {
           site {
             siteMetadata {
+              email
               menu {
                 name
                 url
