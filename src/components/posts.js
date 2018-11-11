@@ -4,8 +4,6 @@ import { graphql, Link } from 'gatsby'
 import urlFromTag from '../utils/urlFromTag'
 import classes from './posts.module.scss'
 
-const POSTS_PER_LINE = 3
-
 export const componentFragment = graphql`
   fragment PostsRequirements on MarkdownRemarkConnection {
     edges {
@@ -60,14 +58,6 @@ export default function Posts({ allMarkdownRemark }) {
       </li>
     ),
   )
-  // Push some placeholders so that the lines looks perfect
-  for (
-    let i = 0, max = POSTS_PER_LINE - (posts.length % POSTS_PER_LINE);
-    i < max;
-    i += 1
-  ) {
-    posts.push(<li style={{ opacity: 0 }} className={classes.post} key={i} />)
-  }
   return (
     <section className={classes.Posts}>
       <ul className={classes.postsList}>{posts}</ul>
