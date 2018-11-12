@@ -38,7 +38,7 @@ export default class Post extends React.Component {
     showComments: false,
   }
 
-  back = () => window.history.back()
+  goBack = () => window.history.back()
 
   showComments = () => this.setState({ showComments: true })
 
@@ -59,7 +59,7 @@ export default class Post extends React.Component {
         <section className={classes.Post}>
           <header>
             <nav>
-              <LeftArrow className={classes.back} onClick={this.back} />
+              <LeftArrow className={classes.back} onClick={this.goBack} />
             </nav>
             <h1>{frontmatter.title}</h1>
             <ul>

@@ -60,7 +60,7 @@ export default function Index() {
           {' about my experiences.'}
         </p>
 
-        <p>Let’s get in touch! I am curious to hear about you.</p>
+        <p>Let’s get in touch! I am curious to hear from you.</p>
       </section>
     </Layout>
   )

@@ -86,17 +86,37 @@
     }
 
     div[data-language] {
-      & + p {
+      width: 300px;
+      margin: auto;
+
+      & + p > em {
+        display: inline-block;
         text-align: center;
-        margin-top: -5px;
+        width: 100%;
       }
+    }
+
+    p {
+      width: 100%;
     }
 
     div[data-language],
     p,
     iframe,
-    blockquote {
+    blockquote,
+    ul,
+    ol {
       margin-top: 15px;
+    }
+
+    a {
+      &,
+      &:active,
+      &:visited,
+      &:hover {
+        text-decoration: none;
+        color: #3e53cd;
+      }
     }
   }
 
