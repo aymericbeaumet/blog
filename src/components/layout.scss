@@ -1,5 +1,6 @@
 @import '~normalize.css/normalize.css';
-@import './_fonts';
+@import 'config';
+@import 'fonts';
 
 * {
   padding: 0;
@@ -10,9 +11,10 @@
 html {
   display: flex;
   justify-content: center;
+  min-width: $minWidth;
 }
 
 body {
-  width: 800px;
+  width: $maxWidth;
   padding: 0 16px 0 16px;
 }

@@ -1,3 +1,5 @@
+@import '../components/config';
+
 .Index {
   h1 {
     font-size: 46px;
@@ -37,6 +39,31 @@
     transition: box-shadow 0.15s ease-in-out;
     &:hover {
       box-shadow: 2px 4px 8px 0 #53a0fd;
+    }
+  }
+
+  @media screen and (max-width: $restrainedContentBreakpoint) {
+    h1 {
+      margin-top: 30px;
+    }
+  }
+
+  @media screen and (max-width: $alternativeMenuBreakpoint) {
+    h1 {
+      font-size: 36px;
+      margin-top: 20px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.38;
+      margin-top: 10px;
     }
   }
 }

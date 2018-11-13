@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import './layout.scss'
 import Header from './header'
 import Footer from './footer'
+import AlternativeMenu from './alternative-menu'
 
 function Layout({ children, footer = true, data }) {
   return (
@@ -17,6 +18,7 @@ function Layout({ children, footer = true, data }) {
       </Helmet>
       <Header />
       <main>{children}</main>
+      <AlternativeMenu />
       {footer ? <Footer /> : null}
     </React.Fragment>
   )

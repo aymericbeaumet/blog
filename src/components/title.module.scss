@@ -1,11 +1,28 @@
+@import 'config';
+
 .Title {
-  display: inline-block;
-  margin-top: 60px;
-  margin-bottom: 0;
-  border-style: solid;
-  border-width: 0 0 8px 0;
-  border-image: linear-gradient(to right, #3023ae, #53a0fd) 0 0 100% 0/0 0 8px 0;
-  font-size: 40px;
-  font-weight: bold;
-  line-height: normal;
+  & > h1 {
+    display: inline-block;
+    margin-top: 60px;
+    margin-bottom: 0;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: normal;
+    border-style: solid;
+    border-width: 0 0 8px 0;
+    border-image: linear-gradient(to right, #3023ae, #53a0fd) 0 0 100% 0/0 0 8px
+      0;
+  }
+
+  @media screen and (max-width: $restrainedContentBreakpoint) {
+    & {
+      text-align: center;
+
+      & > h1 {
+        margin-top: 30px;
+        margin-bottom: 0;
+        font-size: 30px;
+      }
+    }
+  }
 }

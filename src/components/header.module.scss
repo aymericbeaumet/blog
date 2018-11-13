@@ -1,3 +1,5 @@
+@import 'config';
+
 .Header {
   display: flex;
   justify-content: space-between;
@@ -74,6 +76,13 @@
     color: #3e53cd;
     path {
       fill: #3e53cd;
+    }
+  }
+
+  @media screen and (max-width: $alternativeMenuBreakpoint) {
+    .contact,
+    nav[role='navigation'] > ul > li:not(:first-child) {
+      display: none;
     }
   }
 }

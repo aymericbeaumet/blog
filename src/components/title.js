@@ -2,5 +2,9 @@ import classes from './title.module.scss'
 import React from 'react'
 
 export default function Title({ children }) {
-  return <h1 className={classes.Title}>{children}</h1>
+  return (
+    <div className={classes.Title}>
+      <h1>{children}</h1>
+    </div>
+  )
 }
