@@ -7,7 +7,6 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    display: inline-block;
     width: 70px;
     height: 70px;
     box-shadow: 1px 4px 10px 0 #3942c2e6;
@@ -15,15 +14,34 @@
     background-image: linear-gradient(154deg, #728be8, #3e53cd);
     cursor: pointer;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    & + input[type='checkbox'] {
-      display: none;
+  input[type='checkbox'] {
+    display: none;
 
+    & + .toggle {
+      & svg:nth-child(1) {
+        display: block;
+      }
+      & svg:nth-child(2) {
+        display: none;
+      }
       & + .menu {
         display: none;
       }
+    }
 
-      &:checked + .menu {
+    &:checked + .toggle {
+      & svg:nth-child(1) {
+        display: none;
+      }
+      & svg:nth-child(2) {
+        display: block;
+      }
+      & + .menu {
         display: block;
       }
     }

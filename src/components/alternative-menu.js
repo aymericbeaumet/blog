@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import classes from './alternative-menu.module.scss'
+import Menu from '../images/menu.svg'
+import Cross from '../images/cross.svg'
 
 function AlternativeMenu({ data }) {
   return (
     <nav className={classes.AlternativeMenu}>
-      <label htmlFor="toggle" className={classes.toggle} />
       <input type="checkbox" id="toggle" />
+      <label htmlFor="toggle" className={classes.toggle}>
+        <Menu />
+        <Cross />
+      </label>
       <div className={classes.menu}>
         <ul className={classes.entries}>
           <li>
