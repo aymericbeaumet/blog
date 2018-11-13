@@ -4,7 +4,6 @@ import Layout from '../components/layout'
 import { Helmet } from 'react-helmet'
 import urlFromTag from '../utils/urlFromTag'
 import classes from './post.module.scss'
-import LeftArrow from '../images/left-arrow.svg'
 import formatDate from 'date-fns/format'
 
 export const pageQuery = graphql`
@@ -38,8 +37,6 @@ export default class Post extends React.Component {
     showComments: false,
   }
 
-  goBack = () => window.history.back()
-
   showComments = () => this.setState({ showComments: true })
 
   render() {
@@ -58,9 +55,6 @@ export default class Post extends React.Component {
         </Helmet>
         <section className={classes.Post}>
           <header>
-            <nav>
-              <LeftArrow className={classes.back} onClick={this.goBack} />
-            </nav>
             <h1>{frontmatter.title}</h1>
             <ul>
               <li>
