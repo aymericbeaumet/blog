@@ -15,7 +15,7 @@ export const pageQuery = graphql`
 
 export default function Index() {
   return (
-    <Layout footer={false}>
+    <Layout>
       <section className={classes.Index}>
         <h1>Hey traveler,</h1>
         <h2>Welcome on my part of the internet</h2>

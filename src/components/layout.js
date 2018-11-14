@@ -3,10 +3,9 @@ import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import './layout.scss'
 import Header from './header'
-import Footer from './footer'
 import AlternativeMenu from './alternative-menu'
 
-function Layout({ children, footer = true, data }) {
+function Layout({ children, data }) {
   return (
     <React.Fragment>
       <Helmet>
@@ -19,7 +18,6 @@ function Layout({ children, footer = true, data }) {
       <Header />
       <main>{children}</main>
       <AlternativeMenu />
-      {footer ? <Footer /> : null}
     </React.Fragment>
   )
 }

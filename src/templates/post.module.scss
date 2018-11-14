@@ -12,9 +12,8 @@
       font-size: 22px;
       font-weight: bold;
       line-height: normal;
-      text-align: center;
       margin: 0;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     & > ul {
@@ -120,6 +119,10 @@
     }
   }
 
+  .comments {
+    margin-top: 40px;
+  }
+
   .showComments {
     width: 100%;
     padding: 10px;
@@ -131,5 +134,6 @@
     text-align: center;
     color: #3e53cd;
     background: inherit;
+    cursor: pointer;
   }
 }

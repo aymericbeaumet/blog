@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "date-fns": "1.29.0",
+    "disqus-react": "1.0.5",
     "normalize.css": "8.0.1",
     "prismjs": "1.15.0",
     "react": "16.6.3",
