@@ -60,17 +60,13 @@ export default class Post extends React.Component {
               <li>
                 <time>{formatDate(frontmatter.date, 'YYYY MMM. Do')}</time>
               </li>
-              {timeToWatch ? (
-                <li>
-                  {timeToWatch}
-                  min. watch
-                </li>
-              ) : (
-                <li>
-                  {timeToRead}
-                  min. read
-                </li>
-              )}
+              <li>
+                <time dateTime={`${timeToWatch || timeToRead}m`}>
+                  {timeToWatch
+                    ? `${timeToWatch}min. watch`
+                    : `${timeToRead}min. read`}
+                </time>
+              </li>
               {tags.length > 0 ? (
                 <li className={classes.tags}>
                   <ul>

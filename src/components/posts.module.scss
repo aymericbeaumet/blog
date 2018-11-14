@@ -18,6 +18,7 @@
     margin-top: 30px;
     padding-bottom: 10px;
     border-bottom: 1px solid #d8d8d8;
+    position: relative;
 
     & > a {
       text-decoration: none;
@@ -42,6 +43,28 @@
         font-weight: bold;
         line-height: normal;
         color: #3e53cd;
+      }
+
+      time {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        padding: 3px;
+        border-radius: 2px;
+        border: 1px solid rgb(236, 236, 236);
+        background-color: #ffffffe6;
+        font-size: 12px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #3e3e3e;
+
+        & > svg {
+          margin-right: 4px;
+          margin-bottom: -2px;
+        }
       }
 
       &:hover {

@@ -1,5 +1,9 @@
 # aymericbeaumet.com
 
+## Todo
+
+- Reduce class names size https://medium.freecodecamp.org/reducing-css-bundle-size-70-by-cutting-the-class-names-and-using-scope-isolation-625440de600b
+
 ## Development
 
 ```
