@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "format": "prettier --config .prettierrc --write '**/*.js'",
-    "test": "true",
+    "test": "prettier-check --config .prettierrc '**/*.js'",
     "build": "gatsby build",
     "deploy": "netlify deploy --prod --dir public/"
   },
@@ -14,18 +14,18 @@
     "date-fns": "1.29.0",
     "normalize.css": "8.0.1",
     "prismjs": "1.15.0",
-    "react": "16.6.1",
-    "react-dom": "16.6.1",
+    "react": "16.6.3",
+    "react-dom": "16.6.3",
     "react-helmet": "5.2.0"
   },
   "devDependencies": {
-    "gatsby": "2.0.45",
+    "gatsby": "2.0.48",
     "gatsby-image": "2.0.20",
     "gatsby-plugin-catch-links": "2.0.8",
     "gatsby-plugin-feed": "2.0.9",
-    "gatsby-plugin-manifest": "2.0.8",
-    "gatsby-plugin-offline": "2.0.13",
-    "gatsby-plugin-react-helmet": "3.0.1",
+    "gatsby-plugin-manifest": "2.0.9",
+    "gatsby-plugin-offline": "2.0.14",
+    "gatsby-plugin-react-helmet": "3.0.2",
     "gatsby-plugin-react-svg": "2.0.0",
     "gatsby-plugin-robots-txt": "1.3.0",
     "gatsby-plugin-sass": "2.0.4",
@@ -45,6 +45,7 @@
     "netlify-cli": "2.2.1",
     "node-sass": "4.10.0",
     "pluralize": "7.0.0",
-    "prettier": "1.15.1"
+    "prettier": "1.15.2",
+    "prettier-check": "2.0.0"
   }
 }
