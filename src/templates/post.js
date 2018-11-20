@@ -46,36 +46,41 @@ export default class Post extends React.Component {
   showComments = () => this.setState({ showComments: true })
 
   render() {
-    const { data } = this.props
     const {
-      markdownRemark,
-      site: { siteMetadata },
-    } = data
-    const { fields, frontmatter, html, timeToRead } = markdownRemark
-    const { timeToWatch } = frontmatter
-    const attachments = frontmatter.attachments || []
-    const tags = frontmatter.tags || []
-
+      data: {
+        site: {
+          siteMetadata: { baseUrl, disqusShortname, title: siteTitle },
+        },
+        markdownRemark: {
+          fields: { slug },
+          frontmatter: {
+            date,
+            title,
+            timeToWatch,
+            tags = [],
+            attachments = [],
+          },
+          html,
+          timeToRead,
+        },
+      },
+    } = this.props
     const disqusConfig = {
-      url: `${siteMetadata.baseUrl}${window.location.pathname.replace(
-        /\/+$/,
-        '',
-      )}`,
-      identifier: fields.slug,
-      title: frontmatter.title,
+      url: `${baseUrl}/${slug}`,
+      identifier: slug,
+      title,
     }
-
     return (
       <Layout>
         <Helmet>
-          <title>{`${frontmatter.title} - ${siteMetadata.title}`}</title>
+          <title>{`${title} - ${siteTitle}`}</title>
         </Helmet>
         <section className={classes.Post}>
           <header>
-            <h1>{frontmatter.title}</h1>
+            <h1>{title}</h1>
             <ul>
               <li>
-                <time>{formatDate(frontmatter.date, 'YYYY MMM. Do')}</time>
+                <time>{formatDate(date, 'YYYY MMM. Do')}</time>
               </li>
               <li>
                 <time dateTime={`${timeToWatch || timeToRead}m`}>
@@ -117,7 +122,7 @@ export default class Post extends React.Component {
           <article className={classes.comments}>
             {this.state.showComments ? (
               <Disqus.DiscussionEmbed
-                shortname={siteMetadata.disqusShortname}
+                shortname={disqusShortname}
                 config={disqusConfig}
               />
             ) : (
@@ -127,7 +132,7 @@ export default class Post extends React.Component {
               >
                 Show{' '}
                 <Disqus.CommentCount
-                  shortname={siteMetadata.disqusShortname}
+                  shortname={disqusShortname}
                   config={disqusConfig}
                 >
                   comments
