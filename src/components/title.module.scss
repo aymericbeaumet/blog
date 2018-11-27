@@ -5,7 +5,7 @@
     display: inline-block;
     margin-top: 60px;
     margin-bottom: 0;
-    font-family: Lato;
+    font-family: $sansSerif;
     font-size: 40px;
     font-weight: bold;
     line-height: normal;
@@ -22,7 +22,7 @@
       & > h1 {
         margin-top: 30px;
         margin-bottom: 0;
-        font-family: Lato;
+        font-family: $sansSerif;
         font-size: 30px;
       }
     }

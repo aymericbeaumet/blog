@@ -61,7 +61,7 @@
       #040f50
     );
     backdrop-filter: blur(5px);
-    font-family: Lato;
+    font-family: $sansSerif;
     font-size: 22px;
     font-weight: bold;
     font-style: normal;
@@ -108,7 +108,7 @@
 
     a {
       text-decoration: none;
-      font-family: Lato;
+      font-family: $sansSerif;
       font-size: 22px;
       font-weight: bold;
       font-style: normal;

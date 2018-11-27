@@ -1,7 +1,7 @@
 const siteMetadata = {
   title: 'Aymeric Beaumet',
   description: "I'm a from Paris, France.",
-  baseUrl: `https://${process.env.HOSTNAME || 'aymericbeaumet.com'}`,
+  siteUrl: `https://${process.env.HOSTNAME || 'aymericbeaumet.com'}`,
   author: 'Aymeric Beaumet',
   email: 'hi@aymericbeaumet.com',
   disqusShortname: 'aymericbeaumet',

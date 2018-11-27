@@ -2,7 +2,7 @@
 
 .Index {
   h1 {
-    font-family: Lato;
+    font-family: $sansSerif;
     font-size: 46px;
     font-weight: bold;
     line-height: normal;
@@ -11,7 +11,7 @@
   }
 
   h2 {
-    font-family: Lato;
+    font-family: $sansSerif;
     font-size: 26px;
     font-weight: bold;
     line-height: normal;
@@ -24,7 +24,7 @@
   }
 
   p {
-    font-family: Lato;
+    font-family: $sansSerif;
     font-size: 20px;
     line-height: 1.4;
     color: #3e3e3e;
@@ -53,20 +53,20 @@
 
   @media screen and (max-width: $alternativeMenuBreakpoint) {
     h1 {
-      font-family: Lato;
+      font-family: $sansSerif;
       font-size: 36px;
       margin-top: 20px;
     }
 
     h2 {
-      font-family: Lato;
+      font-family: $sansSerif;
       font-size: 18px;
       margin-top: 8px;
       margin-bottom: 10px;
     }
 
     p {
-      font-family: Lato;
+      font-family: $sansSerif;
       font-size: 16px;
       line-height: 1.38;
       margin-top: 10px;

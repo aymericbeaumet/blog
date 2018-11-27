@@ -12,7 +12,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        baseUrl
+        siteUrl
         disqusShortname
       }
     }
@@ -49,7 +49,7 @@ export default class Post extends React.Component {
     const {
       data: {
         site: {
-          siteMetadata: { baseUrl, disqusShortname, title: siteTitle },
+          siteMetadata: { siteUrl, disqusShortname, title: siteTitle },
         },
         markdownRemark: {
           fields: { slug },
@@ -66,7 +66,7 @@ export default class Post extends React.Component {
       },
     } = this.props
     const disqusConfig = {
-      url: `${baseUrl}/${slug}`,
+      url: `${siteUrl}/${slug}`,
       identifier: slug,
       title,
     }
