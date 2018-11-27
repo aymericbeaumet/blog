@@ -22,7 +22,11 @@ export default function Index() {
 
         <p>
           {'My name is Aymeric Beaumet, I am a '}
-          <a href="https://www.linkedin.com/in/aymericbeaumet/">
+          <a
+            href="https://www.linkedin.com/in/aymericbeaumet/"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             Software Engineer
           </a>
           {
@@ -50,12 +54,22 @@ export default function Index() {
           {'I am '}
           <strong>modestly trying to make the world a better place.</strong>
           {' I '}
-          <a href="https://github.com/aymericbeaumet">maintain</a>
+          <a
+            href="https://github.com/aymericbeaumet"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
+            maintain
+          </a>
           {' some open-source projects, do my best to '}
-          <a href="https://stackoverflow.com/users/1071486/aymericbeaumet?tab=profile">
+          <a
+            href="https://stackoverflow.com/users/1071486/aymericbeaumet?tab=profile"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+          >
             advise
           </a>
-          {' people and regularly '}
+          {' people and '}
           <Link to="/articles">write</Link> or <Link to="/talks">speak</Link>
           {' about my experiences.'}
         </p>
