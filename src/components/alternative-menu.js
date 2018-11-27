@@ -3,6 +3,9 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import classes from './alternative-menu.module.scss'
 import Menu from '../images/menu.svg'
 import Cross from '../images/cross.svg'
+import Twitter from '../images/twitter-brands.svg'
+import Mastodon from '../images/mastodon-brands.svg'
+import Envelope from '../images/envelope-regular.svg'
 
 function AlternativeMenu({ data }) {
   return (
@@ -15,11 +18,45 @@ function AlternativeMenu({ data }) {
       <div className={classes.menu}>
         <ul className={classes.entries}>
           <li>
-            <ul className={classes.contact}>
-              <li>Email</li>
-              <li>Twitter</li>
-              <li>Mastodon</li>
-            </ul>
+            <nav className={classes.contact}>
+              <ul>
+                <li>
+                  <a
+                    onClick={function(event) {
+                      window.open(
+                        `mailto:${data.site.siteMetadata.email}`,
+                        data.site.siteMetadata.email,
+                        'noopener',
+                      )
+                      event.preventDefault()
+                    }}
+                    href={`mailto:${data.site.siteMetadata.email}`}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Envelope className={`${classes.icon} ${classes.e}`} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/aymericbeaumet"
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Twitter className={`${classes.icon} ${classes.t}`} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://mastodon.social/@aymericbeaumet"
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Mastodon className={`${classes.icon} ${classes.m}`} />
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </li>
           {data.site.siteMetadata.menu.map(({ name, url }) => (
             <li key={name}>
@@ -41,9 +78,11 @@ export default function() {
         query {
           site {
             siteMetadata {
+              email
               menu {
                 name
                 url
+                categorySlug
               }
             }
           }

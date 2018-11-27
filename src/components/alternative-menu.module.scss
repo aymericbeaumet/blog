@@ -1,6 +1,8 @@
 @import 'config';
 
 .AlternativeMenu {
+  display: none;
+
   .toggle {
     position: fixed;
     bottom: 30px;
@@ -58,6 +60,7 @@
       unquote('#040f50cc'),
       #040f50
     );
+    backdrop-filter: blur(5px);
     font-family: Lato;
     font-size: 22px;
     font-weight: bold;
@@ -70,24 +73,76 @@
   }
 
   .entries {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     text-align: center;
-    margin: 0 auto;
+    margin-bottom: 191px;
+    width: 100%;
+
+    ul,
+    li {
+      list-style: none;
+      display: inline-block;
+    }
 
     & > li {
+      margin: 0 auto;
+      padding: 10px 0;
       width: 80%;
     }
 
     & > li + li {
       border-top: 1px solid white;
     }
+
+    a {
+      text-decoration: none;
+      font-family: Lato;
+      font-size: 22px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #ffffff;
+    }
   }
 
   .contact {
+    .icon {
+      color: #ffffff;
+      path {
+        fill: #ffffff;
+      }
+
+      &.e {
+        width: 29px;
+        height: 19px;
+        object-fit: contain;
+      }
+
+      &.t {
+        margin-left: 26px;
+        width: 26px;
+        height: 21px;
+        object-fit: contain;
+      }
+
+      &.m {
+        margin-left: 24px;
+        margin-bottom: -2px;
+        width: 23px;
+        height: 25px;
+        object-fit: contain;
+      }
+    }
   }
 
-  @media screen and (min-width: $alternativeMenuBreakpoint) {
+  @media screen and (max-width: $alternativeMenuBreakpoint) {
     & {
-      display: none;
+      display: block;
     }
   }
 }
