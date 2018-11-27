@@ -14,6 +14,10 @@ function Layout({ children, data }) {
         <meta name="description" content={data.site.siteMetadata.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link type="text/plain" rel="author" href="/humans.txt" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Lato:400,400i,700"
+          rel="stylesheet"
+        />
       </Helmet>
       <Header />
       <main>{children}</main>
