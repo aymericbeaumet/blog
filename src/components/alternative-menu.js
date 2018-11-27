@@ -60,7 +60,7 @@ function AlternativeMenu({ data }) {
           </li>
           <li key="about">
             <Link to="/" activeClassName={classes.active}>
-              About
+              Aymeric Beaumet
             </Link>
           </li>
           {data.site.siteMetadata.menu.map(({ name, url }) => (
