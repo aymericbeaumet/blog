@@ -11,10 +11,10 @@
 html {
   display: flex;
   justify-content: center;
-  min-width: $minWidth;
 }
 
 body {
-  width: $maxWidth;
+  min-width: $minWidth;
+  max-width: $maxWidth;
   padding: 0 16px 32px 16px;
 }
