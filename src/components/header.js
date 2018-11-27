@@ -12,7 +12,7 @@ function Header({ data }) {
     <header className={classes.Header}>
       <nav role="navigation">
         <ul>
-          <li key="aymericbeaumet-logo">
+          <li key="logo">
             <Link to="/" activeClassName={classes.active}>
               <Logo />
             </Link>
