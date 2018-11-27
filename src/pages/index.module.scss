@@ -1,6 +1,17 @@
 @import '../components/config';
 
+@keyframes appearing {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .Index {
+  animation: appearing linear 1s;
+
   h1 {
     font-family: $sansSerif;
     font-size: 46px;
