@@ -89,7 +89,7 @@ export default class Post extends React.Component {
                     : `${timeToRead}min. read`}
                 </time>
               </li>
-              {tags.length > 0 ? (
+              {tags && tags.length > 0 ? (
                 <li className={classes.tags}>
                   <ul>
                     {tags.map(tag => (
@@ -100,7 +100,7 @@ export default class Post extends React.Component {
                   </ul>
                 </li>
               ) : null}
-              {attachments.length > 0 ? (
+              {attachments && attachments.length > 0 ? (
                 <li className={classes.files}>
                   <ul>
                     {attachments.map(({ id, publicURL, name, extension }) => (
