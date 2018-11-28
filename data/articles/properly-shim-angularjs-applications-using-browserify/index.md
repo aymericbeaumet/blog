@@ -44,7 +44,7 @@ loading the page. It will be used as a support to identify the trouble cases
 and detail how to tackle them. So create an empty folder and let’s get
 started!
 
-First, create an app.js file which will be the entry point:
+First, create an `app.js` file which will be the entry point:
 
 ```javascript
 var angular = require('angular')
@@ -62,7 +62,7 @@ app.run(function(localStorageService) {
 
 Neat, isn’t it? If you come from a Node.js background I’m sure you do like it.
 
-Now let’s generate the package.json:
+Now let’s generate the `package.json`:
 
 ```bash
 npm init
@@ -97,13 +97,13 @@ There are several issues occurring here.
 
 ### Modules not defining an entry point
 
-When a module is required, Browserify looks in the node_modules folder to
-find its package.json and loads it. Browserify expects it to have a main
+When a module is required, Browserify looks in the `node_modules` folder to
+find its `package.json` and loads it. Browserify expects it to have a `main`
 property which contains the relative path to the file which should be loaded.
 
 It is usual that this property is missing, that it points to the wrong file
-or that the package.json itself is missing. In such case, you can override
-the file to load in the own project’s package.json:
+or that the `package.json` itself is missing. In such case, you can override
+the file to load in the own project’s `package.json`:
 
 ```json
 {
@@ -116,13 +116,13 @@ the file to load in the own project’s package.json:
 
 ### Modules not properly exporting their content
 
-When Browserify requires the file indicated by the main property in the
-module’s package.json, it is usual that this file does not properly export
+When Browserify requires the file indicated by the `main` property in the
+module’s `package.json`, it is usual that this file does not properly export
 its content in the CommonJS style. Also, we expect AngularJS modules to
 export their names so that we could directly require them in our AngularJS
 modules definitions.
 
-To this end, browserify-shim can be used.
+To this end, [browserify-shim](https://github.com/thlorenz/browserify-shim) can be used.
 
 First install it:
 
@@ -130,7 +130,7 @@ First install it:
 npm install -D browserify-shim
 ```
 
-Then, update the package.json:
+Then, update the `package.json`:
 
 ```json
 {
@@ -148,24 +148,24 @@ Then, update the package.json:
 }
 ```
 
-- angular exports the global variable angular
-- angular-local-storage exports its AngularJS module name LocalStorageModule
+- `angular` exports the global variable `angular`
+- `angular-local-storage` exports its AngularJS module name `LocalStorageModule`
 
 ### Modules fetching their dependencies on the global context
 
 Some frontend modules relies on the fact their dependencies will be exposed
-on the global object (generally the window object in most browsers). This is
+on the global object (generally the `window` object in most browsers). This is
 an anti-pattern of the CommonJS architecture which favors separation of
 concerns.
 
-For example, AngularJS expects jQuery to be exposed at the window.jQuery
+For example, AngularJS expects jQuery to be exposed at the `window.jQuery`
 property.
 
 One solution is to wrap the module into a function which exposes a global
 object with the appropriate properties. Hopefully, this could also easily
-done via browserify-shim (see above for the installation).
+done via _browserify-shim_ (see above for the installation).
 
-Then, update the package.json:
+Then, update the `package.json`:
 
 ```json
 {
@@ -180,12 +180,12 @@ Then, update the package.json:
 }
 ```
 
-- angular will be provided the jquery module on a fake window object at the property jQuery
-- angular-local-storage will be provided the angular module the same way
+- `angular` will be provided the `jquery` module on a fake window object at the property `jQuery`
+- `angular-local-storage` will be provided the `angular` module the same way
 
 ### Wrap up
 
-You should have added the following content to your package.json:
+You should have added the following content to your `package.json`:
 
 ```json
 {
@@ -215,29 +215,27 @@ Once you’ve made those corrections, you should be able to compile and run the 
 ./node_modules/.bin/browserify app.js -o bundle.js
 ```
 
-Check it really works by opening index.html.
+Check it really works by opening `index.html`.
 
 ### Side notes
 
 Some related facts which can save you time when dealing with Browserify:
 
 - modules not published to npm can be installed by giving their git
-  repository URL: npm install git+https://github.com/angular-ui/ui-router.git.
-  Note that it is also possible to directly pass a GitHub repository: npm
-  install angular-ui/ui-router. A version can be specified by appending #tag.
-  See the documentation for more information
-- modules not containing a package.json cannot be installed using npm (even
+  repository URL: `npm install git+https://github.com/angular-ui/ui-router.git`.
+  Note that it is also possible to directly pass a GitHub repository: `npm install angular-ui/ui-router`. A version can be specified by appending `#tag`. See the [documentation](https://docs.npmjs.com/cli/install) for more information
+- modules not containing a `package.json` cannot be installed using npm (even
   by directly providing a git repository). To tackle this issue, a third party
-  installer like napa has to be used
-- napa will directly install the dependencies in the node_modules directory
-- the postinstall script is equivalent to install. It is executed after the
+  installer like [napa](https://github.com/shama/napa) has to be used
+- `napa` will directly install the dependencies in the `node_modules` directory
+- the `postinstall` script is equivalent to `install`. It is executed after the
   modules installation. However, I find it to be more explicit
-- you should place napa into the postinstall script
-- the paths provided in the browser field needs to be relative to the root
-  package.json path. It is mandatory to start each entry by ./
-- it is possible to indicate files in another repository than node_modules
-  when filling the browser field (e.g.: bower_components)
-- centralizing Browserify options in the package.json is a good practice
+- you should place `napa` into the `postinstall` script
+- the paths provided in the `browser` field needs to be relative to the root
+  `package.json` path. It is mandatory to start each entry by `./`
+- it is possible to indicate files in another repository than `node_modules`
+  when filling the browser field (e.g.: `bower_components`)
+- centralizing Browserify options in the `package.json` is a good practice
   since it allows to keep a constant behavior when invoking it in different
   ways (CLI, API)
 
