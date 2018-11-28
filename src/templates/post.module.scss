@@ -7,6 +7,12 @@ pre[class*='language-'] > code {
   box-shadow: none;
 }
 
+@media screen and (max-width: $restrainedContentBreakpoint) {
+  p > code[class*='language-'] {
+    word-break: break-all;
+  }
+}
+
 .Post {
   header {
     padding-top: 25px;
