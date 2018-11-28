@@ -1,4 +1,11 @@
+@import '~prismjs/themes/prism-coy.css';
 @import '../components/config';
+
+pre[class*='language-'] > code {
+  border: 1px solid #dfdfdf;
+  border-left: 10px solid unquote('#3e53cdb3');
+  box-shadow: none;
+}
 
 .Post {
   header {
