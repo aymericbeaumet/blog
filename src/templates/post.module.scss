@@ -75,6 +75,7 @@ pre[class*='language-'] > code {
     color: #3e3e3e;
 
     h2 {
+      display: inline-block;
       font-family: $sansSerif;
       font-size: 24px;
       font-weight: bold;
@@ -83,6 +84,7 @@ pre[class*='language-'] > code {
     }
 
     h3 {
+      display: inline-block;
       height: 22px;
       font-family: $sansSerif;
       font-size: 16px;
