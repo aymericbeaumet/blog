@@ -1,0 +1,7 @@
+/*
+ * TODO: find a way to bring this in the SCSS module. Right now I couldn't
+ * figure out how to access the global scope.
+ */
+.gatsby-resp-iframe-wrapper {
+  margin-top: 15px;
+}
