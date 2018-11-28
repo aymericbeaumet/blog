@@ -19,8 +19,8 @@ class AlternativeMenu extends React.Component {
     document.body.style.overflow = isVisible ? 'hidden' : ''
   }
 
-  _toggleOnChangeHandler = (event = {}) => {
-    this.isVisible = event.target.checked
+  _toggleOnChangeHandler = event => {
+    this.isVisible = event && event.target && event.target.checked
   }
 
   _dismissHandler = (event = {}) => {
