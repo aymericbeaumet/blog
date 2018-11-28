@@ -20,7 +20,9 @@ class AlternativeMenu extends React.Component {
   }
 
   _toggleOnChangeHandler = event => {
-    this.isVisible = event && event.target && event.target.checked
+    if (event && event.target) {
+      this.isVisible = !!event.target.checked
+    }
   }
 
   _dismissHandler = (event = {}) => {
