@@ -1,7 +1,10 @@
 $minWidth: 320px;
 $maxWidth: 800px;
 
-$restrainedContentBreakpoint: 830px; // so that 2 articles can fit on "posts" pages
-$alternativeMenuBreakpoint: 475px; // when the header menu is not wide enough
+// so that 2 articles can fit on "posts" pages
+$restrainedContentBreakpoint: 830px;
+
+// when the header menu is not wide enough
+$alternativeMenuBreakpoint: 475px;
 
 $sansSerif: 'Lato', sans-serif;
