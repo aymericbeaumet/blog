@@ -10,7 +10,7 @@
 }
 
 .Index {
-  animation: appearing linear 1s;
+  animation: appearing ease-in-out 1s;
 
   h1 {
     font-family: $sansSerif;
