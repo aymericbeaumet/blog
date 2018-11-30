@@ -2,11 +2,11 @@ image: node:latest
 
 deploy:
   stage: deploy
+  only:
+    - master
   before_script:
-    - yarn
+    - yarn install
     - yarn test
     - yarn build
   script:
     - yarn deploy
-  only:
-    - master
