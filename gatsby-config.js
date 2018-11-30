@@ -25,14 +25,14 @@ const siteMetadata = {
 }
 
 const plugins = [
-  'gatsby-plugin-sharp', // required by gatsby-remark-images
-  'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       path: `${__dirname}/data/`,
     },
   },
+  'gatsby-plugin-sharp', // required by gatsby-remark-images
+  'gatsby-transformer-sharp',
   'gatsby-plugin-react-helmet',
   {
     resolve: 'gatsby-plugin-manifest',
