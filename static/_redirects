@@ -1,1 +1,7 @@
+ http://aymericbeaumet.netlify.com/* https://aymericbeaumet.com/:splat 301!
+https://aymericbeaumet.netlify.com/* https://aymericbeaumet.com/:splat 301!
+
+ http://www.aymericbeaumet.com/* https://aymericbeaumet.com/:splat 301!
+https://www.aymericbeaumet.com/* https://aymericbeaumet.com/:splat 301!
+
 http://aymericbeaumet.com/* https://aymericbeaumet.com/:splat 301!
