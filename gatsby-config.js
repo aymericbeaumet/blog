@@ -32,7 +32,13 @@ const plugins = [
     },
   },
   'gatsby-plugin-sharp', // required by gatsby-remark-images
-  'gatsby-transformer-sharp',
+  'gatsby-plugin-offline',
+  'gatsby-plugin-sitemap',
+  'gatsby-plugin-feed',
+  'gatsby-plugin-catch-links',
+  'gatsby-plugin-react-svg',
+  'gatsby-plugin-robots-txt',
+  `gatsby-plugin-sass`,
   'gatsby-plugin-react-helmet',
   {
     resolve: 'gatsby-plugin-manifest',
@@ -46,13 +52,7 @@ const plugins = [
       icon: `${__dirname}/src/images/aymericbeaumet.png`,
     },
   },
-  'gatsby-plugin-offline',
-  'gatsby-plugin-sitemap',
-  'gatsby-plugin-feed',
-  'gatsby-plugin-catch-links',
-  'gatsby-plugin-react-svg',
-  'gatsby-plugin-robots-txt',
-  `gatsby-plugin-sass`,
+  'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-transformer-remark',
     options: {
