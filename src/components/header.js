@@ -6,7 +6,6 @@ import Mastodon from '../images/mastodon-brands.svg'
 import Envelope from '../images/envelope-regular.svg'
 import Logo from '../images/aymericbeaumet-logo.svg'
 import CategoryLink from './category-link'
-import Search from '../images/search.svg'
 
 class Header extends React.Component {
   render() {
@@ -34,12 +33,6 @@ class Header extends React.Component {
                   </li>
                 ),
               )}
-              <li key="search">
-                <Search
-                  className={classes.search}
-                  onClick={this._toggleSearch}
-                />
-              </li>
             </ul>
           </nav>
           <nav className={classes.contact}>
