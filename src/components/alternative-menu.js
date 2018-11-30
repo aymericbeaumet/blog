@@ -98,6 +98,11 @@ class AlternativeMenu extends React.Component {
                 </ul>
               </nav>
             </li>
+            <li>
+              <Link to="/" activeClassName={classes.active}>
+                Home
+              </Link>
+            </li>
             {data.site.siteMetadata.menu.map(({ name, url }) => (
               <li key={name}>
                 <Link to={url} activeClassName={classes.active}>
