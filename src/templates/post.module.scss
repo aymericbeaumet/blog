@@ -147,20 +147,24 @@ pre[class*='language-'] > code {
 
   .comments {
     margin-top: 30px;
-  }
 
-  .showComments {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: solid 1px #3e53cd;
-    font-family: $sansSerif;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: normal;
-    text-align: center;
-    color: #3e53cd;
-    background: inherit;
-    cursor: pointer;
+    & > button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: solid 1px #3e53cd;
+      font-family: $sansSerif;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: normal;
+      text-align: center;
+      color: #3e53cd;
+      background: inherit;
+      cursor: pointer;
+    }
+
+    & > div {
+      margin-top: 15px;
+    }
   }
 }
