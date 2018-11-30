@@ -39,14 +39,6 @@ class Header extends React.Component {
             <ul>
               <li>
                 <a
-                  onClick={function(event) {
-                    window.open(
-                      `mailto:${data.site.siteMetadata.email}`,
-                      data.site.siteMetadata.email,
-                      'noopener',
-                    )
-                    event.preventDefault()
-                  }}
                   href={`mailto:${data.site.siteMetadata.email}`}
                   target="_blank"
                   rel="nofollow noopener noreferrer"
