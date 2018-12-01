@@ -161,5 +161,8 @@ function flattenObject(object, init = {}) {
 
 module.exports = {
   siteMetadata,
-  plugins: withAlgolia(plugins),
+  plugins: [
+    ...withAlgolia(plugins),
+    'gatsby-plugin-netlify', // must be in last position
+  ],
 }
