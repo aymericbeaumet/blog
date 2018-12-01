@@ -7,8 +7,7 @@
     "develop": "gatsby develop",
     "format": "prettier --config .prettierrc --write '**/*.js'",
     "test": "prettier-check --config .prettierrc '**/*.js'",
-    "build": "gatsby build",
-    "deploy": "netlify deploy --prod --dir public/"
+    "build": "gatsby build"
   },
   "dependencies": {
     "date-fns": "1.29.0",
@@ -46,7 +45,6 @@
     "gatsby-transformer-remark": "2.1.15",
     "gatsby-transformer-sharp": "2.1.9",
     "lodash": "4.17.11",
-    "netlify-cli": "2.2.3",
     "node-sass": "4.10.0",
     "pluralize": "7.0.0",
     "prettier": "1.15.3",

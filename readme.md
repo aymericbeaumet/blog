@@ -26,7 +26,6 @@
 | aymericbeaumet.com | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.com&dkim_selector=) |
 | beaumet.fr         | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.fr&dkim_selector=)         |
 | beaumet.me         | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.me&dkim_selector=)         |
-| ------------------ | --------------------------------------------------------------------------------------------------- |
 
 ## Commands
 
@@ -41,8 +40,6 @@ yarn develop
 
 The following variables must be set in the [GitLab interface](https://gitlab.com/aymericbeaumet/aymericbeaumet.com/settings/ci_cd):
 
-- `NETLIFY_SITE_ID`: get the _API ID_ [here](https://app.netlify.com/sites/aymericbeaumet/settings/general)
-- `NETLIFY_AUTH_TOKEN`: generate a _Personal access token_ [here](https://app.netlify.com/account/applications)
 - `ALGOLIA_APPLICATION_ID`: get it [here](https://www.algolia.com/apps/O8NJP2H5DA/api-keys/all)
 - `ALGOLIA_ADMIN_API_KEY`: _see above_
 - `ALGOLIA_SEARCH_ONLY_API_KEY`: _see above_
