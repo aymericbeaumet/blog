@@ -163,6 +163,38 @@ module.exports = {
   siteMetadata,
   plugins: [
     ...withAlgolia(plugins),
-    'gatsby-plugin-netlify', // must be in last position
+    // netlify plugin must be in last position
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        allPageHeaders: [
+          // cache
+          `cache-control: immutable, max-age=${365 * 24 * 60 * 60}`,
+          'expires: Thu, 31 Dec 2099 23:59:59 GMT',
+          // security
+          "content-security-policy: default-src 'none'",
+          "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
+          'referrer-policy: no-referrer',
+        ],
+        headers: {
+          '*.html': [
+            // cache
+            'cache-control: no-cache',
+            // security
+            "content-security-policy: default-src 'none'",
+            "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
+            'referrer-policy: no-referrer',
+          ],
+          '*.xml': [
+            // cache
+            'cache-control: no-cache',
+            // security
+            "content-security-policy: default-src 'none'",
+            "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
+            'referrer-policy: no-referrer',
+          ],
+        },
+      },
+    },
   ],
 }
