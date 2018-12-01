@@ -6,7 +6,12 @@ const capitalize = require('lodash/capitalize')
 
 const PRIMARY_DOMAIN = 'aymericbeaumet.com'
 
-const SECONDARY_DOMAINS = ['aymericbeaumet.me', 'beaumet.fr', 'beaumet.me']
+const SECONDARY_DOMAINS = [
+  'aymericbeaumet.netlify.com',
+  'aymericbeaumet.me',
+  'beaumet.fr',
+  'beaumet.me',
+]
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions

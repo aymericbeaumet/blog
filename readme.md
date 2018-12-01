@@ -1,5 +1,11 @@
 # aymericbeaumet.com
 
+## Tests
+
+- https://developers.google.com/web/tools/lighthouse/run
+- https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Faymericbeaumet.com%2F
+- https://securityheaders.com/?q=https%3A%2F%2Faymericbeaumet.com&followRedirects=on
+
 ## Todo
 
 - Reduce class names size https://medium.freecodecamp.org/reducing-css-bundle-size-70-by-cutting-the-class-names-and-using-scope-isolation-625440de600b
@@ -11,7 +17,7 @@ yarn
 yarn develop
 ```
 
-## CI/CD
+## Environment variables
 
 The following variables must be set in the [GitLab interface](https://gitlab.com/aymericbeaumet/aymericbeaumet.com/settings/ci_cd):
 
