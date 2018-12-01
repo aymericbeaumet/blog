@@ -38,7 +38,7 @@ yarn develop
 
 ## Environment variables
 
-The following variables must be set in the [GitLab interface](https://gitlab.com/aymericbeaumet/aymericbeaumet.com/settings/ci_cd):
+The following variables must be set in [Netlify](https://app.netlify.com/sites/aymericbeaumet/settings/deploys):
 
 - `ALGOLIA_APPLICATION_ID`: get it [here](https://www.algolia.com/apps/O8NJP2H5DA/api-keys/all)
 - `ALGOLIA_ADMIN_API_KEY`: _see above_
