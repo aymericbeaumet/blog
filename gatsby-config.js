@@ -145,6 +145,38 @@ function withAlgolia(plugins = []) {
   ]
 }
 
+/* Netlify plugin must be in last position */
+function withNetlify(plugins = []) {
+  const securityHeaders = [
+    'referrer-policy: no-referrer',
+    "content-security-policy: default-src 'none'",
+    "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
+    'x-content-type-options: nosniff',
+    'x-frame-options: deny',
+    'x-xss-protection: 1; mode=block',
+  ]
+  const immutableCacheHeaders = [
+    `cache-control: public, max-age=${365 * 24 * 60 * 60}, immutable`,
+    'expires: Thu, 31 Dec 2099 23:59:59 GMT',
+  ]
+  return [
+    ...plugins,
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        mergeSecurityHeaders: false,
+        mergeCachingHeaders: false,
+        allPageHeaders: [...securityHeaders, 'cache-control: no-cache'],
+        headers: {
+          '/*.js': [...securityHeaders, ...immutableCacheHeaders],
+          '/*.css': [...securityHeaders, ...immutableCacheHeaders],
+          '/static/*': [...securityHeaders, ...immutableCacheHeaders],
+        },
+      },
+    },
+  ]
+}
+
 function flattenObject(object, init = {}) {
   return _.reduce(
     object,
@@ -161,40 +193,5 @@ function flattenObject(object, init = {}) {
 
 module.exports = {
   siteMetadata,
-  plugins: [
-    ...withAlgolia(plugins),
-    // netlify plugin must be in last position
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        allPageHeaders: [
-          // cache
-          `cache-control: immutable, max-age=${365 * 24 * 60 * 60}`,
-          'expires: Thu, 31 Dec 2099 23:59:59 GMT',
-          // security
-          "content-security-policy: default-src 'none'",
-          "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
-          'referrer-policy: no-referrer',
-        ],
-        headers: {
-          '*.html': [
-            // cache
-            'cache-control: no-cache',
-            // security
-            "content-security-policy: default-src 'none'",
-            "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
-            'referrer-policy: no-referrer',
-          ],
-          '*.xml': [
-            // cache
-            'cache-control: no-cache',
-            // security
-            "content-security-policy: default-src 'none'",
-            "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
-            'referrer-policy: no-referrer',
-          ],
-        },
-      },
-    },
-  ],
+  plugins: withNetlify(withAlgolia(plugins)),
 }
