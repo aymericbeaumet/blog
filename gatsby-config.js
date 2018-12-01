@@ -3,7 +3,7 @@ const _ = require('lodash')
 const siteMetadata = {
   title: 'Aymeric Beaumet',
   description: "I'm a from Paris, France.",
-  siteUrl: `https://${process.env.HOSTNAME || 'aymericbeaumet.com'}`,
+  siteUrl: 'https://aymericbeaumet.com',
   author: 'Aymeric Beaumet',
   email: 'hi@aymericbeaumet.com',
   disqusShortname: 'aymericbeaumet',
