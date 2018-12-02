@@ -153,9 +153,10 @@ function withNetlify(plugins = []) {
     'x-frame-options: deny',
     'x-xss-protection: 1; mode=block',
     `content-security-policy: ${[
-      "default-src 'self'",
-      "font-src 'self' https://fonts.gstatic.com data:",
-      "img-src 'self' https://*.disquscdn.com",
+      "default-src 'none'",
+      'frame-src https://disqus.com',
+      'font-src https://fonts.gstatic.com data:',
+      "img-src 'self' https://*.disquscdn.com data:",
       "script-src 'self' 'unsafe-inline' https://*.cloudfront.net https://disqus.com https://aymericbeaumet.disqus.com https://*.disquscdn.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     ].join('; ')}`,
