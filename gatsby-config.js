@@ -149,7 +149,7 @@ function withAlgolia(plugins = []) {
 function withNetlify(plugins = []) {
   const securityHeaders = [
     `content-security-policy: ${[
-      "default-src 'none'",
+      "default-src 'self'",
       'frame-src https://disqus.com',
       'font-src https://fonts.gstatic.com data:',
       "img-src 'self' https://*.disquscdn.com data:",
