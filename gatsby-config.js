@@ -152,7 +152,7 @@ function withNetlify(plugins = []) {
     'x-content-type-options: nosniff',
     'x-frame-options: deny',
     'x-xss-protection: 1; mode=block',
-    `content-security-policy-report-only: ${[
+    `content-security-policy: ${[
       "default-src 'self'",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' https://*.disquscdn.com",
@@ -173,7 +173,6 @@ function withNetlify(plugins = []) {
       options: {
         mergeSecurityHeaders: false,
         mergeCachingHeaders: false,
-        allPageHeaders: [...securityHeaders],
         headers: {
           '/*': [...securityHeaders, ...noCacheHeaders],
           '/*.css': [...securityHeaders, ...immutableCacheHeaders],
