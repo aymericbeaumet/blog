@@ -148,10 +148,6 @@ function withAlgolia(plugins = []) {
 /* Netlify plugin must be in last position */
 function withNetlify(plugins = []) {
   const securityHeaders = [
-    'referrer-policy: no-referrer',
-    'x-content-type-options: nosniff',
-    'x-frame-options: deny',
-    'x-xss-protection: 1; mode=block',
     `content-security-policy: ${[
       "default-src 'none'",
       'frame-src https://disqus.com',
@@ -161,6 +157,10 @@ function withNetlify(plugins = []) {
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     ].join('; ')}`,
     "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
+    'referrer-policy: no-referrer',
+    'x-content-type-options: nosniff',
+    'x-frame-options: deny',
+    'x-xss-protection: 1; mode=block',
   ]
   const noCacheHeaders = ['cache-control: no-cache']
   const immutableCacheHeaders = [
