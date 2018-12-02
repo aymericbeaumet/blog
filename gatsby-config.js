@@ -155,8 +155,8 @@ function withNetlify(plugins = []) {
     `content-security-policy-report-only: ${[
       "default-src 'self'",
       "font-src 'self' https://fonts.gstatic.com data:",
-      "script-src 'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com",
-      "style-src 'self' https://fonts.googleapis.com",
+      "script-src 'self' 'unsafe-inline' https://*.cloudfront.net https://disqus.com https://*.disqus.com https://*.disquscdn.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     ].join('; ')}`,
     "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
   ]
