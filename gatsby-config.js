@@ -148,15 +148,15 @@ function withAlgolia(plugins = []) {
 /* Netlify plugin must be in last position */
 function withNetlify(plugins = []) {
   const securityHeaders = [
-    `content-security-policy-report-only: ${[
-      "default-src 'none'",
-      'report-uri https://aymericbeaumet.report-uri.com/r/d/csp/reportOnly',
-    ].join('; ')}`,
-    "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
-    'referrer-policy: no-referrer',
-    'x-content-type-options: nosniff',
-    'x-frame-options: deny',
-    'x-xss-protection: 1; mode=block',
+    // `content-security-policy-report-only: ${[
+    //   "default-src 'none'",
+    //   'report-uri https://aymericbeaumet.report-uri.com/r/d/csp/reportOnly',
+    // ].join('; ')}`,
+    // "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
+    // 'referrer-policy: no-referrer',
+    // 'x-content-type-options: nosniff',
+    // 'x-frame-options: deny',
+    // 'x-xss-protection: 1; mode=block',
   ]
   const noCacheHeaders = ['cache-control: no-cache']
   const immutableCacheHeaders = [
