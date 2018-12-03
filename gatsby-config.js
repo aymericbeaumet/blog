@@ -148,8 +148,10 @@ function withAlgolia(plugins = []) {
 /* Netlify plugin must be in last position */
 function withNetlify(plugins = []) {
   const securityHeaders = [
-    `content-security-policy-report-only: ${["default-src 'none'"].join('; ')}`,
-    'report-to: {"group":"default","max_age":31536000,"endpoints":[{"url":"https://aymericbeaumet.report-uri.com/r/d/csp/reportOnly"}],"include_subdomains":true}',
+    `content-security-policy-report-only: ${[
+      "default-src 'none'",
+      'report-uri https://aymericbeaumet.report-uri.com/r/d/csp/reportOnly',
+    ].join('; ')}`,
     "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
     'referrer-policy: no-referrer',
     'x-content-type-options: nosniff',
