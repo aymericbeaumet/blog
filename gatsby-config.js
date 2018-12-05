@@ -173,6 +173,9 @@ function withNetlify(plugins = []) {
     'x-xss-protection: 1; mode=block',
   ]
   const noCacheHeaders = ['cache-control: no-cache']
+  const mutableCacheHeaders = [
+    `cache-control: public, max-age=${7 * 24 * 60 * 60}`,
+  ]
   const immutableCacheHeaders = [
     `cache-control: public, max-age=${365 * 24 * 60 * 60}, immutable`,
     'expires: Thu, 31 Dec 2099 23:59:59 GMT',
@@ -189,6 +192,8 @@ function withNetlify(plugins = []) {
           '/*.css': [...securityHeaders, ...immutableCacheHeaders],
           '/*.js': [...securityHeaders, ...immutableCacheHeaders],
           '/static/*': [...securityHeaders, ...immutableCacheHeaders],
+          '/sw.js': [...securityHeaders, ...mutableCacheHeaders],
+          '/workbox-*': [...securityHeaders, ...mutableCacheHeaders],
         },
       },
     },
