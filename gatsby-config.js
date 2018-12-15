@@ -168,7 +168,7 @@ function withNetlify(plugins = []) {
   ]
   const noCacheHeaders = ['cache-control: no-cache']
   const mutableCacheHeaders = [
-    `cache-control: public, max-age=${7 * 24 * 60 * 60}`,
+    `cache-control: public, max-age=${3 * 24 * 60 * 60}`,
   ]
   const immutableCacheHeaders = [
     `cache-control: public, max-age=${365 * 24 * 60 * 60}, immutable`,
@@ -181,13 +181,10 @@ function withNetlify(plugins = []) {
       options: {
         mergeSecurityHeaders: false,
         mergeCachingHeaders: false,
+        allPageHeaders: [...securityHeaders, ...mutableCacheHeaders],
         headers: {
           '/*': [...securityHeaders, ...noCacheHeaders],
-          '/*.css': [...securityHeaders, ...immutableCacheHeaders],
-          '/*.js': [...securityHeaders, ...immutableCacheHeaders],
           '/static/*': [...securityHeaders, ...immutableCacheHeaders],
-          '/sw.js': [...securityHeaders, ...mutableCacheHeaders],
-          '/workbox-*': [...securityHeaders, ...mutableCacheHeaders],
         },
       },
     },
