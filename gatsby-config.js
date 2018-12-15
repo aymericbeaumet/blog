@@ -150,19 +150,13 @@ function withNetlify(plugins = []) {
   const securityHeaders = [
     `content-security-policy-report-only: ${[
       "default-src 'self'",
-      //
-      "child-src 'none'",
       "connect-src 'self' https://*.cloudfront.net https://fonts.googleapis.com https://fonts.gstatic.com",
       'font-src https://fonts.gstatic.com',
       'frame-src https://disqus.com https://www.youtube-nocookie.com',
       "img-src 'self' data:",
-      "manifest-src 'self'",
-      "media-src 'none'",
-      "object-src 'none'",
-      "prefetch-src 'self'",
+      "prefetch-src 'self' https://fonts.googleapis.com",
       "script-src 'self' 'unsafe-inline' https://*.cloudfront.net https://disqus.com https://aymericbeaumet.disqus.com https://*.disquscdn.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.disquscdn.com",
-      "worker-src 'self'",
       //
       'report-uri https://aymericbeaumet.report-uri.com/r/d/csp/reportOnly',
     ].join('; ')}`,
