@@ -147,13 +147,13 @@ function withAlgolia(plugins = []) {
 
 /* Netlify plugin must be in last position */
 function withNetlify(plugins = []) {
-  const securityHeaders = [
+  const additionalSecurityHeaders = [
     `content-security-policy-report-only: ${[
       "default-src 'self'",
-      "connect-src 'self' https://*.cloudfront.net https://*.disqus.com https://fonts.googleapis.com https://fonts.gstatic.com",
+      "connect-src 'self' https://*.cloudfront.net https://aymericbeaumet.disqus.com https://referrer.disqus.com https://fonts.googleapis.com https://fonts.gstatic.com",
       'font-src https://fonts.gstatic.com',
       'frame-src https://disqus.com https://www.youtube-nocookie.com',
-      "img-src 'self' data:",
+      "img-src 'self' data: https://referrer.disqus.com https://*.disquscdn.com",
       "prefetch-src 'self' https://fonts.googleapis.com",
       "script-src 'self' 'unsafe-inline' https://*.cloudfront.net https://disqus.com https://aymericbeaumet.disqus.com https://*.disquscdn.com",
       "style-src 'self' 'unsafe-inline' https://*.disquscdn.com https://fonts.googleapis.com",
@@ -162,30 +162,13 @@ function withNetlify(plugins = []) {
     ].join('; ')}`,
     // "feature-policy: accelerometer 'none'; camera 'none'; fullscreen 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; midi 'none'; microphone 'none'; notifications 'none'; payment 'none'; push 'none'; speaker 'none'; sync-xhr 'none'; usb 'none'; vibrate 'none'",
     'referrer-policy: no-referrer',
-    'x-content-type-options: nosniff',
-    'x-frame-options: deny',
-    'x-xss-protection: 1; mode=block',
-  ]
-  const noCacheHeaders = ['cache-control: no-cache']
-  const mutableCacheHeaders = [
-    `cache-control: public, max-age=${3 * 24 * 60 * 60}`,
-  ]
-  const immutableCacheHeaders = [
-    `cache-control: public, max-age=${365 * 24 * 60 * 60}, immutable`,
-    'expires: Thu, 31 Dec 2099 23:59:59 GMT',
   ]
   return [
     ...plugins,
     {
       resolve: 'gatsby-plugin-netlify',
       options: {
-        mergeSecurityHeaders: false,
-        mergeCachingHeaders: false,
-        allPageHeaders: [...securityHeaders, ...mutableCacheHeaders],
-        headers: {
-          '/*': [...securityHeaders, ...noCacheHeaders],
-          '/static/*': [...securityHeaders, ...immutableCacheHeaders],
-        },
+        allPageHeaders: [...additionalSecurityHeaders],
       },
     },
   ]
