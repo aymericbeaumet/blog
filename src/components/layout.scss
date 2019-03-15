@@ -23,3 +23,7 @@ body {
 a:active {
   outline: none;
 }
+
+::selection {
+  background-color: #ffea8b;
+}
