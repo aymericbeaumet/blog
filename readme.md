@@ -36,6 +36,10 @@ yarn
 yarn develop
 ```
 
+### Deploy
+
+_The `master` branch is automatically built and deployed via the Netlify CI._
+
 ## Environment variables
 
 The following variables must be set in [Netlify](https://app.netlify.com/sites/aymericbeaumet/settings/deploys):
