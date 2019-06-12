@@ -41,6 +41,12 @@ const plugins = [
   `gatsby-plugin-sass`,
   'gatsby-plugin-react-helmet',
   {
+    resolve: 'gatsby-plugin-google-analytics',
+    options: {
+      trackingId: 'UA-60614751-1',
+    },
+  },
+  {
     resolve: 'gatsby-plugin-manifest',
     options: {
       name: siteMetadata.title,
