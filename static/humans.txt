@@ -3,7 +3,6 @@
 	Webmaster: Aymeric Beaumet
 	Email: hi@aymericbeaumet.com
 	Twitter: @aymericbeaumet
-	Mastodon: @aymericbeaumet@mastodon.social
 	From: Paris, France
 
 /* THANKS */
