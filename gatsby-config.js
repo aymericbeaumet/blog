@@ -10,6 +10,7 @@ const siteMetadata = {
   algoliaApplicationId: process.env.ALGOLIA_APPLICATION_ID || '',
   algoliaSearchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY || '',
   algoliaIndexName: process.env.ALGOLIA_INDEX_NAME || '',
+  googleAnalyticsTrackingId: 'UA-60614751-1',
   menu: [
     {
       name: 'articles',
@@ -34,7 +35,6 @@ const plugins = [
   'gatsby-plugin-sharp', // required by gatsby-remark-images
   'gatsby-plugin-offline',
   'gatsby-plugin-sitemap',
-  'gatsby-plugin-feed',
   'gatsby-plugin-catch-links',
   'gatsby-plugin-react-svg',
   'gatsby-plugin-robots-txt',
@@ -43,7 +43,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-google-analytics',
     options: {
-      trackingId: 'UA-60614751-1',
+      trackingId: siteMetadata.googleAnalyticsTrackingId,
     },
   },
   {
@@ -56,6 +56,59 @@ const plugins = [
       theme_color: '#663399',
       display: 'minimal-ui',
       icon: `${__dirname}/src/images/aymericbeaumet.png`,
+    },
+  },
+  {
+    resolve: 'gatsby-plugin-feed',
+    options: {
+      query: `
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl
+              site_url: siteUrl
+            }
+          }
+        }
+      `,
+      feeds: [
+        {
+          serialize: ({ query: { site, allMarkdownRemark } }) => {
+            return allMarkdownRemark.edges.map(edge => {
+              return Object.assign({}, edge.node.frontmatter, {
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+              })
+            })
+          },
+          query: `
+            {
+              allMarkdownRemark(
+                sort: { order: DESC, fields: [frontmatter___date] },
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    fields { slug }
+                    frontmatter {
+                      title
+                      date
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          output: '/rss.xml',
+          title: siteMetadata.title,
+        },
+      ],
     },
   },
   'gatsby-transformer-sharp',
