@@ -21,16 +21,16 @@ export default function Index() {
         <h2>Welcome on my part of the internet</h2>
 
         <p>
-          {'My name is Aymeric Beaumet, I am a '}
+          {'My name is Aymeric Beaumet. I am a '}
           <a
             href="https://www.linkedin.com/in/aymericbeaumet/"
             target="_blank"
             rel="nofollow noopener noreferrer"
           >
-            Software Engineer
+            Senior Software Engineer
           </a>
           {
-            ' working on back-end systems with a focus on flexibility, resilience and high availability.'
+            ' working on back-end systems with a focus on flexibility, resilience, and high availability.'
           }
         </p>
 
@@ -38,7 +38,7 @@ export default function Index() {
           {'I am '}
           <strong>passionate about computer science.</strong>
           {
-            ' And it has been so since I was 13. I am now lucky enough to live from that passion.'
+            ', and it has been so since I was 13. I am now lucky enough to live from that passion.'
           }
         </p>
 
@@ -46,7 +46,7 @@ export default function Index() {
           {'I am '}
           <strong>an enthusiast learner.</strong>
           {
-            ' I firmly believe struggling is the best way to progress. The more complex the problem is, the more I enjoy working it out.'
+            ' I firmly believe that struggling is the best way to progress. The more complex the problem is, the more I enjoy working it out.'
           }
         </p>
 
