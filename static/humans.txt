@@ -2,18 +2,14 @@
 
 	Webmaster: Aymeric Beaumet
 	Email: hi@aymericbeaumet.com
-	Twitter: @aymericbeaumet
-	From: Paris, France
 
 /* THANKS */
 
 	UI, UX, Design: Vincent Bauclin
-	Twitter: @vincearch
-	From: Paris, France
+	LinkedIn: /in/vbauclin
 
 	Feedbacks: Kim-Jenny Dinh
-	Twitter: @kjennyd
-	From: Paris, France
+	LinkedIn: /in/kimjennydinh
 
 /* SITE */
 
