@@ -11,7 +11,6 @@ export const componentFragment = graphql`
       node {
         fields {
           slug
-          categorySlug
         }
         timeToRead
         frontmatter {
@@ -38,7 +37,7 @@ export default function Posts({ allMarkdownRemark }) {
   const posts = allMarkdownRemark.edges.map(
     ({
       node: {
-        fields: { slug, categorySlug },
+        fields: { slug },
         frontmatter: { title, tags, thumbnail, timeToWatch },
         timeToRead,
       },
@@ -51,12 +50,17 @@ export default function Posts({ allMarkdownRemark }) {
             </div>
           ) : null}
           <h2>{title}</h2>
-          <time dateTime={`${timeToWatch || timeToRead}m`}>
-            <Timer />
-            {timeToWatch
-              ? `${timeToWatch}min. watch`
-              : `${timeToRead}min. read`}
-          </time>
+          {timeToRead ? (
+            <time dateTime={timeToRead}>
+              <Timer />
+              {`${timeToRead}min. read`}
+            </time>
+          ) : timeToWatch ? (
+            <time dateTime={timeToWatch}>
+              <Timer />
+              {`${timeToWatch}min. watch`}
+            </time>
+          ) : null}
         </Link>
         <ul className={classes.tagsList}>
           {tags.map(tag => (

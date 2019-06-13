@@ -3,13 +3,12 @@ import React from 'react'
 import Layout from '../components/layout'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import Title from '../components/title'
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
+        author
       }
     }
     articles: allMarkdownRemark(
@@ -25,15 +24,14 @@ export default function Articles({ data }) {
   const {
     articles,
     site: {
-      siteMetadata: { title },
+      siteMetadata: { author },
     },
   } = data
   return (
     <Layout>
       <Helmet>
-        <title>{`Articles by ${title}`}</title>
+        <title>{`Articles by ${author}`}</title>
       </Helmet>
-      <Title>Articles</Title>
       <Posts allMarkdownRemark={articles} />
     </Layout>
   )

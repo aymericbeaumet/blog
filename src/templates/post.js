@@ -40,17 +40,6 @@ export const pageQuery = graphql`
 `
 
 export default class Post extends React.Component {
-  state = {
-    commentsLoaded: false,
-    commentsShown: false,
-  }
-
-  _toggleComments = () =>
-    this.setState(state => ({
-      commentsLoaded: true,
-      commentsShown: !state.commentsShown,
-    }))
-
   render() {
     const {
       data: {
@@ -126,29 +115,10 @@ export default class Post extends React.Component {
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <section className={classes.comments}>
-            {!this.state.commentsShown ? (
-              <button onClick={this._toggleComments}>
-                Show{' '}
-                <Disqus.CommentCount
-                  shortname={disqusShortname}
-                  config={disqusConfig}
-                >
-                  comments
-                </Disqus.CommentCount>
-              </button>
-            ) : (
-              <button onClick={this._toggleComments}>Hide comments</button>
-            )}
-            {this.state.commentsLoaded ? (
-              <div
-                style={{ display: this.state.commentsShown ? null : 'none' }}
-              >
-                <Disqus.DiscussionEmbed
-                  shortname={disqusShortname}
-                  config={disqusConfig}
-                />
-              </div>
-            ) : null}
+            <Disqus.DiscussionEmbed
+              shortname={disqusShortname}
+              config={disqusConfig}
+            />
           </section>
         </section>
       </Layout>

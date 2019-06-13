@@ -17,7 +17,7 @@ function NotFound({ data: { site } }) {
   return (
     <Layout>
       <Helmet>
-        <title>{`${site.siteMetadata.title} - 404`}</title>
+        <title>{`Page not found - ${title}`}</title>
       </Helmet>
       <h1>NOT FOUND</h1>
       <p>You just hit a route that doesn&#39;t exist... the sadness.</p>

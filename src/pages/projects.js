@@ -3,36 +3,36 @@ import React from 'react'
 import Layout from '../components/layout'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import Title from '../components/title'
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
+        author
       }
     }
-    posts: allMarkdownRemark(
+    articles: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { fields: { categorySlug: { eq: "project" } } }
     ) {
       ...PostsRequirements
     }
   }
 `
 
-export default function Index({ data }) {
+export default function Articles({ data }) {
   const {
-    posts,
+    articles,
     site: {
-      siteMetadata: { title },
+      siteMetadata: { author },
     },
   } = data
   return (
     <Layout>
       <Helmet>
-        <title>{title}</title>
+        <title>{`Project by ${author}`}</title>
       </Helmet>
-      <Posts allMarkdownRemark={posts} />
+      <Posts allMarkdownRemark={articles} />
     </Layout>
   )
 }

@@ -8,14 +8,14 @@ import AlternativeMenu from './alternative-menu'
 function Layout({ children, data }) {
   const {
     site: {
-      siteMetadata: { description, title },
+      siteMetadata: { description, position, title },
     },
   } = data
   return (
     <React.Fragment>
       <Helmet>
         <html lang="en" />
-        <title>{title}</title>
+        <title>{`${title} ${position}`}</title>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link type="text/plain" rel="author" href="/humans.txt" />
