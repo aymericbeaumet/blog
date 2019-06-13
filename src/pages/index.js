@@ -7,13 +7,20 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
+        author
+        position
         title
       }
     }
   }
 `
 
-export default function Index() {
+export default function Index({ data }) {
+  const {
+    site: {
+      siteMetadata: { author, position },
+    },
+  } = data
   return (
     <Layout>
       <section className={classes.Index}>
@@ -21,13 +28,13 @@ export default function Index() {
         <h2>Welcome on my part of the internet</h2>
 
         <p>
-          {'My name is Aymeric Beaumet. I am a '}
+          {`My name is ${author}. I am a `}
           <a
             href="https://www.linkedin.com/in/aymericbeaumet/"
             target="_blank"
             rel="nofollow noopener noreferrer"
           >
-            Senior Software Engineer
+            {position}
           </a>
           {
             ' working on back-end systems with a focus on flexibility, resilience, and high availability.'
@@ -36,7 +43,7 @@ export default function Index() {
 
         <p>
           {'I am '}
-          <strong>passionate about computer science.</strong>
+          <strong>passionate about computer science</strong>
           {
             ', and it has been so since I was 13. I am now lucky enough to live from that passion.'
           }

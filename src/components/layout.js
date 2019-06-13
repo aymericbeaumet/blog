@@ -6,12 +6,17 @@ import Header from './header'
 import AlternativeMenu from './alternative-menu'
 
 function Layout({ children, data }) {
+  const {
+    site: {
+      siteMetadata: { description, title },
+    },
+  } = data
   return (
     <React.Fragment>
       <Helmet>
         <html lang="en" />
-        <title>{data.site.siteMetadata.title}</title>
-        <meta name="description" content={data.site.siteMetadata.description} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link type="text/plain" rel="author" href="/humans.txt" />
         <link

@@ -1,15 +1,18 @@
 const _ = require('lodash')
 
+const fullName = 'Aymeric Beaumet'
+
 const siteMetadata = {
-  title: 'Aymeric Beaumet',
+  title: `${fullName} Blog`,
+  author: fullName,
+  position: 'Senior Software Engineer',
   description: "I'm a from Paris, France.",
   siteUrl: 'https://aymericbeaumet.com',
-  author: 'Aymeric Beaumet',
   email: 'hi@aymericbeaumet.com',
-  disqusShortname: 'aymericbeaumet',
   algoliaApplicationId: process.env.ALGOLIA_APPLICATION_ID || '',
   algoliaSearchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY || '',
   algoliaIndexName: process.env.ALGOLIA_INDEX_NAME || '',
+  disqusShortname: 'aymericbeaumet',
   googleAnalyticsTrackingId: 'UA-60614751-1',
   menu: [
     {

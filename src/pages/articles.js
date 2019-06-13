@@ -22,13 +22,19 @@ export const pageQuery = graphql`
 `
 
 export default function Articles({ data }) {
+  const {
+    articles,
+    site: {
+      siteMetadata: { title },
+    },
+  } = data
   return (
     <Layout>
       <Helmet>
-        <title>{`Articles by ${data.site.siteMetadata.title}`}</title>
+        <title>{`Articles by ${title}`}</title>
       </Helmet>
       <Title>Articles</Title>
-      <Posts allMarkdownRemark={data.articles} />
+      <Posts allMarkdownRemark={articles} />
     </Layout>
   )
 }

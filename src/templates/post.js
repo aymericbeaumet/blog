@@ -79,7 +79,7 @@ export default class Post extends React.Component {
     return (
       <Layout>
         <Helmet>
-          <title>{`${title} - ${siteTitle}`}</title>
+          <title>{title}</title>
         </Helmet>
         <section className={classes.Post}>
           <header>
