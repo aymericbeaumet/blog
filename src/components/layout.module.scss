@@ -1,0 +1,37 @@
+@import '~normalize.css/normalize.css';
+@import './config';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  color: #000000;
+  font-family: Lato, sans-serif;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  outline: none;
+  color: $main;
+}
+
+::selection {
+  background-color: #ffea8b;
+}
+
+.Layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  & > main {
+    flex-grow: 1;
+    padding: 60px 120px;
+  }
+}

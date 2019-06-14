@@ -1,6 +1,26 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        allMarkdownRemark {
+          edges {
+            node {
+              fields {
+                slug
+                categorySlug
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <CategoryLink data={data} {...props} />}
+  />
+)
+
 function CategoryLink({ activeClassName, categorySlug, data, ...props }) {
   return (
     <Link
@@ -16,28 +36,6 @@ function CategoryLink({ activeClassName, categorySlug, data, ...props }) {
         return isActive ? { className: activeClassName } : null
       }}
       {...props}
-    />
-  )
-}
-
-export default function(props) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          allMarkdownRemark {
-            edges {
-              node {
-                fields {
-                  slug
-                  categorySlug
-                }
-              }
-            }
-          }
-        }
-      `}
-      render={data => <CategoryLink data={data} {...props} />}
     />
   )
 }

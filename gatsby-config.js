@@ -1,14 +1,27 @@
 const _ = require('lodash')
 
-const fullName = 'Aymeric Beaumet'
+const firstName = 'Aymeric'
+const lastName = 'Beaumet'
+const fullName = `${firstName} ${lastName}`
+const sourceUrl = 'https://github.com/aymericbeaumet/aymericbeaumet.com'
+const position = 'Senior Software Engineer'
 
 const siteMetadata = {
+  // me
   title: `${fullName} Blog`,
   author: fullName,
-  position: 'Senior Software Engineer',
-  description: "I'm a from Paris, France.",
-  siteUrl: 'https://aymericbeaumet.com',
+  position,
+  description: `${firstName} is a ${position} with 5 years of experience in deploying resilient, scalable, and highly available back-end systems.`,
   email: 'hi@aymericbeaumet.com',
+  github: 'https://github.com/aymericbeaumet',
+  linkedin: 'https://linkedin.com/in/aymericbeaumet',
+  stackoverflow:
+    'https://stackoverflow.com/users/1071486/aymericbeaumet?tab=profile',
+  twitter: 'https://twitter.com/aymericbeaumet',
+  // website
+  siteUrl: 'https://aymericbeaumet.com',
+  sourceUrl,
+  sourceMasterUrl: `${sourceUrl}/blob/master`,
   algoliaApplicationId: process.env.ALGOLIA_APPLICATION_ID || '',
   algoliaSearchOnlyApiKey: process.env.ALGOLIA_SEARCH_ONLY_API_KEY || '',
   algoliaIndexName: process.env.ALGOLIA_INDEX_NAME || '',
@@ -31,8 +44,8 @@ const siteMetadata = {
       categorySlug: 'project',
     },
     {
-      name: 'about',
-      url: '/about',
+      name: 'about me',
+      url: '/about-aymeric-beaumet',
     },
   ],
 }

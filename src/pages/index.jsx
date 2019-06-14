@@ -1,38 +1,37 @@
-import Posts from '../components/posts'
 import React from 'react'
-import Layout from '../components/layout'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import Posts from '../components/posts'
+import Layout from '../components/layout'
 
 export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        author
+        title
       }
     }
-    talks: allMarkdownRemark(
+    posts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { fields: { categorySlug: { eq: "talk" } } }
     ) {
       ...PostsRequirements
     }
   }
 `
 
-export default function Talks({ data }) {
+export default function Index({ data }) {
   const {
+    posts,
     site: {
-      siteMetadata: { author },
+      siteMetadata: { title },
     },
-    talks,
   } = data
   return (
     <Layout>
       <Helmet>
-        <title>{`Talks by ${author}`}</title>
+        <title>{title}</title>
       </Helmet>
-      <Posts allMarkdownRemark={talks} />
+      <Posts allMarkdownRemark={posts} />
     </Layout>
   )
 }

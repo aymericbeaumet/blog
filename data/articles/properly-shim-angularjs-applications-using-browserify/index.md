@@ -183,7 +183,7 @@ Then, update the `package.json`:
 - `angular` will be provided the `jquery` module on a fake window object at the property `jQuery`
 - `angular-local-storage` will be provided the `angular` module the same way
 
-### Wrap up
+## Wrap up
 
 You should have added the following content to your `package.json`:
 
@@ -217,7 +217,7 @@ Once you’ve made those corrections, you should be able to compile and run the 
 
 Check it really works by opening `index.html`.
 
-### Side notes
+## Side notes
 
 Some related facts which can save you time when dealing with Browserify:
 
@@ -239,11 +239,11 @@ Some related facts which can save you time when dealing with Browserify:
   since it allows to keep a constant behavior when invoking it in different
   ways (CLI, API)
 
-### Source
+## Source
 
 A working example can be downloaded [here](./example.tgz).
 
-### Conclusion
+## Conclusion
 
 Even though there is a little more code to write to setup a project, this
 solution provides a beautiful way to organize its code in logical bricks. It

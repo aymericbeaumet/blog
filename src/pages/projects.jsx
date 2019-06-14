@@ -1,8 +1,8 @@
-import Posts from '../components/posts'
 import React from 'react'
-import Layout from '../components/layout'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import Posts from '../components/posts'
+import Layout from '../components/layout'
 
 export const pageQuery = graphql`
   query {
@@ -13,7 +13,7 @@ export const pageQuery = graphql`
     }
     articles: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { fields: { categorySlug: { eq: "article" } } }
+      filter: { fields: { categorySlug: { eq: "project" } } }
     ) {
       ...PostsRequirements
     }
@@ -30,7 +30,7 @@ export default function Articles({ data }) {
   return (
     <Layout>
       <Helmet>
-        <title>{`Articles by ${author}`}</title>
+        <title>{`Projects by ${author}`}</title>
       </Helmet>
       <Posts allMarkdownRemark={articles} />
     </Layout>

@@ -6,7 +6,7 @@ tags:
   - Resilience
   - Node.js
   - JavaScript
-  - French
+  - 🇫🇷
 attachments:
   - ./slides.pdf
 timeToWatch: 27

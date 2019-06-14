@@ -1,105 +1,104 @@
-@import '~prismjs/themes/prism-coy.css';
 @import '../components/config';
 
-pre[class*='language-'] > code {
-  border: 1px solid #dfdfdf;
-  border-left: 10px solid unquote('#3e53cdb3');
-  box-shadow: none;
-}
-
-@media screen and (max-width: $restrainedContentBreakpoint) {
-  p > code[class*='language-'] {
-    word-break: break-all;
-  }
-}
-
 .Post {
-  header {
-    padding-top: 25px;
+  max-width: 720px;
 
-    .back {
-      cursor: pointer;
-      position: absolute;
-      margin-top: 6px;
+  header {
+    color: #535353;
+
+    a {
+      color: inherit;
+      &:visited {
+        color: inherit;
+      }
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     h1 {
-      font-family: $sansSerif;
-      font-size: 28px;
-      font-weight: bold;
-      line-height: normal;
+      font-size: 38px;
+      font-weight: 400;
       margin: 0;
-      margin-bottom: 10px;
+      color: rgb(10, 10, 10);
     }
 
-    & > ul {
-      display: inline-block;
-      font-family: $sansSerif;
-      font-size: 14px;
-      font-weight: bold;
-      line-height: 2;
-      color: #3e3e3e;
+    .info {
+      margin-top: 15px;
+      margin-left: 2px;
 
-      & > li {
-        padding-right: 10px;
+      img {
+        width: 30px;
+        margin-bottom: -9px;
+        margin-right: 8px;
+        border-radius: 50%;
       }
 
-      & > li + li {
-        border-left: 1px solid #d8d8d8;
+      .stars {
+        display: inline-block;
       }
+    }
+
+    .tags {
+      margin-top: 20px;
+      font-size: 13px;
 
       li {
         display: inline-block;
-      }
+        padding: 3px 5px;
+        border: 1px solid #dfdfdf;
+        border-radius: 2px;
 
-      li + li {
-        padding-left: 10px;
+        & + li {
+          margin-left: 5px;
+        }
       }
     }
 
-    a {
-      text-decoration: none;
-    }
+    .attachments {
+      margin-top: 20px;
 
-    .tags,
-    .files {
-      & a {
-        font-family: $sansSerif;
-        font-size: 14px;
-        font-weight: bold;
-        line-height: 2;
-        color: #3e53cd;
+      li {
+        display: inline-block;
+        padding: 3px 5px;
+        border: 1px solid #dfdfdf;
+        border-radius: 2px;
+
+        & + li {
+          margin-left: 5px;
+        }
+      }
+
+      svg {
+        margin-right: 5px;
       }
     }
   }
 
   .content {
-    margin-top: 20px;
-    font-family: $sansSerif;
-    font-size: 16px;
+    margin-top: 30px;
+    color: rgba(0, 0, 0, 0.84);
+    font-size: 17px;
     line-height: 1.75;
     color: #3e3e3e;
 
+    a {
+      color: $main;
+    }
+
+    h1 {
+      background-color: red;
+    }
+
     h2 {
-      font-family: $sansSerif;
-      font-size: 24px;
-      font-weight: bold;
-      line-height: normal;
       margin-top: 30px;
+      font-size: 33px;
+      font-weight: 400;
     }
 
     h3 {
-      height: 22px;
-      font-family: $sansSerif;
-      font-size: 16px;
-      font-weight: bold;
-      line-height: normal;
-      margin-top: 20px;
-    }
-
-    h2,
-    h3 {
-      display: inline-block;
+      margin-top: 30px;
+      font-size: 23px;
     }
 
     blockquote {
@@ -126,45 +125,63 @@ pre[class*='language-'] > code {
     blockquote,
     ul,
     ol {
-      margin-top: 15px;
-    }
-
-    a {
-      &,
-      &:active,
-      &:visited,
-      &:hover {
-        text-decoration: none;
-        color: #3e53cd;
-      }
+      margin-top: 20px;
     }
 
     ul {
       margin-left: 30px;
       list-style-type: circle;
     }
-  }
 
-  .comments {
-    margin-top: 30px;
-
-    & > button {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: solid 1px #3e53cd;
-      font-family: $sansSerif;
-      font-size: 16px;
-      font-weight: bold;
-      line-height: normal;
-      text-align: center;
-      color: #3e53cd;
-      background: inherit;
-      cursor: pointer;
+    :global(.gatsby-resp-iframe-wrapper) {
+      margin-top: 15px;
+      border: 1px solid #eaeaea;
     }
 
-    & > div {
-      margin-top: 15px;
+    :not(pre) > code[class*='language-'] {
+      font-size: 15px;
+    }
+
+    pre[class*='language-'] > code {
+      font-size: 15px;
+      border: 1px solid #dfdfdf;
+      border-left: 10px solid unquote('#3e53cdb3');
+      box-shadow: none;
+    }
+  }
+
+  .attachments,
+  .comments {
+    margin-top: 25px;
+
+    h1 {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-size: 25px;
+      font-weight: 100;
+      border-style: solid;
+      border-width: 0 0 2px 0;
+      border-image: linear-gradient(to right, #3023ae, #53a0fd) 0 0 100% 0/0 0
+        2px 0;
+    }
+  }
+
+  .attachments {
+    li {
+      padding: 20px;
+      border: 1px solid #ddd;
+      text-align: center;
+      display: inline-block;
+      color: #4d4d4d;
+
+      &:hover {
+        color: $main;
+        border: 1px solid #3e53cda1;
+      }
+
+      svg {
+        margin-right: 5px;
+      }
     }
   }
 }

@@ -1,6 +1,10 @@
 @import './config';
 
+$postOffset: 25px;
+
 .Posts {
+  margin-top: -$postOffset;
+
   ul {
     list-style-type: none;
   }
@@ -8,20 +12,22 @@
   .postsList {
     display: grid;
     grid-template-columns: repeat(auto-fill, 255px);
-    grid-gap: 1rem;
-    justify-content: space-between;
+    grid-gap: $postOffset;
   }
 
   .post {
     min-width: 255px;
     max-width: 255px;
-    margin-top: 30px;
-    padding-bottom: 10px;
+    margin-top: $postOffset;
+    padding-bottom: 5px;
     border-bottom: 1px solid #d8d8d8;
     position: relative;
+    display: flex;
+    flex-direction: column;
 
     & > a {
       text-decoration: none;
+      flex-grow: 1;
 
       .thumbnail {
         max-width: 100%;
@@ -39,14 +45,32 @@
 
       h2 {
         margin: 5px 0 0px 0;
-        font-family: $sansSerif;
         font-size: 16px;
         font-weight: bold;
         line-height: normal;
-        color: #3e53cd;
+        color: $main;
       }
 
-      time {
+      .date {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        padding: 3px;
+        border-radius: 0 0 2px 2px;
+        border: 1px solid rgb(240, 240, 240);
+        border-top: 0;
+        background-color: #ffffffe6;
+        font-size: 12px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #3e3e3e;
+      }
+
+      .stars,
+      .duration {
         position: absolute;
         top: 0;
         right: 10px;
@@ -55,7 +79,6 @@
         border: 1px solid rgb(240, 240, 240);
         border-top: 0;
         background-color: #ffffffe6;
-        font-family: $sansSerif;
         font-size: 12px;
         font-weight: bold;
         font-style: normal;
@@ -63,7 +86,15 @@
         line-height: normal;
         letter-spacing: normal;
         color: #3e3e3e;
+      }
 
+      .stars {
+        & > svg {
+          margin-right: 2px;
+        }
+      }
+
+      .duration {
         & > svg {
           margin-right: 4px;
           margin-bottom: -2px;
@@ -93,18 +124,11 @@
     }
 
     a {
-      font-family: $sansSerif;
       font-size: 12px;
       font-weight: bold;
       line-height: normal;
       color: #3e3e3e;
       text-decoration: none;
-    }
-  }
-
-  @media screen and (max-width: $restrainedContentBreakpoint) {
-    .postsList {
-      justify-content: center;
     }
   }
 }

@@ -1,8 +1,7 @@
 const _ = require('lodash')
-const path = require(`path`)
-const urlFromTag = require('./src/utils/urlFromTag')
+const path = require('path')
 const { singular } = require('pluralize')
-const capitalize = require('lodash/capitalize')
+const urlFromTag = require('./src/utils/urlFromTag')
 
 const PRIMARY_DOMAIN = 'aymericbeaumet.com'
 
@@ -15,23 +14,18 @@ const SECONDARY_DOMAINS = [
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
-  switch (node.internal.type) {
-    case 'MarkdownRemark':
-      // Define category + categorySlug
-      const categorySlug = singular(
-        path
-          .relative(__dirname, node.fileAbsolutePath)
-          .replace(/^data\/([^/]+)\/.*$/, '$1'),
-      )
-      const category = capitalize(categorySlug)
-      createNodeField({ node, name: 'category', value: category })
-      createNodeField({ node, name: 'categorySlug', value: categorySlug })
-      // Define title slug
-      const slug = path
-        .relative(__dirname, node.fileAbsolutePath)
-        .replace(/^data\/[^/]+\/([^/]+)\/.*$/, '$1')
-      createNodeField({ node, name: 'slug', value: slug })
-      break
+  if (node.internal.type === 'MarkdownRemark') {
+    const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath)
+    const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)\/.*$/, '$1')
+    const categorySlug = singular(
+      fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'),
+    )
+    const category = _.capitalize(categorySlug)
+    // default values
+    createNodeField({ node, name: 'category', value: category })
+    createNodeField({ node, name: 'categorySlug', value: categorySlug })
+    createNodeField({ node, name: 'fileRelativePath', value: fileRelativePath })
+    createNodeField({ node, name: 'slug', value: slug })
   }
 }
 
@@ -97,7 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
   data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve('./src/templates/post.js'),
+      component: path.resolve('./src/templates/post.jsx'),
       context: node.fields,
     })
     // Create tags pages
@@ -106,7 +100,7 @@ exports.createPages = async ({ graphql, actions }) => {
         tagsIndex.push(tag)
         createPage({
           path: urlFromTag(tag),
-          component: path.resolve('./src/templates/tag.js'),
+          component: path.resolve('./src/templates/tag.jsx'),
           context: { tag },
         })
       }

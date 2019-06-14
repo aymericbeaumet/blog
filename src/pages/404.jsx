@@ -1,7 +1,7 @@
 import React from 'react'
-import Layout from '../components/layout'
 import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
+import Layout from '../components/layout'
 
 export const pageQuery = graphql`
   query {
@@ -13,7 +13,12 @@ export const pageQuery = graphql`
   }
 `
 
-function NotFound({ data: { site } }) {
+function NotFound({ data }) {
+  const {
+    site: {
+      siteMetadata: { title },
+    },
+  } = data
   return (
     <Layout>
       <Helmet>

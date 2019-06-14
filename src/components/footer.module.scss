@@ -1,0 +1,16 @@
+.Footer {
+  border-top: 1px solid #d8d8d8;
+  color: black;
+
+  p {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  a {
+    color: inherit;
+    &:visited {
+      color: black;
+    }
+  }
+}

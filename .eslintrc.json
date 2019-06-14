@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "rules": {
+    "no-nested-ternary": 0,
+    "no-restricted-syntax": 0,
+    "strict": 0,
+    "react/prop-types": 0
+  }
+}

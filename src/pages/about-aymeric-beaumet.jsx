@@ -1,7 +1,8 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import Helmet from 'react-helmet'
 import Layout from '../components/layout'
-import classes from './about.module.scss'
+import classes from './about-aymeric-beaumet.module.scss'
 
 export const pageQuery = graphql`
   query {
@@ -10,27 +11,35 @@ export const pageQuery = graphql`
         author
         position
         title
+        linkedin
+        github
+        stackoverflow
       }
     }
   }
 `
 
-export default function Index({ data }) {
+export default function AboutAymericBeaumet({ data }) {
   const {
     site: {
-      siteMetadata: { author, position },
+      siteMetadata: { author, position, linkedin, github, stackoverflow },
     },
   } = data
   return (
     <Layout>
-      <section className={classes.Index}>
+      <Helmet>
+        <title>{author}</title>
+      </Helmet>
+      <section className={classes.About}>
+        <img alt="Aymeric Beaumet" src="/aymericbeaumet.jpg" />
+        <h1>Hey traveler,</h1>
+        <h2>Welcome to my part of the internet</h2>
+
         <p>
-          {`My name is ${author}. I am a `}
-          <a
-            href="https://www.linkedin.com/in/aymericbeaumet/"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
+          {'My name is '}
+          <strong>{author}</strong>
+          {'. I am a '}
+          <a href={linkedin} target="_blank" rel="nofollow noopener noreferrer">
             {position}
           </a>
           {
@@ -58,27 +67,31 @@ export default function Index({ data }) {
           {'I am '}
           <strong>modestly trying to make the world a better place.</strong>
           {' I '}
-          <a
-            href="https://github.com/aymericbeaumet"
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
+          <a href={github} target="_blank" rel="nofollow noopener noreferrer">
             maintain
           </a>
           {' some open-source projects, do my best to '}
           <a
-            href="https://stackoverflow.com/users/1071486/aymericbeaumet?tab=profile"
+            href={stackoverflow}
             target="_blank"
             rel="nofollow noopener noreferrer"
           >
             advise
           </a>
           {' people and '}
-          <Link to="/articles">write</Link> or <Link to="/talks">speak</Link>
+          <Link to="/articles">write</Link>
+          {' or '}
+          <Link to="/talks">speak</Link>
           {' about my experiences.'}
         </p>
 
         <p>Let’s get in touch! I am curious to hear from you.</p>
+
+        <p>
+          Best,
+          <br />
+          Aymeric
+        </p>
       </section>
     </Layout>
   )

@@ -1,101 +1,68 @@
 @import './config';
 
+$delay: 0.2;
+
 .Header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  padding: 20px 30px;
   border-bottom: 1px solid #d8d8d8;
-  height: 89px;
 
-  nav[role='navigation'] li + li {
-    margin-left: 30px;
+  li {
+    display: inline;
   }
 
-  ul > li {
-    display: inline;
-    font-family: $sansSerif;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: normal;
-
-    a {
-      font-family: $sansSerif;
-      font-size: 16px;
-      font-weight: bold;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      color: #000000;
-      text-transform: uppercase;
-      text-decoration: none;
-
-      transition: 0.2s color;
+  a {
+    &.active {
+      color: $main;
       path {
-        fill: #000000;
-        transition: 0.2s fill;
+        fill: $main;
       }
+    }
 
-      &:hover {
-        color: #3e53cd;
-        transition: 0.2s color;
-        path {
-          fill: #3e53cd;
-          transition: 0.2s fill;
-        }
+    color: #000000;
+    transition: $delay color;
+    path {
+      fill: #000000;
+      transition: $delay fill;
+    }
+    &:hover {
+      color: $main;
+      transition: $delay color;
+      path {
+        fill: $main;
+        transition: $delay fill;
       }
+    }
+  }
+
+  nav[role='navigation'] li {
+    & + li {
+      margin-left: 30px;
+    }
+
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  nav.contact li {
+    & + li {
+      margin-left: 12px;
+    }
+
+    svg {
+      width: 1.2em;
+      height: 1.2em;
+      margin-bottom: -2px;
     }
   }
 
   .search {
-    margin-bottom: -8px;
-    margin-left: 3px;
-  }
-
-  .search:hover {
-    cursor: pointer;
-  }
-
-  .contact {
-    margin-bottom: -11px;
-
-    .icon {
-      &.e {
-        width: 29px;
-        height: 19px;
-        object-fit: contain;
-        margin-right: 13px;
+    svg {
+      path {
+        fill: grey;
       }
-
-      &.t {
-        margin-left: 13px;
-        width: 26px;
-        height: 21px;
-        object-fit: contain;
-        margin-right: 12px;
-      }
-
-      &.m {
-        margin-left: 12px;
-        margin-bottom: -2px;
-        width: 23px;
-        height: 25px;
-        object-fit: contain;
-      }
-    }
-  }
-
-  .active {
-    color: #3e53cd;
-    path {
-      fill: #3e53cd;
-    }
-  }
-
-  @media screen and (max-width: $alternativeMenuBreakpoint) {
-    .contact,
-    nav[role='navigation'] > ul > li:not(:first-child) {
-      display: none;
     }
   }
 }

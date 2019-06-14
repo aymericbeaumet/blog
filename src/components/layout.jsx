@@ -1,9 +1,26 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import './layout.scss'
+import classes from './layout.module.scss'
 import Header from './header'
+import Footer from './footer'
 import AlternativeMenu from './alternative-menu'
+
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+          }
+        }
+      }
+    `}
+    render={data => <Layout {...props} data={data} />}
+  />
+)
 
 function Layout({ children, data }) {
   const {
@@ -12,7 +29,7 @@ function Layout({ children, data }) {
     },
   } = data
   return (
-    <React.Fragment>
+    <div className={classes.Layout}>
       <Helmet>
         <html lang="en" />
         <title>{`${title} ${position}`}</title>
@@ -26,25 +43,8 @@ function Layout({ children, data }) {
       </Helmet>
       <Header />
       <main>{children}</main>
-      <AlternativeMenu />
-    </React.Fragment>
-  )
-}
-
-export default function({ ...props }) {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          site {
-            siteMetadata {
-              title
-              description
-            }
-          }
-        }
-      `}
-      render={data => <Layout {...props} data={data} />}
-    />
+      <Footer />
+      {/* <AlternativeMenu /> */}
+    </div>
   )
 }
