@@ -13,7 +13,7 @@ githubStars: 10706
 
 [Karma](https://karma-runner.github.io/latest/index.html) is a test runner for JavaScript. Its modular approach allows running unit and integrations tests in arbitrary runners using any testing library. This flexibility is especially useful to ensure the behavior stays the same between the various browsers on the market.
 
-I joined the Karma team in 2014 after asking [Vojta Jina](https://www.linkedin.com/in/vojtajina) whether I could give a hand! Thanks for the opportunity.
+I joined the Karma team in 2014 after asking [Vojta Jína](https://www.linkedin.com/in/vojtajina) whether I could give a hand! Thanks for the opportunity.
 
 The tasks I took care of were diverse:
 
