@@ -284,14 +284,14 @@ const plugins = [
   },
 ]
 
-function withAlgolia(plugins = []) {
+function withAlgolia(p = []) {
   const { algoliaApplicationId, algoliaIndexName } = siteMetadata
   const algoliaAdminApiKey = process.env.ALGOLIA_ADMIN_API_KEY
   if (!(algoliaApplicationId && algoliaAdminApiKey && algoliaIndexName)) {
-    return plugins
+    return p
   }
   return [
-    ...plugins,
+    ...p,
     {
       resolve: 'gatsby-plugin-algolia',
       options: {
@@ -324,7 +324,7 @@ function withAlgolia(plugins = []) {
                 const flattened = flattenObject(node)
                 return {
                   ...flattened,
-                  date: (new Date(flattened.date).getTime() / 1000) | 0,
+                  date: (new Date(flattened.date).getTime() / 1000) | 0, // eslint-disable-line no-bitwise
                 }
               }),
           },
@@ -335,7 +335,7 @@ function withAlgolia(plugins = []) {
 }
 
 /* Netlify plugin must be in last position */
-function withNetlify(plugins = []) {
+function withNetlify(p = []) {
   const additionalSecurityHeaders = [
     `content-security-policy-report-only: ${[
       "default-src 'self'",
@@ -353,7 +353,7 @@ function withNetlify(plugins = []) {
     'referrer-policy: no-referrer',
   ]
   return [
-    ...plugins,
+    ...p,
     {
       resolve: 'gatsby-plugin-netlify',
       options: {

@@ -1,0 +1,4 @@
+[build]
+  base = "./"
+  command = "yarn && yarn test && yarn build"
+  publish = "./public/"
