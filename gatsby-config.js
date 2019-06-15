@@ -58,6 +58,7 @@ const plugins = [
     },
   },
   'gatsby-plugin-sharp', // required by gatsby-remark-images
+  'gatsby-transformer-sharp',
   'gatsby-plugin-offline',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-catch-links',
@@ -241,7 +242,6 @@ const plugins = [
       ],
     },
   },
-  'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-transformer-remark',
     options: {
