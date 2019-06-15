@@ -63,7 +63,7 @@ const plugins = [
   'gatsby-plugin-catch-links',
   'gatsby-plugin-react-svg',
   'gatsby-plugin-robots-txt',
-  `gatsby-plugin-sass`,
+  'gatsby-plugin-sass',
   'gatsby-plugin-react-helmet',
   {
     resolve: 'gatsby-plugin-google-analytics',
@@ -203,6 +203,41 @@ const plugins = [
             })
           },
         },
+        {
+          title: `${siteMetadata.title} - Projects`,
+          output: '/projects.xml',
+          query: `
+            {
+              allMarkdownRemark(
+                sort: { order: DESC, fields: [frontmatter___date] },
+                filter: { fields: { categorySlug: { eq: "project" } } }
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    fields { slug }
+                    frontmatter {
+                      title
+                      date
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          serialize: ({ query: { site, allMarkdownRemark } }) => {
+            return allMarkdownRemark.edges.map(edge => {
+              return Object.assign({}, edge.node.frontmatter, {
+                description: edge.node.excerpt,
+                date: edge.node.frontmatter.date,
+                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+              })
+            })
+          },
+        },
       ],
     },
   },
@@ -221,7 +256,7 @@ const plugins = [
         {
           resolve: 'gatsby-remark-images',
           options: {
-            maxWidth: 590,
+            maxWidth: 720,
             withWebp: true,
           },
         },
@@ -231,6 +266,7 @@ const plugins = [
             destinationDir: './static/',
           },
         },
+        { resolve: 'gatsby-remark-autolink-headers' }, // before gastby-remark-prismjs
         {
           resolve: 'gatsby-remark-prismjs',
           options: {
@@ -243,7 +279,6 @@ const plugins = [
         },
         { resolve: 'gatsby-remark-smartypants' },
         { resolve: 'gatsby-remark-responsive-iframe' },
-        { resolve: 'gatsby-remark-autolink-headers' },
       ],
     },
   },

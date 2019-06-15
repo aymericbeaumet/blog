@@ -217,6 +217,8 @@ Once you’ve made those corrections, you should be able to compile and run the 
 
 Check it really works by opening `index.html`.
 
+A working example can be downloaded [here](./example.tgz).
+
 ## Side notes
 
 Some related facts which can save you time when dealing with Browserify:
@@ -238,10 +240,6 @@ Some related facts which can save you time when dealing with Browserify:
 - centralizing Browserify options in the `package.json` is a good practice
   since it allows to keep a constant behavior when invoking it in different
   ways (CLI, API)
-
-## Source
-
-A working example can be downloaded [here](./example.tgz).
 
 ## Conclusion
 
