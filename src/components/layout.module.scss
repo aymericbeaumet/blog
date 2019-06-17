@@ -21,6 +21,10 @@ a:active {
   color: $main;
 }
 
+a:visited {
+  color: inherit;
+}
+
 ::selection {
   background-color: #ffea8b;
 }

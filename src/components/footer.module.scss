@@ -1,21 +1,15 @@
 .Footer {
   border-top: 1px solid #d8d8d8;
-  color: black;
+  color: #373737;
+  font-size: 17px;
 
   p {
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
 
     span {
       display: inline-block;
       line-height: 24px;
-    }
-  }
-
-  a {
-    color: inherit;
-    &:visited {
-      color: black;
     }
   }
 }
