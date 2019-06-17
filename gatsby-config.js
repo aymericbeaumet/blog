@@ -85,164 +85,6 @@ const plugins = [
     },
   },
   {
-    resolve: 'gatsby-plugin-feed',
-    options: {
-      query: `
-        {
-          site {
-            siteMetadata {
-              title
-              description
-              siteUrl
-              site_url: siteUrl
-            }
-          }
-        }
-      `,
-      feeds: [
-        {
-          title: siteMetadata.title,
-          output: '/rss.xml',
-          query: `
-            {
-              allMarkdownRemark(
-                sort: { order: DESC, fields: [frontmatter___date] },
-              ) {
-                edges {
-                  node {
-                    excerpt
-                    html
-                    fields { slug }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          `,
-          serialize: ({ query: { site, allMarkdownRemark } }) => {
-            return allMarkdownRemark.edges.map(edge => {
-              return Object.assign({}, edge.node.frontmatter, {
-                description: edge.node.excerpt,
-                date: edge.node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                custom_elements: [{ 'content:encoded': edge.node.html }],
-              })
-            })
-          },
-        },
-        {
-          title: `${siteMetadata.title} - Articles`,
-          output: '/articles.xml',
-          query: `
-            {
-              allMarkdownRemark(
-                sort: { order: DESC, fields: [frontmatter___date] },
-                filter: { fields: { categorySlug: { eq: "article" } } }
-              ) {
-                edges {
-                  node {
-                    excerpt
-                    html
-                    fields { slug }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          `,
-          serialize: ({ query: { site, allMarkdownRemark } }) => {
-            return allMarkdownRemark.edges.map(edge => {
-              return Object.assign({}, edge.node.frontmatter, {
-                description: edge.node.excerpt,
-                date: edge.node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                custom_elements: [{ 'content:encoded': edge.node.html }],
-              })
-            })
-          },
-        },
-        {
-          title: `${siteMetadata.title} - Talks`,
-          output: '/talks.xml',
-          query: `
-            {
-              allMarkdownRemark(
-                sort: { order: DESC, fields: [frontmatter___date] },
-                filter: { fields: { categorySlug: { eq: "talk" } } }
-              ) {
-                edges {
-                  node {
-                    excerpt
-                    html
-                    fields { slug }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          `,
-          serialize: ({ query: { site, allMarkdownRemark } }) => {
-            return allMarkdownRemark.edges.map(edge => {
-              return Object.assign({}, edge.node.frontmatter, {
-                description: edge.node.excerpt,
-                date: edge.node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                custom_elements: [{ 'content:encoded': edge.node.html }],
-              })
-            })
-          },
-        },
-        {
-          title: `${siteMetadata.title} - Projects`,
-          output: '/projects.xml',
-          query: `
-            {
-              allMarkdownRemark(
-                sort: { order: DESC, fields: [frontmatter___date] },
-                filter: { fields: { categorySlug: { eq: "project" } } }
-              ) {
-                edges {
-                  node {
-                    excerpt
-                    html
-                    fields { slug }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            }
-          `,
-          serialize: ({ query: { site, allMarkdownRemark } }) => {
-            return allMarkdownRemark.edges.map(edge => {
-              return Object.assign({}, edge.node.frontmatter, {
-                description: edge.node.excerpt,
-                date: edge.node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                custom_elements: [{ 'content:encoded': edge.node.html }],
-              })
-            })
-          },
-        },
-      ],
-    },
-  },
-  {
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
@@ -283,6 +125,95 @@ const plugins = [
     },
   },
 ]
+
+function withRSS(p = []) {
+  const serialize = ({ query: { site, allMarkdownRemark } }) => {
+    return allMarkdownRemark.edges.map(edge => {
+      return Object.assign({}, edge.node.frontmatter, {
+        description: edge.node.excerpt,
+        date: edge.node.frontmatter.date,
+        url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+        guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+        custom_elements: [{ 'content:encoded': edge.node.html }],
+      })
+    })
+  }
+  const query = (...args) => `
+    {
+      allMarkdownRemark(
+        ${[
+          'sort: { order: DESC, fields: [frontmatter___date] }',
+          ...args,
+          '',
+        ].join(',')}
+      ) {
+        edges {
+          node {
+            excerpt
+            html
+            fields { slug }
+            frontmatter {
+              title
+              date
+            }
+          }
+        }
+      }
+    }
+  `
+  return [
+    ...p,
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            title: siteMetadata.title,
+            output: '/rss.xml',
+            query: query(),
+            serialize,
+          },
+          {
+            title: `${siteMetadata.title} - Articles`,
+            output: '/articles.xml',
+            query: query([
+              'filter: { fields: { categorySlug: { eq: "article" } } }',
+            ]),
+            serialize,
+          },
+          {
+            title: `${siteMetadata.title} - Talks`,
+            output: '/talks.xml',
+            query: query([
+              'filter: { fields: { categorySlug: { eq: "talk" } } }',
+            ]),
+            serialize,
+          },
+          {
+            title: `${siteMetadata.title} - Projects`,
+            output: '/projects.xml',
+            query: query([
+              'filter: { fields: { categorySlug: { eq: "project" } } }',
+            ]),
+            serialize,
+          },
+        ],
+      },
+    },
+  ]
+}
 
 function withAlgolia(p = []) {
   const { algoliaApplicationId, algoliaIndexName } = siteMetadata
@@ -379,5 +310,5 @@ function flattenObject(object, init = {}) {
 
 module.exports = {
   siteMetadata,
-  plugins: withNetlify(withAlgolia(plugins)),
+  plugins: withNetlify(withAlgolia(withRSS(plugins))),
 }
