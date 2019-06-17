@@ -26,7 +26,11 @@
     }
 
     .info {
-      margin-top: 15px;
+      margin-top: 5px;
+      a {
+        margin-top: 10px;
+        display: inline-block;
+      }
 
       img {
         width: 30px;

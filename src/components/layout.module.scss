@@ -32,6 +32,10 @@ a:active {
 
   & > main {
     flex-grow: 1;
-    padding: 60px 120px;
+    padding: 60px 60px 60px 120px;
+
+    @media screen and (max-width: $breakpoint1) {
+      padding: 30px;
+    }
   }
 }

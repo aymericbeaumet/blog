@@ -1,7 +1,5 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import classes from './header.module.scss'
 import Logo from '../images/aymericbeaumet-logo.svg'
 import CategoryLink from './category-link'
@@ -37,7 +35,7 @@ function Header({ data }) {
     <header className={classes.Header}>
       <nav role="navigation">
         <ul>
-          <li key="logo">
+          <li className={classes.logo} key="logo">
             <Link to="/" activeClassName={classes.active}>
               <Logo />
             </Link>

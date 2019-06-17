@@ -38,12 +38,13 @@ $delay: 0.2;
   }
 
   nav[role='navigation'] li {
-    & + li {
-      margin-left: 30px;
-    }
-
+    margin-right: 30px;
     font-weight: bold;
     text-transform: uppercase;
+
+    @media screen and (max-width: $breakpoint1) {
+      margin-right: 20px;
+    }
   }
 
   nav.contact li {
@@ -63,6 +64,24 @@ $delay: 0.2;
       path {
         fill: grey;
       }
+    }
+  }
+
+  @media screen and (max-width: $breakpoint1) {
+    .logo {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint2) {
+    padding: 30px 30px;
+
+    .logo {
+      display: unset;
+    }
+
+    li:not(.logo) {
+      display: none;
     }
   }
 }

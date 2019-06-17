@@ -13,11 +13,15 @@ $postOffset: 25px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 255px);
     grid-gap: $postOffset;
+
+    @media screen and (max-width: $breakpoint2) {
+      grid-template-columns: unset;
+      justify-items: center;
+    }
   }
 
   .post {
-    min-width: 255px;
-    max-width: 255px;
+    width: 255px;
     margin-top: $postOffset;
     padding-bottom: 5px;
     border-bottom: 1px solid #d8d8d8;

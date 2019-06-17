@@ -1,11 +1,11 @@
-$minWidth: 320px;
-$maxWidth: 800px;
+// - hide the AB logo
+// - reduce the header margin between navigation elements
+// - reduce the main padding
+$breakpoint1: 720px;
 
-// so that 2 articles can fit on "posts" pages
-$restrainedContentBreakpoint: 830px;
-
-// when the header menu is not wide enough
-$alternativeMenuBreakpoint: 475px;
+// - display the alternative header icon
+// - center the posts
+$breakpoint2: 600px;
 
 // color palette
 $main: #3e53cd;

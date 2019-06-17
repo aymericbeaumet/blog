@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import classes from './layout.module.scss'
 import Header from './header'
 import Footer from './footer'
-import AlternativeMenu from './alternative-menu'
+import AlternativeHeader from './alternative-header'
 
 export default props => (
   <StaticQuery
@@ -44,7 +44,7 @@ function Layout({ children, data }) {
       <Header />
       <main>{children}</main>
       <Footer />
-      {/* <AlternativeMenu /> */}
+      <AlternativeHeader />
     </div>
   )
 }

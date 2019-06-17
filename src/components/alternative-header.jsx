@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import classes from './alternative-menu.module.scss'
-import Menu from '../images/menu.svg'
-import Cross from '../images/cross.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import classes from './alternative-header.module.scss'
 import Contact from './contact'
 
 export default () => (
@@ -21,11 +21,11 @@ export default () => (
         }
       }
     `}
-    render={data => <AlternativeMenu data={data} />}
+    render={data => <AlternativeHeader data={data} />}
   />
 )
 
-class AlternativeMenu extends React.Component {
+class AlternativeHeader extends React.Component {
   static toggleId = 'alternative_menu_toggle'
 
   state = { isVisible: false }
@@ -71,18 +71,19 @@ class AlternativeMenu extends React.Component {
         },
       },
       state: { isVisible },
+      toggleOnChangeHandler,
     } = this
     return (
-      <nav className={classes.AlternativeMenu}>
+      <nav className={classes.AlternativeHeader}>
         <input
           type="checkbox"
           checked={isVisible}
-          onChange={this.toggleOnChangeHandler}
-          id={this.constructor.toggleId}
+          onChange={toggleOnChangeHandler}
+          id={toggleId}
         />
         <label htmlFor={toggleId} className={classes.toggle}>
-          <Menu />
-          <Cross />
+          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon icon={faTimes} />
         </label>
         <div className={classes.menu} onClick={dismissHandler}>
           <ul className={classes.entries}>

@@ -4,7 +4,12 @@
 
   p {
     text-align: center;
-    padding: 20px 0;
+    padding: 20px;
+
+    span {
+      display: inline-block;
+      line-height: 24px;
+    }
   }
 
   a {

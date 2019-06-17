@@ -1,12 +1,12 @@
 @import './config';
 
-.AlternativeMenu {
+.AlternativeHeader {
   display: none;
 
   .toggle {
     position: fixed;
-    top: 30px;
-    right: 21px;
+    top: 15px;
+    right: 15px;
     margin: 0 auto;
     width: 60px;
     height: 60px;
@@ -18,6 +18,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 28px;
+    path {
+      fill: #ffffff;
+    }
   }
 
   input[type='checkbox'] {
@@ -55,7 +59,7 @@
     width: 100%;
     height: 100%;
     background-image: radial-gradient(
-      circle at 50% 56%,
+      circle at 50% 90%,
       unquote('#040f50cc'),
       #040f50
     );
@@ -75,7 +79,7 @@
     top: 0;
     left: 0;
     text-align: center;
-    margin-top: 191px;
+    margin-top: 170px;
     width: 100%;
 
     ul,
@@ -120,38 +124,21 @@
   }
 
   .contact {
-    .icon {
+    li {
+      margin: 20px 10px;
+    }
+
+    a {
+      padding: 20px 7px;
       color: #ffffff;
+      display: unset;
       path {
         fill: #ffffff;
-      }
-
-      &.e {
-        width: 38px;
-        height: 25px;
-        object-fit: contain;
-      }
-
-      &.t {
-        margin-left: 33px;
-        width: 34px;
-        height: 27px;
-        object-fit: contain;
-      }
-
-      &.m {
-        margin-left: 31px;
-        margin-bottom: -2px;
-        width: 30px;
-        height: 32px;
-        object-fit: contain;
       }
     }
   }
 
-  @media screen and (max-width: $alternativeMenuBreakpoint) {
-    & {
-      display: block;
-    }
+  @media screen and (max-width: $breakpoint2) {
+    display: block;
   }
 }
