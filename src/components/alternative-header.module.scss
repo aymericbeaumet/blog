@@ -124,17 +124,16 @@
   }
 
   .contact {
-    li {
-      margin: 20px 10px;
-    }
-
     a {
-      padding: 20px 7px;
       color: #ffffff;
       display: unset;
       path {
         fill: #ffffff;
       }
+    }
+
+    svg {
+      padding: 20px 15px;
     }
   }
 
