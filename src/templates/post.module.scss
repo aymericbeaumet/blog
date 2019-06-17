@@ -154,6 +154,13 @@
 
     :not(pre) > code[class*='language-'] {
       font-size: 14px;
+      word-break: normal;
+    }
+
+    @media screen and (max-width: $breakpoint1) {
+      :not(pre) > code[class*='language-'] {
+        word-break: break-all;
+      }
     }
 
     pre[class*='language-'] > code {

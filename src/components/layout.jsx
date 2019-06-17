@@ -34,7 +34,10 @@ function Layout({ children, data }) {
         <html lang="en" />
         <title>{`${title} ${position}`}</title>
         <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         <link type="text/plain" rel="author" href="/humans.txt" />
         <link
           href="https://fonts.googleapis.com/css?family=Lato:400,400i,700"

@@ -6,7 +6,7 @@ $delay: 0.2;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 20px 30px;
+  padding: 20px 20px 20px 15px;
   border-bottom: 1px solid #d8d8d8;
 
   li {
@@ -38,24 +38,24 @@ $delay: 0.2;
   }
 
   nav[role='navigation'] li {
-    margin-right: 30px;
     font-weight: bold;
     text-transform: uppercase;
 
+    a {
+      padding: 15px;
+    }
+
     @media screen and (max-width: $breakpoint1) {
-      margin-right: 20px;
+      margin-left: -15px;
     }
   }
 
   nav.contact li {
-    & + li {
-      margin-left: 12px;
-    }
-
     svg {
+      margin-bottom: -10px;
+      padding: 8px;
       width: 1.2em;
       height: 1.2em;
-      margin-bottom: -2px;
     }
   }
 

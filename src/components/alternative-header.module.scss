@@ -47,7 +47,7 @@
         display: block;
       }
       & + .menu {
-        display: block;
+        display: grid;
       }
     }
   }
@@ -72,15 +72,12 @@
     letter-spacing: normal;
     color: #ffffff;
     text-transform: uppercase;
+    justify-content: center;
+    align-content: center;
   }
 
   .entries {
-    position: fixed;
-    top: 0;
-    left: 0;
     text-align: center;
-    margin-top: 170px;
-    width: 100%;
 
     ul,
     li {
