@@ -38,9 +38,9 @@ function Contact({ data }) {
   return (
     <ul>
       <li>
-        <ExternalLink href={`mailto:${email}`}>
+        <a href={`mailto:${email}`}>
           <FontAwesomeIcon icon={faEnvelope} />
-        </ExternalLink>
+        </a>
       </li>
       <li>
         <ExternalLink href={twitter}>

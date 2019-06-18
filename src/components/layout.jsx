@@ -25,14 +25,14 @@ export default props => (
 function Layout({ children, data }) {
   const {
     site: {
-      siteMetadata: { description, position, title },
+      siteMetadata: { description, title },
     },
   } = data
   return (
     <div className={classes.Layout}>
       <Helmet>
         <html lang="en" />
-        <title>{`${title} ${position}`}</title>
+        <title>{`${title} Blog`}</title>
         <meta name="description" content={description} />
         <meta
           name="viewport"

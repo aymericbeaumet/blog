@@ -13,9 +13,13 @@ export default function Popularity({ github, githubStars } = {}) {
       </>
     )
     if (github) {
-      return <ExternalLink href={github}>{children}</ExternalLink>
+      return (
+        <ExternalLink className={classes.Popularity} href={github}>
+          {children}
+        </ExternalLink>
+      )
     }
-    return <div className={classes.Popularity}>{children}</div>
+    return <span className={classes.Popularity}>{children}</span>
   }
   return null
 }

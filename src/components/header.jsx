@@ -51,9 +51,6 @@ function Header({ data }) {
               </CategoryLink>
             </li>
           ))}
-          {/* <li className={classes.search}>
-            <FontAwesomeIcon icon={faSearch} />
-          </li> */}
         </ul>
       </nav>
       <nav className={classes.contact}>

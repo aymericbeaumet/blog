@@ -27,17 +27,17 @@ function Footer({ data }) {
   } = data
   return (
     <footer className={classes.Footer}>
-      <p>
-        <span>
+      <ul>
+        <li>
           <Link to="/about-aymeric-beaumet">{`About ${author}`}</Link>
           {' —'}
-        </span>
-        <span>
+        </li>
+        <li>
           &nbsp;
           <ExternalLink href={sourceUrl}>This blog is Open-Source</ExternalLink>
           {' —'}
-        </span>
-        <span>
+        </li>
+        <li>
           &nbsp;
           <ExternalLink
             href="https://creativecommons.org/licenses/by/4.0"
@@ -45,8 +45,8 @@ function Footer({ data }) {
           >
             CC BY 4.0
           </ExternalLink>
-        </span>
-      </p>
+        </li>
+      </ul>
     </footer>
   )
 }
