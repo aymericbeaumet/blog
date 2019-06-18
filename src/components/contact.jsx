@@ -8,6 +8,7 @@ import {
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import ExternalLink from './external-link'
 
 export default () => (
   <StaticQuery
@@ -37,37 +38,29 @@ function Contact({ data }) {
   return (
     <ul>
       <li>
-        <a
-          href={`mailto:${email}`}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-        >
+        <ExternalLink href={`mailto:${email}`}>
           <FontAwesomeIcon icon={faEnvelope} />
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a href={twitter} target="_blank" rel="nofollow noopener noreferrer">
+        <ExternalLink href={twitter}>
           <FontAwesomeIcon icon={faTwitter} />
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a href={linkedin} target="_blank" rel="nofollow noopener noreferrer">
+        <ExternalLink href={linkedin}>
           <FontAwesomeIcon icon={faLinkedinIn} />
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a href={github} target="_blank" rel="nofollow noopener noreferrer">
+        <ExternalLink href={github}>
           <FontAwesomeIcon icon={faGithub} />
-        </a>
+        </ExternalLink>
       </li>
       <li>
-        <a
-          href={stackoverflow}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-        >
+        <ExternalLink href={stackoverflow}>
           <FontAwesomeIcon icon={faStackOverflow} />
-        </a>
+        </ExternalLink>
       </li>
     </ul>
   )

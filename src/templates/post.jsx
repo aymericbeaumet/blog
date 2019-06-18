@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import formatDate from 'date-fns/format'
 import Disqus from 'disqus-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faStar, faSave } from '@fortawesome/free-regular-svg-icons'
+import { faEdit, faSave } from '@fortawesome/free-regular-svg-icons'
 import Layout from '../components/layout'
 import urlFromTag from '../utils/urlFromTag'
 import 'prismjs/themes/prism-coy.css'
 import classes from './post.module.scss'
+import Popularity from '../components/popularity'
+import Duration from '../components/duration'
+import DateComponent from '../components/date'
+import ExternalLink from '../components/external-link'
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -86,44 +89,13 @@ export default function Post({ data }) {
               <img alt={author} src="/aymericbeaumet.jpg" />
               {author}
             </Link>
-            {date && until ? (
-              <time>
-                {` ・ ${formatDate(date, 'YYYY')}–${formatDate(until, 'YYYY')}`}
-              </time>
-            ) : date ? (
-              <time>{` ・ ${formatDate(date, 'YYYY MMM Do')}`}</time>
-            ) : null}
-            {githubStars ? (
-              <div className={classes.stars}>
-                {' ・ '}
-                <a
-                  rel="nofollow noopener noreferrer"
-                  href={github}
-                  target="_blank"
-                >
-                  <FontAwesomeIcon icon={faStar} />
-                  &nbsp;
-                  {githubStars}
-                </a>
-              </div>
-            ) : timeToWatch ? (
-              <time className={classes.duration} dateTime={timeToWatch}>
-                {` ・ ${timeToWatch} min watch`}
-              </time>
-            ) : timeToRead ? (
-              <time className={classes.duration} dateTime={timeToRead}>
-                {` ・${timeToRead} min read`}
-              </time>
-            ) : null}
-
+            {DateComponent({ date, until })}
+            {` ・ ${Popularity({ github, githubStars }) ||
+              Duration({ timeToRead, timeToWatch })}`}
             {' ・ '}
-            <a
-              href={`${sourceMasterUrl}/${fileRelativePath}`}
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-            >
+            <ExternalLink href={`${sourceMasterUrl}/${fileRelativePath}`}>
               <FontAwesomeIcon icon={faEdit} />
-            </a>
+            </ExternalLink>
           </p>
           {tags && tags.length > 0 ? (
             <ul className={classes.tags}>

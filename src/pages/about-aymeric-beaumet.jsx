@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import classes from './about-aymeric-beaumet.module.scss'
+import ExternalLink from '../components/external-link'
 
 export const pageQuery = graphql`
   query {
@@ -39,9 +40,7 @@ export default function AboutAymericBeaumet({ data }) {
           {'My name is '}
           <strong>{author}</strong>
           {'. I am a '}
-          <a href={linkedin} target="_blank" rel="nofollow noopener noreferrer">
-            {position}
-          </a>
+          <ExternalLink href={linkedin}>{position}</ExternalLink>
           {
             ' working on back-end systems with a focus on flexibility, resilience, and high availability.'
           }
@@ -67,17 +66,9 @@ export default function AboutAymericBeaumet({ data }) {
           {'I am '}
           <strong>modestly trying to make the world a better place.</strong>
           {' I '}
-          <a href={github} target="_blank" rel="nofollow noopener noreferrer">
-            maintain
-          </a>
+          <ExternalLink href={github}>maintain</ExternalLink>
           {' some open-source projects, do my best to '}
-          <a
-            href={stackoverflow}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-          >
-            advise
-          </a>
+          <ExternalLink href={stackoverflow}>advise</ExternalLink>
           {' people and '}
           <Link to="/articles">write</Link>
           {' or '}
