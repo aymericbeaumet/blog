@@ -30,12 +30,12 @@ function Footer({ data }) {
       <ul>
         <li>
           <Link to="/about-aymeric-beaumet">{`About ${author}`}</Link>
-          {' —'}
+          &nbsp;—
         </li>
         <li>
           &nbsp;
           <ExternalLink href={sourceUrl}>This blog is Open-Source</ExternalLink>
-          {' —'}
+          &nbsp;—
         </li>
         <li>
           &nbsp;

@@ -44,10 +44,6 @@ $delay: 0.2;
     a {
       padding: 15px;
     }
-
-    @media screen and (max-width: $breakpoint1) {
-      margin-left: -15px;
-    }
   }
 
   nav.contact li {
@@ -68,16 +64,32 @@ $delay: 0.2;
   }
 
   @media screen and (max-width: $breakpoint1) {
-    .logo {
-      display: none;
+    nav[role='navigation'] {
+      ul {
+        margin-left: 5px;
+      }
+
+      li {
+        a {
+          padding: 10px;
+        }
+      }
+
+      .logo {
+        display: none;
+      }
     }
   }
 
   @media screen and (max-width: $breakpoint2) {
     padding: 30px 30px;
 
-    .logo {
-      display: unset;
+    nav[role='navigation'] ul {
+      margin-left: unset;
+
+      .logo {
+        display: unset;
+      }
     }
 
     li:not(.logo) {

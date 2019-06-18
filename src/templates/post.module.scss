@@ -26,10 +26,11 @@
     }
 
     .info {
-      margin-top: 5px;
-      a {
-        margin-top: 10px;
+      margin-top: 5px; // + li margin-top = 15px
+
+      li {
         display: inline-block;
+        margin-top: 10px;
       }
 
       img {
@@ -38,25 +39,19 @@
         margin-right: 8px;
         border-radius: 50%;
       }
-
-      .stars {
-        display: inline-block;
-      }
     }
 
     .tags {
-      margin-top: 20px;
       font-size: 13px;
+      margin-top: 14px; // + li margin-top = 20px
 
       li {
         display: inline-block;
         padding: 3px 5px;
         border: 1px solid #dfdfdf;
         border-radius: 2px;
-
-        & + li {
-          margin-left: 5px;
-        }
+        margin-top: 6px;
+        margin-right: 5px;
       }
     }
 
@@ -155,11 +150,11 @@
     :not(pre) > code[class*='language-'] {
       font-size: 14px;
       word-break: normal;
-    }
 
-    @media screen and (max-width: $breakpoint1) {
-      :not(pre) > code[class*='language-'] {
-        word-break: break-all;
+      @media screen and (max-width: $breakpoint2) {
+        & {
+          word-break: break-all;
+        }
       }
     }
 

@@ -28,9 +28,11 @@ $postOffset: 25px;
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
     & > a {
       figure {
+        max-width: 100%;
         width: 266px;
         height: 160px;
         overflow: hidden;

@@ -90,19 +90,21 @@ export default function Post({ data }) {
                 <img alt={author} src="/aymericbeaumet.jpg" />
                 {author}
               </Link>
+              &nbsp;・
             </li>
             <li>
+              &nbsp;
               <DateComponent date={date} until={until} />
+              &nbsp;・
             </li>
             <li>
-              {' ・ '}
-              <Popularity github={github} githubStars={githubStars} />
+              &nbsp;
+              {Popularity({ github, githubStars }) ||
+                Duration({ timeToRead, timeToWatch })}
+              &nbsp;・
             </li>
             <li>
-              {' ・ '}
-              <Duration timeToRead={timeToRead} timeToWatch={timeToWatch} />
-            </li>
-            <li>
+              &nbsp;
               <ExternalLink href={`${sourceMasterUrl}/${fileRelativePath}`}>
                 <FontAwesomeIcon icon={faEdit} />
               </ExternalLink>
