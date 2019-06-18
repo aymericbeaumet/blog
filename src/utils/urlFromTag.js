@@ -1,5 +1,3 @@
-module.exports = tag =>
-  `/tags/${tag
-    .trim()
-    .replace(/[^a-z0-9🇫🇷-]/gi, '')
-    .toLowerCase()}`
+const slugFromTag = require('./slugFromTag')
+
+module.exports = tag => `/tags/${slugFromTag(tag)}`

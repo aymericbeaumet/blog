@@ -1,11 +1,11 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import { graphql, Link } from 'gatsby'
-import urlFromTag from '../utils/urlFromTag'
 import classes from './posts.module.scss'
 import Duration from './duration'
 import Popularity from './popularity'
 import DateComponent from './date'
+import Tag from './tag'
 
 export const componentFragment = graphql`
   fragment PostsRequirements on MarkdownRemarkConnection {
@@ -70,7 +70,7 @@ export default function Posts({ allMarkdownRemark }) {
         <ul className={classes.tagsList}>
           {tags.map(tag => (
             <li className={classes.tag} key={tag}>
-              <Link to={urlFromTag(tag)}>{`#${tag}`}</Link>
+              <Tag tag={tag} />
             </li>
           ))}
         </ul>

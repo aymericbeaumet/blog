@@ -5,13 +5,13 @@ import Disqus from 'disqus-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faSave } from '@fortawesome/free-regular-svg-icons'
 import Layout from '../components/layout'
-import urlFromTag from '../utils/urlFromTag'
 import 'prismjs/themes/prism-coy.css'
 import classes from './post.module.scss'
 import Popularity from '../components/popularity'
 import Duration from '../components/duration'
 import DateComponent from '../components/date'
 import ExternalLink from '../components/external-link'
+import Tag from '../components/tag'
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -84,24 +84,35 @@ export default function Post({ data }) {
       <section className={classes.Post}>
         <header>
           <h1>{title}</h1>
-          <p className={classes.info}>
-            <Link to="/about-aymeric-beaumet">
-              <img alt={author} src="/aymericbeaumet.jpg" />
-              {author}
-            </Link>
-            {DateComponent({ date, until })}
-            {` ・ ${Popularity({ github, githubStars }) ||
-              Duration({ timeToRead, timeToWatch })}`}
-            {' ・ '}
-            <ExternalLink href={`${sourceMasterUrl}/${fileRelativePath}`}>
-              <FontAwesomeIcon icon={faEdit} />
-            </ExternalLink>
-          </p>
+          <ul className={classes.info}>
+            <li>
+              <Link to="/about-aymeric-beaumet">
+                <img alt={author} src="/aymericbeaumet.jpg" />
+                {author}
+              </Link>
+            </li>
+            <li>
+              <DateComponent date={date} until={until} />
+            </li>
+            <li>
+              {' ・ '}
+              <Popularity github={github} githubStars={githubStars} />
+            </li>
+            <li>
+              {' ・ '}
+              <Duration timeToRead={timeToRead} timeToWatch={timeToWatch} />
+            </li>
+            <li>
+              <ExternalLink href={`${sourceMasterUrl}/${fileRelativePath}`}>
+                <FontAwesomeIcon icon={faEdit} />
+              </ExternalLink>
+            </li>
+          </ul>
           {tags && tags.length > 0 ? (
             <ul className={classes.tags}>
               {tags.map(tag => (
                 <li key={tag}>
-                  <Link to={urlFromTag(tag)}>{`#${tag}`}</Link>
+                  <Tag tag={tag} />
                 </li>
               ))}
             </ul>
