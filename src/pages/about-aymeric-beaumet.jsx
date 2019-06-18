@@ -39,11 +39,7 @@ export default function AboutAymericBeaumet({ data }) {
         <p>
           {'My name is '}
           <strong>{author}</strong>
-          {'. I am a '}
-          <ExternalLink href={linkedin}>{position}</ExternalLink>
-          {
-            ' working on back-end systems with a focus on flexibility, resilience, and high availability.'
-          }
+          {`. I am a ${position} working on back-end systems with a focus on flexibility, resilience, and high availability.`}
         </p>
 
         <p>
