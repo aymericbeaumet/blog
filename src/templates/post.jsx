@@ -86,7 +86,10 @@ export default function Post({ data }) {
           <h1>{title}</h1>
           <ul className={classes.info}>
             <li>
-              <Link to="/about-aymeric-beaumet">
+              <Link
+                title="Learn more about Aymeric Beaumet"
+                to="/about-aymeric-beaumet"
+              >
                 <img alt={author} src="/aymericbeaumet.jpg" />
                 {author}
               </Link>
@@ -105,8 +108,12 @@ export default function Post({ data }) {
             </li>
             <li>
               &nbsp;
-              <ExternalLink href={`${sourceMasterUrl}/${fileRelativePath}`}>
+              <ExternalLink
+                title="Edit this page"
+                href={`${sourceMasterUrl}/${fileRelativePath}`}
+              >
                 <FontAwesomeIcon className={classes.edit} icon={faEdit} />
+                &nbsp;edit
               </ExternalLink>
             </li>
           </ul>

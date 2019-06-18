@@ -6,6 +6,9 @@ import ExternalLink from './external-link'
 
 export default function Popularity({ github, githubStars } = {}) {
   if (githubStars) {
+    const title = `${githubStars} ${
+      githubStars !== 1 ? 'stars' : 'star'
+    } on GitHub`
     const children = (
       <>
         <FontAwesomeIcon icon={faStar} />
@@ -14,12 +17,20 @@ export default function Popularity({ github, githubStars } = {}) {
     )
     if (github) {
       return (
-        <ExternalLink className={classes.Popularity} href={github}>
+        <ExternalLink
+          title={title}
+          className={classes.Popularity}
+          href={github}
+        >
           {children}
         </ExternalLink>
       )
     }
-    return <span className={classes.Popularity}>{children}</span>
+    return (
+      <span title={title} className={classes.Popularity}>
+        {children}
+      </span>
+    )
   }
   return null
 }
