@@ -106,7 +106,7 @@ export default function Post({ data }) {
             <li>
               &nbsp;
               <ExternalLink href={`${sourceMasterUrl}/${fileRelativePath}`}>
-                <FontAwesomeIcon icon={faEdit} />
+                <FontAwesomeIcon className={classes.edit} icon={faEdit} />
               </ExternalLink>
             </li>
           </ul>
