@@ -30,20 +30,37 @@ $postOffset: 25px;
     flex-direction: column;
 
     & > a {
-      text-decoration: none;
-      flex-grow: 1;
-
-      .thumbnail {
-        max-width: 100%;
+      figure {
         width: 266px;
         height: 160px;
         overflow: hidden;
         border: 1px solid #f0f0f0;
+        position: relative;
 
         & > div {
           width: 100%;
           height: 100%;
           transition: all 0.2s;
+        }
+
+        figcaption {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          & > * {
+            border-radius: 2px;
+            border: 1px solid rgb(240, 240, 240);
+            background-color: #ffffffe6;
+            font-size: 12px;
+            font-weight: bold;
+            color: #3e3e3e;
+            margin: 8px;
+            padding: 3px;
+          }
         }
       }
 
@@ -55,63 +72,9 @@ $postOffset: 25px;
         color: $main;
       }
 
-      .date {
-        position: absolute;
-        top: 0;
-        left: 10px;
-        padding: 3px;
-        border-radius: 0 0 2px 2px;
-        border: 1px solid rgb(240, 240, 240);
-        border-top: 0;
-        background-color: #ffffffe6;
-        font-size: 12px;
-        font-weight: bold;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: #3e3e3e;
-      }
-
-      .stars,
-      .duration {
-        position: absolute;
-        top: 0;
-        right: 10px;
-        padding: 3px;
-        border-radius: 0 0 2px 2px;
-        border: 1px solid rgb(240, 240, 240);
-        border-top: 0;
-        background-color: #ffffffe6;
-        font-size: 12px;
-        font-weight: bold;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: #3e3e3e;
-      }
-
-      .stars {
-        & > svg {
-          margin-right: 2px;
-        }
-      }
-
-      .duration {
-        & > svg {
-          margin-right: 4px;
-          margin-bottom: -2px;
-        }
-      }
-
-      &:hover {
-        .thumbnail {
-          & > div {
-            transition: all 0.2s;
-            transform: scale(1.025);
-          }
-        }
+      &:hover figure > div {
+        transition: all 0.2s;
+        transform: scale(1.025);
       }
     }
   }

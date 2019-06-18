@@ -57,7 +57,7 @@ export default function Posts({ allMarkdownRemark }) {
     }) => (
       <li className={classes.post} key={slug}>
         <Link to={slug}>
-          <figure className={classes.thumbnail}>
+          <figure>
             <Img fluid={thumbnail.childImageSharp.fluid} alt={title} />
             <figcaption>
               {DateComponent({ date, until })}
