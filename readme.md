@@ -1,4 +1,4 @@
-# aymericbeaumet.com
+# aymericbeaumet.com [![Netlify Status](https://api.netlify.com/api/v1/badges/cbe704d0-b933-4b6b-a62f-4aab1a85eab5/deploy-status)](https://app.netlify.com/sites/aymericbeaumet/deploys)
 
 ## Tests
 
