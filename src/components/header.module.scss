@@ -82,7 +82,8 @@ $delay: 0.2;
   }
 
   @media screen and (max-width: $breakpoint2) {
-    padding: 30px 30px;
+    padding: 30px;
+    padding-left: 20px;
 
     nav[role='navigation'] ul {
       margin-left: unset;

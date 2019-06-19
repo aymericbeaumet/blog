@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import classes from './about-aymeric-beaumet.module.scss'
 import ExternalLink from '../components/external-link'
+import aymericBeaumetProfile from '../images/aymeric-beaumet-profile.jpg'
 
 export const pageQuery = graphql`
   query {
@@ -23,7 +24,7 @@ export const pageQuery = graphql`
 export default function AboutAymericBeaumet({ data }) {
   const {
     site: {
-      siteMetadata: { author, position, linkedin, github, stackoverflow },
+      siteMetadata: { author, position, github, stackoverflow },
     },
   } = data
   return (
@@ -32,7 +33,7 @@ export default function AboutAymericBeaumet({ data }) {
         <title>{author}</title>
       </Helmet>
       <section className={classes.About}>
-        <img alt="Aymeric Beaumet" src="/aymericbeaumet.jpg" />
+        <img alt={author} src={aymericBeaumetProfile} />
         <h1>Hey traveler,</h1>
         <h2>Welcome to my part of the internet</h2>
 

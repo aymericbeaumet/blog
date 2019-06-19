@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import classes from './header.module.scss'
-import Logo from '../images/aymericbeaumet-logo.svg'
+import Logo from '../images/aymeric-beaumet-logo.svg'
 import CategoryLink from './category-link'
 import Contact from './contact'
 

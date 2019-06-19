@@ -12,6 +12,7 @@ import Duration from '../components/duration'
 import DateComponent from '../components/date'
 import ExternalLink from '../components/external-link'
 import Tag from '../components/tag'
+import aymericBeaumetProfile from '../images/aymeric-beaumet-profile.jpg'
 
 export const pageQuery = graphql`
   query($slug: String!) {
@@ -90,7 +91,7 @@ export default function Post({ data }) {
                 title="Learn more about Aymeric Beaumet"
                 to="/about-aymeric-beaumet"
               >
-                <img alt={author} src="/aymericbeaumet.jpg" />
+                <img alt={author} src={aymericBeaumetProfile} />
                 {author}
               </Link>
               &nbsp;・
