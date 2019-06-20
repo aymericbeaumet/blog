@@ -34,12 +34,10 @@ function NotFound({ data }) {
           {'You can:'}
           <ul>
             <li>
-              <Link to="/about-aymeric-beaumet">
-                {`Learn more about ${author} (this blog author)`}
-              </Link>
+              <Link to="/about-aymeric-beaumet">Learn more about me</Link>
             </li>
             <li>
-              <Link to="/">Browse this blog content</Link>
+              <Link to="/">Browse this blog for more content!</Link>
             </li>
           </ul>
         </p>
@@ -49,17 +47,20 @@ function NotFound({ data }) {
           <a href="https://en.wikipedia.org/wiki/Vertical_wind_tunnel">
             indoor skydiving
           </a>
-          {'! Check '}
-          <a href="https://www.tunnelflight.com/">tunnelflight.com</a>
-          {' to find the closest indoor skydiving station from your location.'}
+          {'!'}
         </p>
         <figure>
           <img
             alt="Me having a lot of fun :)"
             src={aymericBeaumetIndoorSkydiving}
           />
-          <figcaption>This is me flying for the first time :)</figcaption>
+          <figcaption>Me flying for the first time :)</figcaption>
         </figure>
+        <p>
+          {'Check '}
+          <a href="https://www.tunnelflight.com/">tunnelflight.com</a>
+          {' to find the closest indoor skydiving station from your location.'}
+        </p>
       </section>
     </Layout>
   )
