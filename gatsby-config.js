@@ -51,16 +51,40 @@ const siteMetadata = {
 }
 
 const plugins = [
+  'gatsby-plugin-sharp', // required by gatsby-remark-images
+  'gatsby-transformer-sharp',
+  {
+    resolve: 'gatsby-transformer-remark',
+    options: {
+      plugins: [
+        { resolve: 'gatsby-remark-external-links' },
+        {
+          resolve: 'gatsby-remark-images',
+          options: { maxWidth: 720, withWebp: true },
+        },
+        { resolve: 'gatsby-remark-copy-linked-files' },
+        { resolve: 'gatsby-remark-autolink-headers' }, // before gastby-remark-prismjs
+        {
+          resolve: 'gatsby-remark-prismjs',
+          options: {
+            classPrefix: 'language-',
+            inlineCodeMarker: null,
+            aliases: {},
+            showLineNumbers: false,
+            noInlineHighlight: false,
+          },
+        },
+        { resolve: 'gatsby-remark-smartypants' },
+        { resolve: 'gatsby-remark-responsive-iframe' },
+      ],
+    },
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       path: `${__dirname}/data/`,
     },
   },
-  'gatsby-plugin-sharp', // required by gatsby-remark-images
-  'gatsby-transformer-sharp',
-  'gatsby-plugin-offline',
-  'gatsby-plugin-sitemap',
   'gatsby-plugin-catch-links',
   'gatsby-plugin-react-svg',
   'gatsby-plugin-robots-txt',
@@ -83,47 +107,8 @@ const plugins = [
       display: 'minimal-ui',
       icon: `${__dirname}/src/images/aymeric-beaumet-commitstrip.png`,
     },
-  },
-  {
-    resolve: 'gatsby-transformer-remark',
-    options: {
-      plugins: [
-        {
-          resolve: 'gatsby-remark-external-links',
-          options: {
-            target: '_self',
-            rel: 'nofollow noopener noreferrer',
-          },
-        },
-        {
-          resolve: 'gatsby-remark-images',
-          options: {
-            maxWidth: 720,
-            withWebp: true,
-          },
-        },
-        {
-          resolve: 'gatsby-remark-copy-linked-files',
-          options: {
-            destinationDir: './static/',
-          },
-        },
-        { resolve: 'gatsby-remark-autolink-headers' }, // before gastby-remark-prismjs
-        {
-          resolve: 'gatsby-remark-prismjs',
-          options: {
-            classPrefix: 'language-',
-            inlineCodeMarker: null,
-            aliases: {},
-            showLineNumbers: false,
-            noInlineHighlight: false,
-          },
-        },
-        { resolve: 'gatsby-remark-smartypants' },
-        { resolve: 'gatsby-remark-responsive-iframe' },
-      ],
-    },
-  },
+  }, // before gatsby-plugin-offline
+  'gatsby-plugin-offline',
 ]
 
 function withRSS(p = []) {
@@ -310,5 +295,8 @@ function flattenObject(object, init = {}) {
 
 module.exports = {
   siteMetadata,
-  plugins: withNetlify(withAlgolia(withRSS(plugins))),
+  plugins: [
+    ...withNetlify(withAlgolia(withRSS(plugins))),
+    'gatsby-plugin-sitemap',
+  ],
 }
