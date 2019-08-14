@@ -1,6 +1,6 @@
-# aymericbeaumet.com [![Netlify Status](https://api.netlify.com/api/v1/badges/cbe704d0-b933-4b6b-a62f-4aab1a85eab5/deploy-status)](https://app.netlify.com/sites/aymericbeaumet/deploys)
+# aymericbeaumet.com [![pipeline status](https://gitlab.com/moonshotatelier/aymericbeaumet/badges/master/pipeline.svg)](https://gitlab.com/moonshotatelier/aymericbeaumet/commits/master)
 
-## Tests
+## Manual Tests
 
 ### Tools
 
@@ -38,13 +38,4 @@ yarn develop
 
 ### Deploy
 
-_The `master` branch is automatically built and deployed via the Netlify CI._
-
-## Environment variables
-
-The following variables must be set in [Netlify](https://app.netlify.com/sites/aymericbeaumet/settings/deploys):
-
-- `ALGOLIA_APPLICATION_ID`: get it [here](https://www.algolia.com/apps/O8NJP2H5DA/api-keys/all)
-- `ALGOLIA_ADMIN_API_KEY`: _see above_
-- `ALGOLIA_SEARCH_ONLY_API_KEY`: _see above_
-- `ALGOLIA_INDEX_NAME`: get it [here](https://www.algolia.com/apps/O8NJP2H5DA/explorer/browse)
+_The `master` branch is automatically built and deployed via GitLab CI._

@@ -1,5 +1,5 @@
 {
-  "name": "aymericbeaumet.com",
+  "name": "aymericbeaumet-www",
   "description": "Website and more",
   "license": "UNLICENSED",
   "version": "1.0.0",
@@ -8,7 +8,8 @@
     "develop": "gatsby develop",
     "format": "prettier --config .prettierrc --write '**/*.js'",
     "test": "prettier-check --config .prettierrc '**/*.js' && eslint .",
-    "build": "gatsby build"
+    "build": "gatsby build",
+    "deploy": "firebase deploy --message \"CI_COMMIT_SHA=$CI_COMMIT_SHA CI_PIPELINE_ID=$CI_PIPELINE_ID\" --non-interactive --only hosting --project \"$FIREBASE_PROJECT\" --token \"$FIREBASE_TOKEN\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.21",
@@ -34,6 +35,7 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-react": "7.14.3",
+    "firebase-tools": "7.2.2",
     "gatsby-plugin-catch-links": "2.1.3",
     "gatsby-plugin-feed": "2.3.6",
     "gatsby-plugin-manifest": "2.2.5",

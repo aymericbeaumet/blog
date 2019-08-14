@@ -3,7 +3,7 @@ const _ = require('lodash')
 const firstName = 'Aymeric'
 const lastName = 'Beaumet'
 const fullName = `${firstName} ${lastName}`
-const sourceUrl = 'https://gitlab.com/moonshotatelier/aymericbeaumet.com'
+const sourceUrl = 'https://gitlab.com/moonshotatelier/aymericbeaumet/www'
 const position = 'Senior Software Engineer'
 
 const siteMetadata = {

@@ -1,0 +1,16 @@
+image: node:latest
+
+cache:
+  paths:
+    - .cache/
+    - node_modules/
+
+deploy_production:
+  stage: deploy
+  environment: production
+  only:
+    - master
+  script:
+    - yarn
+    - yarn build
+    - yarn deploy
