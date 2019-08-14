@@ -10,11 +10,11 @@ import classes from './post.module.scss'
 import Popularity from '../components/popularity'
 import Duration from '../components/duration'
 import DateComponent from '../components/date'
-import ExternalLink from '../components/external-link'
 import Tag from '../components/tag'
 import aymericBeaumetProfile from '../images/aymeric-beaumet-profile.jpg'
+import ExternalLink from '../components/external-link'
 
-export const pageQuery = graphql`
+export const query = graphql`
   query($slug: String!) {
     site {
       siteMetadata {
@@ -41,7 +41,6 @@ export const pageQuery = graphql`
         github
         githubStars
         attachments {
-          id
           publicURL
           name
           extension
@@ -57,6 +56,8 @@ export default function Post({ data }) {
       siteMetadata: { siteUrl, author, sourceMasterUrl, disqusShortname },
     },
     markdownRemark: {
+      html,
+      timeToRead,
       fields: { slug, fileRelativePath },
       frontmatter: {
         date,
@@ -68,8 +69,6 @@ export default function Post({ data }) {
         github,
         githubStars,
       },
-      html,
-      timeToRead,
     },
   } = data
   const disqusConfig = {
@@ -113,7 +112,12 @@ export default function Post({ data }) {
                 title="Edit this page"
                 href={`${sourceMasterUrl}/${fileRelativePath}`}
               >
-                <FontAwesomeIcon className={classes.edit} icon={faEdit} />
+                <FontAwesomeIcon
+                  width="32px"
+                  height="32px"
+                  className={classes.edit}
+                  icon={faEdit}
+                />
                 &nbsp;edit
               </ExternalLink>
             </li>
@@ -139,7 +143,7 @@ export default function Post({ data }) {
               {attachments.map(({ publicURL, name, extension }) => (
                 <a className={classes.attachment} href={publicURL}>
                   <li>
-                    <FontAwesomeIcon icon={faSave} />
+                    <FontAwesomeIcon width="32px" height="32px" icon={faSave} />
                     {`${name}.${extension}`}
                   </li>
                 </a>

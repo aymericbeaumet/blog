@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
 import Posts from '../components/posts'
 
-export const pageQuery = graphql`
+export const query = graphql`
   query($tag: String!) {
     site {
       siteMetadata {

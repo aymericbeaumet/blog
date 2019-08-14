@@ -82,8 +82,8 @@ class AlternativeHeader extends React.Component {
           id={toggleId}
         />
         <label htmlFor={toggleId} className={classes.toggle}>
-          <FontAwesomeIcon icon={faBars} />
-          <FontAwesomeIcon icon={faTimes} />
+          <FontAwesomeIcon width="32px" height="32px" icon={faBars} />
+          <FontAwesomeIcon width="32px" height="32px" icon={faTimes} />
         </label>
         <div className={classes.menu} onClick={dismissHandler}>
           <ul className={classes.entries}>

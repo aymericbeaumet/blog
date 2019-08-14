@@ -6,7 +6,7 @@ import classes from './about-aymeric-beaumet.module.scss'
 import ExternalLink from '../components/external-link'
 import aymericBeaumetProfile from '../images/aymeric-beaumet-profile.jpg'
 
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     site {
       siteMetadata {

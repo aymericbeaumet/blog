@@ -11,7 +11,7 @@ export default function Popularity({ github, githubStars } = {}) {
     } on GitHub`
     const children = (
       <>
-        <FontAwesomeIcon icon={faStar} />
+        <FontAwesomeIcon width="32px" height="32px" icon={faStar} />
         {githubStars}
       </>
     )

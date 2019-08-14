@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import classes from './404.module.scss'
 import aymericBeaumetIndoorSkydiving from '../images/aymeric-beaumet-indoor-skydiving.jpg'
 
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     site {
       siteMetadata {
@@ -19,7 +19,7 @@ export const pageQuery = graphql`
 function NotFound({ data }) {
   const {
     site: {
-      siteMetadata: { author, title },
+      siteMetadata: { title },
     },
   } = data
   return (

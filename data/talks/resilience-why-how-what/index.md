@@ -7,9 +7,9 @@ tags:
   - Node.js
   - JavaScript
   - 🇫🇷
+timeToWatch: 27
 attachments:
   - ./slides.pdf
-timeToWatch: 27
 ---
 
 We live in a world critically relying on a growing mass of information systems: whether it be for APIs, automation, synchronizing services, or any other server-side operation. But how do these systems react in case of failure? As a back-end engineer, it is your job to implement a resilient system. Through this talk, we will look into some erroneous Node.js implementations and see how we can articulate coherent strategies to solve these issues.

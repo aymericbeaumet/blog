@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Posts from '../components/posts'
 import Layout from '../components/layout'
 
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     site {
       siteMetadata {

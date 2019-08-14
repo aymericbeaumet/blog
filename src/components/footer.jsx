@@ -33,7 +33,6 @@ function Footer({ data }) {
           &nbsp;—
         </li>
         <li>
-          &nbsp;
           <ExternalLink href={sourceUrl}>This blog is Open-Source</ExternalLink>
           &nbsp;—
         </li>

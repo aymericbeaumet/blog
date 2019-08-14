@@ -39,27 +39,27 @@ function Contact({ data }) {
     <ul>
       <li>
         <a href={`mailto:${email}`}>
-          <FontAwesomeIcon icon={faEnvelope} />
+          <FontAwesomeIcon width="64px" height="64px" icon={faEnvelope} />
         </a>
       </li>
       <li>
         <ExternalLink href={twitter}>
-          <FontAwesomeIcon icon={faTwitter} />
+          <FontAwesomeIcon width="64px" height="64px" icon={faTwitter} />
         </ExternalLink>
       </li>
       <li>
         <ExternalLink href={linkedin}>
-          <FontAwesomeIcon icon={faLinkedinIn} />
+          <FontAwesomeIcon width="64px" height="64px" icon={faLinkedinIn} />
         </ExternalLink>
       </li>
       <li>
         <ExternalLink href={github}>
-          <FontAwesomeIcon icon={faGithub} />
+          <FontAwesomeIcon width="64px" height="64px" icon={faGithub} />
         </ExternalLink>
       </li>
       <li>
         <ExternalLink href={stackoverflow}>
-          <FontAwesomeIcon icon={faStackOverflow} />
+          <FontAwesomeIcon width="64px" height="64px" icon={faStackOverflow} />
         </ExternalLink>
       </li>
     </ul>
