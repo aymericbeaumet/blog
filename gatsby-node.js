@@ -3,20 +3,6 @@ const path = require('path')
 const { singular } = require('pluralize')
 const urlFromTag = require('./src/utils/urlFromTag')
 
-// https://stackoverflow.com/a/55548013/1071486
-exports.sourceNodes = ({ actions }) => {
-  const { createTypes } = actions
-  createTypes(`
-    type MarkdownRemark implements Node {
-      frontmatter: MarkdownRemarkFrontmatter
-    }
-
-    type MarkdownRemarkFrontmatter {
-      attachments: [File!]
-    }
-  `)
-}
-
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'MarkdownRemark') {
@@ -59,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve('./src/templates/post.jsx'),
-      context: node.fields,
+      context: { slug: node.fields.slug },
     })
     // Create tags pages
     node.frontmatter.tags.forEach(tag => {

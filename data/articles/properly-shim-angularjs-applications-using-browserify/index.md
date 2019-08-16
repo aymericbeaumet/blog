@@ -7,7 +7,7 @@ tags:
   - Browserify
   - JavaScript
 attachments:
-  - ./example.tgz
+  - ./example.tar.gz
 ---
 
 _Edit (March 5th 2015): the frontend community has evolved in the last few
@@ -217,7 +217,7 @@ Once you’ve made those corrections, you should be able to compile and run the 
 
 Check it really works by opening `index.html`.
 
-A working example can be downloaded [here](./example.tgz).
+A working example can be downloaded [here](./example.tar.gz).
 
 ## Side notes
 

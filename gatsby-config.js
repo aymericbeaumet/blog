@@ -1,5 +1,3 @@
-const _ = require('lodash')
-
 const firstName = 'Aymeric'
 const lastName = 'Beaumet'
 const fullName = `${firstName} ${lastName}`
@@ -139,14 +137,15 @@ function withRSS(plugins = []) {
 module.exports = {
   siteMetadata,
   plugins: withRSS([
+    'gatsby-plugin-sharp', // required by gatsby-remark-images
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name: 'data',
         path: `${__dirname}/data/`,
       },
     },
-    'gatsby-plugin-sharp', // required by gatsby-remark-images
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -155,11 +154,11 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: { maxWidth: 720, withWebp: true },
           },
-          { resolve: 'gatsby-remark-external-links' },
-          { resolve: 'gatsby-remark-copy-linked-files' },
-          { resolve: 'gatsby-remark-smartypants' },
-          { resolve: 'gatsby-remark-responsive-iframe' },
-          { resolve: 'gatsby-remark-autolink-headers' }, // before gastby-remark-prismjs
+          'gatsby-remark-external-links',
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-smartypants',
+          'gatsby-remark-responsive-iframe',
+          'gatsby-remark-autolink-headers', // before gastby-remark-prismjs
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
