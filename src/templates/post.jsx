@@ -138,7 +138,7 @@ export default function Post({ data }) {
         />
         {attachments && attachments.length > 0 ? (
           <section className={classes.attachments}>
-            <h1>Attachments</h1>
+            <h1 id="attachments">Attachments</h1>
             <ul>
               {attachments.map(({ publicURL, name, extension }) => (
                 <a className={classes.attachment} href={publicURL}>
@@ -152,7 +152,7 @@ export default function Post({ data }) {
           </section>
         ) : null}
         <section className={classes.comments}>
-          <h1>Comments</h1>
+          <h1 id="comments">Comments</h1>
           <Disqus.DiscussionEmbed
             shortname={disqusShortname}
             config={disqusConfig}

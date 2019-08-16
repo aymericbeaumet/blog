@@ -155,7 +155,6 @@ module.exports = {
             options: { maxWidth: 720, withWebp: true },
           },
           'gatsby-remark-external-links',
-          'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-remark-responsive-iframe',
           'gatsby-remark-autolink-headers', // before gastby-remark-prismjs
