@@ -13,7 +13,6 @@ export const query = graphql`
         author
         position
         title
-        linkedin
         github
         stackoverflow
       }

@@ -1,12 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faTwitter,
-  faStackOverflow,
-  faGithub,
-  faLinkedinIn,
-} from '@fortawesome/free-brands-svg-icons'
+import { faStackOverflow, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import ExternalLink from './external-link'
 
@@ -18,9 +13,7 @@ export default () => (
           siteMetadata {
             email
             github
-            linkedin
             stackoverflow
-            twitter
           }
         }
       }
@@ -32,7 +25,7 @@ export default () => (
 function Contact({ data }) {
   const {
     site: {
-      siteMetadata: { email, github, linkedin, stackoverflow, twitter },
+      siteMetadata: { email, github, stackoverflow },
     },
   } = data
   return (
@@ -41,16 +34,6 @@ function Contact({ data }) {
         <a href={`mailto:${email}`}>
           <FontAwesomeIcon width="64px" height="64px" icon={faEnvelope} />
         </a>
-      </li>
-      <li>
-        <ExternalLink href={twitter}>
-          <FontAwesomeIcon width="64px" height="64px" icon={faTwitter} />
-        </ExternalLink>
-      </li>
-      <li>
-        <ExternalLink href={linkedin}>
-          <FontAwesomeIcon width="64px" height="64px" icon={faLinkedinIn} />
-        </ExternalLink>
       </li>
       <li>
         <ExternalLink href={github}>

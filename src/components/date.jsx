@@ -3,28 +3,30 @@ import format from 'date-fns/format'
 import classes from './date.module.scss'
 
 export default function DateComponent({ date, until } = {}) {
-  if (date && until) {
-    const dateYear = new Date(date).getFullYear()
-    const untilYear = new Date(until).getFullYear()
+  const ddate = date ? new Date(date) : null
+  const duntil = until ? new Date(until) : null
+  if (ddate && duntil) {
+    const dateYear = ddate.getFullYear()
+    const untilYear = duntil.getFullYear()
     const duration = Math.max(untilYear - dateYear, 1)
     return (
       <time
         className={classes.DateComponent}
-        dateTime={date}
+        dateTime={ddate}
         title={`${duration} ${duration !== 1 ? 'years' : 'year'}`}
       >
-        {`${format(date, 'YYYY')}–${format(until, 'YYYY')}`}
+        {`${format(ddate, 'yyyy')}–${format(duntil, 'yyyy')}`}
       </time>
     )
   }
-  if (date) {
+  if (ddate) {
     return (
       <time
         className={classes.DateComponent}
-        dateTime={date}
-        title={format(date, 'dddd, MMMM DD, YYYY, HH:mm:ss A')}
+        dateTime={ddate}
+        title={format(ddate, 'PPPP, pp')}
       >
-        {format(date, 'YYYY MMM Do')}
+        {format(ddate, 'yyyy MMM do')}
       </time>
     )
   }
