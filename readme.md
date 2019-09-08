@@ -1,4 +1,7 @@
-# aymericbeaumet.com [![pipeline status](https://gitlab.com/moonshotatelier/aymericbeaumet/www/badges/master/pipeline.svg)](https://gitlab.com/moonshotatelier/aymericbeaumet/www/commits/master)
+# aymericbeaumet.com
+
+[![netlify](https://img.shields.io/netlify/82402a7d-5965-4054-b479-56f241526b47)](https://aymericbeaumet.com)
+[![github](https://img.shields.io/github/issues/aymericbeaumet/aymericbeaumet.com?style=flat-square&logo=github)](https://github.com/aymericbeaumet/aymericbeaumet.com/issues)
 
 ## Manual Tests
 

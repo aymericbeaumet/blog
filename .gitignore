@@ -1,5 +1,4 @@
-.cache/
-.firebase/
+.netlify/
 node_modules/
 public/
 yarn-error.log

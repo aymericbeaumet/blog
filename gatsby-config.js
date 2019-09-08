@@ -1,7 +1,7 @@
 const firstName = 'Aymeric'
 const lastName = 'Beaumet'
 const fullName = `${firstName} ${lastName}`
-const sourceUrl = 'https://gitlab.com/moonshotatelier/aymericbeaumet/www'
+const sourceUrl = 'https://github.com/aymericbeaumet/aymericbeaumet.com'
 const position = 'Senior Software Engineer'
 
 const siteMetadata = {
