@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "aymericbeaumet-www",
+  "name": "aymericbeaumet.com",
   "description": "Aymeric Beaumet's blog",
   "license": "MIT",
   "version": "1.0.0",
@@ -10,7 +10,6 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "test": "prettier --check --config .prettierrc '**/*.js' && eslint .",
-    "deploy": "firebase deploy --non-interactive --only hosting --message \"$CI_PIPELINE_URL\" --project \"$(firebase list --json | node -e 'console.log(JSON.parse(fs.readFileSync(0)).result.filter(p => p.name === process.env.FIREBASE_PROJECT_NAME)[0].id)')\"",
     "format": "prettier --config .prettierrc --write '**/*.js'"
   },
   "dependencies": {
@@ -38,7 +37,6 @@
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-react": "7.14.3",
-    "firebase-tools": "7.3.1",
     "gatsby-plugin-catch-links": "2.1.8",
     "gatsby-plugin-feed": "2.3.11",
     "gatsby-plugin-manifest": "2.2.14",
