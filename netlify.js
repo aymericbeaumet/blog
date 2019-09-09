@@ -7,26 +7,19 @@ const NetlifyAPI = require('netlify')
 const netlify = new NetlifyAPI(process.env.NETLIFY_ACCESS_TOKEN)
 
 const DOMAIN = 'aymericbeaumet.com'
-const ALIASES_DOMAINS = [
+const ALIASES = [
   'aymericbeaumet.fr',
   'aymericbeaumet.me',
   'beaumet.fr',
   'beaumet.me',
 ]
-const ALIASES_SUBDOMAINS = [
-  '',
-  'www.',
-  'aymeric.',
-  'blog.',
-  'links.',
-  'projects.',
-]
+const SUBDOMAINS = ['', 'www.', 'aymeric.', 'blog.', 'links.', 'projects.']
 
 const SITE = {
   name: 'aymericbeaumet',
   custom_domain: DOMAIN,
-  domain_aliases: [DOMAIN, ...ALIASES_DOMAINS]
-    .flatMap(d => ALIASES_SUBDOMAINS.map(sd => `${sd}${d}`))
+  domain_aliases: [DOMAIN, ...ALIASES]
+    .flatMap(d => SUBDOMAINS.map(sd => `${sd}${d}`))
     .filter(d => !(d === DOMAIN || d === `www.${DOMAIN}`)),
   ssl: true,
   // force_ssl: true,
@@ -52,7 +45,7 @@ const SITE = {
   await netlify.updateSite({ site_id: site.id, body: SITE })
   fs.writeFileSync(
     path.join(__dirname, 'static/_redirects'),
-    SITE.domain_aliases
+    [`${SITE.name}.netlify.com`, ...SITE.domain_aliases]
       .map(da => `https://${da}/* https://${DOMAIN}/:splat 301!`)
       .join('\n'),
   )
