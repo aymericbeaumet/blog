@@ -22,7 +22,7 @@ const SITE = {
     .flatMap(d => SUBDOMAINS.map(sd => `${sd}${d}`))
     .filter(d => !(d === DOMAIN || d === `www.${DOMAIN}`)),
   ssl: true,
-  // force_ssl: true,
+  force_ssl: true,
   build_settings: {
     cmd: 'yarn build',
     dir: 'public/',
