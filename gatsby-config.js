@@ -12,8 +12,7 @@ const siteMetadata = {
   description: `${firstName} is a ${position} with 5 years of experience in deploying resilient, scalable, and highly available back-end systems.`,
   email: 'hi@aymericbeaumet.com',
   github: 'https://github.com/aymericbeaumet',
-  stackoverflow:
-    'https://stackoverflow.com/users/1071486/aymericbeaumet?tab=profile',
+  stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet',
   // website
   siteUrl: 'https://aymericbeaumet.com',
   sourceUrl,

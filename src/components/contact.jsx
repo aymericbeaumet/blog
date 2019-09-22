@@ -41,7 +41,7 @@ function Contact({ data }) {
         </ExternalLink>
       </li>
       <li>
-        <ExternalLink href={stackoverflow}>
+        <ExternalLink href={`${stackoverflow}?tab=profile`}>
           <FontAwesomeIcon width="64px" height="64px" icon={faStackOverflow} />
         </ExternalLink>
       </li>

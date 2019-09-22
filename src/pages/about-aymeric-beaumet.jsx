@@ -62,9 +62,13 @@ export default function AboutAymericBeaumet({ data }) {
           {'I am '}
           <strong>modestly trying to make the world a better place.</strong>
           {' I '}
-          <ExternalLink href={github}>maintain</ExternalLink>
+          <ExternalLink href={`${github}?tab=repositories&type=source`}>
+            maintain
+          </ExternalLink>
           {' some open-source projects, do my best to '}
-          <ExternalLink href={stackoverflow}>advise</ExternalLink>
+          <ExternalLink href={`${stackoverflow}?tab=anwsers`}>
+            help
+          </ExternalLink>
           {' people and '}
           <Link to="/articles">write</Link>
           {' or '}
