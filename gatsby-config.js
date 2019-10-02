@@ -58,10 +58,10 @@ function withRSS(plugins = []) {
     {
       allMarkdownRemark(
         ${[
-          'sort: { order: DESC, fields: [frontmatter___date] }',
-          ...args,
-          '',
-        ].join(',')}
+      'sort: { order: DESC, fields: [frontmatter___date] }',
+      ...args,
+      '',
+    ].join(',')}
       ) {
         edges {
           node {
