@@ -7,7 +7,6 @@ import { faEdit, faSave } from '@fortawesome/free-regular-svg-icons'
 import Layout from '../components/layout'
 import 'prismjs/themes/prism-coy.css'
 import classes from './post.module.scss'
-import Popularity from '../components/popularity'
 import Duration from '../components/duration'
 import DateComponent from '../components/date'
 import Tag from '../components/tag'
@@ -34,12 +33,9 @@ export const query = graphql`
       }
       frontmatter {
         date
-        until
         title
         tags
         timeToWatch
-        github
-        githubStars
         attachments {
           publicURL
           name
@@ -61,13 +57,10 @@ export default function Post({ data }) {
       fields: { slug, fileRelativePath },
       frontmatter: {
         date,
-        until,
         title,
         timeToWatch,
         tags = [],
         attachments = [],
-        github,
-        githubStars,
       },
     },
   } = data
@@ -97,13 +90,12 @@ export default function Post({ data }) {
             </li>
             <li>
               &nbsp;
-              <DateComponent date={date} until={until} />
+              <DateComponent date={date} />
               &nbsp;・
             </li>
             <li>
               &nbsp;
-              {Popularity({ github, githubStars }) ||
-                Duration({ timeToRead, timeToWatch })}
+              {Duration({ timeToRead, timeToWatch })}
               &nbsp;・
             </li>
             <li>

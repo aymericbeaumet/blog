@@ -20,7 +20,7 @@ export const query = graphql`
   }
 `
 
-export default function Talks({ data }) {
+export default function TalksPage({ data }) {
   const {
     site: {
       siteMetadata: { author },

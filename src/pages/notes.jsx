@@ -11,28 +11,28 @@ export const query = graphql`
         author
       }
     }
-    articles: allMarkdownRemark(
+    notes: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { fields: { categorySlug: { eq: "article" } } }
+      filter: { fields: { categorySlug: { eq: "note" } } }
     ) {
       ...PostsRequirements
     }
   }
 `
 
-export default function Articles({ data }) {
+export default function NotesPage({ data }) {
   const {
-    articles,
     site: {
       siteMetadata: { author },
     },
+    notes,
   } = data
   return (
     <Layout>
       <Helmet>
-        <title>{`Articles by ${author}`}</title>
+        <title>{`Notes by ${author}`}</title>
       </Helmet>
-      <Posts allMarkdownRemark={articles} />
+      <Posts allMarkdownRemark={notes} />
     </Layout>
   )
 }

@@ -20,23 +20,19 @@ const siteMetadata = {
   disqusShortname: 'aymericbeaumet',
   menu: [
     {
-      name: 'articles',
-      url: '/articles',
-      categorySlug: 'article',
+      name: 'posts',
+      url: '/posts',
+      categorySlug: 'post',
+    },
+    {
+      name: 'notes',
+      url: '/notes',
+      categorySlug: 'note',
     },
     {
       name: 'talks',
       url: '/talks',
       categorySlug: 'talk',
-    },
-    {
-      name: 'projects',
-      url: '/projects',
-      categorySlug: 'project',
-    },
-    {
-      name: 'about me',
-      url: '/about-aymeric-beaumet',
     },
   ],
 }

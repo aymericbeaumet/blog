@@ -3,7 +3,6 @@ import Img from 'gatsby-image'
 import { graphql, Link } from 'gatsby'
 import classes from './posts.module.scss'
 import Duration from './duration'
-import Popularity from './popularity'
 import DateComponent from './date'
 import Tag from './tag'
 
@@ -19,9 +18,7 @@ export const componentFragment = graphql`
           title
           tags
           timeToWatch
-          githubStars
           date
-          until
           thumbnail {
             childImageSharp {
               fluid(maxWidth: 255) {
@@ -48,9 +45,7 @@ export default function Posts({ allMarkdownRemark }) {
           tags,
           thumbnail,
           timeToWatch,
-          githubStars,
           date,
-          until,
         },
         timeToRead,
       },
@@ -60,9 +55,8 @@ export default function Posts({ allMarkdownRemark }) {
           <figure>
             <Img fluid={thumbnail.childImageSharp.fluid} alt={title} />
             <figcaption>
-              {DateComponent({ date, until })}
-              {Popularity({ githubStars }) ||
-                Duration({ timeToRead, timeToWatch })}
+              {DateComponent({ date })}
+              {Duration({ timeToRead, timeToWatch })}
             </figcaption>
           </figure>
           <h2>{title}</h2>

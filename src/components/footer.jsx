@@ -29,7 +29,7 @@ function Footer({ data }) {
     <footer className={classes.Footer}>
       <ul>
         <li>
-          <Link to="/about-aymeric-beaumet">{`About ${author}`}</Link>
+          <Link to="/">{`About ${author}`}</Link>
           &nbsp;—
         </li>
         <li>
