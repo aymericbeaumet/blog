@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import Disqus from 'disqus-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faSave } from '@fortawesome/free-regular-svg-icons'
 import Layout from '../components/layout'
@@ -21,7 +20,6 @@ export const query = graphql`
         siteUrl
         author
         sourceMasterUrl
-        disqusShortname
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -49,7 +47,7 @@ export const query = graphql`
 export default function Post({ data }) {
   const {
     site: {
-      siteMetadata: { siteUrl, author, sourceMasterUrl, disqusShortname },
+      siteMetadata: { siteUrl, author, sourceMasterUrl },
     },
     markdownRemark: {
       html,
@@ -64,11 +62,6 @@ export default function Post({ data }) {
       },
     },
   } = data
-  const disqusConfig = {
-    url: `${siteUrl}/${slug}`,
-    identifier: slug,
-    title,
-  }
   return (
     <Layout>
       <Helmet>
@@ -81,7 +74,7 @@ export default function Post({ data }) {
             <li>
               <Link
                 title="Learn more about Aymeric Beaumet"
-                to="/about-aymeric-beaumet"
+                to="/"
               >
                 <img alt={author} src={aymericBeaumetProfile} />
                 {author}
@@ -143,13 +136,6 @@ export default function Post({ data }) {
             </ul>
           </section>
         ) : null}
-        <section className={classes.comments}>
-          <h1 id="comments">Comments</h1>
-          <Disqus.DiscussionEmbed
-            shortname={disqusShortname}
-            config={disqusConfig}
-          />
-        </section>
       </section>
     </Layout>
   )

@@ -19,7 +19,6 @@
     "@fortawesome/free-solid-svg-icons": "5.12.1",
     "@fortawesome/react-fontawesome": "0.1.8",
     "date-fns": "2.9.0",
-    "disqus-react": "1.0.7",
     "gatsby": "2.19.17",
     "gatsby-image": "2.2.41",
     "normalize.css": "8.0.1",

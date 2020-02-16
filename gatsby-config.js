@@ -17,7 +17,6 @@ const siteMetadata = {
   siteUrl: 'https://aymericbeaumet.com',
   sourceUrl,
   sourceMasterUrl: `${sourceUrl}/blob/master`,
-  disqusShortname: 'aymericbeaumet',
   menu: [
     {
       name: 'posts',
