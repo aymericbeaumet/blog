@@ -39,7 +39,7 @@ export default function AboutAymericBeaumet({ data }) {
         <p>
           {'My name is '}
           <strong>{author}</strong>
-          {`. I am a ${position} working on back-end systems with a focus on flexibility, resilience, and high availability.`}
+          {`. I am a versatile ${position} working on back-end systems with a focus on flexibility, resilience, and high availability.`}
         </p>
 
         <p>
@@ -69,14 +69,18 @@ export default function AboutAymericBeaumet({ data }) {
           <ExternalLink href={`${stackoverflow}?tab=anwsers`}>
             help
           </ExternalLink>
-          {' people and '}
-          <Link to="/articles">write</Link>
-          {' or '}
+          {' people, but also '}
+          <Link to="/posts">write</Link>
+          {' and '}
           <Link to="/talks">speak</Link>
           {' about my experiences.'}
         </p>
 
-        <p>Let’s get in touch! I am curious to hear from you.</p>
+        <p>
+          {'I also publicly share '}
+          <Link to="/notes">notes</Link>
+          {' I take on various topics.'}
+        </p>
 
         <p>
           Best,

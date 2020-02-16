@@ -98,10 +98,18 @@ function withRSS(plugins = []) {
             serialize,
           },
           {
-            title: `${siteMetadata.title} - Articles`,
-            output: '/articles.xml',
+            title: `${siteMetadata.title} - Posts`,
+            output: '/posts.xml',
             query: query([
-              'filter: { fields: { categorySlug: { eq: "article" } } }',
+              'filter: { fields: { categorySlug: { eq: "post" } } }',
+            ]),
+            serialize,
+          },
+          {
+            title: `${siteMetadata.title} - Notes`,
+            output: '/notes.xml',
+            query: query([
+              'filter: { fields: { categorySlug: { eq: "note" } } }',
             ]),
             serialize,
           },
@@ -110,14 +118,6 @@ function withRSS(plugins = []) {
             output: '/talks.xml',
             query: query([
               'filter: { fields: { categorySlug: { eq: "talk" } } }',
-            ]),
-            serialize,
-          },
-          {
-            title: `${siteMetadata.title} - Projects`,
-            output: '/projects.xml',
-            query: query([
-              'filter: { fields: { categorySlug: { eq: "project" } } }',
             ]),
             serialize,
           },
