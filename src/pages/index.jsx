@@ -11,7 +11,6 @@ export const query = graphql`
     site {
       siteMetadata {
         author
-        position
         title
         github
         stackoverflow
@@ -23,7 +22,7 @@ export const query = graphql`
 export default function AboutAymericBeaumet({ data }) {
   const {
     site: {
-      siteMetadata: { author, position, github, stackoverflow },
+      siteMetadata: { author, github, stackoverflow },
     },
   } = data
   return (
@@ -32,7 +31,6 @@ export default function AboutAymericBeaumet({ data }) {
         <title>{author} Blog</title>
       </Helmet>
       <section className={classes.About}>
-        <img alt={author} src={aymericBeaumetProfile} />
         <h1>Hey traveler,</h1>
         <h2>Welcome to my part of the internet</h2>
 

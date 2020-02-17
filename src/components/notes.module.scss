@@ -1,0 +1,37 @@
+@import './config';
+
+.Notes {
+  width: 700px;
+  color: #3e3e3e;
+
+  ul {
+    & li:first-child {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    & li:last-child {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  li {
+    border: 1px solid #c1c1c1;
+    padding: 6px 3px;
+    list-style-type: none;
+    vertical-align: -0.15em;
+
+    svg {
+      margin: 0 5px;
+    }
+
+    & + li {
+      margin-top: -1px;
+    }
+  }
+
+  li:hover {
+    background-color: #f8f8f8;
+  }
+}

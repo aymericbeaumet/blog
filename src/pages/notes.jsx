@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import Posts from '../components/posts'
+import Notes from '../components/notes'
 import Layout from '../components/layout'
 
 export const query = graphql`
@@ -12,10 +12,9 @@ export const query = graphql`
       }
     }
     notes: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
       filter: { fields: { categorySlug: { eq: "note" } } }
     ) {
-      ...PostsRequirements
+      ...NotesRequirements
     }
   }
 `
@@ -32,7 +31,7 @@ export default function NotesPage({ data }) {
       <Helmet>
         <title>{`Notes by ${author}`}</title>
       </Helmet>
-      <Posts allMarkdownRemark={notes} />
+      <Notes allMarkdownRemark={notes} />
     </Layout>
   )
 }

@@ -7,11 +7,9 @@ exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'MarkdownRemark') {
     const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath)
-    const categorySlug = singular(
-      fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'),
-    )
-    const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)\/.*$/, '$1')
+    const categorySlug = singular(fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'))
     const category = _.capitalize(categorySlug)
+    const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)(?:\/|\.).*$/, '$1')
     // default values
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'category', value: category })
@@ -22,11 +20,11 @@ exports.onCreateNode = ({ node, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  // Query for markdown pages
-  const tagsIndex = []
-  const { data } = await graphql(`
+
+  // Create posts pages
+  const { data: posts } = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: { fields: { categorySlug: { eq: "post" } } }) {
         edges {
           node {
             fields {
@@ -40,15 +38,15 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  // Create posts pages
-  data.allMarkdownRemark.edges.forEach(({ node }) => {
+  const tagsIndex = []
+  posts.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve('./src/templates/post.jsx'),
       context: { slug: node.fields.slug },
     })
     // Create tags pages
-    node.frontmatter.tags.forEach(tag => {
+    ;(node.frontmatter.tags || []).forEach(tag => {
       if (!tagsIndex.includes(tag)) {
         tagsIndex.push(tag)
         createPage({
@@ -57,6 +55,31 @@ exports.createPages = async ({ graphql, actions }) => {
           context: { tag },
         })
       }
+    })
+  })
+
+  // Create notes pages
+  const { data: notes } = await graphql(`
+    {
+      allMarkdownRemark(filter: { fields: { categorySlug: { eq: "note" } } }) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              tags
+            }
+          }
+        }
+      }
+    }
+  `)
+  notes.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve('./src/templates/note.jsx'),
+      context: { slug: node.fields.slug },
     })
   })
 }

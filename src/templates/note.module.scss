@@ -1,7 +1,7 @@
 @import '../components/config';
 
-.Post {
-  // when adjusting the post width, the `maxWidth` option for
+.Note {
+  // when adjusting the note width, the `maxWidth` option for
   // 'gatsby-remark-images' must also be changed
   max-width: 720px;
 
@@ -31,6 +31,13 @@
       li {
         display: inline-block;
         margin-top: 10px;
+      }
+
+      img {
+        width: 30px;
+        margin-bottom: -9px;
+        margin-right: 8px;
+        border-radius: 50%;
       }
 
       .edit {

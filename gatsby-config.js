@@ -1,15 +1,13 @@
 const firstName = 'Aymeric'
 const lastName = 'Beaumet'
 const fullName = `${firstName} ${lastName}`
-const sourceUrl = 'https://github.com/aymericbeaumet/aymericbeaumet.com'
-const position = 'Senior Software Engineer'
+const sourceUrl = 'https://github.com/aymericbeaumet/blog'
 
 const siteMetadata = {
   // me
   title: `${fullName} Blog`,
   author: fullName,
-  position,
-  description: `${firstName} is a ${position} with 5 years of experience in deploying resilient, scalable, and highly available back-end systems.`,
+  description: `${firstName} is a Senior Software Engineer with 5 years of experience in deploying resilient, scalable, and highly available back-end systems.`,
   email: 'hi@aymericbeaumet.com',
   github: 'https://github.com/aymericbeaumet',
   stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet',
