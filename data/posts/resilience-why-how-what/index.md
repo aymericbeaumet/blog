@@ -5,7 +5,7 @@ thumbnail: ./thumbnail.png
 tags:
   - Resilience
   - Node.js
-  - JavaScript
+  - Talk
   - 🇫🇷
 timeToWatch: 27
 attachments:

@@ -39,7 +39,7 @@ export default function AboutAymericBeaumet({ data }) {
         <p>
           {'My name is '}
           <strong>{author}</strong>
-          {`. I am a versatile ${position} working on back-end systems with a focus on flexibility, resilience, and high availability.`}
+          {`. I am a Senior Software Engineer working on backend and infrastructure, with a focus on maintainability, resilience and high availability.`}
         </p>
 
         <p>
@@ -54,13 +54,11 @@ export default function AboutAymericBeaumet({ data }) {
           {'I am '}
           <strong>an enthusiast learner.</strong>
           {
-            ' I firmly believe that struggling is the best way to progress. The more complex the problem is, the more I enjoy working it out.'
+            ' I firmly believe that struggling is the best way to progress.'
           }
         </p>
 
         <p>
-          {'I am '}
-          <strong>modestly trying to make the world a better place.</strong>
           {' I '}
           <ExternalLink href={`${github}?tab=repositories&type=source`}>
             maintain
@@ -69,17 +67,11 @@ export default function AboutAymericBeaumet({ data }) {
           <ExternalLink href={`${stackoverflow}?tab=anwsers`}>
             help
           </ExternalLink>
-          {' people, but also '}
-          <Link to="/posts">write</Link>
+          {' people. I also write about '}
+          <Link to="/posts">what I do</Link>
           {' and '}
-          <Link to="/talks">speak</Link>
-          {' about my experiences.'}
-        </p>
-
-        <p>
-          {'I also publicly share '}
-          <Link to="/notes">notes</Link>
-          {' I take on various topics.'}
+          <Link to="/notes">what I learn</Link>
+          {'.'}
         </p>
 
         <p>

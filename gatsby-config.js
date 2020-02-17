@@ -28,11 +28,6 @@ const siteMetadata = {
       url: '/notes',
       categorySlug: 'note',
     },
-    {
-      name: 'talks',
-      url: '/talks',
-      categorySlug: 'talk',
-    },
   ],
 }
 
@@ -109,14 +104,6 @@ function withRSS(plugins = []) {
             output: '/notes.xml',
             query: query([
               'filter: { fields: { categorySlug: { eq: "note" } } }',
-            ]),
-            serialize,
-          },
-          {
-            title: `${siteMetadata.title} - Talks`,
-            output: '/talks.xml',
-            query: query([
-              'filter: { fields: { categorySlug: { eq: "talk" } } }',
             ]),
             serialize,
           },
