@@ -5,28 +5,32 @@
   color: #3e3e3e;
 
   ul {
-    & li:first-child {
+    & a:first-child {
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
     }
 
-    & li:last-child {
+    & a:last-child {
       border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
     }
   }
 
   li {
-    border: 1px solid #c1c1c1;
     padding: 6px 3px;
     list-style-type: none;
-    vertical-align: -0.15em;
 
     svg {
       margin: 0 5px;
+      vertical-align: -0.15em;
     }
+  }
 
-    & + li {
+  a {
+    border: 1px solid #c1c1c1;
+    display: block;
+
+    & + a {
       margin-top: -1px;
     }
   }

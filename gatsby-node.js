@@ -77,7 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   notes.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
-      path: node.fields.slug,
+      path: `/notes/${node.fields.slug}`,
       component: path.resolve('./src/templates/note.jsx'),
       context: { slug: node.fields.slug },
     })

@@ -73,6 +73,10 @@ export default function AboutAymericBeaumet({ data }) {
         </p>
 
         <p>
+          {'I would love to know more about you, feel free to get in touch.'}
+        </p>
+
+        <p>
           Best,
           <br />
           Aymeric

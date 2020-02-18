@@ -1,7 +1,3 @@
----
-title: zsh
----
-
 Must have:
 - super fast to load
 

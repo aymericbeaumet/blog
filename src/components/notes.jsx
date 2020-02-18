@@ -23,16 +23,16 @@ export default function Notes({ allMarkdownRemark }) {
         fields: { slug },
       },
     }) => (
-      <li className={classes.note} key={slug}>
-        <Link to={slug}>
+      <Link to={`/notes/${slug}`}>
+        <li className={classes.note} key={slug}>
           <FontAwesomeIcon
             width="32px"
             height="32px"
             icon={faFileAlt}
           />
           {slug}.md
-        </Link>
-      </li>
+        </li>
+      </Link>
     ),
   )
   return (

@@ -72,7 +72,6 @@ export default function Post({ data }) {
           <h1>{title}</h1>
           <ul className={classes.info}>
             <li>
-              &nbsp;
               <DateComponent date={date} />
               &nbsp;・
             </li>
@@ -84,7 +83,7 @@ export default function Post({ data }) {
             <li>
               &nbsp;
               <ExternalLink
-                title="Edit this page"
+                title="Edit this post"
                 href={`${sourceMasterUrl}/${fileRelativePath}`}
               >
                 <FontAwesomeIcon

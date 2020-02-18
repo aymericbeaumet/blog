@@ -6,7 +6,15 @@
   max-width: 720px;
 
   header {
-    color: #535353;
+    font-size: 30px;
+    font-weight: 400;
+    color: rgb(10, 10, 10);
+
+    h1 {
+      margin: 0;
+      font-size: inherit;
+      font-weight: inherit;
+    }
 
     a {
       color: inherit;
@@ -18,65 +26,16 @@
       }
     }
 
-    h1 {
-      font-size: 38px;
-      font-weight: 400;
-      margin: 0;
-      color: rgb(10, 10, 10);
-    }
+    li {
+      list-style-type: none;
+      display: inline-block;
 
-    .info {
-      margin-top: 5px; // + li margin-top = 15px
-
-      li {
-        display: inline-block;
-        margin-top: 10px;
+      & + li {
+        margin-left: 1px;
       }
 
-      img {
-        width: 30px;
-        margin-bottom: -9px;
-        margin-right: 8px;
-        border-radius: 50%;
-      }
-
-      .edit {
-        font-size: 18px;
-        margin-right: 3px;
-        margin-bottom: -1px;
-      }
-    }
-
-    .tags {
-      font-size: 13px;
-      margin-top: 14px; // + li margin-top = 20px
-
-      li {
-        display: inline-block;
-        padding: 3px 5px;
-        border: 1px solid #dfdfdf;
-        border-radius: 2px;
-        margin-top: 6px;
-        margin-right: 5px;
-      }
-    }
-
-    .attachments {
-      margin-top: 20px;
-
-      li {
-        display: inline-block;
-        padding: 3px 5px;
-        border: 1px solid #dfdfdf;
-        border-radius: 2px;
-
-        & + li {
-          margin-left: 5px;
-        }
-      }
-
-      svg {
-        margin-right: 5px;
+      &.slash {
+        margin-left: 3px;
       }
     }
   }
