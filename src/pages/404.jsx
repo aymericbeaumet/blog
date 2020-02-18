@@ -31,15 +31,13 @@ function NotFound({ data }) {
         <h1>Oups...</h1>
         <p>It seems the page you are looking for does not exist!</p>
         <p>
-          {'You can:'}
-          <ul>
-            <li>
-              <Link to="/about-aymeric-beaumet">Learn more about me</Link>
-            </li>
-            <li>
-              <Link to="/">Browse this blog for more content!</Link>
-            </li>
-          </ul>
+          {'You can '}
+          <Link to="/">learn more about me</Link>
+          {' and browse my '}
+          <Link to="/posts">posts</Link>
+          {' and '}
+          <Link to="/">notes</Link>
+          {'.'}
         </p>
         <h2>Fun fact</h2>
         <p>
