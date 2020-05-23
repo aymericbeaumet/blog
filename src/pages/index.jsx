@@ -4,7 +4,6 @@ import Helmet from 'react-helmet'
 import Layout from '../components/layout'
 import classes from './index.module.scss'
 import ExternalLink from '../components/external-link'
-import aymericBeaumetProfile from '../images/aymeric-beaumet-profile.jpg'
 
 export const query = graphql`
   query {
@@ -37,23 +36,19 @@ export default function AboutAymericBeaumet({ data }) {
         <p>
           {'My name is '}
           <strong>{author}</strong>
-          {`. I am a Senior Software Engineer working on backend and infrastructure, with a focus on maintainability, resilience and high availability.`}
+          {'. I am a Senior Software Engineer working on backend and infrastructure, with a focus on maintainability, resilience and high availability.'}
         </p>
 
         <p>
           {'I am '}
           <strong>passionate about computer science</strong>
-          {
-            ', and it has been so since I was 13. I am now lucky enough to live from that passion.'
-          }
+          {', and it has been so since I was 13. I am now lucky enough to live from that passion.'}
         </p>
 
         <p>
           {'I am '}
           <strong>an enthusiast learner.</strong>
-          {
-            ' I firmly believe that struggling is the best way to progress.'
-          }
+          {' I firmly believe that struggling is the best way to progress.'}
         </p>
 
         <p>
