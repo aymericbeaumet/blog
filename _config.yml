@@ -3,8 +3,8 @@ email: hi@aymericbeaumet.com
 description: >-
   Aymeric is a Senior Software Engineer with 5 years of experience in deploying
   resilient, scalable, and highly available back-end systems.
-baseurl: "/"
 url: "https://aymericbeaumet.com"
+baseurl: "/"
 github_username:  aymericbeaumet
 permalink: /:title
 theme: minima

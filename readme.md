@@ -5,7 +5,7 @@
 ```
 brew install ruby
 gem install jekyll bundler
-bundle exec jekyll serve
+bundle install && bundle exec jekyll serve
 ```
 
 _The `master` branch is automatically built and deployed to GitHub pages._
