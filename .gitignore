@@ -1,6 +1,5 @@
-.cache/
-.netlify/
-node_modules/
-public/
-resources/
-yarn-error.log
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor

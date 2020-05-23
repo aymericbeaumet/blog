@@ -1,7 +1,6 @@
 ---
 title: Behold z, the unsung jewel that rethinks shell navigation
 date: 2018-02-14
-thumbnail: ./thumbnail.jpg
 tags:
   - MacOS
   - Shell
