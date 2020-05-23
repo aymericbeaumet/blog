@@ -1,13 +1,6 @@
 ---
 title: Properly shim AngularJS applications using Browserify
-date: 2014-10-12
-thumbnail: ./thumbnail.png
-tags:
-  - AngularJS
-  - Browserify
-  - JavaScript
-attachments:
-  - ./example.tgz
+tags: [angularjs, browserify, javascript]
 ---
 
 _Edit (March 5th 2015): the frontend community has evolved in the last few
@@ -216,8 +209,6 @@ Once you’ve made those corrections, you should be able to compile and run the 
 ```
 
 Check it really works by opening `index.html`.
-
-A working example can be found [attached to this post](#attachments).
 
 ## Side notes
 

@@ -1,10 +1,6 @@
 ---
 title: Behold z, the unsung jewel that rethinks shell navigation
-date: 2018-02-14
-tags:
-  - MacOS
-  - Shell
-  - Zsh
+tags: [macos, shell, zsh]
 ---
 
 I spend a fair amount of time wandering around in the terminal. The chances
