@@ -11,7 +11,15 @@ _The `master` branch is automatically built and deployed to GitHub pages._
 - [Cloudflare](https://dash.cloudflare.com/a794a0792e9c7686cfb79297b6929644/aymericbeaumet.com)
 - [Google Search Console](https://search.google.com/search-console?resource_id=https%3A%2F%2Faymericbeaumet.com%2F)
 
-## DNS
+## Checks
+
+### Performance
+
+- Google PageSpeed Insights
+  - [desktop](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com%2F&tab=desktop&hl=en)
+  - [mobile](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com%2F&tab=mobile&hl=en))
+
+### DNS
 
 | Domain              | GSuite Toolbox Check MX                                                                              |
 | ------------------- | ---------------------------------------------------------------------------------------------------- |
