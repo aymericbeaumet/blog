@@ -3,8 +3,7 @@
 ## Commands
 
 ```
-bundle install
-bundle exec jekyll serve
+bundle install && bundle exec jekyll serve --livereload --open-url
 ```
 
 _The `master` branch is automatically built and deployed to GitHub pages._
