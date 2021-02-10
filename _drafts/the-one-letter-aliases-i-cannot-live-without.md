@@ -30,12 +30,6 @@ usually leaning toward using Rust implementations, but in this case the benefits
 outweight the performance impact of staying with Go considering the size of my
 file system.
 
-_All these snippets are from my
-[`.zshrc`](https://github.com/aymericbeaumet/dotfiles/blob/master/src/.zshrc).
-Also, I keep all my dotfiles synced on
-[GitHub](https://github.com/aymericbeaumet/dotfiles), feel free to wondew there,
-you might find a few things you could grab for your own configs._
-
 In order to use these snippets, just copy them into your shell configuration
 file and source it ([_"A little copying is better than a little
 dependency."](https://www.youtube.com/watch?v=PAAkCSZUG1c&t=9m28s)). For example
@@ -113,9 +107,13 @@ z() {
 }
 ```
 
----
+_All these snippets are from my
+[`.zshrc`](https://github.com/aymericbeaumet/dotfiles/blob/master/src/.zshrc).
+Also, I keep all my dotfiles synced on
+[GitHub](https://github.com/aymericbeaumet/dotfiles), feel free to wondew there,
+you might find a few things you could grab for your own configs._
 
-Here we are at the end of this shortlist. I hope you enjoyed it and that some of
-these tips will get into your day-to-day workflow. Am I missing anything that
-you consider is your best tip for productivity in the terminal? Please get in
-touch, I'm always looking forward adjusting my workflow.
+I hope you enjoyed it and that some of these tips will get into your day-to-day
+workflow. Am I missing anything that you consider is your best tip for
+productivity in the terminal? Please get in touch, I'm always looking forward
+adjusting my workflow.
