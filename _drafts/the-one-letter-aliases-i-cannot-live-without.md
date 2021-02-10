@@ -3,27 +3,34 @@ title: The one letter aliases I cannot live without
 tags: [shell, productivity, fzf]
 ---
 
-I spent most of my days working in a terminal. And I've always spent time to
-optimize my environment.
+I spend the biggest part of my day working in a terminal. I find the terminal to
+be a fantastic way to maximize your efficiency. The limitations you face are
+constraints that push you towards ... In this quest to find the work environment
+that suits you best you might sometimes find yourself into a "gluttony" of new
+tools, and getting a hard time actually deeply apprehending what they offer.
 
 While I like to optimize my environment, my mindset is always to minimize the
 number of tools I use. A restricted set of tools that are greatly integrated is
 more powerful in the long run than some specialized tools that harly integrate
 into your workflow.
 
+In this post I'm not going to sell you dozens of new tools that will magically
+improve your workflow. Instead I will recommend you one tool and give you a few
+ways to actually integrate it within your environment.
+
 Needless to say integrating a new tool in my workflow is not something that
 happens regularly. And after years and years the number of tools I use is in the
 end very limited. That being said, I try to get the most out of the tools I have
 selected.
 
-In these case, the code snippets below are built around
+In these case, the snippets below are built around
 [fzf](https://github.com/junegunn/fzf). fzf is a _command-line fuzzy finder_
 that is both fast and easy to use. When it comes to this kind of tools I'm
 usually leaning toward using Rust implementations, but in this case the benefits
 outweight the performance impact of staying with Go considering the size of my
 file system.
 
-_All the snippets below are from my
+_All these snippets are from my
 [`.zshrc`](https://github.com/aymericbeaumet/dotfiles/blob/master/src/.zshrc).
 Also, I keep all my dotfiles synced on
 [GitHub](https://github.com/aymericbeaumet/dotfiles), feel free to wondew there,
@@ -36,7 +43,7 @@ if you use zsh, you might append those at the end of your `~/.zshrc`. Note that
 these have been written for and tested in zsh, but they should work without any
 issue in bash.
 
-# `d`
+## `d`
 
 ```shell
 d() {
@@ -49,7 +56,7 @@ d() {
 }
 ```
 
-# `f`
+## `f`
 
 ```shell
 f() {
@@ -62,7 +69,7 @@ f() {
 }
 ```
 
-# `g`
+## `g`
 
 ```shell
 g() {
@@ -75,7 +82,7 @@ g() {
 compdef g=git
 ```
 
-# `v`
+## `v`
 
 ```shell
 v() {
@@ -93,7 +100,7 @@ v() {
 compdef v=nvim
 ```
 
-# Bonus: `z`
+## Bonus: `z`
 
 I've already talked about z in a [previous
 article](https://aymericbeaumet.com/behold-z-the-unsung-jewel-that-rethinks-shell-navigation).

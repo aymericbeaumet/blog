@@ -1,5 +1,5 @@
 ---
-title: Aggr: An experimental feeds aggregator
+title: 'Aggr: An experimental feeds aggregator'
 tags: []
 ---
 
