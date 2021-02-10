@@ -10,7 +10,7 @@
 ```
 bundle install
 bundle update
-bundle exec jekyll serve --livereload --incremental --open-url --drafts
+bundle exec jekyll serve --livereload --open-url --drafts
 ```
 
 _The `master` branch is automatically built and deployed to GitHub pages._

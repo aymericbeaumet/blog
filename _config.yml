@@ -15,9 +15,6 @@ social:
     - https://keybase.io/aymericbeaumet/
     - https://www.linkedin.com/in/aymericbeaumet/
 
-disqus:
-  shortname: aymericbeaumet
-
 baseurl: "/"
 permalink: /:title
 
@@ -25,3 +22,10 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+
+author:
+  name: Aymeric Beaumet
+  email: "hi@aymericbeaumet.com"
+
+disqus:
+  shortname: aymericbeaumet
