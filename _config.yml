@@ -18,6 +18,8 @@ social:
 baseurl: "/"
 permalink: /:title
 
+exclude: ['readme.md', 'Gemfile', 'Gemfile.lock']
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
