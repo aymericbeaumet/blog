@@ -15,6 +15,9 @@ social:
     - https://keybase.io/aymericbeaumet/
     - https://www.linkedin.com/in/aymericbeaumet/
 
+disqus:
+  shortname: aymericbeaumet
+
 baseurl: "/"
 permalink: /:title
 
