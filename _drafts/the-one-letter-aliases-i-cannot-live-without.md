@@ -6,26 +6,35 @@ tags: [shell, productivity, fzf]
 I spent most of my days working in a terminal. And I've always spent time to
 optimize my environment.
 
-The direction in which I go is always to minimize the number of tools I use, but
-to maximize their.
+While I like to optimize my environment, my mindset is always to minimize the
+number of tools I use. A restricted set of tools that are greatly integrated is
+more powerful in the long run than some specialized tools that harly integrate
+into your workflow.
 
-I try to identify what are the most efficient tools that can act as a
-foundation, then combine these tools with some glue code.
+Needless to say integrating a new tool in my workflow is not something that
+happens regularly. And after years and years the number of tools I use is in the
+end very limited. That being said, I try to get the most out of the tools I have
+selected.
 
-In these case, the snippets of code below are built around
+In these case, the code snippets below are built around
 [fzf](https://github.com/junegunn/fzf). fzf is a _command-line fuzzy finder_
 that is both fast and easy to use. When it comes to this kind of tools I'm
 usually leaning toward using Rust implementations, but in this case the benefits
 outweight the performance impact of staying with Go considering the size of my
 file system.
 
-_All these snippets are from my
-[`.zshrc`](https://github.com/aymericbeaumet/dotfiles/blob/master/src/.zshrc). I
-keep all my dotfiles on [GitHub](https://github.com/aymericbeaumet/dotfiles)._
+_All the snippets below are from my
+[`.zshrc`](https://github.com/aymericbeaumet/dotfiles/blob/master/src/.zshrc).
+Also, I keep all my dotfiles synced on
+[GitHub](https://github.com/aymericbeaumet/dotfiles), feel free to wondew there,
+you might find a few things you could grab for your own configs._
 
-In order to install these snippets, just copy them into your shell configuration
-file. These have been written for and tested in zsh, but they should work
-without any issue in bash.
+In order to use these snippets, just copy them into your shell configuration
+file and source it ([_"A little copying is better than a little
+dependency."](https://www.youtube.com/watch?v=PAAkCSZUG1c&t=9m28s)). For example
+if you use zsh, you might append those at the end of your `~/.zshrc`. Note that
+these have been written for and tested in zsh, but they should work without any
+issue in bash.
 
 # `d`
 
@@ -96,3 +105,10 @@ z() {
   cd "$(_z -l 2>&1 | fzf --nth 2.. +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')" || exit 1
 }
 ```
+
+---
+
+Here we are at the end of this shortlist. I hope you enjoyed it and that some of
+these tips will get into your day-to-day workflow. Am I missing anything that
+you consider is your best tip for productivity in the terminal? Please get in
+touch, I'm always looking forward adjusting my workflow.
