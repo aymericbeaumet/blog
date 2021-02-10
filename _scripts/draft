@@ -17,7 +17,7 @@ slug="$(slugify "$title")"
 filepath="../_drafts/$slug.md"
 cat >"$filepath" <<EOF
 ---
-title: $title
+title: '$title'
 tags: []
 ---
 
