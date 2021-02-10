@@ -8,7 +8,9 @@
 ## Commands
 
 ```
-bundle install && bundle exec jekyll serve --livereload --open-url
+bundle install
+bundle update
+bundle exec jekyll serve --livereload --incremental --open-url --drafts
 ```
 
 _The `master` branch is automatically built and deployed to GitHub pages._
@@ -24,7 +26,7 @@ _The `master` branch is automatically built and deployed to GitHub pages._
 
 - Google PageSpeed Insights
   - [desktop](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com%2F&tab=desktop&hl=en)
-  - [mobile](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com%2F&tab=mobile&hl=en))
+  - [mobile](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com%2F&tab=mobile&hl=en)
 
 ### DNS
 
