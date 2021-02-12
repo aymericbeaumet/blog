@@ -45,10 +45,11 @@ slowness).
 
 A swift `pkill Chromium` got me out of trouble. But now remains the question:
 how to prevent this from happening in the future? A quick search on Google led
-me to the chromedp issue tracker, where this has already [been
-reported](https://github.com/chromedp/chromedp/issues/472). This issue is now
-closed, but people still seem to experience it. If you are also experiencing the
-problem, I can only encourage you to make yourself heard there.
+me to the chromedp issue tracker, were several
+[resolved](https://github.com/chromedp/chromedp/issues/81)
+[issues](https://github.com/chromedp/chromedp/issues/289) are talking about this
+very problem. You can follow the latest updates
+[here](https://github.com/chromedp/chromedp/issues/752).
 
 In the meantime, I was looking for a temporary solution that would prevent the
 zombie processes from stacking (and eating my RAM). As it happens, the Chromium
