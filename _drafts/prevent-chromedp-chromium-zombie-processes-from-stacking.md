@@ -57,10 +57,13 @@ daily browser, so this doesn't impact me. But then I started to write this blog
 post, and I was sure at some point someone would face this issue while also
 using Chromium as its main browser. So I started digging.
 
-As it turns out, `pkill` does support an option allowing to restrict the process
-to which the signal should be sent to only be descendant of a specific _pid_.
-This is done by providing the `-P <pid>` flag. Once the code is adjusted as
-below, only the Chromium processes started by the Go process will be killed:
+As it turns out, `man pkill` gives us the solution. `pkill` (and `pgrep`) does
+support an option allowing to restrict the process to which the signal should be
+sent to only be descendant of a specific _pid_ (or said otherwise: all the
+processes whose parent is _pid_). This is done by providing the `-P <pid>` flag.
+
+Once the code is adjusted as below, only the Chromium processes started by the
+Go process will be killed:
 
 ```go
 exec.Command("pkill", "-P", strconv.Itoa(os.Getpid()), "Chromium").Output()
