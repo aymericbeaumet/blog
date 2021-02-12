@@ -192,5 +192,3 @@ I hope you enjoyed the journey we took to get there. It is enjoyable how
 sometimes a simple problem will lead you into challenging your knowledge on
 something you thought was well inside your comfort zone. Only to remind you you
 can always get further.
-
-Now back to my project...
