@@ -72,20 +72,20 @@ func main() {
 ```
 
 It is not as chirurgical as I would like it to be as all the Chromium processes
-on my given machine would die, but this works. That being said, I'm not using
-Chromium as my main browser, so I'm not really impacted. But then came the time
-to write this blog post, and I was sure at some point someone would face this
-issue _and_ would also be using Chromium as its main browser. So I started
-digging.
+on my machine would die, but this works. That being said, I'm not using Chromium
+as my main browser, so I'm not really impacted. But then came the time to write
+this blog post, and I was sure at some point someone would face this issue _and_
+would also be using Chromium as its main browser. So I started digging.
 
 As it turns out, `man pkill` gives us some leads to explore. `pkill` (and
-`pgrep` for that matters, they share most of their options) does support a flag
-allowing to restrict the processes receiving the signal to only the descendants
-of a specific PID (or said otherwise: all the processes whose parent is PID).
-This is achieved by providing the `-P <pid>` flag.
+`pgrep` for that matters, as they share most of their options) does support a
+flag allowing to restrict the processes receiving the signal to only the
+descendants of a specific PID (or said otherwise: all the processes whose parent
+is PID).  This is achieved by providing the `-P <pid>` flag.
 
-Once the code is adjusted as below, only the Chromium processes started by the
-Go process will be killed:
+Once the code is adjusted to leverage the
+[`os.Getpid()`](https://golang.org/pkg/os/#Getpid) function, only the Chromium
+processes started by the Go process will be killed:
 
 ```go
 _, err := exec.Command("pkill", "-P", strconv.Itoa(os.Getpid()), "Chromium").Output()
@@ -96,11 +96,17 @@ processes are not directly attached to the Go process as there are intermediate
 forks. So trying to match the parent process will not work.
 
 While looking at the activity monitor, I noticed there was something else than
-the parent PID mentionned: the process group PID. A quick look on the [Wikipedia
-page](https://en.wikipedia.org/wiki/Process_group) encouraged me to continue
-down that path. Reading `man ps` taught me the `ps -g` flag, which allows to
-list all the processes belonging to a given process group (in this case of the
-Go process group PID _46499_):
+the parent PID mentionned: the process group PID. A quick look at the [Wikipedia
+page](https://en.wikipedia.org/wiki/Process_group) reads:
+
+> In a POSIX-conformant operating system, a process group denotes a collection
+> of one or more processes. Among other things, a process group is used to
+> control the distribution of a signal; when a signal is directed to a process
+> group, the signal is delivered to each process that is a member of the group.
+
+This encouraged me to continue in that direction. Reading `man ps` taught me the
+`ps -g` flag, which allows to list all the processes belonging to a given
+process group (in this case of the Go process group PID _46499_):
 
 ```bash
 $ ps -g 46499
@@ -121,10 +127,10 @@ _, err := exec.Command("pkill", "-g", strconv.Itoa(os.Getpid()), "Chromium").Out
 ```
 
 But it doesn't. If you look carefully at the `ps` command above, you can see
-there is the actual `scraper` process, but above it you can see the `go run .`
-process. This is the process that actually created the group. So we should be
-careful to use its PID instead. In Go, you can get the PID of the parent process
-with [os.Getppid()](https://golang.org/pkg/os/#Getppid), which gives us:
+there is the actual `scraper` process, but above is the `go run .` process. This
+is the process that actually created the group. So we should be careful to use
+its PID instead. In Go, you can get the PID of the parent process with
+[os.Getppid()](https://golang.org/pkg/os/#Getppid), which gives us:
 
 ```go
 _, err := exec.Command("pkill", "-g", strconv.Itoa(os.Getppid()), "Chromium").Output()
@@ -144,7 +150,6 @@ zombie processes:
 ```go
 _, errA := exec.Command("pkill", "-g", strconv.Itoa(os.Getppid()), "Chromium").Output()
 _, errB := exec.Command("pkill", "-g", strconv.Itoa(os.Getpid()), "Chromium").Output()
-}
 ```
 
 This works. But I don't really find this elegant as we are expecting at least
@@ -157,12 +162,12 @@ have a look at `man pkill`:
             or pkill command.
 ```
 
-Reading this carefully teaches us we could actually pass a comma-separated list
-of PID to `-g`, which enables to only call `pkill` once by passing both the PPID
-and the PID to `-g`, only separating them by a comma. But the second part of the
-description is actually much more interesting: by passing `0` we can actually
-ask `pkill` to infer for us what is the current process group PID. That greatly
-simplifies the code by moving this responsability out of the Go code:
+Reading this teaches us we could actually pass a comma-separated list of PID to
+`-g`, which enables to only call `pkill` once by passing both the PPID and the
+PID at the same time. But the second part of the description is actually much
+more interesting: by passing `0` we ask `pkill` to infer for us what is the
+current process group PID. That greatly simplifies the code by moving this
+responsability out of Go:
 
 ```go
 func main() {
@@ -179,8 +184,10 @@ func main() {
 }
 ```
 
-And there we have it. This is the snippet I'm currently using in my project.
-Until the issue is fixed upstream.
+And there we have it, this piece of code kills all the Chromium processes that
+have been started by the Go process, without impacting any other Chromium
+process that would be running on your system. This is the snippet I'm currently
+using in my project. Until the issue is fixed upstream.
 
 I hope you enjoyed the journey we took to get there. It is enjoyable how
 sometime a simple problem will lead you into challenging your knowledge on
