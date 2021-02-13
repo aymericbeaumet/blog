@@ -18,6 +18,9 @@ social:
 baseurl: "/"
 permalink: /:title
 
+header_pages:
+  - about.md
+
 exclude: ['readme.md', 'Gemfile', 'Gemfile.lock']
 
 plugins:
