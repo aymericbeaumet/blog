@@ -5,8 +5,8 @@ tags: [golang, chromedp, chromium, macos]
 
 I have recently been playing with
 [chromedp](https://github.com/chromedp/chromedp). Chromedp is a Go library that
-enables you to programmatically control a Chromium browser. This can be using
-for different tasks: from testing to scraping.  I have some memories from
+enables you to control a Chromium browser programmatically. This can be used
+for different tasks: from testing to scraping.  I have some memories of
 implementing a similar program in Node.js, and I was pleased to leverage a
 strongly typed language for the job.
 
@@ -48,8 +48,8 @@ how to prevent this from happening in the future? A quick search on Google led
 me to the chromedp issue tracker, were several
 [resolved](https://github.com/chromedp/chromedp/issues/81)
 [issues](https://github.com/chromedp/chromedp/issues/289) are reporting this
-very problem. They were all closed and I didn't have the exact same symptoms, so
-I opened a [new one](https://github.com/chromedp/chromedp/issues/752) to keep
+very problem. They were all closed, and I didn't have the same symptoms, so I
+opened a [new one](https://github.com/chromedp/chromedp/issues/752) to keep
 track of what I was facing.
 
 _TLDR: if you are looking for the solution, jump to the [end of this
@@ -101,13 +101,12 @@ processes started by the Go process will be killed:
 _, err := exec.Command("pkill", "-P", strconv.Itoa(os.Getpid()), "Chromium").Output()
 ```
 
-Or so I thought, this actually doesn't work. As it turns out, the Chrome
-processes are not directly attached to the Go process as there are intermediate
-forks. So trying to match the parent process will not behave as you would
-expect.
+Or so I thought, this doesn't work. As it turns out, the Chrome processes are
+not directly attached to the Go process as there are intermediate forks. So
+trying to match the parent process will not behave as you would expect.
 
 While looking at the activity monitor, I noticed there was something else than
-the process ID (PID) mentioned: the process group ID (PGID), I was not sure what
+the process ID (PID) mentioned: the process group ID (PGID). I was not sure what
 this was about. A quick look at the [Wikipedia
 page](https://en.wikipedia.org/wiki/Process_group) reads:
 
@@ -124,7 +123,7 @@ group concept. Reading `man ps` helped me craft these two commands:
 2. `ps -g <PGID>`: which lists all the processes belonging to a specific process
    group ID
 
-By using the first command I found my Go process PGID (_46499_), and by using
+By using the first command, I found my Go process PGID (_46499_), and by using
 the second one I was able to list all of the processes in this group:
 
 ```bash
@@ -158,7 +157,7 @@ _, err := exec.Command("pkill", "-g", strconv.Itoa(os.Getppid()), "Chromium").Ou
 ```
 
 Does it work? Yes, finally! Well, it works when we `go run .`, but what happens
-when we `go build` and directly run the binary? Well, its' not working. The
+when we `go build` and directly run the binary? Well, it's not working. The
 reason is that the process group is no longer the one created by _go run_, but
 the one created by the binary itself as we run it directly. So we need to
 account for that when we try to guess the PGID from the code.
@@ -172,9 +171,9 @@ _, errA := exec.Command("pkill", "-g", strconv.Itoa(os.Getppid()), "Chromium").O
 _, errB := exec.Command("pkill", "-g", strconv.Itoa(os.Getpid()), "Chromium").Output()
 ```
 
-This works. But I don't really find this elegant as we expect half of the
-`pkill` commands to fail during a normal execution process. Can we take it one
-step further? Let's have a look at `man pkill`:
+This works. But I don't find this elegant as we expect half of the `pkill`
+commands to fail during a normal execution process. Can we take it one step
+further? Let's have a look at `man pkill`:
 
 ```
 -g pgrp     Restrict matches to processes with a process group ID in the comma-separated list
@@ -184,10 +183,10 @@ step further? Let's have a look at `man pkill`:
 
 Reading this teaches us we could pass a comma-separated list of PID to `-g`,
 which enables to only call _pkill_ once by passing both the PGID and the PID at
-the same time. But the second part of the description is actually much more
-interesting: by passing `-g 0` we ask _pkill_ to infer for us what is the current
-process group ID. That greatly simplifies the code by moving this
-responsability out of Go.
+the same time. But the second part of the description is much more interesting:
+by passing `-g 0` we ask _pkill_ to infer for us what is the current process
+group ID. That greatly simplifies the code by moving this responsibility out of
+Go.
 
 ### The solution
 
@@ -209,18 +208,18 @@ func main() {
 ```
 
 This does exactly what we want: it kills all the Chromium processes that have
-been started by the Go process, without impacting any other Chromium process
-that would be running on your machine. This is simple, elegant and works on all
+been started by the Go process without impacting any other Chromium process that
+would be running on your machine. This is simple, elegant, and works on all
 POSIX systems. It also has the advantage of being transposable to any other
 stack you use. Bingo!
 
 ## Conclusion
 
 You might be wondering: was it worth digging all the way through considering you
-already had a working solution from the get go? That's a good point.  Well,
-first it was not really working the way I expected it to. And second, I strongly
-believe our knowledge is always (and will always be) shallow, which makes me
-strive to take the time to dig deeper whenever I have the opportunity.
+already had a working solution from the get-go? That's a good point. Well, first
+it was not working the way I expected it to. And second, I strongly believe our
+knowledge is always (and will always be) shallow, which makes me strive to take
+the time to dig deeper whenever I have the opportunity.
 
 It is enjoyable how sometimes a simple problem will challenge you on something
 you thought was well inside your comfort zone.
