@@ -4,13 +4,11 @@ tags: [golang, chromedp, chromium, macos]
 ---
 
 I have recently been playing with
-[chromedp](https://github.com/chromedp/chromedp) in order to programmatically
-control a Chromium browser to scrape some information. I have some memories from
-implementing a similar task in Node.js, and I was pleased to leverage a strongly
-typed language for the job.
-
-_TLDR: if you are looking for the solution, look for the last code snippet at
-the end of the post._
+[chromedp](https://github.com/chromedp/chromedp). Chromedp is a Go library that
+enables you to programmatically control a Chromium browser. This can be using
+for different tasks: from testing to scraping.  I have some memories from
+implementing a similar program in Node.js, and I was pleased to leverage a
+strongly typed language for the job.
 
 I was able to quickly start experimenting by following the
 [examples](https://github.com/chromedp/examples) and browsing the
@@ -32,30 +30,39 @@ func main() {
 }
 ```
 
+## The problem
+
 Not so long after I started getting results, I suddenly heard my MacBook Pro
 fans running crazy. Similar to what's happening when a `brew install` is not
 going as expected, and you feel like you are recompiling gcc from scratch. This
 was accompanied by a weirdly unpleasant gentle warmth on my hands and an
-increasing slowness on the MacOS UI.
+increasing slowness on the macOS UI.
 
 A quick look at the [activity monitor](/resources/chromium_zombies.png) revealed
 that the Chromium processes were not terminated as expected. They were also
 using a lot of RAM, and forced my computer to swap (hence the perceived
 slowness).
 
-A swift `pkill Chromium` got me out of trouble. But now remains the question:
+Running `pkill Chromium` got me out of trouble. But now remains the question:
 how to prevent this from happening in the future? A quick search on Google led
 me to the chromedp issue tracker, were several
 [resolved](https://github.com/chromedp/chromedp/issues/81)
-[issues](https://github.com/chromedp/chromedp/issues/289) are talking about this
-very problem. You can follow the latest updates
-[here](https://github.com/chromedp/chromedp/issues/752).
+[issues](https://github.com/chromedp/chromedp/issues/289) are reporting this
+very problem. They were all closed and I didn't have the exact same symptoms, so
+I opened a [new one](https://github.com/chromedp/chromedp/issues/752) to keep
+track of what I was facing.
 
-In the meantime, I was looking for a temporary solution that would prevent the
-zombie processes from stacking (and eating my RAM). As it happens, the Chromium
-processes are spawned with the same user as the Go process. That means it should
-theoratically be possible to kill them from within the Go process right before
-it dies. I quickly tried to confirm this theory with the following code:
+_TLDR: if you are looking for the solution, jump to the [end of this
+post](#the-solution)._
+
+## The quick fix
+
+This problem will at some point be fixed upstream, but in the meantime I was
+looking for a temporary solution that would prevent the zombie processes from
+stacking (and eating my RAM). As it happens, the Chromium processes are spawned
+with the same user as the Go process. That means it should theoratically be
+possible (permission wise) to kill them from within the Go process right before
+it dies.  I quickly tried to confirm this theory with the following code:
 
 ```go
 func main() {
@@ -71,17 +78,20 @@ func main() {
 }
 ```
 
-It is not as accurate as I would like it to be, as all the Chromium processes on
-my machine would die, but this works. That being said, I'm not using Chromium as
-my primary browser, so I'm not really impacted. But then came the time to write
-this blog post, and I was sure at some point someone would face this issue _and_
-would also be using Chromium as its primary browser. So I started digging.
+It is not as accurate as I would like it to be. All the Chromium processes on my
+machine (whose my user has rights on) would die, but this works. That being
+said, I'm not using Chromium as my primary browser, so I'm not really impacted.
+But then came the time to write this blog post, and I was sure at some point
+someone would face this issue _and_ would also be using Chromium as its primary
+browser.  So I started digging.
 
-As it turns out, `man pkill` gives us some leads to explore. `pkill` (and
-`pgrep` for that matters, as they share most of their options) does support a
-flag allowing to restrict the processes receiving the signal to only the
+## Going down the rabbit hole
+
+As it turns out, `man pkill` gives us some interesting leads to explore. `pkill`
+(and `pgrep` for that matters, as they share most of their options) does support
+a flag allowing to restrict the processes receiving the signal to only the
 descendants of a specific PID (or said otherwise: all the processes whose parent
-is PID).  This is achieved by providing the `-P <pid>` flag.
+is PID).  This is achieved by providing the `-P <PID>` flag.
 
 Once the code is adjusted to leverage the
 [`os.Getpid()`](https://golang.org/pkg/os/#Getpid) function, only the Chromium
@@ -91,12 +101,14 @@ processes started by the Go process will be killed:
 _, err := exec.Command("pkill", "-P", strconv.Itoa(os.Getpid()), "Chromium").Output()
 ```
 
-Or so I thought. This actually doesn't work. As it turns out, the Chrome
+Or so I thought, this actually doesn't work. As it turns out, the Chrome
 processes are not directly attached to the Go process as there are intermediate
-forks. So trying to match the parent process will not work.
+forks. So trying to match the parent process will not behave as you would
+expect.
 
 While looking at the activity monitor, I noticed there was something else than
-the parent PID mentioned: the process group PID. A quick look at the [Wikipedia
+the process ID (PID) mentioned: the process group ID (PGID), I was not sure what
+this was about. A quick look at the [Wikipedia
 page](https://en.wikipedia.org/wiki/Process_group) reads:
 
 > In a POSIX-conformant operating system, a process group denotes a collection
@@ -104,9 +116,16 @@ page](https://en.wikipedia.org/wiki/Process_group) reads:
 > control the distribution of a signal; when a signal is directed to a process
 > group, the signal is delivered to each process that is a member of the group.
 
-This encouraged me to continue in that direction. Reading `man ps` taught me the
-`ps -g` flag, which allows listing all the processes belonging to a given
-process group (in this case of the Go process group PID _46499_):
+It felt like this was one way to go, so I decided to dig this whole process
+group concept. Reading `man ps` helped me craft these two commands:
+
+1. `ps -o pid,pgid,command`: which lists all the processes on the system, along
+   with their PID, PGID, and the full command
+2. `ps -g <PGID>`: which lists all the processes belonging to a specific process
+   group ID
+
+By using the first command I found my Go process PGID (_46499_), and by using
+the second one I was able to list all of the processes in this group:
 
 ```bash
 $ ps -g 46499
@@ -118,42 +137,44 @@ $ ps -g 46499
 46522 ttys001    0:08.18 /Applications/Chromium.app/Contents/Frameworks/Chromium Framework.framework/Versions
 ```
 
-This lists all the Chromium processes created by the Go process! We are getting
-close to what we want. As it turns out, `pkill` also supports the `-g` flag. So
-changing the code as follows should behave as expected:
+This lists all the processes belonging to the Go process group (including
+Chromium's). We are getting close to what we want. As it turns out, `pkill` also
+supports the `-g` flag (with the same semantic). So changing the code as follows
+should behave as expected:
 
 ```go
 _, err := exec.Command("pkill", "-g", strconv.Itoa(os.Getpid()), "Chromium").Output()
 ```
 
 But it doesn't. If you look carefully at the `ps` command above, you can see the
-actual `scraper` process, but above is the `go run .` process. This is the
-process that created the group. So we should be careful to use its PID instead.
-In Go, you can get the PID of the parent process with
+actual `scraper` process, but above it is the `go run .` process, which is the
+process that created the group. As we can see, the process group ID is the PID
+of the process that created the group. So we should be careful to use the _go
+run_ PID instead. In Go, you can get the PID of the parent process with
 [os.Getppid()](https://golang.org/pkg/os/#Getppid), which gives us:
 
 ```go
 _, err := exec.Command("pkill", "-g", strconv.Itoa(os.Getppid()), "Chromium").Output()
 ```
 
-And finally, it works as expected, at least! Well, it works when we `go run .`.
-What happens when we `go build`? I will let you try, but I can tell you it
-doesn't work. The reason is that the group process is no longer the one created
-by _go run_, but the one created by the binary itself as we run it directly. So
-we need to account for that when we infer the group process PID from the code.
+Does it work? Yes, finally! Well, it works when we `go run .`, but what happens
+when we `go build` and directly run the binary? Well, its' not working. The
+reason is that the process group is no longer the one created by _go run_, but
+the one created by the binary itself as we run it directly. So we need to
+account for that when we try to guess the PGID from the code.
 
 An easy solution is to try to `pkill` both for the current pid _and_ the parent
-pid. As long as they don't both fail, it means we have succeeded to kill all the
-zombie processes:
+pid. At least one of them will be the process group ID. So as long as they don't
+both fail, it means we have succeeded to kill all the zombie processes:
 
 ```go
 _, errA := exec.Command("pkill", "-g", strconv.Itoa(os.Getppid()), "Chromium").Output()
 _, errB := exec.Command("pkill", "-g", strconv.Itoa(os.Getpid()), "Chromium").Output()
 ```
 
-This works. But I don't really find this elegant as we expect at least half of
-the `pkill` commands to fail. Can we take it one step further? Let's have a look
-at `man pkill`:
+This works. But I don't really find this elegant as we expect half of the
+`pkill` commands to fail during a normal execution process. Can we take it one
+step further? Let's have a look at `man pkill`:
 
 ```
 -g pgrp     Restrict matches to processes with a process group ID in the comma-separated list
@@ -162,11 +183,15 @@ at `man pkill`:
 ```
 
 Reading this teaches us we could pass a comma-separated list of PID to `-g`,
-which enables to only call `pkill` once by passing both the PPID and the PID at
+which enables to only call _pkill_ once by passing both the PGID and the PID at
 the same time. But the second part of the description is actually much more
-interesting: by passing `0` we ask `pkill` to infer for us what is the current
-process group PID. That greatly simplifies the code by moving this
-responsability out of Go. Which gives us:
+interesting: by passing `-g 0` we ask _pkill_ to infer for us what is the current
+process group ID. That greatly simplifies the code by moving this
+responsability out of Go.
+
+### The solution
+
+By applying this to our piece of code, we reach this solution:
 
 ```go
 func main() {
@@ -183,12 +208,19 @@ func main() {
 }
 ```
 
-And there we have it, this piece of code kills all the Chromium processes that
-have been started by the Go process, without impacting any other Chromium
-process that would be running on your system. This is the snippet I'm currently
-using in my project. Until the issue is fixed upstream.
+This does exactly what we want: it kills all the Chromium processes that have
+been started by the Go process, without impacting any other Chromium process
+that would be running on your machine. This is simple, elegant and works on all
+POSIX systems. It also has the advantage of being transposable to any other
+stack you use. Bingo!
 
-I hope you enjoyed the journey we took to get there. It is enjoyable how
-sometimes a simple problem will lead you into challenging your knowledge on
-something you thought was well inside your comfort zone. Only to remind you you
-can always get further.
+## Conclusion
+
+You might be wondering: was it worth digging all the way through considering you
+already had a working solution from the get go? That's a good point.  Well,
+first it was not really working the way I expected it to. And second, I strongly
+believe our knowledge is always (and will always be) shallow, which makes me
+strive to take the time to dig deeper whenever I have the opportunity.
+
+It is enjoyable how sometimes a simple problem will challenge you on something
+you thought was well inside your comfort zone.
