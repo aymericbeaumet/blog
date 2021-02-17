@@ -1,6 +1,6 @@
 ---
 title: The one letter aliases I cannot live without
-tags: [shell, productivity, fzf]
+tags: [shell, productivity, fd, fzf, git, vim, zoxide]
 ---
 
 I spend the biggest part of my day working in a terminal. I find the terminal to
@@ -37,7 +37,9 @@ if you use zsh, you might append those at the end of your `~/.zshrc`. Note that
 these have been written for and tested in zsh, but they should work without any
 issue in bash.
 
-## `d`
+## The snippets
+
+### fd (_d_)
 
 ```shell
 d() {
@@ -50,7 +52,7 @@ d() {
 }
 ```
 
-## `f`
+### fd (_f_)
 
 ```shell
 f() {
@@ -63,7 +65,7 @@ f() {
 }
 ```
 
-## `g`
+### git (_g_)
 
 ```shell
 g() {
@@ -76,7 +78,7 @@ g() {
 compdef g=git
 ```
 
-## `v`
+### vim (_v_)
 
 ```shell
 v() {
@@ -94,18 +96,15 @@ v() {
 compdef v=nvim
 ```
 
-## Bonus: `z`
+### zoxide (_z_)
 
 I've already talked about z in a [previous
 article](https://aymericbeaumet.com/behold-z-the-unsung-jewel-that-rethinks-shell-navigation).
 
-```shell
-unalias z &> /dev/null
-z() {
-  [ $# -gt 0 ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf --nth 2.. +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')" || exit 1
-}
-```
+Since then my setup has evolved, and while I'm still following the same logic,
+I've switched to use zoxide.
+
+## Conclusion
 
 _All these snippets are from my
 [`.zshrc`](https://github.com/aymericbeaumet/dotfiles/blob/master/src/.zshrc).
