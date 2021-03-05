@@ -15,7 +15,7 @@ _The `master` branch is automatically built and deployed to GitHub pages._
 ### Dashboards
 
 - [Cloudflare](https://dash.cloudflare.com/a794a0792e9c7686cfb79297b6929644/aymericbeaumet.com)
-- [Google Search Console](https://search.google.com/search-console?resource_id=https%3A%2F%2Faymericbeaumet.com%2F)
+- [Google Search Console](https://search.google.com/search-console?resource_id=sc-domain%3Aaymericbeaumet.com)
 
 ### Performance
 
