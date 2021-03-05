@@ -1,10 +1,5 @@
 # aymericbeaumet.com
 
-## Cross-posting
-
-- [Dev.to](https://docs.dev.to/api/#operation/createArticle)
-- [Medium](https://github.com/Medium/medium-api-docs#33-posts)
-
 ## Commands
 
 ```
