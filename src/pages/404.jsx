@@ -36,7 +36,7 @@ function NotFound({ data }) {
           {' and browse my '}
           <Link to="/posts">posts</Link>
           {' and '}
-          <Link to="/notes">notes</Link>
+          <Link to="/projects">projects</Link>
           {'.'}
         </p>
         <h2>Fun fact</h2>

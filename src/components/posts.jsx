@@ -1,10 +1,10 @@
-import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { graphql, Link } from 'gatsby'
-import * as classes from './posts.module.scss'
-import Duration from './duration'
-import DateComponent from './date'
-import Tag from './tag'
+import React from 'react';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { graphql, Link } from 'gatsby';
+import * as classes from './posts.module.scss';
+import Duration from './duration';
+import DateComponent from './date';
+import Tag from './tag';
 
 export const componentFragment = graphql`
   fragment PostsRequirements on MarkdownRemarkConnection {
@@ -28,7 +28,7 @@ export const componentFragment = graphql`
       }
     }
   }
-`
+`;
 
 export default function Posts({ allMarkdownRemark }) {
   const posts = allMarkdownRemark.edges.map(
@@ -40,7 +40,7 @@ export default function Posts({ allMarkdownRemark }) {
       },
     }) => (
       <li className={classes.post} key={slug}>
-        <Link to={slug}>
+        <Link to={`/${slug}`}>
           <figure>
             <GatsbyImage
               fluid={thumbnail.childImageSharp.gatsbyImageData}
@@ -62,10 +62,11 @@ export default function Posts({ allMarkdownRemark }) {
         </ul>
       </li>
     ),
-  )
+  );
+
   return (
     <section className={classes.Posts}>
       <ul className={classes.postsList}>{posts}</ul>
     </section>
-  )
+  );
 }

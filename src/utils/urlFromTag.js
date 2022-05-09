@@ -1,3 +1,3 @@
-const slugFromTag = require('./slugFromTag')
+const slugFromTag = require('./slugFromTag');
 
-module.exports = (tag) => `/tags/${slugFromTag(tag)}`
+module.exports = (tag) => `/tags/${slugFromTag(tag)}`;

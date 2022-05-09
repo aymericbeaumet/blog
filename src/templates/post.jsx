@@ -1,16 +1,14 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faSave } from '@fortawesome/free-regular-svg-icons'
-import Layout from '../components/layout'
-import 'prismjs/themes/prism-coy.css'
-import * as classes from './post.module.scss'
-import Duration from '../components/duration'
-import DateComponent from '../components/date'
-import Tag from '../components/tag'
-import aymericBeaumetProfile from '../images/aymeric-beaumet-profile.jpg'
-import ExternalLink from '../components/external-link'
+import React from 'react';
+import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import Layout from '../components/layout';
+import 'prismjs/themes/prism-coy.css';
+import * as classes from './post.module.scss';
+import Duration from '../components/duration';
+import DateComponent from '../components/date';
+import Tag from '../components/tag';
 
 export const query = graphql`
   query ($slug: String!) {
@@ -25,10 +23,6 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
-      fields {
-        slug
-        fileRelativePath
-      }
       frontmatter {
         date
         title
@@ -42,20 +36,16 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 export default function Post({ data }) {
   const {
-    site: {
-      siteMetadata: { siteUrl, author, sourceMasterUrl },
-    },
     markdownRemark: {
       html,
       timeToRead,
-      fields: { slug, fileRelativePath },
       frontmatter: { date, title, timeToWatch, tags = [], attachments = [] },
     },
-  } = data
+  } = data;
   return (
     <Layout>
       <Helmet>
@@ -73,21 +63,6 @@ export default function Post({ data }) {
               &nbsp;
               {Duration({ timeToRead, timeToWatch })}
               &nbsp;・
-            </li>
-            <li>
-              &nbsp;
-              <ExternalLink
-                title="Edit this post"
-                href={`${sourceMasterUrl}/${fileRelativePath}`}
-              >
-                <FontAwesomeIcon
-                  width="32px"
-                  height="32px"
-                  className={classes.edit}
-                  icon={faEdit}
-                />
-                &nbsp;edit
-              </ExternalLink>
             </li>
           </ul>
           {tags && tags.length > 0 ? (
@@ -121,5 +96,5 @@ export default function Post({ data }) {
         ) : null}
       </section>
     </Layout>
-  )
+  );
 }

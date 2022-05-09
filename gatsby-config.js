@@ -1,7 +1,7 @@
-const firstName = 'Aymeric'
-const lastName = 'Beaumet'
-const fullName = `${firstName} ${lastName}`
-const sourceUrl = 'https://github.com/aymericbeaumet/blog'
+const firstName = 'Aymeric';
+const lastName = 'Beaumet';
+const fullName = `${firstName} ${lastName}`;
+const sourceUrl = 'https://github.com/aymericbeaumet/blog';
 
 const siteMetadata = {
   // me
@@ -36,7 +36,7 @@ const siteMetadata = {
       categorySlug: 'project',
     },
   ],
-}
+};
 
 function withRSS(plugins = []) {
   const serialize = ({ query: { site, allMarkdownRemark } }) => {
@@ -48,9 +48,9 @@ function withRSS(plugins = []) {
         url: site.siteMetadata.siteUrl + edge.node.fields.slug,
         guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
         custom_elements: [{ 'content:encoded': edge.node.html }],
-      }
-    })
-  }
+      };
+    });
+  };
   const query = (...args) => `
     {
       allMarkdownRemark(
@@ -73,7 +73,7 @@ function withRSS(plugins = []) {
         }
       }
     }
-  `
+  `;
   return [
     ...plugins,
     {
@@ -101,7 +101,7 @@ function withRSS(plugins = []) {
         ],
       },
     },
-  ]
+  ];
 }
 
 module.exports = {
@@ -162,4 +162,4 @@ module.exports = {
     }, // before gatsby-plugin-offline
     'gatsby-plugin-offline',
   ]),
-}
+};

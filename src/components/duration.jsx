@@ -1,6 +1,6 @@
-import React from 'react'
-import Timer from '../images/timer.svg'
-import * as classes from './duration.module.scss'
+import React from 'react';
+import Timer from '../images/timer.svg';
+import * as classes from './duration.module.scss';
 
 export default function Duration({ timeToRead, timeToWatch } = {}) {
   if (typeof timeToWatch === 'number') {
@@ -15,8 +15,9 @@ export default function Duration({ timeToRead, timeToWatch } = {}) {
         <Timer />
         {`${timeToWatch} min watch`}
       </time>
-    )
+    );
   }
+
   if (typeof timeToRead === 'number') {
     return (
       <time
@@ -29,7 +30,8 @@ export default function Duration({ timeToRead, timeToWatch } = {}) {
         <Timer />
         {`${timeToRead} min read`}
       </time>
-    )
+    );
   }
-  return null
+
+  return null;
 }
