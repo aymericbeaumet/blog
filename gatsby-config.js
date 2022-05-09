@@ -9,8 +9,12 @@ const siteMetadata = {
   author: fullName,
   description: `${firstName} is a Senior Software Engineer with 5 years of experience in deploying resilient, scalable, and highly available back-end systems.`,
   email: 'hi@aymericbeaumet.com',
+  // profiles
   github: 'https://github.com/aymericbeaumet',
-  stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet',
+  linkedin: 'https://www.linkedin.com/in/aymericbeaumet/',
+  stackoverflow:
+    'https://stackoverflow.com/users/1071486/aymericbeaumet?tab=topactivity',
+  twitter: 'https://twitter.com/aymericbeaumet',
   // website
   siteUrl: 'https://aymericbeaumet.com',
   sourceUrl,
@@ -22,9 +26,14 @@ const siteMetadata = {
       categorySlug: 'post',
     },
     {
-      name: 'notes',
-      url: '/notes',
-      categorySlug: 'note',
+      name: 'talks',
+      url: '/talks',
+      categorySlug: 'talk',
+    },
+    {
+      name: 'projects',
+      url: '/projects',
+      categorySlug: 'project',
     },
   ],
 }
@@ -87,22 +96,6 @@ function withRSS(plugins = []) {
             title: siteMetadata.title,
             output: '/rss.xml',
             query: query(),
-            serialize,
-          },
-          {
-            title: `${siteMetadata.title} - Posts`,
-            output: '/posts.xml',
-            query: query([
-              'filter: { fields: { categorySlug: { eq: "post" } } }',
-            ]),
-            serialize,
-          },
-          {
-            title: `${siteMetadata.title} - Notes`,
-            output: '/notes.xml',
-            query: query([
-              'filter: { fields: { categorySlug: { eq: "note" } } }',
-            ]),
             serialize,
           },
         ],

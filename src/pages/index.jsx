@@ -9,8 +9,8 @@ export const query = graphql`
   query {
     site {
       siteMetadata {
-        author
         title
+        author
         github
         stackoverflow
       }
@@ -37,7 +37,7 @@ export default function AboutAymericBeaumet({ data }) {
           {'My name is '}
           <strong>{author}</strong>
           {
-            '. I am a Senior Software Engineer working on backend and infrastructure, with a focus on maintainability, resilience and high availability.'
+            '. I am a Lead Platform Engineer working on backend and infrastructure, with a focus on maintainability, resilience and high availability.'
           }
         </p>
 
@@ -57,17 +57,11 @@ export default function AboutAymericBeaumet({ data }) {
 
         <p>
           {' I '}
-          <ExternalLink href={`${github}?tab=repositories&type=source`}>
-            maintain
-          </ExternalLink>
+          <ExternalLink href={github}>maintain</ExternalLink>
           {' some open-source projects, do my best to '}
-          <ExternalLink href={`${stackoverflow}?tab=anwsers`}>
-            help
-          </ExternalLink>
+          <ExternalLink href={stackoverflow}>help</ExternalLink>
           {' people. I also write about '}
           <Link to="/posts">what I do</Link>
-          {' and '}
-          <Link to="/notes">what I learn</Link>
           {'.'}
         </p>
 

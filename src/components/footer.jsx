@@ -22,7 +22,7 @@ export default () => (
 function Footer({ data }) {
   const {
     site: {
-      siteMetadata: { author, sourceUrl },
+      siteMetadata: { author },
     },
   } = data
   return (
@@ -30,20 +30,6 @@ function Footer({ data }) {
       <ul>
         <li>
           <Link to="/">{`About ${author}`}</Link>
-          &nbsp;—
-        </li>
-        <li>
-          <ExternalLink href={sourceUrl}>This blog is Open-Source</ExternalLink>
-          &nbsp;—
-        </li>
-        <li>
-          &nbsp;
-          <ExternalLink
-            href="https://creativecommons.org/licenses/by/4.0"
-            license
-          >
-            CC BY 4.0
-          </ExternalLink>
         </li>
       </ul>
     </footer>
