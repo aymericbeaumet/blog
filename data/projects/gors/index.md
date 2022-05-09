@@ -3,11 +3,12 @@ title: Gors
 tags: [rust, golang, languagetheory]
 date: 2021-01-01
 thumbnail: ./thumbnail.png
+github: https://github.com/aymericbeaumet/gors
 ---
 
 | [![space-1.jpg](./thumbnail.png)](https://aymericbeaumet.github.io/gors/) |
 | :-----------------------------------------------------------------------: |
-|                 _Gors allows to compile Golang to Rust._                  |
+|                   _Gors allows to compile Go to Rust._                    |
 
 I like to play at the intersection of several languages. I always find it
 interesting to push the limits of my knowledge and put myself in a situation

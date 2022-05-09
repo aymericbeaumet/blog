@@ -10,6 +10,8 @@ import Duration from '../components/duration';
 import DateComponent from '../components/date';
 import Tag from '../components/tag';
 import { Disqus } from 'gatsby-plugin-disqus';
+import ExternalLink from '../components/external-link';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export const query = graphql`
 	query ($slug: String!) {
@@ -27,6 +29,7 @@ export const query = graphql`
 				title
 				tags
 				timeToWatch
+				github
 				attachments {
 					publicURL
 					name
@@ -48,7 +51,7 @@ export default function Post({ data }) {
 		markdownRemark: {
 			html,
 			timeToRead,
-			frontmatter: { date, title, timeToWatch, tags = [], attachments = [] },
+			frontmatter: { date, title, github, timeToWatch, tags = [], attachments = [] },
 			fields: { slug },
 		},
 	} = data;
@@ -64,12 +67,20 @@ export default function Post({ data }) {
 					<ul className={classes.info}>
 						<li>
 							<DateComponent date={date} />
-							&nbsp;・
 						</li>
 						<li>
-							&nbsp;
+							・&nbsp;
 							{Duration({ timeToRead, timeToWatch })}
 						</li>
+						{github ? (
+							<li>
+								・&nbsp;
+								<ExternalLink href={github} title="Browse source code on GitHub">
+									<FontAwesomeIcon width="16px" height="16px" icon={faGithub} />
+									&nbsp; source
+								</ExternalLink>
+							</li>
+						) : null}
 					</ul>
 					{tags && tags.length > 0 ? (
 						<ul className={classes.tags}>

@@ -4,6 +4,7 @@ import format from 'date-fns/format';
 export default function DateComponent({ date, until } = {}) {
 	const ddate = date ? new Date(date) : null;
 	const duntil = until ? new Date(until) : null;
+
 	if (ddate && duntil) {
 		const dateYear = ddate.getFullYear();
 		const untilYear = duntil.getFullYear();
@@ -17,9 +18,10 @@ export default function DateComponent({ date, until } = {}) {
 
 	if (ddate) {
 		if (ddate.getMonth() === 0 && ddate.getDate() === 1) {
+			const year = ddate.getUTCFullYear().toString();
 			return (
-				<time dateTime={format(ddate, 'yyyy')} title={format(ddate, 'yyyy')}>
-					{format(ddate, 'yyyy')}
+				<time dateTime={year} title={`Started in ${year}`}>
+					{year}
 				</time>
 			);
 		}
