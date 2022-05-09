@@ -1,7 +1,7 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { graphql, Link } from 'gatsby'
-import classes from './posts.module.scss'
+import * as classes from './posts.module.scss'
 import Duration from './duration'
 import DateComponent from './date'
 import Tag from './tag'
@@ -21,12 +21,7 @@ export const componentFragment = graphql`
           date
           thumbnail {
             childImageSharp {
-              fluid(maxWidth: 255) {
-                base64
-                src
-                srcSet
-                sizes
-              }
+              gatsbyImageData(layout: CONSTRAINED, breakpoints: [255])
             }
           }
         }
@@ -40,20 +35,17 @@ export default function Posts({ allMarkdownRemark }) {
     ({
       node: {
         fields: { slug },
-        frontmatter: {
-          title,
-          tags,
-          thumbnail,
-          timeToWatch,
-          date,
-        },
+        frontmatter: { title, tags, thumbnail, timeToWatch, date },
         timeToRead,
       },
     }) => (
       <li className={classes.post} key={slug}>
         <Link to={slug}>
           <figure>
-            <Img fluid={thumbnail.childImageSharp.fluid} alt={title} />
+            <GatsbyImage
+              fluid={thumbnail.childImageSharp.gatsbyImageData}
+              alt={title}
+            />
             <figcaption>
               {DateComponent({ date })}
               {Duration({ timeToRead, timeToWatch })}
@@ -62,7 +54,7 @@ export default function Posts({ allMarkdownRemark }) {
           <h2>{title}</h2>
         </Link>
         <ul className={classes.tagsList}>
-          {tags.map(tag => (
+          {tags.map((tag) => (
             <li className={classes.tag} key={tag}>
               <Tag tag={tag} />
             </li>

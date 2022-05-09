@@ -1,12 +1,12 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import classes from './layout.module.scss'
+import * as classes from './layout.module.scss'
 import Header from './header'
 import Footer from './footer'
 import AlternativeHeader from './alternative-header'
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -18,7 +18,7 @@ export default props => (
         }
       }
     `}
-    render={data => <Layout {...props} data={data} />}
+    render={(data) => <Layout {...props} data={data} />}
   />
 )
 

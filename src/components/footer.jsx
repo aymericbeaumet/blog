@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import classes from './footer.module.scss'
+import * as classes from './footer.module.scss'
 import ExternalLink from './external-link'
 
 export default () => (
@@ -15,7 +15,7 @@ export default () => (
         }
       }
     `}
-    render={data => <Footer data={data} />}
+    render={(data) => <Footer data={data} />}
   />
 )
 

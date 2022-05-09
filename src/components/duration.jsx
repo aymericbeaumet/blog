@@ -1,6 +1,6 @@
 import React from 'react'
 import Timer from '../images/timer.svg'
-import classes from './duration.module.scss'
+import * as classes from './duration.module.scss'
 
 export default function Duration({ timeToRead, timeToWatch } = {}) {
   if (typeof timeToWatch === 'number') {

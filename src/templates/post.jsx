@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faSave } from '@fortawesome/free-regular-svg-icons'
 import Layout from '../components/layout'
 import 'prismjs/themes/prism-coy.css'
-import classes from './post.module.scss'
+import * as classes from './post.module.scss'
 import Duration from '../components/duration'
 import DateComponent from '../components/date'
 import Tag from '../components/tag'
@@ -13,7 +13,7 @@ import aymericBeaumetProfile from '../images/aymeric-beaumet-profile.jpg'
 import ExternalLink from '../components/external-link'
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     site {
       siteMetadata {
         title
@@ -53,13 +53,7 @@ export default function Post({ data }) {
       html,
       timeToRead,
       fields: { slug, fileRelativePath },
-      frontmatter: {
-        date,
-        title,
-        timeToWatch,
-        tags = [],
-        attachments = [],
-      },
+      frontmatter: { date, title, timeToWatch, tags = [], attachments = [] },
     },
   } = data
   return (
@@ -98,7 +92,7 @@ export default function Post({ data }) {
           </ul>
           {tags && tags.length > 0 ? (
             <ul className={classes.tags}>
-              {tags.map(tag => (
+              {tags.map((tag) => (
                 <li key={tag}>
                   <Tag tag={tag} />
                 </li>

@@ -3,10 +3,10 @@ import { Link, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
 import 'prismjs/themes/prism-coy.css'
-import classes from './note.module.scss'
+import * as classes from './note.module.scss'
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       timeToRead
@@ -34,9 +34,13 @@ export default function Note({ data }) {
         <header>
           <ul>
             <li className={classes.slash}>/</li>
-            <li><Link to="/notes">notes</Link></li>
+            <li>
+              <Link to="/notes">notes</Link>
+            </li>
             <li className={classes.slash}>/</li>
-            <li><h1>{`${slug}.md`}</h1></li>
+            <li>
+              <h1>{`${slug}.md`}</h1>
+            </li>
           </ul>
         </header>
         <article

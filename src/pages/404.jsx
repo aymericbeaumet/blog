@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/layout'
-import classes from './404.module.scss'
+import * as classes from './404.module.scss'
 import aymericBeaumetIndoorSkydiving from '../images/aymeric-beaumet-indoor-skydiving.jpg'
 
 export const query = graphql`

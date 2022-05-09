@@ -7,9 +7,14 @@ exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'MarkdownRemark') {
     const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath)
-    const categorySlug = singular(fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'))
+    const categorySlug = singular(
+      fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'),
+    )
     const category = _.capitalize(categorySlug)
-    const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)(?:\/|\.).*$/, '$1')
+    const slug = fileRelativePath.replace(
+      /^data\/[^/]+\/([^/]+)(?:\/|\.).*$/,
+      '$1',
+    )
     // default values
     createNodeField({ node, name: 'slug', value: slug })
     createNodeField({ node, name: 'category', value: category })
@@ -46,7 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { slug: node.fields.slug },
     })
     // Create tags pages
-    ;(node.frontmatter.tags || []).forEach(tag => {
+    ;(node.frontmatter.tags || []).forEach((tag) => {
       if (!tagsIndex.includes(tag)) {
         tagsIndex.push(tag)
         createPage({

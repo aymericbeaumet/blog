@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
-import classes from './alternative-header.module.scss'
+import * as classes from './alternative-header.module.scss'
 import Contact from './contact'
 
 export default () => (
@@ -21,7 +21,7 @@ export default () => (
         }
       }
     `}
-    render={data => <AlternativeHeader data={data} />}
+    render={(data) => <AlternativeHeader data={data} />}
   />
 )
 
@@ -45,7 +45,7 @@ class AlternativeHeader extends React.Component {
     document.body.style.overflow = isVisible ? 'hidden' : '' // eslint-disable-line no-undef
   }
 
-  toggleOnChangeHandler = event => {
+  toggleOnChangeHandler = (event) => {
     if (event && event.target) {
       this.isVisible = !!event.target.checked
     }

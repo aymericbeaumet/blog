@@ -31,7 +31,7 @@ const siteMetadata = {
 
 function withRSS(plugins = []) {
   const serialize = ({ query: { site, allMarkdownRemark } }) => {
-    return allMarkdownRemark.edges.map(edge => {
+    return allMarkdownRemark.edges.map((edge) => {
       return {
         ...edge.node.frontmatter,
         description: edge.node.excerpt,
@@ -46,10 +46,10 @@ function withRSS(plugins = []) {
     {
       allMarkdownRemark(
         ${[
-      'sort: { order: DESC, fields: [frontmatter___date] }',
-      ...args,
-      '',
-    ].join(',')}
+          'sort: { order: DESC, fields: [frontmatter___date] }',
+          ...args,
+          '',
+        ].join(',')}
       ) {
         edges {
           node {
@@ -113,9 +113,8 @@ function withRSS(plugins = []) {
 
 module.exports = {
   siteMetadata,
+  plugins: [],
   plugins: withRSS([
-    'gatsby-plugin-sharp', // required by gatsby-remark-images
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -123,6 +122,9 @@ module.exports = {
         path: `${__dirname}/data/`,
       },
     },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

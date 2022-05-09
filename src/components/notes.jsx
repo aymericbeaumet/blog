@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import classes from './notes.module.scss'
+import * as classes from './notes.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt } from '@fortawesome/free-regular-svg-icons'
 
@@ -25,11 +25,7 @@ export default function Notes({ allMarkdownRemark }) {
     }) => (
       <Link to={`/notes/${slug}`}>
         <li className={classes.note} key={slug}>
-          <FontAwesomeIcon
-            width="32px"
-            height="32px"
-            icon={faFileAlt}
-          />
+          <FontAwesomeIcon width="32px" height="32px" icon={faFileAlt} />
           {slug}.md
         </li>
       </Link>

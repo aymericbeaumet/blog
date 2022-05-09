@@ -1,6 +1,6 @@
 import React from 'react'
 import format from 'date-fns/format'
-import classes from './date.module.scss'
+import * as classes from './date.module.scss'
 
 export default function DateComponent({ date, until } = {}) {
   const ddate = date ? new Date(date) : null
