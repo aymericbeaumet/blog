@@ -27,7 +27,7 @@ function Footer({ data }) {
 		<footer className={classes.Footer}>
 			<ul>
 				<li>
-					<Link to="/">{`About ${author}`}</Link>
+					&copy; 2014&#8211;{new Date().getFullYear()} {author}. All Rights Reserved.
 				</li>
 			</ul>
 		</footer>
