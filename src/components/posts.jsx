@@ -21,7 +21,7 @@ export const componentFragment = graphql`
 					date
 					thumbnail {
 						childImageSharp {
-							gatsbyImageData(layout: CONSTRAINED, breakpoints: [255])
+							gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, breakpoints: [255])
 						}
 					}
 				}
@@ -42,7 +42,7 @@ export default function Posts({ allMarkdownRemark }) {
 			<li className={classes.post} key={slug}>
 				<Link to={`/${slug}`}>
 					<figure>
-						<GatsbyImage fluid={thumbnail.childImageSharp.gatsbyImageData} alt={title} />
+						<GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} alt={title} />
 						<figcaption>
 							{DateComponent({ date })}
 							{Duration({ timeToRead, timeToWatch })}

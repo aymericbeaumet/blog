@@ -1,11 +1,8 @@
 ---
 title: Properly shim AngularJS applications using Browserify
+tags: [angularjs, browserify, javascript]
 date: 2014-10-12
 thumbnail: ./thumbnail.png
-tags:
-  - AngularJS
-  - Browserify
-  - JavaScript
 attachments:
   - ./example.tgz
 ---

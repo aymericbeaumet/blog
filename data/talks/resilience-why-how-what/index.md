@@ -1,13 +1,9 @@
 ---
 title: "Resilience: why, how, what?"
+tags: [resilience, nodejs, 🇫🇷]
 date: 2018-09-27
-thumbnail: ./thumbnail.png
-tags:
-  - Resilience
-  - Node.js
-  - Talk
-  - 🇫🇷
 timeToWatch: 27
+thumbnail: ./thumbnail.png
 attachments:
   - ./slides.pdf
 ---
