@@ -9,21 +9,26 @@ export default function DateComponent({ date, until } = {}) {
 		const untilYear = duntil.getFullYear();
 		const duration = Math.max(untilYear - dateYear, 1);
 		return (
-			<time
-				className={classes.DateComponent}
-				dateTime={ddate}
-				title={`${duration} ${duration !== 1 ? 'years' : 'year'}`}
-			>
+			<time dateTime={ddate} title={`${duration} ${duration !== 1 ? 'years' : 'year'}`}>
 				{`${format(ddate, 'yyyy')}–${format(duntil, 'yyyy')}`}
 			</time>
 		);
 	}
+
 	if (ddate) {
+		if (ddate.getMonth() === 0 && ddate.getDate() === 1) {
+			return (
+				<time dateTime={format(ddate, 'yyyy')} title={format(ddate, 'yyyy')}>
+					{format(ddate, 'yyyy')}
+				</time>
+			);
+		}
 		return (
 			<time dateTime={ddate} title={format(ddate, 'PPPP, pp')}>
 				{format(ddate, 'yyyy MMM do')}
 			</time>
 		);
 	}
+
 	return null;
 }
