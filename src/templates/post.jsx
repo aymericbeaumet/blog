@@ -15,6 +15,7 @@ export const query = graphql`
 	query ($slug: String!) {
 		site {
 			siteMetadata {
+				author
 				siteUrl
 			}
 		}
@@ -41,7 +42,9 @@ export const query = graphql`
 
 export default function Post({ data }) {
 	const {
-		site: { siteUrl },
+		site: {
+			siteMetadata: { author, siteUrl },
+		},
 		markdownRemark: {
 			html,
 			timeToRead,
@@ -52,7 +55,7 @@ export default function Post({ data }) {
 	return (
 		<Layout>
 			<Helmet>
-				<title>{title}</title>
+				<title>{`${title} | ${author}`}</title>
 			</Helmet>
 
 			<section className={classes.Post}>

@@ -1,12 +1,8 @@
-const firstName = 'Aymeric';
-const lastName = 'Beaumet';
-const fullName = `${firstName} ${lastName}`;
-
 const siteMetadata = {
 	// me
-	title: `${fullName} Blog`,
-	author: fullName,
-	description: `${firstName} is a Senior Software Engineer with 5 years of experience in deploying resilient, scalable, and highly available back-end systems.`,
+	title: 'Aymeric Beaumet | Posts, Talks & Projects',
+	author: 'Aymeric Beaumet',
+	description: `Aymeric is a Senior Software Engineer with 5 years of experience in deploying resilient, scalable, and highly available back-end systems.`,
 	// contacts
 	email: 'hi@aymericbeaumet.com',
 	github: 'https://github.com/aymericbeaumet',
