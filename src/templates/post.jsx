@@ -9,15 +9,13 @@ import * as classes from './post.module.scss';
 import Duration from '../components/duration';
 import DateComponent from '../components/date';
 import Tag from '../components/tag';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 export const query = graphql`
   query ($slug: String!) {
     site {
       siteMetadata {
-        title
         siteUrl
-        author
-        sourceMasterUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -34,16 +32,21 @@ export const query = graphql`
           extension
         }
       }
+      fields {
+        slug
+      }
     }
   }
 `;
 
 export default function Post({ data }) {
   const {
+    site: { siteUrl },
     markdownRemark: {
       html,
       timeToRead,
       frontmatter: { date, title, timeToWatch, tags = [], attachments = [] },
+      fields: { slug },
     },
   } = data;
   return (
@@ -51,6 +54,7 @@ export default function Post({ data }) {
       <Helmet>
         <title>{title}</title>
       </Helmet>
+
       <section className={classes.Post}>
         <header>
           <h1>{title}</h1>
@@ -62,7 +66,6 @@ export default function Post({ data }) {
             <li>
               &nbsp;
               {Duration({ timeToRead, timeToWatch })}
-              &nbsp;・
             </li>
           </ul>
           {tags && tags.length > 0 ? (
@@ -75,10 +78,12 @@ export default function Post({ data }) {
             </ul>
           ) : null}
         </header>
+
         <article
           className={classes.content}
           dangerouslySetInnerHTML={{ __html: html }} // eslint-disable-line react/no-danger
         />
+
         {attachments && attachments.length > 0 ? (
           <section className={classes.attachments}>
             <h1 id="attachments">Attachments</h1>
@@ -94,6 +99,14 @@ export default function Post({ data }) {
             </ul>
           </section>
         ) : null}
+
+        <Disqus
+          config={{
+            url: `${siteUrl}/${slug}`,
+            identifier: slug,
+            title,
+          }}
+        />
       </section>
     </Layout>
   );

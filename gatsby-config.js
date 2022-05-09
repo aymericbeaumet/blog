@@ -94,7 +94,7 @@ function withRSS(plugins = []) {
         feeds: [
           {
             title: siteMetadata.title,
-            output: '/rss.xml',
+            output: '/feed.xml',
             query: query(),
             serialize,
           },
@@ -148,6 +148,10 @@ module.exports = {
     'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-disqus',
+      options: { shortname: 'aymericbeaumet' },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
