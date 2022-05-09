@@ -31,18 +31,15 @@ const siteMetadata = {
 };
 
 function withRSS(plugins = []) {
-	const serialize = ({ query: { site, allMarkdownRemark } }) => {
-		return allMarkdownRemark.edges.map((edge) => {
-			return {
-				...edge.node.frontmatter,
-				description: edge.node.excerpt,
-				date: edge.node.frontmatter.date,
-				url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-				guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-				custom_elements: [{ 'content:encoded': edge.node.html }],
-			};
-		});
-	};
+	const serialize = ({ query: { site, allMarkdownRemark } }) =>
+		allMarkdownRemark.edges.map((edge) => ({
+			...edge.node.frontmatter,
+			description: edge.node.excerpt,
+			date: edge.node.frontmatter.date,
+			url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+			guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+			custom_elements: [{ 'content:encoded': edge.node.html }],
+		}));
 	const query = (...args) => `
     {
       allMarkdownRemark(

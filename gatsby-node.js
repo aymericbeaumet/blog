@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax, import/no-extraneous-dependencies */
+
 const { capitalize } = require('lodash');
 const path = require('path');
 const { singular } = require('pluralize');
