@@ -1,0 +1,136 @@
+@import './config';
+
+.AlternativeHeader {
+	display: none;
+
+	.toggle {
+		position: fixed;
+		top: 15px;
+		right: 15px;
+		margin: 0 auto;
+		width: 60px;
+		height: 60px;
+		box-shadow: 1px 4px 10px 0 #3942c2e6;
+		border-radius: 100%;
+		background-image: linear-gradient(154deg, #728be8, $main);
+		cursor: pointer;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 28px;
+		path {
+			fill: #ffffff;
+		}
+	}
+
+	input[type='checkbox'] {
+		display: none;
+
+		& + .toggle {
+			& svg:nth-child(1) {
+				display: block;
+			}
+			& svg:nth-child(2) {
+				display: none;
+			}
+			& + .menu {
+				display: none;
+			}
+		}
+
+		&:checked + .toggle {
+			& svg:nth-child(1) {
+				display: none;
+			}
+			& svg:nth-child(2) {
+				display: block;
+			}
+			& + .menu {
+				display: grid;
+			}
+		}
+	}
+
+	.menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: radial-gradient(circle at 50% 90%, unquote('#040f50cc'), #040f50);
+		backdrop-filter: blur(5px);
+		font-size: 22px;
+		font-weight: bold;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		color: #ffffff;
+		text-transform: uppercase;
+		justify-content: center;
+		align-content: center;
+	}
+
+	.entries {
+		text-align: center;
+
+		ul,
+		li {
+			list-style: none;
+			display: inline-block;
+		}
+
+		& > li {
+			margin: 0 auto;
+			width: 80%;
+		}
+
+		& > li + li::before {
+			background-image: linear-gradient(
+				to right,
+				unquote('#ffffff02'),
+				#ffffff 50%,
+				unquote('#ffffff00')
+			);
+			backdrop-filter: blur(5px);
+			width: 100%;
+			height: 1px;
+			display: block;
+			content: '';
+		}
+
+		a {
+			text-decoration: none;
+			font-size: 22px;
+			font-weight: bold;
+			font-style: normal;
+			font-stretch: normal;
+			line-height: normal;
+			letter-spacing: normal;
+			text-align: center;
+			color: #ffffff;
+			padding: 20px 0;
+			display: inline-block;
+			width: 100%;
+		}
+	}
+
+	.contact {
+		a {
+			color: #ffffff;
+			display: unset;
+			path {
+				fill: #ffffff;
+			}
+		}
+
+		svg {
+			padding: 20px 15px;
+		}
+	}
+
+	@media screen and (max-width: $breakpoint2) {
+		display: block;
+	}
+}

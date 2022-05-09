@@ -1,0 +1,103 @@
+@import './config';
+
+$postOffset: 25px;
+
+.Posts {
+	margin-top: -$postOffset;
+
+	ul {
+		list-style-type: none;
+	}
+
+	.postsList {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 255px);
+		grid-gap: $postOffset;
+
+		@media screen and (max-width: $breakpoint2) {
+			grid-template-columns: unset;
+			justify-items: center;
+		}
+	}
+
+	.post {
+		width: 255px;
+		margin-top: $postOffset;
+		padding-bottom: 5px;
+		border-bottom: 1px solid #d8d8d8;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		& > a {
+			figure {
+				max-width: 100%;
+				width: 266px;
+				height: 160px;
+				overflow: hidden;
+				border: 1px solid #f0f0f0;
+				position: relative;
+
+				& > div {
+					width: 100%;
+					height: 100%;
+					transition: all 0.2s;
+				}
+
+				figcaption {
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+
+					& > * {
+						border-radius: 2px;
+						border: 1px solid rgb(240, 240, 240);
+						background-color: #ffffffe6;
+						font-size: 12px;
+						font-weight: bold;
+						color: #3e3e3e;
+						margin: 8px;
+						padding: 3px;
+					}
+				}
+			}
+
+			h2 {
+				margin: 5px 0 0px 0;
+				font-size: 16px;
+				font-weight: bold;
+				line-height: normal;
+				color: $main;
+			}
+
+			&:hover figure > div {
+				transition: all 0.2s;
+				transform: scale(1.025);
+			}
+		}
+	}
+
+	.tagsList {
+		margin-top: 5px;
+	}
+
+	.tag {
+		display: inline-block;
+
+		& + .tag {
+			margin-left: 5px;
+		}
+
+		a {
+			font-size: 12px;
+			font-weight: bold;
+			line-height: normal;
+			color: #3e3e3e;
+			text-decoration: none;
+		}
+	}
+}

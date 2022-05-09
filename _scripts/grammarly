@@ -1,9 +1,0 @@
-#!/bin/sh
-
-filepath=$(fd --type file '' _drafts _posts | fzf -0)
-if [ -z "$filepath" ]; then
-  echo 'wow such empty' 1>&2
-  return
-fi
-
-open "https://github.com/aymericbeaumet/aymericbeaumet.com/edit/master/$filepath"

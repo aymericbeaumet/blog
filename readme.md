@@ -1,35 +1,37 @@
 # aymericbeaumet.com
 
+[![netlify](https://img.shields.io/netlify/82402a7d-5965-4054-b479-56f241526b47?style=flat-square&logo=netlify)](https://aymericbeaumet.com)
+[![github](https://img.shields.io/github/issues/aymericbeaumet/aymericbeaumet.com?style=flat-square&logo=github)](https://github.com/aymericbeaumet/aymericbeaumet.com/issues)
+
 ## Commands
 
 ```
-bundle install
-bundle update
-bundle exec jekyll serve --livereload --open-url --drafts
+yarn
+yarn build
+yarn develop
 ```
 
-_The `master` branch is automatically built and deployed to GitHub pages._
+_The `master` branch is automatically built and deployed by Netlify._
 
-## Maintenance
+## Manual Tests
 
-### Dashboards
+### Tools
 
-- [Cloudflare](https://dash.cloudflare.com/a794a0792e9c7686cfb79297b6929644/aymericbeaumet.com)
-- [Google Search Console](https://search.google.com/search-console?resource_id=sc-domain%3Aaymericbeaumet.com)
+- [Google Search Console](https://search.google.com/search-console?resource_id=https%3A%2F%2Faymericbeaumet.com%2F)
 
-### Performance
+### Performance / Accessibility / Security
 
-- Google PageSpeed Insights
-  - [desktop](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com%2F&tab=desktop&hl=en)
-  - [mobile](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com%2F&tab=mobile&hl=en)
+- [Google Lighthouse](https://lighthouse-dot-webdotdevsite.appspot.com/lh/html?url=https://aymericbeaumet.com)
+- [Google Mobile-Friendly](https://search.google.com/test/mobile-friendly?url=https://aymericbeaumet.com)
+- [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com)
+- [GTmetrix](https://gtmetrix.com/reports/aymericbeaumet.com/0dYIusp6)
+- [Sophos Security Headers](https://securityheaders.com/?q=https%3A%2F%2Faymericbeaumet.com&followRedirects=on)
 
 ### DNS
 
-| Domain              | GSuite Toolbox Check MX                                                                              |
-| ------------------- | ---------------------------------------------------------------------------------------------------- |
-| aymericbeaumet.com  | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.com&dkim_selector=)  |
-| aymericbeaumet.fr   | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.fr&dkim_selector=)   |
-| aymericbeaumet.me   | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.me&dkim_selector=)   |
-| beaumet.fr          | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.fr&dkim_selector=)          |
-| beaumet.me          | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.me&dkim_selector=)          |
-| moonshotatelier.com | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=moonshotatelier.com&dkim_selector=) |
+| Domain             | GSuite Toolbox Check MX                                                                             |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| aymericbeaumet.com | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.com&dkim_selector=) |
+| aymericbeaumet.fr  | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.fr&dkim_selector=)  |
+| beaumet.fr         | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.fr&dkim_selector=)         |
+| beaumet.me         | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.me&dkim_selector=)         |
