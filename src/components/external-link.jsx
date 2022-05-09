@@ -1,10 +1,9 @@
 import React from 'react';
 
 export default function ExternalLink(props) {
-	const { children, license = false, rel = 'nofollow noopener noreferrer', ...rest } = props;
-	const relWithLicense = license ? `${rel} license` : rel;
+	const { children, rel = 'nofollow noopener noreferrer', ...rest } = props;
 	return (
-		<a rel={relWithLicense} {...rest}>
+		<a target="_blank" rel={rel} {...rest}>
 			{children}
 		</a>
 	);
