@@ -94,7 +94,6 @@ function withRSS(plugins = []) {
 
 module.exports = {
 	siteMetadata,
-	plugins: [],
 	plugins: withRSS([
 		{
 			resolve: 'gatsby-source-filesystem',
