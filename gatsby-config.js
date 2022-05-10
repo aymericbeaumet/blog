@@ -128,6 +128,11 @@ module.exports = {
 							inlineCodeMarker: null,
 							showLineNumbers: false,
 							noInlineHighlight: false,
+							aliases: {
+								golang: 'go',
+								js: 'javascript',
+								rs: 'rust',
+							},
 						},
 					},
 				],
@@ -136,9 +141,14 @@ module.exports = {
 		'gatsby-plugin-catch-links',
 		'gatsby-plugin-react-svg',
 		'gatsby-plugin-robots-txt',
+		{
+			resolve: 'gatsby-plugin-sitemap',
+			options: {
+				// query: '', // TODO
+			},
+		},
 		'gatsby-plugin-sass',
 		'gatsby-plugin-react-helmet',
-		'gatsby-plugin-sitemap',
 		{
 			resolve: 'gatsby-plugin-disqus',
 			options: { shortname: 'aymericbeaumet' },
