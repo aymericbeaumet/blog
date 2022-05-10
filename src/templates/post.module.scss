@@ -126,7 +126,10 @@
 
 		div[data-language] {
 			width: 100%;
+		}
 
+		div[data-language],
+		:global(div.gatsby-resp-iframe-wrapper) {
 			& + p > em:only-child {
 				display: inline-block;
 				text-align: center;
