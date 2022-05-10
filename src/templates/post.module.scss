@@ -114,6 +114,16 @@
 			margin-bottom: 0;
 		}
 
+		img {
+			border: 1px solid #f0f0f0;
+		}
+
+		figcaption {
+			text-align: center;
+			font-style: italic;
+			margin-top: 5px;
+		}
+
 		div[data-language] {
 			width: 100%;
 
@@ -167,8 +177,6 @@
 		pre[class*='language-']::after {
 			content: unset;
 		}
-
-		// gatsby-remark-prismjs
 
 		:global(.anchor) {
 			padding-right: 8px;

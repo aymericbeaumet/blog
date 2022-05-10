@@ -109,7 +109,13 @@ module.exports = {
 				plugins: [
 					{
 						resolve: 'gatsby-remark-images',
-						options: { maxWidth: 720, withWebp: true },
+						options: {
+							maxWidth: 720,
+							withAvif: true,
+							withWebp: true,
+							showCaptions: ['title'],
+							linkImagesToOriginal: false,
+						},
 					},
 					'gatsby-remark-external-links',
 					'gatsby-remark-smartypants',
