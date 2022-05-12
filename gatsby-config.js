@@ -30,141 +30,133 @@ const siteMetadata = {
 	],
 };
 
-function withRSS(plugins = []) {
-	const serialize = ({ query: { site, allMarkdownRemark } }) =>
-		allMarkdownRemark.edges.map((edge) => ({
-			...edge.node.frontmatter,
-			description: edge.node.excerpt,
-			date: edge.node.frontmatter.date,
-			url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-			guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-			custom_elements: [{ 'content:encoded': edge.node.html }],
-		}));
-	const query = (...args) => `
-    {
-      allMarkdownRemark(
-        ${['sort: { order: DESC, fields: [frontmatter___date] }', ...args, ''].join(',')}
-      ) {
-        edges {
-          node {
-            excerpt
-            html
-            fields { slug }
-            frontmatter {
+const plugins = [
+	{
+		resolve: 'gatsby-source-filesystem',
+		options: {
+			name: 'data',
+			path: `${__dirname}/data/`,
+			ignore: ['**/drafts/**'],
+		},
+	},
+
+	'gatsby-plugin-image',
+	'gatsby-plugin-sharp',
+	'gatsby-transformer-sharp',
+
+	{
+		resolve: 'gatsby-transformer-remark',
+		options: {
+			plugins: [
+				{
+					resolve: 'gatsby-remark-images',
+					options: {
+						maxWidth: 720,
+						withAvif: true,
+						withWebp: true,
+						showCaptions: ['title'],
+						linkImagesToOriginal: false,
+					},
+				},
+				'gatsby-remark-external-links',
+				'gatsby-remark-smartypants',
+				'gatsby-remark-responsive-iframe',
+				'gatsby-remark-autolink-headers', // before gastby-remark-prismjs
+				{
+					resolve: 'gatsby-remark-prismjs',
+					options: {
+						classPrefix: 'language-',
+						inlineCodeMarker: null,
+						showLineNumbers: false,
+						noInlineHighlight: false,
+						aliases: {
+							golang: 'go',
+							js: 'javascript',
+							rs: 'rust',
+						},
+					},
+				},
+			],
+		},
+	},
+
+	'gatsby-plugin-catch-links',
+	'gatsby-plugin-react-svg',
+	'gatsby-plugin-sass',
+	'gatsby-plugin-react-helmet',
+
+	{
+		resolve: 'gatsby-plugin-feed',
+		options: {
+			query: `
+        {
+          site {
+            siteMetadata {
               title
-              date
+              description
+              siteUrl
+              site_url: siteUrl
             }
           }
         }
-      }
-    }
-  `;
-	return [
-		...plugins,
-		{
-			resolve: 'gatsby-plugin-feed',
-			options: {
-				query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
+      `,
+			feeds: [
+				{
+					title: siteMetadata.title,
+					output: '/feed.xml',
+					query: `
+            {
+              allMarkdownRemark(
+                sort: { order: DESC, fields: [frontmatter___date] }
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    fields { slug }
+                    frontmatter {
+                      title
+                      date
+                    }
+                  }
+                }
               }
             }
-          }
-        `,
-				feeds: [
-					{
-						title: siteMetadata.title,
-						output: '/feed.xml',
-						query: query(),
-						serialize,
-					},
-				],
-			},
+          `,
+					serialize: ({ query: { site, allMarkdownRemark } }) =>
+						allMarkdownRemark.edges.map((edge) => ({
+							...edge.node.frontmatter,
+							description: edge.node.excerpt,
+							date: edge.node.frontmatter.date,
+							url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+							guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+							custom_elements: [{ 'content:encoded': edge.node.html }],
+						})),
+				},
+			],
 		},
-	];
-}
+	},
 
-module.exports = {
-	siteMetadata,
-	plugins: withRSS([
-		{
-			resolve: 'gatsby-source-filesystem',
-			options: {
-				name: 'data',
-				path: `${__dirname}/data/`,
-				ignore: ['**/drafts/**'],
-			},
+	{
+		resolve: 'gatsby-plugin-disqus',
+		options: { shortname: 'aymericbeaumet' },
+	},
+
+	{
+		// before gatsby-plugin-offline
+		resolve: 'gatsby-plugin-manifest',
+		options: {
+			name: siteMetadata.title,
+			short_name: 'A. Beaumet',
+			start_url: '/',
+			background_color: '#663399',
+			theme_color: '#663399',
+			display: 'minimal-ui',
+			icon: `${__dirname}/src/images/aymeric-beaumet-commitstrip.png`,
 		},
-		'gatsby-plugin-image',
-		'gatsby-plugin-sharp',
-		'gatsby-transformer-sharp',
-		{
-			resolve: 'gatsby-transformer-remark',
-			options: {
-				plugins: [
-					{
-						resolve: 'gatsby-remark-images',
-						options: {
-							maxWidth: 720,
-							withAvif: true,
-							withWebp: true,
-							showCaptions: ['title'],
-							linkImagesToOriginal: false,
-						},
-					},
-					'gatsby-remark-external-links',
-					'gatsby-remark-smartypants',
-					'gatsby-remark-responsive-iframe',
-					'gatsby-remark-autolink-headers', // before gastby-remark-prismjs
-					{
-						resolve: 'gatsby-remark-prismjs',
-						options: {
-							classPrefix: 'language-',
-							inlineCodeMarker: null,
-							showLineNumbers: false,
-							noInlineHighlight: false,
-							aliases: {
-								golang: 'go',
-								js: 'javascript',
-								rs: 'rust',
-							},
-						},
-					},
-				],
-			},
-		},
-		'gatsby-plugin-catch-links',
-		'gatsby-plugin-react-svg',
-		'gatsby-plugin-robots-txt',
-		{
-			resolve: 'gatsby-plugin-sitemap',
-			options: {
-				// query: '', // TODO
-			},
-		},
-		'gatsby-plugin-sass',
-		'gatsby-plugin-react-helmet',
-		{
-			resolve: 'gatsby-plugin-disqus',
-			options: { shortname: 'aymericbeaumet' },
-		},
-		{
-			resolve: 'gatsby-plugin-manifest',
-			options: {
-				name: siteMetadata.title,
-				short_name: 'A. Beaumet',
-				start_url: '/',
-				background_color: '#663399',
-				theme_color: '#663399',
-				display: 'minimal-ui',
-				icon: `${__dirname}/src/images/aymeric-beaumet-commitstrip.png`,
-			},
-		}, // before gatsby-plugin-offline
-		'gatsby-plugin-offline',
-	]),
-};
+	},
+
+	'gatsby-plugin-offline',
+];
+
+module.exports = { siteMetadata, plugins };
