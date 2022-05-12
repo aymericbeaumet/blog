@@ -5,25 +5,27 @@ import Logo from '../images/aymeric-beaumet-logo.svg';
 import CategoryLink from './category-link';
 import Contact from './contact';
 
-export default () => (
-	<StaticQuery
-		query={graphql`
-			query {
-				site {
-					siteMetadata {
-						email
-						menu {
-							name
-							url
-							categorySlug
+export default function HeaderStaticQuery() {
+	return (
+		<StaticQuery
+			query={graphql`
+				query {
+					site {
+						siteMetadata {
+							email
+							menu {
+								name
+								url
+								categorySlug
+							}
 						}
 					}
 				}
-			}
-		`}
-		render={(data) => <Header data={data} />}
-	/>
-);
+			`}
+			render={(data) => <Header data={data} />}
+		/>
+	);
+}
 
 function Header({ data }) {
 	const {

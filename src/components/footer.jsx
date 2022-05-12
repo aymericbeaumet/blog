@@ -2,20 +2,22 @@ import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import * as classes from './footer.module.scss';
 
-export default () => (
-	<StaticQuery
-		query={graphql`
-			query {
-				site {
-					siteMetadata {
-						author
+export default function FooterStaticQuery() {
+	return (
+		<StaticQuery
+			query={graphql`
+				query {
+					site {
+						siteMetadata {
+							author
+						}
 					}
 				}
-			}
-		`}
-		render={(data) => <Footer data={data} />}
-	/>
-);
+			`}
+			render={(data) => <Footer data={data} />}
+		/>
+	);
+}
 
 function Footer({ data }) {
 	const {

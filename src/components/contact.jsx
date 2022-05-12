@@ -10,24 +10,26 @@ import {
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import ExternalLink from './external-link';
 
-export default () => (
-	<StaticQuery
-		query={graphql`
-			query {
-				site {
-					siteMetadata {
-						email
-						twitter
-						github
-						stackoverflow
-						linkedin
+export default function ContactStaticQuery() {
+	return (
+		<StaticQuery
+			query={graphql`
+				query {
+					site {
+						siteMetadata {
+							email
+							twitter
+							github
+							stackoverflow
+							linkedin
+						}
 					}
 				}
-			}
-		`}
-		render={(data) => <Contact data={data} />}
-	/>
-);
+			`}
+			render={(data) => <Contact data={data} />}
+		/>
+	);
+}
 
 function Contact({ data }) {
 	const {

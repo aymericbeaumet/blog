@@ -1,25 +1,27 @@
 import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 
-export default (props) => (
-	<StaticQuery
-		query={graphql`
-			query {
-				allMarkdownRemark {
-					edges {
-						node {
-							fields {
-								slug
-								categorySlug
+export default function CategoryLinkStaticQuery(props) {
+	return (
+		<StaticQuery
+			query={graphql`
+				query {
+					allMarkdownRemark {
+						edges {
+							node {
+								fields {
+									slug
+									categorySlug
+								}
 							}
 						}
 					}
 				}
-			}
-		`}
-		render={(data) => <CategoryLink data={data} {...props} />}
-	/>
-);
+			`}
+			render={(data) => <CategoryLink data={data} {...props} />}
+		/>
+	);
+}
 
 function CategoryLink({ activeClassName, categorySlug, data, ...props }) {
 	return (

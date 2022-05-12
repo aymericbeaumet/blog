@@ -7,4 +7,8 @@ module.exports = {
 		},
 	},
 	extends: ['airbnb', 'prettier'],
+	rules: {
+		'react/jsx-props-no-spreading': 'off',
+		'react/prop-types': 'off',
+	},
 };

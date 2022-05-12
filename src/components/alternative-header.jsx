@@ -5,30 +5,35 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as classes from './alternative-header.module.scss';
 import Contact from './contact';
 
-export default () => (
-	<StaticQuery
-		query={graphql`
-			query {
-				site {
-					siteMetadata {
-						email
-						menu {
-							name
-							url
-							categorySlug
+export default function AlternativeHeaderStaticQuery() {
+	return (
+		<StaticQuery
+			query={graphql`
+				query {
+					site {
+						siteMetadata {
+							email
+							menu {
+								name
+								url
+								categorySlug
+							}
 						}
 					}
 				}
-			}
-		`}
-		render={(data) => <AlternativeHeader data={data} />}
-	/>
-);
+			`}
+			render={(data) => <AlternativeHeader data={data} />}
+		/>
+	);
+}
 
 class AlternativeHeader extends React.Component {
 	static toggleId = 'alternative_menu_toggle';
 
-	state = { isVisible: false };
+	constructor() {
+		super();
+		this.state = { isVisible: false };
+	}
 
 	componentDidMount() {
 		window.addEventListener('keydown', this.dismissHandler); // eslint-disable-line no-undef

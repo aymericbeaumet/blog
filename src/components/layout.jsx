@@ -6,21 +6,23 @@ import Header from './header';
 import Footer from './footer';
 import AlternativeHeader from './alternative-header';
 
-export default (props) => (
-	<StaticQuery
-		query={graphql`
-			query {
-				site {
-					siteMetadata {
-						title
-						description
+export default function LayoutStaticQuery(props) {
+	return (
+		<StaticQuery
+			query={graphql`
+				query {
+					site {
+						siteMetadata {
+							title
+							description
+						}
 					}
 				}
-			}
-		`}
-		render={(data) => <Layout {...props} data={data} />}
-	/>
-);
+			`}
+			render={(data) => <Layout {...props} data={data} />}
+		/>
+	);
+}
 
 function Layout({ children, data }) {
 	const {

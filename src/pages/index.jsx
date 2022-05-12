@@ -35,16 +35,14 @@ export default function AboutAymericBeaumet({ data }) {
 
 				<p>
 					{'My name is '}
-					<strong>{author}</strong>
-					{
-						'. I am a Lead Platform Engineer working on backend and infrastructure, with a focus on maintainability, resilience and high availability.'
-					}
+					<strong>{author}</strong>. I am a Lead Platform Engineer working on backend and
+					infrastructure, with a focus on maintainability, resilience and high availability.
 				</p>
 
 				<p>
 					{'I am '}
-					<strong>passionate about computer science</strong>
-					{', and it has been so since I was 13. I am now lucky enough to live from that passion.'}
+					<strong>passionate about computer science</strong>, and it has been so since I was 13. I
+					am now lucky enough to live from that passion.
 				</p>
 
 				<p>
@@ -59,11 +57,10 @@ export default function AboutAymericBeaumet({ data }) {
 					{' some open-source projects, do my best to '}
 					<ExternalLink href={stackoverflow}>help</ExternalLink>
 					{' people. I also write about '}
-					<Link to="/posts">what I do</Link>
-					{'.'}
+					<Link to="/posts">what I do</Link>.
 				</p>
 
-				<p>{'I would love to know more about you, feel free to get in touch.'}</p>
+				<p>I would love to know more about you, feel free to get in touch.</p>
 
 				<p>
 					Best,

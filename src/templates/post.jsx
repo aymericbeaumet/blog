@@ -3,15 +3,15 @@ import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { Disqus } from 'gatsby-plugin-disqus';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import Layout from '../components/layout';
 import 'prismjs/themes/prism-coy.css';
 import * as classes from './post.module.scss';
 import Duration from '../components/duration';
 import DateComponent from '../components/date';
 import Tag from '../components/tag';
-import { Disqus } from 'gatsby-plugin-disqus';
 import ExternalLink from '../components/external-link';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export const query = graphql`
 	query ($slug: String!) {

@@ -36,14 +36,12 @@ function NotFound({ data }) {
 					{' and browse my '}
 					<Link to="/posts">posts</Link>
 					{' and '}
-					<Link to="/projects">projects</Link>
-					{'.'}
+					<Link to="/projects">projects</Link>.
 				</p>
 				<h2>Fun fact</h2>
 				<p>
 					{'I love '}
-					<a href="https://en.wikipedia.org/wiki/Vertical_wind_tunnel">indoor skydiving</a>
-					{'!'}
+					<a href="https://en.wikipedia.org/wiki/Vertical_wind_tunnel">indoor skydiving</a>!
 				</p>
 				<figure>
 					<img alt="Me having a lot of fun :)" src={aymericBeaumetIndoorSkydiving} />
