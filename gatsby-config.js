@@ -70,7 +70,6 @@ const plugins = [
 						showLineNumbers: false,
 						noInlineHighlight: false,
 						aliases: {
-							golang: 'go',
 							js: 'javascript',
 							rs: 'rust',
 						},

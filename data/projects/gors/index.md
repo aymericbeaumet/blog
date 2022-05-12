@@ -1,6 +1,6 @@
 ---
 title: "Gors: an experimental Go compiler"
-tags: [rust, golang, languagetheory]
+tags: [rust, go, languagetheory]
 date: 2021-01-01
 thumbnail: ./thumbnail.png
 github: https://github.com/aymericbeaumet/gors

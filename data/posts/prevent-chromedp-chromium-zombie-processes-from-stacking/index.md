@@ -1,6 +1,6 @@
 ---
 title: Prevent chromedp Chromium zombie processes from stacking
-tags: [golang, chromedp, chromium, macos]
+tags: [go, chromedp, chromium, macos]
 date: 2021-02-13
 thumbnail: ./thumbnail.jpg
 ---
