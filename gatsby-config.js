@@ -106,13 +106,17 @@ const plugins = [
 					query: `
             {
               allMarkdownRemark(
+                filter: { fields: { categorySlug: { in: ["post", "talk"] } } }
                 sort: { order: DESC, fields: [frontmatter___date] }
               ) {
                 edges {
                   node {
                     excerpt
                     html
-                    fields { slug }
+                    fields {
+                      slug
+                      categorySlug
+                    }
                     frontmatter {
                       title
                       date
