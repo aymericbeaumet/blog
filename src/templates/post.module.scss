@@ -2,7 +2,8 @@
 
 .Post {
 	// when adjusting the post width, the `maxWidth` option for
-	// 'gatsby-remark-images' must also be changed
+	// 'gatsby-remark-images' in `./gatsby-config.js` must also
+	// be changed
 	max-width: 720px;
 
 	header {
@@ -158,6 +159,8 @@
 		// gatsby-remark-responsive-iframe
 
 		:global(.gatsby-resp-iframe-wrapper) {
+			margin: 0 auto;
+			width: 80%;
 			margin-top: 15px;
 			border: 1px solid #eaeaea;
 		}

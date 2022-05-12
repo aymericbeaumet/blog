@@ -51,7 +51,7 @@ const plugins = [
 				{
 					resolve: 'gatsby-remark-images',
 					options: {
-						maxWidth: 720,
+						maxWidth: 0.8 * 720, // 80% * 720px, see ./src/templates/post.module.scss
 						withAvif: true,
 						withWebp: true,
 						showCaptions: ['title'],
