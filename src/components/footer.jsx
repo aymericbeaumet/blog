@@ -29,7 +29,7 @@ function Footer({ data }) {
 		<footer className={classes.Footer}>
 			<ul>
 				<li>
-					<Link to="/">
+					<Link to="/#top">
 						&copy; 2014&#8211;{new Date().getFullYear()} {author}. All Rights Reserved.
 					</Link>
 				</li>

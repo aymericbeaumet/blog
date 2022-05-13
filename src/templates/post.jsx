@@ -24,6 +24,9 @@ export const query = graphql`
 		markdownRemark(fields: { slug: { eq: $slug } }) {
 			html
 			timeToRead
+			wordCount {
+				words
+			}
 			frontmatter {
 				date
 				title
@@ -51,6 +54,7 @@ export default function Post({ data }) {
 		markdownRemark: {
 			html,
 			timeToRead,
+			wordCount,
 			frontmatter: { date, title, github, timeToWatch, tags = [], attachments = [] },
 			fields: { slug },
 		},
@@ -70,7 +74,7 @@ export default function Post({ data }) {
 						</li>
 						<li>
 							・&nbsp;
-							{Duration({ timeToRead, timeToWatch })}
+							{Duration({ timeToRead, wordCount, timeToWatch })}
 						</li>
 						{github ? (
 							<li>

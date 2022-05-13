@@ -16,7 +16,6 @@ export default function AlternativeHeaderStaticQuery() {
 							menu {
 								name
 								url
-								categorySlug
 							}
 						}
 					}
@@ -43,7 +42,7 @@ class AlternativeHeader extends React.Component {
 		window.removeEventListener('keydown', this.dismissHandler); // eslint-disable-line no-undef
 	}
 
-	set isVisible(isVisible) {
+	setVisibility(isVisible) {
 		// Update React state
 		this.setState({ isVisible });
 		// Disable scrolling while the menu is visible (meh, dirty hack)
@@ -52,7 +51,7 @@ class AlternativeHeader extends React.Component {
 
 	toggleOnChangeHandler = (event) => {
 		if (event && event.target) {
-			this.isVisible = !!event.target.checked;
+			this.setVisibility(!!event.target.checked);
 		}
 	};
 
@@ -60,32 +59,26 @@ class AlternativeHeader extends React.Component {
 		const isClickEvent = event.type === 'click';
 		const isEscapeEvent = event.type === 'keydown' && event.keyCode === 27;
 		if (isClickEvent || isEscapeEvent) {
-			this.isVisible = false;
+			this.setVisibility(false);
 		}
 	};
 
 	render() {
-		const {
-			constructor: { toggleId },
-			dismissHandler,
-			props: {
-				data: {
-					site: {
-						siteMetadata: { menu },
-					},
-				},
-			},
-			state: { isVisible },
-			toggleOnChangeHandler,
-		} = this;
+		const { data } = this.props;
+		const { isVisible } = this.state;
 		return (
 			<nav className={classes.AlternativeHeader}>
-				<input type="checkbox" checked={isVisible} onChange={toggleOnChangeHandler} id={toggleId} />
-				<label htmlFor={toggleId} className={classes.toggle}>
+				<input
+					type="checkbox"
+					checked={isVisible}
+					onChange={this.toggleOnChangeHandler}
+					id={AlternativeHeader.toggleId}
+				/>
+				<label htmlFor={AlternativeHeader.toggleId} className={classes.toggle}>
 					<FontAwesomeIcon width="32px" height="32px" icon={faBars} />
 					<FontAwesomeIcon width="32px" height="32px" icon={faTimes} />
 				</label>
-				<div className={classes.menu} onClick={dismissHandler}>
+				<div className={classes.menu} onClick={this.dismissHandler}>
 					<ul className={classes.entries}>
 						<li>
 							<nav className={classes.contact}>
@@ -95,7 +88,7 @@ class AlternativeHeader extends React.Component {
 						<li>
 							<Link to="/">Home</Link>
 						</li>
-						{menu.map(({ name, url }) => (
+						{data.site.siteMetadata.menu.map(({ name, url }) => (
 							<li key={name}>
 								<Link to={url}>{name}</Link>
 							</li>

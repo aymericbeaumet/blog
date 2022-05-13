@@ -2,7 +2,23 @@ import React from 'react';
 import Timer from '../images/timer.svg';
 import * as classes from './duration.module.scss';
 
-export default function Duration({ timeToRead, timeToWatch } = {}) {
+export default function Duration({ timeToRead, wordCount, timeToWatch } = {}) {
+	if (typeof timeToRead === 'number') {
+		const suffix = typeof wordCount?.words === 'number' ? ` (${wordCount?.words} words)` : '';
+		return (
+			<time
+				className={classes.Duration}
+				dateTime={`${timeToRead}m`}
+				title={`Estimated read of ${timeToRead} ${
+					timeToRead !== 1 ? 'minutes' : 'minute'
+				}${suffix}`}
+			>
+				<Timer />
+				{`${timeToRead} min read`}
+			</time>
+		);
+	}
+
 	if (typeof timeToWatch === 'number') {
 		return (
 			<time
@@ -12,19 +28,6 @@ export default function Duration({ timeToRead, timeToWatch } = {}) {
 			>
 				<Timer />
 				{`${timeToWatch} min watch`}
-			</time>
-		);
-	}
-
-	if (typeof timeToRead === 'number') {
-		return (
-			<time
-				className={classes.Duration}
-				dateTime={`${timeToRead}m`}
-				title={`Estimated read of ${timeToRead} ${timeToRead !== 1 ? 'minutes' : 'minute'}`}
-			>
-				<Timer />
-				{`${timeToRead} min read`}
 			</time>
 		);
 	}
