@@ -26,7 +26,7 @@ export default function DateComponent({ date, until } = {}) {
 			);
 		}
 		return (
-			<time dateTime={ddate} title={format(ddate, 'PPPP, pp')}>
+			<time dateTime={ddate} title={format(ddate, 'PPPP')}>
 				{format(ddate, 'yyyy MMM do')}
 			</time>
 		);
