@@ -35,11 +35,11 @@ class AlternativeHeader extends React.Component {
 	}
 
 	componentDidMount() {
-		window.addEventListener('keydown', this.dismissHandler); // eslint-disable-line no-undef
+		window.addEventListener('keydown', this.onKeyDown); // eslint-disable-line no-undef
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener('keydown', this.dismissHandler); // eslint-disable-line no-undef
+		window.removeEventListener('keydown', this.onKeyDown); // eslint-disable-line no-undef
 	}
 
 	setVisibility(isVisible) {
@@ -49,41 +49,39 @@ class AlternativeHeader extends React.Component {
 		document.body.style.overflow = isVisible ? 'hidden' : ''; // eslint-disable-line no-undef
 	}
 
-	toggleOnChangeHandler = (event) => {
+	onCheckboxChange = (event) => {
 		if (event && event.target) {
 			this.setVisibility(!!event.target.checked);
 		}
 	};
 
-	dismissHandler = (event = {}) => {
-		const isClickEvent = event.type === 'click';
-		const isEscapeEvent = event.type === 'keydown' && event.keyCode === 27;
-		if (isClickEvent || isEscapeEvent) {
+	onKeyDown = (event = {}) => {
+		if (event.type === 'keydown' && event.keyCode === 27) {
 			this.setVisibility(false);
 		}
 	};
 
 	render() {
 		const { data } = this.props;
-		const { isVisible } = this.state;
+		const { isVisible } = this.state; // use to propagate mouse/keyboard dismiss
 		return (
 			<nav className={classes.AlternativeHeader}>
 				<input
 					type="checkbox"
 					checked={isVisible}
-					onChange={this.toggleOnChangeHandler}
+					onChange={this.onCheckboxChange}
 					id={AlternativeHeader.toggleId}
 				/>
+
 				<label htmlFor={AlternativeHeader.toggleId} className={classes.toggle}>
 					<FontAwesomeIcon width="32px" height="32px" icon={faBars} />
 					<FontAwesomeIcon width="32px" height="32px" icon={faTimes} />
 				</label>
-				<div className={classes.menu} onClick={this.dismissHandler}>
+
+				<label htmlFor={AlternativeHeader.toggleId} className={classes.menu}>
 					<ul className={classes.entries}>
-						<li>
-							<nav className={classes.contact}>
-								<Contact />
-							</nav>
+						<li className={classes.contact}>
+							<Contact />
 						</li>
 						<li>
 							<Link to="/">Home</Link>
@@ -94,7 +92,7 @@ class AlternativeHeader extends React.Component {
 							</li>
 						))}
 					</ul>
-				</div>
+				</label>
 			</nav>
 		);
 	}

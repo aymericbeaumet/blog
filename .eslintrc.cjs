@@ -8,7 +8,8 @@ module.exports = {
 	},
 	extends: ['airbnb', 'prettier'],
 	rules: {
-		'react/jsx-props-no-spreading': 'off',
-		'react/prop-types': 'off',
+		'jsx-a11y/label-has-associated-control': [2, { assert: 'either' }],
+		'react/jsx-props-no-spreading': 0,
+		'react/prop-types': 0,
 	},
 };
