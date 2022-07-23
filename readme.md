@@ -1,17 +1,15 @@
 # aymericbeaumet.com
 
-[![netlify](https://img.shields.io/netlify/82402a7d-5965-4054-b479-56f241526b47?style=flat-square&logo=netlify)](https://aymericbeaumet.com)
-[![github](https://img.shields.io/github/issues/aymericbeaumet/aymericbeaumet.com?style=flat-square&logo=github)](https://github.com/aymericbeaumet/aymericbeaumet.com/issues)
-
 ## Commands
 
 ```
-yarn
-yarn build
-yarn develop
+npm install
+npm run dev
+npm run build
+npm run serve
 ```
 
-_The `master` branch is automatically built and deployed by Netlify._
+_The `master` branch is automatically built and deployed by Vercel._
 
 ## Manual Tests
 
