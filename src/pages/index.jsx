@@ -1,9 +1,8 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import Layout from '../components/layout';
 import * as classes from './index.module.scss';
-import ExternalLink from '../components/external-link';
 
 export const query = graphql`
 	query {
