@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import Layout from '../components/layout';
 import * as classes from './index.module.scss';
+import ExternalLink from '../components/external-link';
 
 export const query = graphql`
 	query {
@@ -33,14 +34,20 @@ export default function AboutAymericBeaumet({ data }) {
 				<h2>Welcome to my part of the internet</h2>
 
 				<p>
-					My name is <strong>{author}</strong>. I am a Lead Platform Engineer working on
-					infrastructure and backend topics, with a focus on maintainability, resilience and high
-					availability.
+					My name is <strong>{author}</strong>, a 29 years old father from Paris, France.
 				</p>
 
 				<p>
 					I am <strong>passionate about computer science</strong>, and it has been so since I was
 					13. I am now lucky enough to live from that passion.
+				</p>
+
+				<p>
+					I work for <ExternalLink href="https://rekki.com">REKKI</ExternalLink> as a{' '}
+					<strong>Lead Platform Engineer</strong>. My team is focusing on building a robust
+					foundation that can be leveraged by the Tech and Product teams to sustain the company
+					growth. We deal with many topics, including infrastructure, observability and developer
+					experience.
 				</p>
 
 				<p>
