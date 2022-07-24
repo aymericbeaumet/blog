@@ -40,6 +40,7 @@ class AlternativeHeader extends React.Component {
 
 	componentWillUnmount() {
 		window.removeEventListener('keydown', this.onKeyDown); // eslint-disable-line no-undef
+		this.setVisibility(false);
 	}
 
 	setVisibility(isVisible) {
@@ -50,13 +51,11 @@ class AlternativeHeader extends React.Component {
 	}
 
 	onCheckboxChange = (event) => {
-		if (event && event.target) {
-			this.setVisibility(!!event.target.checked);
-		}
+		this.setVisibility(!!event.target.checked);
 	};
 
-	onKeyDown = (event = {}) => {
-		if (event.type === 'keydown' && event.keyCode === 27) {
+	onKeyDown = (event) => {
+		if (event.keyCode === 27) {
 			this.setVisibility(false);
 		}
 	};
