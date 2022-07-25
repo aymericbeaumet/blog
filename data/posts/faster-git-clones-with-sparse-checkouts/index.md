@@ -8,11 +8,9 @@ date: 2022-07-23
 We at [REKKI](https://rekki.com) are working on a monorepo that contains all the
 backend Go code for dozens of our services and jobs. As time goes by and the
 size of this repository grows, the time it takes for an initial clone becomes
-noticeable.
-
-While this is not really a problem on the engineers' workstations, this is
-impacting automated systems that have to download the codebase regularly: like
-CIs, CDs, or even our in-house [CLI](https://cli.rekki.team/).
+noticeable. While this is not really a problem on the engineers' workstations,
+this is impacting automated systems that have to download the codebase
+regularly: like CIs, CDs, or even our in-house [CLI](https://cli.rekki.team/).
 
 Our CLI sometimes needs to pull a fresh version of a specific commit from the Go
 codebase so that it can perform beta updates when our engineers request it

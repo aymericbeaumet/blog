@@ -24,6 +24,7 @@ export const query = graphql`
 		markdownRemark(fields: { slug: { eq: $slug } }) {
 			html
 			timeToRead
+			excerpt(pruneLength: 300)
 			wordCount {
 				words
 			}
@@ -52,6 +53,7 @@ export default function Post({ data }) {
 			siteMetadata: { author, siteUrl },
 		},
 		markdownRemark: {
+			excerpt,
 			html,
 			timeToRead,
 			wordCount,
@@ -63,6 +65,7 @@ export default function Post({ data }) {
 		<Layout>
 			<Helmet>
 				<title>{`${title} | ${author}`}</title>
+				<meta name="description" content={excerpt} />
 			</Helmet>
 
 			<section className={classes.Post}>

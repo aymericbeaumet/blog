@@ -9,10 +9,9 @@ export const query = graphql`
 	query {
 		site {
 			siteMetadata {
-				title
 				author
-				github
-				stackoverflow
+				email
+				twitter
 			}
 		}
 	}
@@ -21,9 +20,10 @@ export const query = graphql`
 export default function AboutAymericBeaumet({ data }) {
 	const {
 		site: {
-			siteMetadata: { author },
+			siteMetadata: { author, email, twitter },
 		},
 	} = data;
+
 	return (
 		<Layout>
 			<Helmet>
@@ -55,7 +55,10 @@ export default function AboutAymericBeaumet({ data }) {
 					best way to progress, and I always look for new challenges.
 				</p>
 
-				<p>Feel free to get in touch.</p>
+				<p>
+					Feel free to get in touch by <ExternalLink href={`mailto:${email}`}>email</ExternalLink>{' '}
+					or on <ExternalLink href={twitter}>Twitter</ExternalLink>.
+				</p>
 
 				<p>
 					Best,
