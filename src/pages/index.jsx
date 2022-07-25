@@ -34,7 +34,7 @@ export default function AboutAymericBeaumet({ data }) {
 				<h2>Welcome to my part of the internet</h2>
 
 				<p>
-					My name is <strong>{author}</strong>. I&apos; from Paris, France.
+					My name is <strong>{author}</strong>. I live in Paris, France.
 				</p>
 
 				<p>
