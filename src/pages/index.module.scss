@@ -56,7 +56,6 @@
 
 .Aside {
 	display: flex;
-	grid-template-columns: repeat(auto-fill, 255px);
 	flex-direction: column;
 
 	h2 {
@@ -70,6 +69,5 @@
 
 	@media screen and (max-width: $breakpoint0) {
 		padding-top: 60px;
-		flex-direction: row;
 	}
 }
