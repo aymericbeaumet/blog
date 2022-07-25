@@ -54,6 +54,10 @@ class AlternativeHeader extends React.Component {
 		this.setVisibility(!!event.target.checked);
 	};
 
+	onClick = () => {
+		this.setVisibility(false);
+	};
+
 	onKeyDown = (event) => {
 		if (event.keyCode === 27) {
 			this.setVisibility(false);
@@ -83,11 +87,15 @@ class AlternativeHeader extends React.Component {
 							<Contact />
 						</li>
 						<li>
-							<Link to="/">Home</Link>
+							<Link to="/" onClick={this.onClick}>
+								Home
+							</Link>
 						</li>
 						{data.site.siteMetadata.menu.map(({ name, url }) => (
 							<li key={name}>
-								<Link to={url}>{name}</Link>
+								<Link to={url} onClick={this.onClick}>
+									{name}
+								</Link>
 							</li>
 						))}
 					</ul>

@@ -27,6 +27,7 @@ export default function PostsPage({ data }) {
 		},
 		posts,
 	} = data;
+
 	return (
 		<Layout>
 			<Helmet>
