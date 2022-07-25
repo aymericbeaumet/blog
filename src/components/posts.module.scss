@@ -14,6 +14,10 @@ $postOffset: 25px;
 		grid-template-columns: repeat(auto-fill, 255px);
 		grid-gap: $postOffset;
 
+		& > li {
+			border-bottom: 1px solid #d8d8d8;
+		}
+
 		@media screen and (max-width: $breakpoint2) {
 			grid-template-columns: unset;
 			justify-items: center;

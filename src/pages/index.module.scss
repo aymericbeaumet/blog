@@ -2,6 +2,7 @@
 
 .wrapper {
 	display: flex;
+	column-gap: 100px;
 
 	& > * {
 		max-width: 600px;
@@ -46,5 +47,15 @@
 		&:hover {
 			box-shadow: 2px 4px 8px 0 #53a0fd;
 		}
+	}
+}
+
+.Aside {
+	h2 {
+		margin-bottom: 10px;
+	}
+
+	div {
+		margin-bottom: 15px;
 	}
 }

@@ -90,7 +90,7 @@ export default function AboutAymericBeaumet({ data }) {
 					</p>
 				</section>
 
-				<aside>
+				<aside className={classes.Aside}>
 					<h2>Latest Post</h2>
 					<Post post={post} />
 
