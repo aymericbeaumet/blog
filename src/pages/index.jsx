@@ -34,7 +34,7 @@ export default function AboutAymericBeaumet({ data }) {
 				<h2>Welcome to my part of the internet</h2>
 
 				<p>
-					My name is <strong>{author}</strong>, a 29 years old father from Paris, France.
+					My name is <strong>{author}</strong>. I&apos; from Paris, France.
 				</p>
 
 				<p>
@@ -51,7 +51,7 @@ export default function AboutAymericBeaumet({ data }) {
 				</p>
 
 				<p>
-					I am <strong>an enthusiastic learner</strong>. I firmly believe that struggling is the
+					I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
 					best way to progress, and I always look for new challenges.
 				</p>
 
