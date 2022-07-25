@@ -1,5 +1,6 @@
 import React from 'react';
 import format from 'date-fns/format';
+import differenceInDays from 'date-fns/differenceInDays';
 
 export default function DateComponent({ date, until } = {}) {
 	const ddate = date ? new Date(date) : null;
@@ -25,9 +26,19 @@ export default function DateComponent({ date, until } = {}) {
 				</time>
 			);
 		}
+
+		const diffDays = differenceInDays(new Date(), ddate);
+		const label =
+			diffDays <= 1 // eslint-disable-line
+				? '1 day ago'
+				: diffDays < 7 // eslint-disable-line
+				? `${diffDays} days ago`
+				: diffDays < 14
+				? '1 week ago'
+				: format(ddate, 'yyyy MMM do');
 		return (
 			<time dateTime={ddate} title={format(ddate, 'PPPP')}>
-				{format(ddate, 'yyyy MMM do')}
+				{label}
 			</time>
 		);
 	}

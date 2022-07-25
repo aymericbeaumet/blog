@@ -91,11 +91,15 @@ export default function AboutAymericBeaumet({ data }) {
 				</section>
 
 				<aside className={classes.Aside}>
-					<h2>Latest Post</h2>
-					<Post post={post} />
+					<div>
+						<h2>Latest Post</h2>
+						<Post post={post} />
+					</div>
 
-					<h2>Latest Project</h2>
-					<Post post={project} />
+					<div>
+						<h2>Latest Project</h2>
+						<Post post={project} />
+					</div>
 				</aside>
 			</div>
 		</Layout>

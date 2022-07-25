@@ -7,6 +7,10 @@
 	& > * {
 		max-width: 600px;
 	}
+
+	@media screen and (max-width: $breakpoint0) {
+		flex-direction: column;
+	}
 }
 
 .About {
@@ -51,11 +55,21 @@
 }
 
 .Aside {
+	display: flex;
+	grid-template-columns: repeat(auto-fill, 255px);
+	flex-direction: column;
+
 	h2 {
 		margin-bottom: 10px;
 	}
 
-	div {
-		margin-bottom: 15px;
+	& > div {
+		margin-bottom: 17px;
+		margin-right: 25px;
+	}
+
+	@media screen and (max-width: $breakpoint0) {
+		padding-top: 60px;
+		flex-direction: row;
 	}
 }
