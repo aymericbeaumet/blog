@@ -1,8 +1,14 @@
 @import '../components/config';
 
-.About {
-	max-width: 600px;
+.wrapper {
+	display: flex;
 
+	& > * {
+		max-width: 600px;
+	}
+}
+
+.About {
 	h1 {
 		font-size: 42px;
 		font-weight: bold;

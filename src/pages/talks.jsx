@@ -15,7 +15,7 @@ export const query = graphql`
 			sort: { order: DESC, fields: [frontmatter___date] }
 			filter: { fields: { categorySlug: { eq: "talk" } } }
 		) {
-			...PostsRequirements
+			...PostsFragment
 		}
 	}
 `;

@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import Layout from '../components/layout';
 import * as classes from './index.module.scss';
 import ExternalLink from '../components/external-link';
+import Post from '../components/post';
 
 export const query = graphql`
 	query {
@@ -14,6 +15,22 @@ export const query = graphql`
 				twitter
 			}
 		}
+
+		posts: allMarkdownRemark(
+			sort: { order: DESC, fields: [frontmatter___date] }
+			filter: { fields: { categorySlug: { in: ["post"] } } }
+			limit: 1
+		) {
+			...PostsFragment
+		}
+
+		projects: allMarkdownRemark(
+			sort: { order: DESC, fields: [frontmatter___date] }
+			filter: { fields: { categorySlug: { in: ["project"] } } }
+			limit: 1
+		) {
+			...PostsFragment
+		}
 	}
 `;
 
@@ -22,50 +39,65 @@ export default function AboutAymericBeaumet({ data }) {
 		site: {
 			siteMetadata: { author, email, twitter },
 		},
+		posts,
+		projects,
 	} = data;
+	const post = posts.edges[0].node;
+	const project = projects.edges[0].node;
 
 	return (
 		<Layout>
 			<Helmet>
 				<title>{author} Blog</title>
 			</Helmet>
-			<section className={classes.About}>
-				<h1>Hey traveler,</h1>
-				<h2>Welcome to my part of the internet</h2>
 
-				<p>
-					My name is <strong>{author}</strong>. I live in Paris, France.
-				</p>
+			<div className={classes.wrapper}>
+				<section className={classes.About}>
+					<h1>Hey traveler,</h1>
+					<h2>Welcome to my part of the internet</h2>
 
-				<p>
-					I am <strong>passionate about computer science</strong>, which have been so since I was
-					13. I am now lucky enough to live from that passion.
-				</p>
+					<p>
+						My name is <strong>{author}</strong>. I live in Paris, France.
+					</p>
 
-				<p>
-					I work for <ExternalLink href="https://rekki.com">REKKI</ExternalLink> as a{' '}
-					<strong>Lead Platform Engineer</strong>. My team is focusing on building a robust
-					foundation that can be leveraged by the Tech and Product teams to sustain the
-					company&apos;s growth. We deal with many topics, including infrastructure and developer
-					experience.
-				</p>
+					<p>
+						I am <strong>passionate about computer science</strong>, which have been so since I was
+						13. I am now lucky enough to live from that passion.
+					</p>
 
-				<p>
-					I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
-					best way to progress, and I always look for new challenges.
-				</p>
+					<p>
+						I work for <ExternalLink href="https://rekki.com">REKKI</ExternalLink> as a{' '}
+						<strong>Lead Platform Engineer</strong>. My team is focusing on building a robust
+						foundation that can be leveraged by the Tech and Product teams to sustain the
+						company&apos;s growth. We deal with many topics, including infrastructure and developer
+						experience.
+					</p>
 
-				<p>
-					Feel free to get in touch by <ExternalLink href={`mailto:${email}`}>email</ExternalLink>{' '}
-					or on <ExternalLink href={twitter}>Twitter</ExternalLink>.
-				</p>
+					<p>
+						I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
+						best way to progress, and I always look for new challenges.
+					</p>
 
-				<p>
-					Best,
-					<br />
-					Aymeric
-				</p>
-			</section>
+					<p>
+						Feel free to get in touch by <ExternalLink href={`mailto:${email}`}>email</ExternalLink>{' '}
+						or on <ExternalLink href={twitter}>Twitter</ExternalLink>.
+					</p>
+
+					<p>
+						Best,
+						<br />
+						Aymeric
+					</p>
+				</section>
+
+				<aside>
+					<h2>Latest Post</h2>
+					<Post post={post} />
+
+					<h2>Latest Project</h2>
+					<Post post={project} />
+				</aside>
+			</div>
 		</Layout>
 	);
 }
