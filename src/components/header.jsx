@@ -12,7 +12,7 @@ export default function HeaderStaticQuery() {
 				query {
 					site {
 						siteMetadata {
-							email
+							author
 							menu {
 								name
 								url
@@ -30,7 +30,7 @@ export default function HeaderStaticQuery() {
 function Header({ data }) {
 	const {
 		site: {
-			siteMetadata: { menu },
+			siteMetadata: { author, menu },
 		},
 	} = data;
 	return (
@@ -38,7 +38,7 @@ function Header({ data }) {
 			<nav role="navigation">
 				<ul>
 					<li className={classes.logo} key="logo">
-						<Link to="/" activeClassName={classes.active}>
+						<Link to="/" activeClassName={classes.active} title={author}>
 							<Logo />
 						</Link>
 					</li>

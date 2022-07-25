@@ -27,13 +27,10 @@ function Footer({ data }) {
 	} = data;
 	return (
 		<footer className={classes.Footer}>
-			<ul>
-				<li>
-					<Link to="/">
-						&copy; 2014&#8211;{new Date().getFullYear()} {author}. All Rights Reserved.
-					</Link>
-				</li>
-			</ul>
+			<Link to="/">
+				&copy; 2014&#8211;{new Date().getFullYear()} {author}
+			</Link>{' '}
+			— <Link to="feed.xml">Subscribe with RSS</Link>
 		</footer>
 	);
 }
