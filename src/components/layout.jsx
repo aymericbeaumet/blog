@@ -30,6 +30,7 @@ function Layout({ children, data }) {
 			siteMetadata: { description, title },
 		},
 	} = data;
+
 	return (
 		<div className={classes.Layout}>
 			<Helmet>
@@ -37,12 +38,14 @@ function Layout({ children, data }) {
 				<title>{`${title} Blog`}</title>
 				<meta name="description" content={description} />
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-				<link type="text/plain" rel="author" href="/humans.txt" />
-				<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700" rel="stylesheet" />
 			</Helmet>
+
 			<Header />
+
 			<main>{children}</main>
+
 			<Footer />
+
 			<AlternativeHeader />
 		</div>
 	);
