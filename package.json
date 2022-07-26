@@ -9,7 +9,7 @@
 		"dev": "gatsby develop -p 3000",
 		"build": "gatsby build",
 		"serve": "gatsby serve -p 3000",
-		"test": "prettier --check . && eslint '**/*.{js,jsx}'",
+		"lint": "prettier --check . && eslint '**/*.{js,jsx}'",
 		"format": "eslint --fix '**/*.{js,jsx}'; prettier --write ."
 	},
 	"dependencies": {
