@@ -1,37 +1,38 @@
 {
+	"github": { "silent": true },
 	"headers": [
 		{
 			"source": "/(.*)",
 			"headers": [
-				{
-					"key": "Access-Control-Allow-Origin",
-					"value": "https://aymericbeaumet.com"
-				},
-				{
-					"key": "Referrer-Policy",
-					"value": "no-referrer"
-				},
-				{
-					"key": "X-Content-Type-Options",
-					"value": "nosniff"
-				},
-				{
-					"key": "X-Frame-Options",
-					"value": "DENY"
-				}
+				{ "key": "Access-Control-Allow-Origin", "value": "https://aymericbeaumet.com" },
+				{ "key": "Referrer-Policy", "value": "no-referrer" },
+				{ "key": "X-Content-Type-Options", "value": "nosniff" },
+				{ "key": "X-Frame-Options", "value": "DENY" }
 			]
 		},
 		{
-			"source": "/:catchall+.md",
-			"headers": [
-				{
-					"key": "Content-Type",
-					"value": "text/plain; charset=utf-8"
-				}
-			]
+			"source": "/(.+).md",
+			"headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+		},
+		{
+			"source": "/(.+).html",
+			"headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+		},
+		{
+			"source": "/app-data.json",
+			"headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+		},
+		{
+			"source": "/sw.js",
+			"headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+		},
+		{
+			"source": "/public/page-data/(.+)",
+			"headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+		},
+		{
+			"source": "/static/(.+)",
+			"headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
 		}
-	],
-	"github": {
-		"silent": true
-	}
+	]
 }

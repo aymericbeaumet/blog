@@ -8,6 +8,12 @@ const urlFromTag = require('./src/utils/urlFromTag');
 
 const markdownFiles = new Map();
 
+exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
+	if (getConfig().mode === 'production') {
+		actions.setWebpackConfig({ devtool: false });
+	}
+};
+
 exports.onCreateNode = ({ node, actions }) => {
 	const { createNodeField } = actions;
 	if (node.internal.type === 'MarkdownRemark') {
