@@ -22,7 +22,12 @@ export const componentFragment = graphql`
 				date
 				thumbnail {
 					childImageSharp {
-						gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, breakpoints: [255])
+						gatsbyImageData(
+							layout: CONSTRAINED
+							placeholder: BLURRED
+							width: 255
+							formats: [PNG, WEBP, AVIF]
+						)
 					}
 				}
 			}

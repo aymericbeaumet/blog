@@ -19,7 +19,6 @@ _The `master` branch is automatically built and deployed by Vercel._
 
 ### Performance / Accessibility / Security
 
-- [Google Lighthouse](https://lighthouse-dot-webdotdevsite.appspot.com/lh/html?url=https://aymericbeaumet.com)
 - [Google Mobile-Friendly](https://search.google.com/test/mobile-friendly?url=https://aymericbeaumet.com)
 - [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Faymericbeaumet.com)
 - [Sophos Security Headers](https://securityheaders.com/?q=https%3A%2F%2Faymericbeaumet.com)
