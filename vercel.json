@@ -4,6 +4,10 @@
 			"source": "/(.*)",
 			"headers": [
 				{
+					"key": "Access-Control-Allow-Origin",
+					"value": "https://aymericbeaumet.com"
+				},
+				{
 					"key": "Referrer-Policy",
 					"value": "no-referrer"
 				},
