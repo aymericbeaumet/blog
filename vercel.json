@@ -8,10 +8,6 @@
 					"value": "https://aymericbeaumet.com"
 				},
 				{
-					"key": "Content-Security-Policy",
-					"value": "default-src 'self'; font-src 'fonts.googleapis.com' 'fonts.gstatic.com'; style-src 'fonts.googleapis.com' '*.disquscdn.com'; image-src '*.disquscdn.com'; script-src: '*.disquscdn.com' 'disqus.com'"
-				},
-				{
 					"key": "Referrer-Policy",
 					"value": "no-referrer"
 				},
