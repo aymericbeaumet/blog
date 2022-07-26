@@ -30,7 +30,9 @@ export default function Tag({ pageContext, data }) {
 		<Layout>
 			<Helmet>
 				<title>{`${pageContext.tag} - ${title}`}</title>
+				<meta name="description" content={`Posts for tag #${pageContext.tag}`} />
 			</Helmet>
+
 			<Posts allMarkdownRemark={data.allMarkdownRemark} />
 		</Layout>
 	);

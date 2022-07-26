@@ -1,9 +1,12 @@
 /* eslint-disable no-restricted-syntax, import/no-extraneous-dependencies */
 
+const fs = require('fs-extra');
 const { capitalize } = require('lodash');
 const path = require('path');
 const { singular } = require('pluralize');
 const urlFromTag = require('./src/utils/urlFromTag');
+
+const markdownFiles = new Map();
 
 exports.onCreateNode = ({ node, actions }) => {
 	const { createNodeField } = actions;
@@ -25,7 +28,6 @@ exports.onCreateNode = ({ node, actions }) => {
 };
 
 exports.createPages = async ({ graphql, actions }) => {
-	const { createPage } = actions;
 	const tagsIndex = new Set();
 
 	// Query pages for this category
@@ -34,6 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
 			allMarkdownRemark {
 				edges {
 					node {
+						rawMarkdownBody
 						fields {
 							slug
 						}
@@ -48,11 +51,14 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	data.allMarkdownRemark.edges.forEach(({ node }) => {
 		// Create page
-		createPage({
+		actions.createPage({
 			path: node.fields.slug,
-			component: path.resolve(`./src/templates/post.jsx`),
+			component: path.resolve('./src/templates/post.jsx'),
 			context: { slug: node.fields.slug },
 		});
+
+		// Register markdown file for later creation
+		markdownFiles.set(`${node.fields.slug}.md`, node.rawMarkdownBody);
 
 		// Save tags for later
 		(node.frontmatter.tags || []).forEach((tag) => {
@@ -62,10 +68,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
 	// Create tags pages
 	for (const tag of tagsIndex.values()) {
-		createPage({
+		actions.createPage({
 			path: urlFromTag(tag),
 			component: path.resolve('./src/templates/tag.jsx'),
 			context: { tag },
 		});
 	}
 };
+
+exports.onPostBuild = async () =>
+	Promise.all(
+		Array.from(markdownFiles.entries()).map(([filename, data]) =>
+			fs.writeFile(path.join('./public', filename), data),
+		),
+	);

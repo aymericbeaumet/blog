@@ -1,10 +1,10 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { Disqus } from 'gatsby-plugin-disqus';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
 import Layout from '../components/layout';
 import 'prismjs/themes/prism-coy.css';
 import * as classes from './post.module.scss';
@@ -71,6 +71,7 @@ export default function Post({ data }) {
 			<section className={classes.Post}>
 				<header>
 					<h1>{title}</h1>
+
 					<ul className={classes.info}>
 						<li>
 							<DateComponent date={date} />
@@ -88,7 +89,14 @@ export default function Post({ data }) {
 								</ExternalLink>
 							</li>
 						) : null}
+						<li>
+							・&nbsp;
+							<Link href={`/${slug}.md`} title="View Markdown for this page">
+								<FontAwesomeIcon width="16px" height="16px" icon={faMarkdown} />
+							</Link>
+						</li>
 					</ul>
+
 					{tags && tags.length > 0 ? (
 						<ul className={classes.tags}>
 							{tags.map((tag) => (
