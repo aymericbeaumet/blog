@@ -1,5 +1,5 @@
-import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
+import React from 'react';
 
 export default function CategoryLinkStaticQuery(props) {
 	return (

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Timer from '../images/timer.svg';
 import * as classes from './duration.module.scss';
 

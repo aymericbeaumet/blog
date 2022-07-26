@@ -1,7 +1,8 @@
-import React from 'react';
 import { graphql } from 'gatsby';
-import * as classes from './posts.module.scss';
+import React from 'react';
+
 import Post from './post';
+import * as classes from './posts.module.scss';
 
 export const componentFragment = graphql`
 	fragment PostsFragment on MarkdownRemarkConnection {

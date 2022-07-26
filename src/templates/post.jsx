@@ -1,17 +1,18 @@
-import React from 'react';
-import { graphql, Link } from 'gatsby';
-import { Helmet } from 'react-helmet';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSave } from '@fortawesome/free-regular-svg-icons';
-import { Disqus } from 'gatsby-plugin-disqus';
 import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
-import Layout from '../components/layout';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, graphql } from 'gatsby';
+import { Disqus } from 'gatsby-plugin-disqus';
 import 'prismjs/themes/prism-coy.css';
-import * as classes from './post.module.scss';
-import Duration from '../components/duration';
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
 import DateComponent from '../components/date';
-import Tag from '../components/tag';
+import Duration from '../components/duration';
 import ExternalLink from '../components/external-link';
+import Layout from '../components/layout';
+import Tag from '../components/tag';
+import * as classes from './post.module.scss';
 
 export const query = graphql`
 	query ($slug: String!) {

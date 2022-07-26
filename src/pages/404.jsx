@@ -1,9 +1,10 @@
+import { Link, graphql } from 'gatsby';
 import React from 'react';
-import { graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
+
 import Layout from '../components/layout';
-import * as classes from './404.module.scss';
 import aymericBeaumetIndoorSkydiving from '../images/aymeric-beaumet-indoor-skydiving.jpg';
+import * as classes from './404.module.scss';
 
 export const query = graphql`
 	query {

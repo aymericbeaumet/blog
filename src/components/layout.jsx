@@ -1,10 +1,11 @@
+import { StaticQuery, graphql } from 'gatsby';
 import React from 'react';
 import Helmet from 'react-helmet';
-import { StaticQuery, graphql } from 'gatsby';
-import * as classes from './layout.module.scss';
-import Header from './header';
-import Footer from './footer';
+
 import AlternativeHeader from './alternative-header';
+import Footer from './footer';
+import Header from './header';
+import * as classes from './layout.module.scss';
 
 export default function LayoutStaticQuery(props) {
 	return (

@@ -1,7 +1,8 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import urlFromTag from '../utils/urlFromTag';
+import React from 'react';
+
 import slugFromTag from '../utils/slugFromTag';
+import urlFromTag from '../utils/urlFromTag';
 
 export default function Tag({ tag }) {
 	const tagSlug = slugFromTag(tag);

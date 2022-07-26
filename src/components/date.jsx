@@ -1,6 +1,6 @@
-import React from 'react';
-import format from 'date-fns/format';
 import differenceInDays from 'date-fns/differenceInDays';
+import format from 'date-fns/format';
+import React from 'react';
 
 export default function DateComponent({ date, until } = {}) {
 	const ddate = date ? new Date(date) : null;

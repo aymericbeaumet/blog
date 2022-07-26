@@ -1,9 +1,10 @@
-import React from 'react';
+import { Link, graphql } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { graphql, Link } from 'gatsby';
-import * as classes from './post.module.scss';
-import Duration from './duration';
+import React from 'react';
+
 import DateComponent from './date';
+import Duration from './duration';
+import * as classes from './post.module.scss';
 import Tag from './tag';
 
 export const componentFragment = graphql`

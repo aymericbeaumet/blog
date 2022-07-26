@@ -1,9 +1,10 @@
-import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
-import * as classes from './header.module.scss';
+import React from 'react';
+
 import Logo from '../images/aymeric-beaumet-logo.svg';
 import CategoryLink from './category-link';
 import Contact from './contact';
+import * as classes from './header.module.scss';
 
 export default function HeaderStaticQuery() {
 	return (

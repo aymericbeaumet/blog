@@ -1,5 +1,6 @@
-import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
+import React from 'react';
+
 import * as classes from './footer.module.scss';
 
 export default function FooterStaticQuery() {

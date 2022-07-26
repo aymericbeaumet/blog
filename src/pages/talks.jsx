@@ -1,8 +1,9 @@
+import { graphql } from 'gatsby';
 import React from 'react';
 import Helmet from 'react-helmet';
-import { graphql } from 'gatsby';
-import Posts from '../components/posts';
+
 import Layout from '../components/layout';
+import Posts from '../components/posts';
 
 export const query = graphql`
 	query {

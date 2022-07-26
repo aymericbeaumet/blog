@@ -1,10 +1,11 @@
-import React from 'react';
 import { graphql } from 'gatsby';
+import React from 'react';
 import Helmet from 'react-helmet';
-import Layout from '../components/layout';
-import * as classes from './index.module.scss';
+
 import ExternalLink from '../components/external-link';
+import Layout from '../components/layout';
 import Post from '../components/post';
+import * as classes from './index.module.scss';
 
 export const query = graphql`
 	query {

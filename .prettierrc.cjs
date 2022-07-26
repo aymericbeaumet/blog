@@ -3,6 +3,11 @@ module.exports = {
 	singleQuote: true,
 	trailingComma: 'all',
 	printWidth: 100,
+
+	importOrder: ['^@core/(.*)$', '^@server/(.*)$', '^@ui/(.*)$', '^[./]'],
+	importOrderSeparation: true,
+	importOrderSortSpecifiers: true,
+
 	overrides: [
 		{
 			files: '**/*.md',

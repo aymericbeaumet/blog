@@ -1,13 +1,14 @@
-import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-	faStackOverflow,
 	faGithub,
-	faTwitter,
 	faLinkedin,
+	faStackOverflow,
+	faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { StaticQuery, graphql } from 'gatsby';
+import React from 'react';
+
 import ExternalLink from './external-link';
 
 export default function ContactStaticQuery() {

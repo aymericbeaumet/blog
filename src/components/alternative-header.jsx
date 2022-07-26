@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, StaticQuery, graphql } from 'gatsby';
+import React from 'react';
+
 import * as classes from './alternative-header.module.scss';
 import Contact from './contact';
 
