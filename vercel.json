@@ -11,19 +11,19 @@
 			]
 		},
 		{
-			"source": "/(.+).md",
+			"source": "/(.+)\\.md",
 			"headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
 		},
 		{
-			"source": "/(.+).html",
+			"source": "/(.+)\\.html",
 			"headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
 		},
 		{
-			"source": "/app-data.json",
+			"source": "/app-data\\.json",
 			"headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
 		},
 		{
-			"source": "/sw.js",
+			"source": "/sw\\.js",
 			"headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
 		},
 		{
