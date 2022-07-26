@@ -68,10 +68,10 @@ export default function AboutAymericBeaumet({ data }) {
 
 					<p>
 						I work for <ExternalLink href="https://rekki.com">REKKI</ExternalLink> as a{' '}
-						<strong>Lead Platform Engineer</strong>. The Platform team is focusing on building a
-						robust foundation that can be leveraged by the Tech and Product teams to sustain the
+						<strong>Lead Platform Engineer</strong>. The Platform team focuses on building a robust
+						foundation that can be leveraged by the Tech and Product teams to sustain the
 						company&apos;s growth. We deal with many topics, including infrastructure, performance,
-						observability and developer experience.
+						observability, and developer experience.
 					</p>
 
 					<p>
