@@ -2,7 +2,6 @@ import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, graphql } from 'gatsby';
-import { Disqus } from 'gatsby-plugin-disqus';
 import 'prismjs/themes/prism-coy.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -11,6 +10,7 @@ import DateComponent from '../components/date';
 import Duration from '../components/duration';
 import ExternalLink from '../components/external-link';
 import Layout from '../components/layout';
+import LazyDisqus from '../components/lazy-disqus';
 import Tag from '../components/tag';
 import * as classes from './post.module.scss';
 
@@ -62,6 +62,7 @@ export default function Post({ data }) {
 			fields: { slug },
 		},
 	} = data;
+
 	return (
 		<Layout>
 			<Helmet>
@@ -131,7 +132,7 @@ export default function Post({ data }) {
 					</section>
 				) : null}
 
-				<Disqus
+				<LazyDisqus
 					config={{
 						url: `${siteUrl}/${slug}`,
 						identifier: slug,

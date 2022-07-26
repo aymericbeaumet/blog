@@ -7,7 +7,7 @@ import Footer from './footer';
 import Header from './header';
 import * as classes from './layout.module.scss';
 
-export default function LayoutStaticQuery(props) {
+export default function LayoutStaticQuery({ children }) {
 	return (
 		<StaticQuery
 			query={graphql`
@@ -20,7 +20,7 @@ export default function LayoutStaticQuery(props) {
 					}
 				}
 			`}
-			render={(data) => <Layout {...props} data={data} />}
+			render={(data) => <Layout data={data}>{children}</Layout>}
 		/>
 	);
 }

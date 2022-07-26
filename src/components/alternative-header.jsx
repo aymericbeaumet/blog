@@ -30,8 +30,8 @@ export default function AlternativeHeaderStaticQuery() {
 class AlternativeHeader extends React.Component {
 	static toggleId = 'alternative_menu_toggle';
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = { isVisible: false };
 	}
 
