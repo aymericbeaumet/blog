@@ -9,7 +9,7 @@
 				},
 				{
 					"key": "Content-Security-Policy",
-					"value": "default-src 'self'; font-src 'fonts.googleapis.com' 'fonts.gstatic.com'; image-src '*.disquscdn.com'; style-src 'fonts.googleapis.com' '*.disquscdn.com'; script-src: '*.disquscdn.com' 'disqus.com'"
+					"value": "default-src 'self'; font-src 'fonts.googleapis.com' 'fonts.gstatic.com'; style-src 'fonts.googleapis.com' '*.disquscdn.com'; image-src '*.disquscdn.com'; script-src: '*.disquscdn.com' 'disqus.com'"
 				},
 				{
 					"key": "Referrer-Policy",
