@@ -79,6 +79,6 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onPostBuild = async () =>
 	Promise.all(
 		Array.from(markdownFiles.entries()).map(([filename, data]) =>
-			fs.writeFile(path.join('./public', filename), data.toString().trim()),
+			fs.writeFile(path.join('./public', filename), `${data.toString().trim()}\n`),
 		),
 	);
