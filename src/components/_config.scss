@@ -1,10 +1,10 @@
 // - move the latest post/project below the about
-$breakpoint0: 1024px;
+$breakpoint0: 960px;
 
 // - hide the AB logo
 // - reduce the header margin between navigation elements
 // - reduce the main padding
-$breakpoint1: 780px;
+$breakpoint1: 840px; // 600 + left margin 120 x 2
 
 // - display the alternative header icon
 // - center the posts

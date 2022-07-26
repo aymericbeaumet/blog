@@ -2,7 +2,7 @@
 
 .wrapper {
 	display: flex;
-	column-gap: 100px;
+	column-gap: 120px;
 
 	& > * {
 		max-width: 600px;
@@ -57,17 +57,15 @@
 .Aside {
 	display: flex;
 	flex-direction: column;
+	flex-wrap: wrap;
+	gap: 20px;
 
 	h2 {
 		margin-bottom: 10px;
 	}
 
-	& > div {
-		margin-bottom: 17px;
-		margin-right: 25px;
-	}
-
 	@media screen and (max-width: $breakpoint0) {
 		padding-top: 60px;
+		flex-direction: row;
 	}
 }
