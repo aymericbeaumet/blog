@@ -1,7 +1,7 @@
 {
 	"headers": [
 		{
-			"source": "/**/*",
+			"source": "/:catchall*",
 			"headers": [
 				{
 					"key": "Content-Security-Policy",
@@ -22,7 +22,7 @@
 			]
 		},
 		{
-			"source": "/**/*.md",
+			"source": "/:catchall+.md",
 			"headers": [
 				{
 					"key": "Content-Type",
