@@ -57,7 +57,9 @@ exports.createPages = async ({ graphql, actions }) => {
 		}
 	`);
 
-	data.allMarkdownRemark.edges.forEach(({ node }) => {
+	data.allMarkdownRemark.edges.forEach((edge) => {
+		const { node } = edge;
+
 		// Create page
 		actions.createPage({
 			path: node.fields.slug,
@@ -66,7 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		});
 
 		// Register markdown file for later raw copy
-		filesToCopy.set(node.fields.fileAbsolutePath, `${node.fields.slug}.md`);
+		filesToCopy.set(node.fileAbsolutePath, `${node.fields.slug}.md`);
 
 		// Save tags for later
 		(node.frontmatter.tags || []).forEach((tag) => {
