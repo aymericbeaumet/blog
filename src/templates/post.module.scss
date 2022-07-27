@@ -92,7 +92,7 @@
 
 		h2,
 		h3 {
-			margin-top: 30px;
+			margin-top: 25px;
 		}
 
 		h2 {
@@ -221,5 +221,29 @@
 				margin-right: 5px;
 			}
 		}
+	}
+
+	.newsletter {
+		margin: 50px auto 0;
+
+		& p {
+			padding: 20px;
+			border: 2px solid $main;
+			border-radius: 4px;
+			line-height: 22px;
+			text-align: center;
+		}
+
+		& a {
+			color: $main;
+		}
+	}
+
+	.comments {
+		margin-top: 50px;
+	}
+
+	:global(#disqus_recommendations) {
+		display: none;
 	}
 }

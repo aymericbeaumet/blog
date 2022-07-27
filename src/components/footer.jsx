@@ -1,6 +1,7 @@
 import { Link, StaticQuery, graphql } from 'gatsby';
 import React from 'react';
 
+import ExternalLink from './external-link';
 import * as classes from './footer.module.scss';
 
 export default function FooterStaticQuery() {
@@ -28,10 +29,20 @@ function Footer({ data }) {
 	} = data;
 	return (
 		<footer className={classes.Footer}>
-			<Link to="/">
+			<Link to="/" title="Go back to the home page">
 				&copy; 2014&#8211;{new Date().getFullYear()} {author}
 			</Link>{' '}
-			— <Link to="feed.xml">Subscribe with RSS</Link>
+			—{' '}
+			<Link to="/feed.xml" title="RSS Feed with all the latest Posts, Talks and Projects">
+				RSS Feed
+			</Link>{' '}
+			—{' '}
+			<ExternalLink
+				href="https://newsletter.aymericbeaumet.com/subscribe"
+				title="Subscribe and receive an email for every new Post, Talk or Project"
+			>
+				Newsletter
+			</ExternalLink>
 		</footer>
 	);
 }

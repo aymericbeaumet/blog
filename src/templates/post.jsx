@@ -132,13 +132,26 @@ export default function Post({ data }) {
 					</section>
 				) : null}
 
-				<LazyDisqus
-					config={{
-						url: `${siteUrl}/${slug}`,
-						identifier: slug,
-						title,
-					}}
-				/>
+				<aside>
+					<div className={classes.newsletter}>
+						<p>
+							<ExternalLink href="https://newsletter.aymericbeaumet.com/subscribe">
+								Subscribe to the newsletter
+							</ExternalLink>{' '}
+							to not miss any future content.
+						</p>
+					</div>
+
+					<div className={classes.comments}>
+						<LazyDisqus
+							config={{
+								url: `${siteUrl}/${slug}`,
+								identifier: slug,
+								title,
+							}}
+						/>
+					</div>
+				</aside>
 			</section>
 		</Layout>
 	);

@@ -89,14 +89,11 @@ git checkout master
 Let's explain step by step:
 
 1. `git clone`: like a typical clone, but with 2 additional flags:
-
    - `--filter=blob:none`: instructs not to fetch any blob object
    - `--no-checkout`: instructs not to automatically checkout _HEAD_
-
 2. `git sparse-checkout set`: enables the sparse checkout settings and specifies
    which files should be checked out. Change this line to whatever works for
    you.
-
 3. `git checkout master`: checkouts the actual branch or commit (in this case,
    the `master` branch) and fetches the objects matching the sparse patterns.
 

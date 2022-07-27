@@ -6,11 +6,15 @@ const path = require('path');
 const { singular } = require('pluralize');
 const urlFromTag = require('./src/utils/urlFromTag');
 
-const markdownFiles = new Map();
+// map of { [absPath]: relPath } files to copy to the ./public directory
+const filesToCopy = new Map();
+
+// set containing all the tags
+const tagsIndex = new Set();
 
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 	if (getConfig().mode === 'production') {
-		actions.setWebpackConfig({ devtool: false });
+		actions.setWebpackConfig({ devtool: false }); // disable source maps
 	}
 };
 
@@ -34,15 +38,13 @@ exports.onCreateNode = ({ node, actions }) => {
 };
 
 exports.createPages = async ({ graphql, actions }) => {
-	const tagsIndex = new Set();
-
 	// Query pages for this category
 	const { data } = await graphql(`
 		{
 			allMarkdownRemark {
 				edges {
 					node {
-						rawMarkdownBody
+						fileAbsolutePath
 						fields {
 							slug
 						}
@@ -63,8 +65,8 @@ exports.createPages = async ({ graphql, actions }) => {
 			context: { slug: node.fields.slug },
 		});
 
-		// Register markdown file for later creation
-		markdownFiles.set(`${node.fields.slug}.md`, node.rawMarkdownBody);
+		// Register markdown file for later raw copy
+		filesToCopy.set(node.fields.fileAbsolutePath, `${node.fields.slug}.md`);
 
 		// Save tags for later
 		(node.frontmatter.tags || []).forEach((tag) => {
@@ -84,7 +86,5 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.onPostBuild = async () =>
 	Promise.all(
-		Array.from(markdownFiles.entries()).map(([filename, data]) =>
-			fs.writeFile(path.join('./public', filename), `${data.toString().trim()}\n`),
-		),
+		Array.from(filesToCopy.entries()).map(([abs, rel]) => fs.copy(abs, path.join('./public', rel))),
 	);

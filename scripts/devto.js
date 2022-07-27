@@ -10,17 +10,24 @@ const filepath = process.argv[2];
 const filecontent = fs.readFileSync(filepath);
 const { content, data } = matter(filecontent);
 
+if (data.tags.length > 4) {
+	throw new Error('dev.to supports at most 4 tags');
+}
+
 const newcontent = prettier.format(content, {
 	parser: 'markdown',
 	proseWrap: 'never',
 });
 
 const newdata = {
-	title: data.title,
 	published: true,
+	title: data.title,
 	date: datefns.format(data.date, "yyyy-MM-dd '00:00:00 UTC'"),
-	tags: data.tags.join(','),
+	tags: data.tags,
 	canonical_url: `https://aymericbeaumet.com/${path.basename(path.dirname(filepath))}`,
+	// cover_image:
+	// description:
+	// series:
 };
 
 console.log(matter.stringify(newcontent, newdata));
