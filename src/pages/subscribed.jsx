@@ -33,7 +33,8 @@ export default function SubscribedPage({ data }) {
 				<p>You are soon going to receive your first newsletter.</p>
 
 				<p>
-					In the meantime, you can have a look at my previous <Link to="/posts">posts</Link>.
+					In the meantime, you can have a look at my previous <Link to="/posts">posts</Link>,{' '}
+					<Link to="/talks">talks</Link> and <Link to="/projects">projects</Link>.
 				</p>
 			</section>
 		</Layout>
