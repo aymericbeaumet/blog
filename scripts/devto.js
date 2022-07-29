@@ -16,7 +16,11 @@ if (data.tags.length > 4) {
 }
 
 const newcontent = `
-_For a better reading experience, read the article where it was originally published: ${canonicalURL}._
+---
+
+_For a better reading experience: ${canonicalURL}_
+
+---
 
 ${prettier.format(content, {
 	parser: 'markdown',
