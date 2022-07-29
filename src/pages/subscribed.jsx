@@ -31,6 +31,7 @@ function NotFound({ data }) {
 				<h1>You are subscribed!</h1>
 
 				<p>You are soon going to receive your first newsletter.</p>
+
 				<p>
 					In the meantime, you can have a look at my previous <Link to="/posts">posts</Link>.
 				</p>
