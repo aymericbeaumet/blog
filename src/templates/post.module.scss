@@ -6,6 +6,30 @@
 	// be changed
 	max-width: 720px;
 
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		position: relative;
+	}
+
+	:global(.anchor.before) {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translateX(-100%);
+		padding-right: 4px;
+	}
+
+	:global(.anchor) {
+		margin-top: -3px;
+		width: 32px;
+		text-align: center;
+		display: inline-block;
+	}
+
 	header {
 		color: #535353;
 
@@ -182,13 +206,6 @@
 		pre[class*='language-']::before,
 		pre[class*='language-']::after {
 			content: unset;
-		}
-
-		:global(.anchor) {
-			margin-top: -3px;
-			width: 32px;
-			text-align: center;
-			display: inline-block;
 		}
 	}
 

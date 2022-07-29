@@ -1,7 +1,9 @@
 import { Disqus } from 'gatsby-plugin-disqus';
-import React from 'react';
 import throttle from 'lodash/throttle';
+import React from 'react';
 
+// LazyDisqus is a thin wrapper around the Disques component that lazy load
+// when more than 80% of the page has been scrolled.
 export default class LazyDisqus extends React.Component {
 	constructor(props) {
 		super(props);
@@ -24,6 +26,7 @@ export default class LazyDisqus extends React.Component {
 
 		if (pct > 0.8) {
 			this.setState({ load: true });
+			window.removeEventListener('scroll', this.onScroll); // eslint-disable-line no-undef
 		}
 	}, 100 /* ms */);
 
