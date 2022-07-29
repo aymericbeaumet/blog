@@ -16,12 +16,12 @@ if (data.tags.length > 4) {
 }
 
 const newcontent = `
-_Originally published at ${canonicalURL}._
+For a better reading experience, read the article where it was originally published: ${canonicalURL}._
 
 ${prettier.format(content, {
 	parser: 'markdown',
 	proseWrap: 'never',
-})}`;
+})}`.replace(/]\(([./#?][^)]*)\)/, `](${canonicalURL}$1)`); // replacing relative links
 
 const newdata = {
 	published: true,
