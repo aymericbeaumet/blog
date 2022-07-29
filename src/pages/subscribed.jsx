@@ -9,14 +9,13 @@ export const query = graphql`
 	query {
 		site {
 			siteMetadata {
-				author
 				title
 			}
 		}
 	}
 `;
 
-function NotFound({ data }) {
+export default function SubscribedPage({ data }) {
 	const {
 		site: {
 			siteMetadata: { title },
@@ -27,7 +26,8 @@ function NotFound({ data }) {
 			<Helmet>
 				<title>{`Subscribed to the newsletter! - ${title}`}</title>
 			</Helmet>
-			<section className={classes.NotFound}>
+
+			<section className={classes.Subscribed}>
 				<h1>You are subscribed!</h1>
 
 				<p>You are soon going to receive your first newsletter.</p>
@@ -39,5 +39,3 @@ function NotFound({ data }) {
 		</Layout>
 	);
 }
-
-export default NotFound;
