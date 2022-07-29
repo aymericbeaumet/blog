@@ -18,7 +18,7 @@ if (data.tags.length > 4) {
 const newcontent = `
 ---
 
-_For a better reading experience: ${canonicalURL}_
+_For a better reading experience, read the article where it was originally posted: ${canonicalURL}_
 
 ---
 
