@@ -34,6 +34,7 @@ export default function PostsPage({ data }) {
 			<Helmet>
 				<title>{`Posts by ${author}`}</title>
 			</Helmet>
+
 			<Posts allMarkdownRemark={posts} />
 		</Layout>
 	);

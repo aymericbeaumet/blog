@@ -40,6 +40,13 @@ const plugins = [
 			ignore: ['**/drafts/**'],
 		},
 	},
+	{
+		resolve: 'gatsby-source-filesystem',
+		options: {
+			name: 'src',
+			path: `${__dirname}/src/`,
+		},
+	},
 
 	'gatsby-plugin-image',
 	'gatsby-plugin-sharp',

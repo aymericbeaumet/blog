@@ -18,25 +18,6 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 	}
 };
 
-exports.onCreateNode = ({ node, actions }) => {
-	const { createNodeField } = actions;
-	if (node.internal.type === 'MarkdownRemark') {
-		const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath);
-		const categorySlug = singular(fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'));
-		const category = capitalize(categorySlug);
-		const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)(?:\/|\.).*$/, '$1');
-
-		createNodeField({ node, name: 'slug', value: slug });
-		createNodeField({ node, name: 'category', value: category });
-		createNodeField({ node, name: 'categorySlug', value: categorySlug });
-		createNodeField({
-			node,
-			name: 'fileRelativePath',
-			value: fileRelativePath,
-		});
-	}
-};
-
 exports.createPages = async ({ graphql, actions }) => {
 	// Query pages for this category
 	const { data } = await graphql(`
@@ -82,6 +63,26 @@ exports.createPages = async ({ graphql, actions }) => {
 			path: urlFromTag(tag),
 			component: path.resolve('./src/templates/tag.jsx'),
 			context: { tag },
+		});
+	}
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+	const { createNodeField } = actions;
+
+	if (node.internal.type === 'MarkdownRemark') {
+		const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath);
+		const categorySlug = singular(fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'));
+		const category = capitalize(categorySlug);
+		const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)(?:\/|\.).*$/, '$1');
+
+		createNodeField({ node, name: 'slug', value: slug });
+		createNodeField({ node, name: 'category', value: category });
+		createNodeField({ node, name: 'categorySlug', value: categorySlug });
+		createNodeField({
+			node,
+			name: 'fileRelativePath',
+			value: fileRelativePath,
 		});
 	}
 };
