@@ -44,7 +44,7 @@ export const query = graphql`
 					extension
 				}
 
-				defaultPreview: thumbnail {
+				ogPreview: thumbnail {
 					childImageSharp {
 						gatsbyImageData(
 							layout: CONSTRAINED
@@ -62,6 +62,10 @@ export const query = graphql`
 					}
 				}
 			}
+
+			ogExcerpt: excerpt(pruneLength: 150)
+			twitterExcerpt: excerpt(pruneLength: 124)
+
 			fields {
 				slug
 			}
@@ -86,9 +90,11 @@ export default function Post({ data }) {
 				timeToWatch,
 				tags = [],
 				attachments = [],
-				defaultPreview,
+				ogPreview,
 				twitterPreview,
 			},
+			ogExcerpt,
+			twitterExcerpt,
 			fields: { slug },
 		},
 	} = data;
@@ -102,12 +108,13 @@ export default function Post({ data }) {
 				<meta name="description" content={excerpt} />
 
 				<meta property="og:title" content={title} />
-				<meta property="og:description" content={excerpt} />
-				<meta property="og:image" content={getSrc(defaultPreview)} />
+				<meta property="og:description" content={ogExcerpt} />
+				<meta property="og:image" content={getSrc(ogPreview)} />
 				<meta property="og:url" content={`${siteUrl}/${slug}`} />
 				<meta property="og:type" content="article" />
 
 				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:description" content={twitterExcerpt} />
 				<meta name="twitter:image" content={getSrc(twitterPreview)} />
 			</Helmet>
 
