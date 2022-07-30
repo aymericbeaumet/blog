@@ -6,6 +6,7 @@ import 'prismjs/themes/prism-coy.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import AymericCommitstrip from '../../src/images/aymeric-beaumet-commitstrip.png';
 import DateComponent from '../components/date';
 import Duration from '../components/duration';
 import ExternalLink from '../components/external-link';
@@ -63,11 +64,19 @@ export default function Post({ data }) {
 		},
 	} = data;
 
+	// https://developers.facebook.com/tools/debug/
+	// https://cards-dev.twitter.com/validator
 	return (
 		<Layout>
 			<Helmet>
 				<title>{`${title} | ${author}`}</title>
 				<meta name="description" content={excerpt} />
+				<meta property="og:title" content={title} />
+				<meta property="og:type" content="article" />
+				<meta property="og:description" content={excerpt} />
+				<meta property="og:image" content={AymericCommitstrip} />
+				<meta property="og:url" content={`${siteUrl}/${slug}`} />
+				<meta name="twitter:card" content="summary_large_image" />
 			</Helmet>
 
 			<section className={classes.Post}>

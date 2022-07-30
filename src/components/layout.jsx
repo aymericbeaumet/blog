@@ -37,8 +37,9 @@ function Layout({ children, data }) {
 			<Helmet>
 				<html lang="en" />
 				<title>{`${title} Blog`}</title>
-				<meta name="description" content={description} />
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+				<meta name="description" content={description} />
+				<meta name="twitter:site" content="@aymericbeaumet" />
 			</Helmet>
 
 			<Header />
