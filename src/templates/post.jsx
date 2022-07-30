@@ -37,20 +37,28 @@ export const query = graphql`
 				tags
 				timeToWatch
 				github
+
 				attachments {
 					publicURL
 					name
 					extension
 				}
-				preview: thumbnail {
+
+				defaultPreview: thumbnail {
 					childImageSharp {
 						gatsbyImageData(
 							layout: CONSTRAINED
 							placeholder: NONE
 							width: 1200
 							height: 630
-							formats: [PNG, WEBP, AVIF]
+							formats: [JPG]
 						)
+					}
+				}
+
+				twitterPreview: thumbnail {
+					childImageSharp {
+						gatsbyImageData(layout: CONSTRAINED, aspectRatio: 1, formats: [WEBP])
 					}
 				}
 			}
@@ -71,7 +79,16 @@ export default function Post({ data }) {
 			html,
 			timeToRead,
 			wordCount,
-			frontmatter: { date, title, github, timeToWatch, preview, tags = [], attachments = [] },
+			frontmatter: {
+				date,
+				title,
+				github,
+				timeToWatch,
+				tags = [],
+				attachments = [],
+				defaultPreview,
+				twitterPreview,
+			},
 			fields: { slug },
 		},
 	} = data;
@@ -82,17 +99,16 @@ export default function Post({ data }) {
 		<Layout>
 			<Helmet>
 				<title>{`${title} | ${author}`}</title>
-				<meta property="og:title" content={title} />
-
 				<meta name="description" content={excerpt} />
+
+				<meta property="og:title" content={title} />
 				<meta property="og:description" content={excerpt} />
-
-				<meta property="og:image" content={getSrc(preview)} />
-				<meta name="twitter:image:alt" content="Aymeric Beaumet pictured as a Comics character" />
-
+				<meta property="og:image" content={getSrc(defaultPreview)} />
 				<meta property="og:url" content={`${siteUrl}/${slug}`} />
 				<meta property="og:type" content="article" />
+
 				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:image" content={getSrc(twitterPreview)} />
 			</Helmet>
 
 			<section className={classes.Post}>

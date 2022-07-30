@@ -35,14 +35,17 @@ function Layout({ children, data }) {
 	return (
 		<div className={classes.Layout}>
 			<Helmet>
-				<html lang="en" />
-
+				<html lang="en" prefix="og: https://ogp.me/ns#" />
 				<title>{`${author} Blog`}</title>
-				<meta property="og:site_name" content={`${author} Blog`} />
-
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 				<meta name="description" content={description} />
+
+				<meta property="og:site_name" content={`${author} Blog`} />
+				<meta property="og:locale" content="en_US" />
+				<meta property="og:locale:alternate" content="fr_FR" />
+
 				<meta name="twitter:site" content="@aymericbeaumet" />
+				<meta name="twitter:creator" content="@aymericbeaumet" />
 			</Helmet>
 
 			<Header />
