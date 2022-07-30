@@ -63,8 +63,7 @@ export const query = graphql`
 				}
 			}
 
-			ogExcerpt: excerpt(pruneLength: 150)
-			twitterExcerpt: excerpt(pruneLength: 124)
+			ogExcerpt: excerpt(pruneLength: 200)
 
 			fields {
 				slug
@@ -94,7 +93,6 @@ export default function Post({ data }) {
 				twitterPreview,
 			},
 			ogExcerpt,
-			twitterExcerpt,
 			fields: { slug },
 		},
 	} = data;
@@ -114,7 +112,6 @@ export default function Post({ data }) {
 				<meta property="og:type" content="article" />
 
 				<meta name="twitter:card" content="summary" />
-				<meta name="twitter:description" content={twitterExcerpt} />
 				<meta name="twitter:image" content={getSrc(twitterPreview)} />
 			</Helmet>
 
