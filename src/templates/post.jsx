@@ -58,7 +58,7 @@ export const query = graphql`
 
 				twitterPreview: thumbnail {
 					childImageSharp {
-						gatsbyImageData(layout: CONSTRAINED, width: 1200, aspectRatio: 1, formats: [WEBP])
+						gatsbyImageData(layout: CONSTRAINED, aspectRatio: 1, formats: [WEBP])
 					}
 				}
 			}
