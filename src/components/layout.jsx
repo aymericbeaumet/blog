@@ -14,7 +14,7 @@ export default function LayoutStaticQuery({ children }) {
 				query {
 					site {
 						siteMetadata {
-							title
+							author
 							description
 						}
 					}
@@ -28,7 +28,7 @@ export default function LayoutStaticQuery({ children }) {
 function Layout({ children, data }) {
 	const {
 		site: {
-			siteMetadata: { description, title },
+			siteMetadata: { description, author },
 		},
 	} = data;
 
@@ -37,8 +37,8 @@ function Layout({ children, data }) {
 			<Helmet>
 				<html lang="en" />
 
-				<title>{`${title} Blog`}</title>
-				<meta property="og:site_name" content={`${title} Blog`} />
+				<title>{`${author} Blog`}</title>
+				<meta property="og:site_name" content={`${author} Blog`} />
 
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 				<meta name="description" content={description} />

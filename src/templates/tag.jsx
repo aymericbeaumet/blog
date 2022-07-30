@@ -9,7 +9,7 @@ export const query = graphql`
 	query ($tag: String!) {
 		site {
 			siteMetadata {
-				title
+				author
 			}
 		}
 		allMarkdownRemark(
@@ -24,13 +24,13 @@ export const query = graphql`
 export default function Tag({ pageContext, data }) {
 	const {
 		site: {
-			siteMetadata: { title },
+			siteMetadata: { author },
 		},
 	} = data;
 	return (
 		<Layout>
 			<Helmet>
-				<title>{`${pageContext.tag} - ${title}`}</title>
+				<title>{`${pageContext.tag} | ${author}`}</title>
 				<meta name="description" content={`Posts for tag #${pageContext.tag}`} />
 			</Helmet>
 

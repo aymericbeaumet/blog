@@ -6,13 +6,13 @@ import 'prismjs/themes/prism-coy.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import AymericCommitstrip from '../../src/images/aymeric-beaumet-commitstrip.png';
 import DateComponent from '../components/date';
 import Duration from '../components/duration';
 import ExternalLink from '../components/external-link';
 import Layout from '../components/layout';
 import LazyDisqus from '../components/lazy-disqus';
 import Tag from '../components/tag';
+import AymericCommitstrip from '../images/aymeric-beaumet-commitstrip.png';
 import * as classes from './post.module.scss';
 
 export const query = graphql`

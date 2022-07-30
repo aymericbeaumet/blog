@@ -10,7 +10,7 @@ export const query = graphql`
 	query {
 		site {
 			siteMetadata {
-				title
+				author
 			}
 		}
 
@@ -30,7 +30,7 @@ export const query = graphql`
 export default function NotFoundPage({ data }) {
 	const {
 		site: {
-			siteMetadata: { title },
+			siteMetadata: { author },
 		},
 		skydiving,
 	} = data;
@@ -38,7 +38,7 @@ export default function NotFoundPage({ data }) {
 	return (
 		<Layout>
 			<Helmet>
-				<title>{`Page not found - ${title}`}</title>
+				<title>{`Page not found | ${author}`}</title>
 			</Helmet>
 
 			<section className={classes.NotFound}>

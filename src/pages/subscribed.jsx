@@ -9,7 +9,7 @@ export const query = graphql`
 	query {
 		site {
 			siteMetadata {
-				title
+				author
 			}
 		}
 	}
@@ -18,13 +18,13 @@ export const query = graphql`
 export default function SubscribedPage({ data }) {
 	const {
 		site: {
-			siteMetadata: { title },
+			siteMetadata: { author },
 		},
 	} = data;
 	return (
 		<Layout>
 			<Helmet>
-				<title>{`Subscribed to the newsletter! - ${title}`}</title>
+				<title>{`Subscribed to the newsletter! | ${author}`}</title>
 			</Helmet>
 
 			<section className={classes.Subscribed}>
