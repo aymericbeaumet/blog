@@ -2,6 +2,7 @@ import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, graphql } from 'gatsby';
+import { getSrc } from 'gatsby-plugin-image';
 import 'prismjs/themes/prism-coy.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -12,7 +13,6 @@ import ExternalLink from '../components/external-link';
 import Layout from '../components/layout';
 import LazyDisqus from '../components/lazy-disqus';
 import Tag from '../components/tag';
-import AymericCommitstrip from '../images/aymeric-beaumet-commitstrip.png';
 import * as classes from './post.module.scss';
 
 export const query = graphql`
@@ -23,6 +23,7 @@ export const query = graphql`
 				siteUrl
 			}
 		}
+
 		markdownRemark(fields: { slug: { eq: $slug } }) {
 			html
 			timeToRead
@@ -40,6 +41,17 @@ export const query = graphql`
 					publicURL
 					name
 					extension
+				}
+				preview: thumbnail {
+					childImageSharp {
+						gatsbyImageData(
+							layout: CONSTRAINED
+							placeholder: NONE
+							width: 1200
+							height: 630
+							formats: [PNG, WEBP, AVIF]
+						)
+					}
 				}
 			}
 			fields {
@@ -59,7 +71,7 @@ export default function Post({ data }) {
 			html,
 			timeToRead,
 			wordCount,
-			frontmatter: { date, title, github, timeToWatch, tags = [], attachments = [] },
+			frontmatter: { date, title, github, timeToWatch, preview, tags = [], attachments = [] },
 			fields: { slug },
 		},
 	} = data;
@@ -75,7 +87,7 @@ export default function Post({ data }) {
 				<meta name="description" content={excerpt} />
 				<meta property="og:description" content={excerpt} />
 
-				<meta property="og:image" content={AymericCommitstrip} />
+				<meta property="og:image" content={getSrc(preview)} />
 				<meta name="twitter:image:alt" content="Aymeric Beaumet pictured as a Comics character" />
 
 				<meta property="og:url" content={`${siteUrl}/${slug}`} />
