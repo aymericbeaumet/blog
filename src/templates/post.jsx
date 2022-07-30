@@ -1,6 +1,7 @@
 import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import format from 'date-fns/format';
 import { Link, graphql } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import 'prismjs/themes/prism-coy.css';
@@ -58,7 +59,7 @@ export const query = graphql`
 
 				twitterPreview: thumbnail {
 					childImageSharp {
-						gatsbyImageData(layout: CONSTRAINED, aspectRatio: 1, formats: [WEBP])
+						gatsbyImageData(layout: CONSTRAINED, aspectRatio: 2, formats: [WEBP])
 					}
 				}
 			}
@@ -111,8 +112,12 @@ export default function Post({ data }) {
 				<meta property="og:url" content={`${siteUrl}/${slug}`} />
 				<meta property="og:type" content="article" />
 
-				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={`${siteUrl}${getSrc(twitterPreview)}`} />
+				<meta name="twitter:label1" content="Tags" />
+				<meta name="twitter:data1" content={tags.map((tag) => `#${tag}`).join(', ')} />
+				<meta name="twitter:label2" content="Published on" />
+				<meta name="twitter:data2" content={format(date, 'PPP')} />
 			</Helmet>
 
 			<section className={classes.Post}>
