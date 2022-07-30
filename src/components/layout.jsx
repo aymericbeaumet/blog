@@ -36,7 +36,10 @@ function Layout({ children, data }) {
 		<div className={classes.Layout}>
 			<Helmet>
 				<html lang="en" />
+
 				<title>{`${title} Blog`}</title>
+				<meta property="og:site_name" content={`${title} Blog`} />
+
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 				<meta name="description" content={description} />
 				<meta name="twitter:site" content="@aymericbeaumet" />

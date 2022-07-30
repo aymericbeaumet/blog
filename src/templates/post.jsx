@@ -70,12 +70,16 @@ export default function Post({ data }) {
 		<Layout>
 			<Helmet>
 				<title>{`${title} | ${author}`}</title>
-				<meta name="description" content={excerpt} />
 				<meta property="og:title" content={title} />
-				<meta property="og:type" content="article" />
+
+				<meta name="description" content={excerpt} />
 				<meta property="og:description" content={excerpt} />
+
 				<meta property="og:image" content={AymericCommitstrip} />
+				<meta name="twitter:image:alt" content="Aymeric Beaumet pictured as a Comics character" />
+
 				<meta property="og:url" content={`${siteUrl}/${slug}`} />
+				<meta property="og:type" content="article" />
 				<meta name="twitter:card" content="summary_large_image" />
 			</Helmet>
 
