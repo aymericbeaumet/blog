@@ -107,12 +107,12 @@ export default function Post({ data }) {
 
 				<meta property="og:title" content={title} />
 				<meta property="og:description" content={ogExcerpt} />
-				<meta property="og:image" content={getSrc(ogPreview)} />
+				<meta property="og:image" content={`${siteUrl}/${getSrc(ogPreview)}`} />
 				<meta property="og:url" content={`${siteUrl}/${slug}`} />
 				<meta property="og:type" content="article" />
 
 				<meta name="twitter:card" content="summary" />
-				<meta name="twitter:image" content={getSrc(twitterPreview)} />
+				<meta name="twitter:image" content={`${siteUrl}/${getSrc(twitterPreview)}`} />
 			</Helmet>
 
 			<section className={classes.Post}>
