@@ -58,7 +58,7 @@ export const query = graphql`
 
 				twitterPreview: thumbnail {
 					childImageSharp {
-						gatsbyImageData(layout: CONSTRAINED, aspectRatio: 1, formats: [WEBP])
+						gatsbyImageData(layout: CONSTRAINED, width: 1200, aspectRatio: 1, formats: [WEBP])
 					}
 				}
 			}
@@ -79,6 +79,7 @@ export default function Post({ data }) {
 		},
 		markdownRemark: {
 			excerpt,
+			ogExcerpt,
 			html,
 			timeToRead,
 			wordCount,
@@ -92,7 +93,6 @@ export default function Post({ data }) {
 				ogPreview,
 				twitterPreview,
 			},
-			ogExcerpt,
 			fields: { slug },
 		},
 	} = data;
