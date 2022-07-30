@@ -107,7 +107,7 @@ export default function Post({ data }) {
 				<meta property="og:url" content={`${siteUrl}/${slug}`} />
 				<meta property="og:type" content="article" />
 
-				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:image" content={getSrc(twitterPreview)} />
 			</Helmet>
 
