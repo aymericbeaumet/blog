@@ -30,13 +30,13 @@ export default function DateComponent({ date, until } = {}) {
 		const diffDays = differenceInDays(new Date(), ddate);
 		const label =
 			diffDays === 0 // eslint-disable-line
-				? 'Today'
+				? 'today'
 				: diffDays === 1 // eslint-disable-line
-				? 'Yesterday'
+				? 'yesterday'
 				: diffDays < 7 // eslint-disable-line
 				? `${diffDays} days ago`
 				: diffDays < 14
-				? 'A week ago'
+				? 'a week ago'
 				: format(ddate, 'yyyy MMM do');
 		return (
 			<time dateTime={ddate} title={format(ddate, "'Published on' PPPP")}>
