@@ -6,8 +6,6 @@ thumbnail: ./thumbnail.png
 github: https://github.com/aymericbeaumet/gors
 ---
 
-[![gors experimental editor](./thumbnail.png "Gors allows to compile Go to Rust.")](https://aymericbeaumet.github.io/gors/)
-
 I like to play at the intersection of several languages. I always find it
 interesting to push the limits of my knowledge and put myself in a situation
 where I'm not really sure what's happening or how it's implemented.

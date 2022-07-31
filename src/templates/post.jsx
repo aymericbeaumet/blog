@@ -3,6 +3,7 @@ import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, graphql } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import 'prismjs/themes/prism-coy.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -42,6 +43,18 @@ export const query = graphql`
 					publicURL
 					name
 					extension
+				}
+
+				thumbnail {
+					childImageSharp {
+						gatsbyImageData(
+							layout: CONSTRAINED
+							placeholder: BLURRED
+							width: 720
+							height: 300
+							formats: [PNG, WEBP, AVIF]
+						)
+					}
 				}
 
 				ogPreview: thumbnail {
@@ -88,6 +101,7 @@ export default function Post({ data }) {
 				title,
 				github,
 				timeToWatch,
+				thumbnail,
 				tags = [],
 				attachments = [],
 				ogPreview,
@@ -125,10 +139,12 @@ export default function Post({ data }) {
 						<li>
 							<DateComponent date={date} />
 						</li>
+
 						<li>
 							・&nbsp;
 							{Duration({ timeToRead, wordCount, timeToWatch })}
 						</li>
+
 						{github ? (
 							<li>
 								・&nbsp;
@@ -138,6 +154,7 @@ export default function Post({ data }) {
 								</ExternalLink>
 							</li>
 						) : null}
+
 						<li>
 							・&nbsp;
 							<Link href={`/${slug}.md`} title="View Markdown for this page">
@@ -156,6 +173,10 @@ export default function Post({ data }) {
 							))}
 						</ul>
 					) : null}
+
+					<figure>
+						<GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} />
+					</figure>
 				</header>
 
 				<article
