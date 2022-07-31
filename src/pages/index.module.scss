@@ -56,16 +56,15 @@
 
 .Aside {
 	display: flex;
-	flex-direction: column;
 	flex-wrap: wrap;
 	gap: 20px;
+	align-content: start;
 
 	h2 {
 		margin-bottom: 10px;
 	}
 
 	@media screen and (max-width: $breakpoint0) {
-		margin-top: 60px;
-		flex-direction: row;
+		margin-top: 50px;
 	}
 }

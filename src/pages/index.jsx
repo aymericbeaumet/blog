@@ -25,6 +25,14 @@ export const query = graphql`
 			...PostsFragment
 		}
 
+		talks: allMarkdownRemark(
+			sort: { order: DESC, fields: [frontmatter___date] }
+			filter: { fields: { categorySlug: { in: ["talk"] } } }
+			limit: 1
+		) {
+			...PostsFragment
+		}
+
 		projects: allMarkdownRemark(
 			sort: { order: DESC, fields: [frontmatter___date] }
 			filter: { fields: { categorySlug: { in: ["project"] } } }
@@ -41,9 +49,11 @@ export default function AboutAymericBeaumet({ data }) {
 			siteMetadata: { author, email, twitter },
 		},
 		posts,
+		talks,
 		projects,
 	} = data;
 	const post = posts.edges[0].node;
+	const talk = talks.edges[0].node;
 	const project = projects.edges[0].node;
 
 	return (
@@ -101,6 +111,11 @@ export default function AboutAymericBeaumet({ data }) {
 					<div>
 						<h2>Latest Post</h2>
 						<Post post={post} />
+					</div>
+
+					<div>
+						<h2>Latest Talk</h2>
+						<Post post={talk} />
 					</div>
 
 					<div>
