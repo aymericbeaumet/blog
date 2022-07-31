@@ -6,11 +6,29 @@ thumbnail: ./thumbnail.png
 github: https://github.com/aymericbeaumet/gors
 ---
 
-I like to play at the intersection of several languages. I always find it
-interesting to push the limits of my knowledge and put myself in a situation
-where I'm not really sure what's happening or how it's implemented.
+I'm a big fan of Go. I find that its pragmatism makes it extremely pleasant to
+use. Its expressiveness and simplicity enable me to project the way I think into
+an implementation that just works.
 
-[Gors](https://github.com/aymericbeaumet/gors) is exactly this: improve my
-knowledge of the Rust language by implementing a basic Go lexer, parser and
-compiler. You can play with it in this
+I'm also a huge fan of Rust for different reasons, but mostly performance and
+robustness. And while the Rust compiler has immensely improved over the last few
+years, I sometimes feel like I'm fighting it (but somehow I like it).
+
+I've always wanted to have a better understanding of the Go internals. I've read
+the language specification, but I wanted to go further. And what would be a
+better way to do it than actually implementing a Go compiler?
+
+This is what I have started to do with this project: a Go to Rust compiler. The
+ultimate goal would be to allow accessing the rich Go ecosystem from Rust.
+
+I don't have the pretension (nor the time, nor the skills) to write a full-blown
+Go compiler alone, but that is still a tremendous educative means.
+
+The project is currently at a state where it has a 100% compliant lexer
+(including compiler directives), a mostly compliant parser, and working code
+generation. The generated AST allows running passes to perform various code
+optimizations and inlining.
+
+The whole project can run in the browser, this is done by compiling the compiler
+to a WASM target. You can give it a try in the
 [experimental editor](https://aymericbeaumet.github.io/gors/).
