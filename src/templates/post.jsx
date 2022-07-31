@@ -1,7 +1,6 @@
 import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import format from 'date-fns/format';
 import { Link, graphql } from 'gatsby';
 import { getSrc } from 'gatsby-plugin-image';
 import 'prismjs/themes/prism-coy.css';
@@ -116,8 +115,6 @@ export default function Post({ data }) {
 				<meta name="twitter:image" content={`${siteUrl}${getSrc(twitterPreview)}`} />
 				<meta name="twitter:label1" content="Tags" />
 				<meta name="twitter:data1" content={tags.map((tag) => `#${tag}`).join(', ')} />
-				<meta name="twitter:label2" content="Published on" />
-				<meta name="twitter:data2" content={format(new Date(date), 'PPP')} />
 			</Helmet>
 
 			<section className={classes.Post}>
