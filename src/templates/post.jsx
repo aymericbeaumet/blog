@@ -128,7 +128,7 @@ export default function Post({ data }) {
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:image" content={`${siteUrl}${getSrc(twitterPreview)}`} />
 				<meta name="twitter:label1" content="Tags" />
-				<meta name="twitter:data1" content={tags.map((tag) => `#${tag}`).join(', ')} />
+				<meta name="twitter:data1" content={tags.map((tag) => `#${tag}`).join(' ')} />
 			</Helmet>
 
 			<section className={classes.Post}>
