@@ -117,7 +117,7 @@ export default function Post({ data }) {
 				<meta name="twitter:label1" content="Tags" />
 				<meta name="twitter:data1" content={tags.map((tag) => `#${tag}`).join(', ')} />
 				<meta name="twitter:label2" content="Published on" />
-				<meta name="twitter:data2" content={format(date, 'PPP')} />
+				<meta name="twitter:data2" content={format(new Date(date), 'PPP')} />
 			</Helmet>
 
 			<section className={classes.Post}>
