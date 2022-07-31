@@ -37,8 +37,15 @@ function Layout({ children, data }) {
 			<Helmet>
 				<html lang="en" prefix="og: https://ogp.me/ns#" />
 				<title>{`${author} Blog`}</title>
+
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 				<meta name="description" content={description} />
+				<meta name="referrer" content="no-referrer" />
+				<meta name="rating" content="General" />
+
+				<meta name="author" content="Aymeric Beaumet" />
+				<meta name="publisher" content={`${author} Blog`} />
+				<meta property="article:author" content="Aymeric Beaumet" />
 
 				<meta property="og:site_name" content={`${author} Blog`} />
 				<meta property="og:locale" content="en_US" />
@@ -46,6 +53,7 @@ function Layout({ children, data }) {
 
 				<meta name="twitter:site" content="@aymericbeaumet" />
 				<meta name="twitter:creator" content="@aymericbeaumet" />
+				<meta name="twitter:dnt" content="on" />
 			</Helmet>
 
 			<Header />

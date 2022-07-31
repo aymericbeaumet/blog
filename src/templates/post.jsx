@@ -2,8 +2,7 @@ import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, graphql } from 'gatsby';
-import { getSrc } from 'gatsby-plugin-image';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import 'prismjs/themes/prism-coy.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -111,7 +110,13 @@ export default function Post({ data }) {
 		},
 	} = data;
 
-	// https://developers.facebook.com/tools/debug/
+	// https://github.com/joshbuchea/HEAD#social
+	// https://developers.facebook.com/docs/sharing/webmasters/
+	// https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
+	// https://www.linkedin.com/help/linkedin/answer/a521928/making-your-website-shareable-on-linkedin
+	// https://medium.com/slack-developer-blog/everything-you-ever-wanted-to-know-about-unfurling-but-were-afraid-to-ask-or-how-to-make-your-e64b4bb9254
+	//
+	// https://www.linkedin.com/post-inspector/
 	// https://cards-dev.twitter.com/validator
 	return (
 		<Layout>
