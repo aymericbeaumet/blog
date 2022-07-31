@@ -1,7 +1,7 @@
-import { faGithub, faMarkdown } from '@fortawesome/free-brands-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import 'prismjs/themes/prism-coy.css';
 import React from 'react';
@@ -44,7 +44,8 @@ export const query = graphql`
 					extension
 				}
 
-				thumbnail {
+				thumbnailSource: thumbnail_source
+				thumbnailCropped: thumbnail {
 					childImageSharp {
 						gatsbyImageData(
 							layout: CONSTRAINED
@@ -55,7 +56,11 @@ export const query = graphql`
 						)
 					}
 				}
-				thumbnailSource: thumbnail_source
+				thumbnailOriginal: thumbnail {
+					childImageSharp {
+						gatsbyImageData(layout: FULL_WIDTH)
+					}
+				}
 
 				ogPreview: thumbnail {
 					childImageSharp {
@@ -101,8 +106,9 @@ export default function Post({ data }) {
 				title,
 				github,
 				timeToWatch,
-				thumbnail,
+				thumbnailCropped,
 				thumbnailSource,
+				thumbnailOriginal,
 				tags = [],
 				attachments = [],
 				ogPreview,
@@ -116,7 +122,7 @@ export default function Post({ data }) {
 		<figure>
 			<ExternalLink href={thumbnailSource}>
 				<GatsbyImage
-					image={thumbnail.childImageSharp.gatsbyImageData}
+					image={thumbnailCropped.childImageSharp.gatsbyImageData}
 					alt="Thumbnail"
 					title={thumbnailSource ? `Credit: ${thumbnailSource}` : ''}
 				/>
@@ -124,7 +130,9 @@ export default function Post({ data }) {
 		</figure>
 	) : (
 		<figure>
-			<GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} />
+			<ExternalLink href={getSrc(thumbnailOriginal)}>
+				<GatsbyImage image={thumbnailCropped.childImageSharp.gatsbyImageData} alt="Thumbnail" />
+			</ExternalLink>
 		</figure>
 	);
 
