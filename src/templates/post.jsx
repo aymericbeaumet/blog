@@ -55,6 +55,7 @@ export const query = graphql`
 						)
 					}
 				}
+				thumbnailSource: thumbnail_source
 
 				ogPreview: thumbnail {
 					childImageSharp {
@@ -101,6 +102,7 @@ export default function Post({ data }) {
 				github,
 				timeToWatch,
 				thumbnail,
+				thumbnailSource,
 				tags = [],
 				attachments = [],
 				ogPreview,
@@ -109,6 +111,22 @@ export default function Post({ data }) {
 			fields: { slug },
 		},
 	} = data;
+
+	const figure = thumbnailSource ? (
+		<figure>
+			<ExternalLink href={thumbnailSource}>
+				<GatsbyImage
+					image={thumbnail.childImageSharp.gatsbyImageData}
+					alt="Thumbnail"
+					title={thumbnailSource ? `Credit: ${thumbnailSource}` : ''}
+				/>
+			</ExternalLink>
+		</figure>
+	) : (
+		<figure>
+			<GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} />
+		</figure>
+	);
 
 	// https://github.com/joshbuchea/HEAD#social
 	// https://developers.facebook.com/docs/sharing/webmasters/
@@ -159,13 +177,6 @@ export default function Post({ data }) {
 								</ExternalLink>
 							</li>
 						) : null}
-
-						<li>
-							・&nbsp;
-							<Link href={`/${slug}.md`} title="View Markdown for this page">
-								<FontAwesomeIcon width="16px" height="16px" icon={faMarkdown} />
-							</Link>
-						</li>
 					</ul>
 
 					{tags && tags.length > 0 ? (
@@ -178,9 +189,7 @@ export default function Post({ data }) {
 						</ul>
 					) : null}
 
-					<figure>
-						<GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} />
-					</figure>
+					{figure}
 				</header>
 
 				<article

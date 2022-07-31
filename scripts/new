@@ -19,6 +19,7 @@ title: ${JSON.stringify(title)}
 tags: []
 date: ${date}
 thumbnail: ./thumbnail.jpg
+thumbnail_source: https://unsplash.com/photos/xxx
 ---
 
 `,
