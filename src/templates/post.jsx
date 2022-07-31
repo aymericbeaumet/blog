@@ -164,7 +164,6 @@ export default function Post({ data }) {
 							・&nbsp;
 							<Link href={`/${slug}.md`} title="View Markdown for this page">
 								<FontAwesomeIcon width="16px" height="16px" icon={faMarkdown} />
-								&nbsp; markdown
 							</Link>
 						</li>
 					</ul>
