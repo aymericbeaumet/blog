@@ -18,8 +18,9 @@ I've always wanted to have a better understanding of the Go internals. I've read
 the language specification, but I wanted to go further. And what would be a
 better way to do it than actually implementing a Go compiler?
 
-This is what I have started to do with this project: a Go to Rust compiler. The
-ultimate goal would be to allow accessing the rich Go ecosystem from Rust.
+This is why I have started to work on
+[gors](https://github.com/aymericbeaumet/gors). Gors is a Go to Rust compiler.
+The ultimate goal would be to allow accessing the rich Go ecosystem from Rust.
 
 I don't have the pretension (nor the time, nor the skills) to write a full-blown
 Go compiler alone, but that is still a tremendous educative means.
