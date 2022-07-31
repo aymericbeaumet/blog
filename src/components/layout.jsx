@@ -49,7 +49,6 @@ function Layout({ children, data }) {
 
 				<meta property="og:site_name" content={`${author} Blog`} />
 				<meta property="og:locale" content="en_US" />
-				<meta property="og:locale:alternate" content="fr_FR" />
 
 				<meta name="twitter:site" content="@aymericbeaumet" />
 				<meta name="twitter:creator" content="@aymericbeaumet" />
