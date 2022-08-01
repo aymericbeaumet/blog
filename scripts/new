@@ -6,9 +6,10 @@ const format = require('date-fns/format');
 const path = require('path');
 
 const title = process.argv[2];
+const type = process.argv[3] || 'post';
 const slug = slugify(title, { lower: true, strict: true });
 const date = format(new Date(), 'yyyy-MM-dd');
-const filepath = path.join(__dirname, '../data/posts', slug, 'index.md');
+const filepath = path.join(__dirname, `../data/${type}s`, slug, 'index.md');
 
 try {
 	fs.mkdirSync(path.dirname(filepath), 0o755);

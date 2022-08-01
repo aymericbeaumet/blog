@@ -1,9 +1,9 @@
 ---
 title: "Gors: an experimental Go compiler"
-tags: [rust, go, languagetheory]
+tags: [rust, go, parser, compiler]
 date: 2021-01-01
 thumbnail: ./thumbnail.png
-github: https://github.com/aymericbeaumet/gors
+github: aymericbeaumet/gors
 ---
 
 I'm a big fan of Go. I find that its pragmatism makes it extremely pleasant to

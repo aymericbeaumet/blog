@@ -176,9 +176,12 @@ export default function Post({ data }) {
 						{github ? (
 							<li>
 								・&nbsp;
-								<ExternalLink href={github} title="Browse source code on GitHub">
+								<ExternalLink
+									href={`https://github.com/${github}`}
+									title="Browse source code on GitHub"
+								>
 									<FontAwesomeIcon width="16px" height="16px" icon={faGithub} />
-									&nbsp; source
+									&nbsp; {github}
 								</ExternalLink>
 							</li>
 						) : null}

@@ -55,10 +55,13 @@
 }
 
 .Aside {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	align-content: start;
+	&,
+	.projects {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		align-content: start;
+	}
 
 	h2 {
 		margin-bottom: 10px;

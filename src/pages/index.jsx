@@ -36,7 +36,7 @@ export const query = graphql`
 		projects: allMarkdownRemark(
 			sort: { order: DESC, fields: [frontmatter___date] }
 			filter: { fields: { categorySlug: { in: ["project"] } } }
-			limit: 1
+			limit: 2
 		) {
 			...PostsFragment
 		}
@@ -52,9 +52,9 @@ export default function AboutAymericBeaumet({ data }) {
 		talks,
 		projects,
 	} = data;
-	const post = posts.edges[0].node;
-	const talk = talks.edges[0].node;
-	const project = projects.edges[0].node;
+	const postNode = posts.edges[0].node;
+	const talkNode = talks.edges[0].node;
+	const projectsNodes = projects.edges.map((edge) => edge.node);
 
 	return (
 		<Layout>
@@ -110,17 +110,21 @@ export default function AboutAymericBeaumet({ data }) {
 				<aside className={classes.Aside}>
 					<div>
 						<h2>Latest Post</h2>
-						<Post post={post} />
+						<Post post={postNode} />
 					</div>
 
 					<div>
 						<h2>Latest Talk</h2>
-						<Post post={talk} />
+						<Post post={talkNode} />
 					</div>
 
 					<div>
-						<h2>Latest Project</h2>
-						<Post post={project} />
+						<h2>Latest Projects</h2>
+						<div className={classes.projects}>
+							{projectsNodes.map((project) => (
+								<Post post={project} />
+							))}
+						</div>
 					</div>
 				</aside>
 			</div>
