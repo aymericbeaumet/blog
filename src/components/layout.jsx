@@ -16,6 +16,7 @@ export default function LayoutStaticQuery({ children }) {
 						siteMetadata {
 							author
 							description
+							twitterHandle
 						}
 					}
 				}
@@ -28,7 +29,7 @@ export default function LayoutStaticQuery({ children }) {
 function Layout({ children, data }) {
 	const {
 		site: {
-			siteMetadata: { description, author },
+			siteMetadata: { description, author, twitterHandle },
 		},
 	} = data;
 
@@ -43,15 +44,15 @@ function Layout({ children, data }) {
 				<meta name="referrer" content="no-referrer" />
 				<meta name="rating" content="General" />
 
-				<meta name="author" content="Aymeric Beaumet" />
+				<meta name="author" content={author} />
 				<meta name="publisher" content={`${author} Blog`} />
-				<meta property="article:author" content="Aymeric Beaumet" />
+				<meta property="article:author" content={author} />
 
 				<meta property="og:site_name" content={`${author} Blog`} />
 				<meta property="og:locale" content="en_US" />
 
-				<meta name="twitter:site" content="@aymericbeaumet" />
-				<meta name="twitter:creator" content="@aymericbeaumet" />
+				<meta name="twitter:site" content={`@${twitterHandle}`} />
+				<meta name="twitter:creator" content={`@${twitterHandle}`} />
 				<meta name="twitter:dnt" content="on" />
 			</Helmet>
 

@@ -1,3 +1,5 @@
+const twitterHandle = 'aymericbeaumet';
+
 const siteMetadata = {
 	// rss
 	title: 'Aymeric Beaumet | Posts, Talks & Projects',
@@ -10,7 +12,8 @@ const siteMetadata = {
 	github: 'https://github.com/aymericbeaumet',
 	linkedin: 'https://www.linkedin.com/in/aymericbeaumet/',
 	stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet?tab=topactivity',
-	twitter: 'https://twitter.com/aymericbeaumet',
+	twitter: `https://twitter.com/${twitterHandle}`,
+	twitterHandle,
 	// website
 	siteUrl: 'https://aymericbeaumet.com',
 	menu: [

@@ -28,15 +28,23 @@ export const query = graphql`
 			html
 			timeToRead
 			excerpt(pruneLength: 300)
+			ogExcerpt: excerpt(pruneLength: 200)
+
 			wordCount {
 				words
 			}
+
+			fields {
+				slug
+			}
+
 			frontmatter {
 				date
 				title
 				tags
 				timeToWatch
 				github
+				thumbnailSource: thumbnail_source
 
 				attachments {
 					publicURL
@@ -44,7 +52,9 @@ export const query = graphql`
 					extension
 				}
 
-				thumbnailSource: thumbnail_source
+				thumbnail {
+					publicURL
+				}
 				thumbnailCropped: thumbnail {
 					childImageSharp {
 						gatsbyImageData(
@@ -56,12 +66,6 @@ export const query = graphql`
 						)
 					}
 				}
-				thumbnailOriginal: thumbnail {
-					childImageSharp {
-						gatsbyImageData(layout: FULL_WIDTH)
-					}
-				}
-
 				ogPreview: thumbnail {
 					childImageSharp {
 						gatsbyImageData(
@@ -73,18 +77,11 @@ export const query = graphql`
 						)
 					}
 				}
-
 				twitterPreview: thumbnail {
 					childImageSharp {
 						gatsbyImageData(layout: CONSTRAINED, aspectRatio: 2, formats: [WEBP])
 					}
 				}
-			}
-
-			ogExcerpt: excerpt(pruneLength: 200)
-
-			fields {
-				slug
 			}
 		}
 	}
@@ -106,9 +103,9 @@ export default function Post({ data }) {
 				title,
 				github,
 				timeToWatch,
+				thumbnail,
 				thumbnailCropped,
 				thumbnailSource,
-				thumbnailOriginal,
 				tags = [],
 				attachments = [],
 				ogPreview,
@@ -124,13 +121,13 @@ export default function Post({ data }) {
 				<GatsbyImage
 					image={thumbnailCropped.childImageSharp.gatsbyImageData}
 					alt="Thumbnail"
-					title={thumbnailSource ? `Credit: ${thumbnailSource}` : ''}
+					title={`Credit: ${thumbnailSource}`}
 				/>
 			</ExternalLink>
 		</figure>
 	) : (
 		<figure>
-			<ExternalLink href={getSrc(thumbnailOriginal)}>
+			<ExternalLink href={thumbnail.publicURL}>
 				<GatsbyImage image={thumbnailCropped.childImageSharp.gatsbyImageData} alt="Thumbnail" />
 			</ExternalLink>
 		</figure>
