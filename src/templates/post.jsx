@@ -21,7 +21,7 @@ export const query = graphql`
 			siteMetadata {
 				author
 				siteUrl
-				twitterHandle
+				twitter
 			}
 		}
 
@@ -91,7 +91,7 @@ export const query = graphql`
 export default function Post({ data }) {
 	const {
 		site: {
-			siteMetadata: { author, siteUrl, twitterHandle },
+			siteMetadata: { author, siteUrl, twitter },
 		},
 		markdownRemark: {
 			excerpt,
@@ -231,9 +231,8 @@ export default function Post({ data }) {
 							<ExternalLink href="https://newsletter.aymericbeaumet.com/subscribe">
 								Subscribe to the newsletter
 							</ExternalLink>{' '}
-							or follow me on{' '}
-							<ExternalLink href={`https://twitter.com/${twitterHandle}`}>Twitter</ExternalLink> to
-							not miss any future content.
+							or follow me on <ExternalLink href={twitter}>Twitter</ExternalLink> to not miss any
+							future content.
 						</p>
 					</section>
 
