@@ -1,7 +1,7 @@
 ---
 title: "Squeeze: rich data extraction"
 tags: [rust, data, parser]
-date: 2020-01-1
+date: 2020-01-01
 thumbnail: ./thumbnail.png
 github: aymericbeaumet/squeeze
 ---
