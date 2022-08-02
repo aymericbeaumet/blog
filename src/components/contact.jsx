@@ -51,6 +51,11 @@ function Contact({ data }) {
 				</ExternalLink>
 			</li>
 			<li>
+				<ExternalLink href={linkedin} title="LinkedIn">
+					<FontAwesomeIcon width="64px" height="64px" icon={faLinkedin} />
+				</ExternalLink>
+			</li>
+			<li>
 				<ExternalLink href={github} title="GitHub">
 					<FontAwesomeIcon width="64px" height="64px" icon={faGithub} />
 				</ExternalLink>
@@ -58,11 +63,6 @@ function Contact({ data }) {
 			<li>
 				<ExternalLink href={stackoverflow} title="Stack Overflow">
 					<FontAwesomeIcon width="64px" height="64px" icon={faStackOverflow} />
-				</ExternalLink>
-			</li>
-			<li>
-				<ExternalLink href={linkedin} title="LinkedIn">
-					<FontAwesomeIcon width="64px" height="64px" icon={faLinkedin} />
 				</ExternalLink>
 			</li>
 		</ul>
