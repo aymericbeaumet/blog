@@ -65,12 +65,6 @@ $delay: 0.2;
 			height: 1.4em;
 			padding: 10px;
 		}
-
-		&:last-child {
-			svg {
-				margin-right: -10px;
-			}
-		}
 	}
 
 	@media screen and (max-width: $breakpoint2) {
