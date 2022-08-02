@@ -35,8 +35,7 @@ export const query = graphql`
 
 		projects: allMarkdownRemark(
 			sort: { order: DESC, fields: [frontmatter___date] }
-			filter: { fields: { categorySlug: { in: ["project"] } } }
-			limit: 2
+			filter: { fields: { slug: { in: ["gors", "squeeze"] } } }
 		) {
 			...PostsFragment
 		}
@@ -119,7 +118,7 @@ export default function AboutAymericBeaumet({ data }) {
 					</div>
 
 					<div>
-						<h2>Latest Projects</h2>
+						<h2>Featured Projects</h2>
 						<div className={classes.projects}>
 							{projectsNodes.map((project) => (
 								<Post post={project} key={project.fields.slug} />
