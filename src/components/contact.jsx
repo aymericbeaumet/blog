@@ -38,6 +38,7 @@ function Contact({ data }) {
 			siteMetadata: { email, github, stackoverflow, linkedin, twitter },
 		},
 	} = data;
+
 	return (
 		<ul>
 			<li>
