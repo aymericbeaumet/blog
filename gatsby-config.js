@@ -42,7 +42,7 @@ const plugins = [
 		options: {
 			name: 'data',
 			path: `${__dirname}/data/`,
-			ignore: ['**/drafts/**'],
+			ignore: process.env.NODE_ENV === 'development' ? [] : ['**/drafts/**'],
 		},
 	},
 	{

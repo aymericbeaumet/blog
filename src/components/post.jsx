@@ -12,6 +12,7 @@ export const componentFragment = graphql`
 		node {
 			fields {
 				slug
+				isDraft
 			}
 			timeToRead
 			excerpt(pruneLength: 300)
@@ -37,7 +38,7 @@ export const componentFragment = graphql`
 
 export default function Post({ post }) {
 	const {
-		fields: { slug },
+		fields: { slug, isDraft },
 		frontmatter: { title, tags, thumbnail, timeToWatch, date },
 		excerpt,
 		timeToRead,
@@ -53,7 +54,7 @@ export default function Post({ post }) {
 						{Duration({ timeToRead, timeToWatch })}
 					</figcaption>
 				</figure>
-				<h2>{title}</h2>
+				<h2>{isDraft ? `[DRAFT] ${title}` : title}</h2>
 			</Link>
 
 			<ul className={classes.tagsList}>

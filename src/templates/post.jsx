@@ -39,6 +39,7 @@ export const query = graphql`
 
 			fields {
 				slug
+				isDraft
 			}
 
 			frontmatter {
@@ -114,7 +115,7 @@ export default function Post({ data }) {
 				ogPreview,
 				twitterPreview,
 			},
-			fields: { slug },
+			fields: { slug, isDraft },
 		},
 	} = data;
 
@@ -164,7 +165,7 @@ export default function Post({ data }) {
 
 			<section className={classes.Post}>
 				<header>
-					<h1>{title}</h1>
+					<h1>{isDraft ? `[DRAFT] ${title}` : title}</h1>
 
 					<ul className={classes.info}>
 						<li>

@@ -72,18 +72,21 @@ exports.onCreateNode = ({ node, actions }) => {
 
 	if (node.internal.type === 'MarkdownRemark') {
 		const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath);
-		const categorySlug = singular(fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'));
-		const category = capitalize(categorySlug);
+
 		const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)(?:\/|\.).*$/, '$1');
 
+		let categorySlug = singular(fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'));
+		const isDraft = categorySlug === 'draft';
+		if (isDraft) {
+			categorySlug = 'post';
+		}
+		const category = capitalize(categorySlug);
+
+		createNodeField({ node, name: 'fileRelativePath', value: fileRelativePath });
 		createNodeField({ node, name: 'slug', value: slug });
 		createNodeField({ node, name: 'category', value: category });
 		createNodeField({ node, name: 'categorySlug', value: categorySlug });
-		createNodeField({
-			node,
-			name: 'fileRelativePath',
-			value: fileRelativePath,
-		});
+		createNodeField({ node, name: 'isDraft', value: isDraft });
 	}
 };
 
