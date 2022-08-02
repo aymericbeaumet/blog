@@ -14,6 +14,7 @@ const siteMetadata = {
 	stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet?tab=topactivity',
 	twitter: `https://twitter.com/${twitterHandle}`,
 	twitterHandle,
+	newsletter: 'https://newsletter.aymericbeaumet.com/subscribe',
 	// website
 	siteUrl: 'https://aymericbeaumet.com',
 	menu: [

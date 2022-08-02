@@ -12,6 +12,7 @@ export default function FooterStaticQuery() {
 					site {
 						siteMetadata {
 							author
+							newsletter
 						}
 					}
 				}
@@ -24,7 +25,7 @@ export default function FooterStaticQuery() {
 function Footer({ data }) {
 	const {
 		site: {
-			siteMetadata: { author },
+			siteMetadata: { author, newsletter },
 		},
 	} = data;
 	return (
@@ -38,7 +39,7 @@ function Footer({ data }) {
 			</Link>{' '}
 			—{' '}
 			<ExternalLink
-				href="https://newsletter.aymericbeaumet.com/subscribe"
+				href={newsletter}
 				title="Subscribe and receive an email for every new Post, Talk or Project"
 			>
 				Newsletter
