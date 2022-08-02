@@ -6,9 +6,9 @@
 	"author": "Aymeric Beaumet <hi@aymericbeaumet.com>",
 	"scripts": {
 		"clean": "gatsby clean",
-		"dev": "gatsby develop -p 3000",
+		"dev": "gatsby develop -H 0.0.0.0 -p 3000",
 		"build": "gatsby build",
-		"serve": "gatsby serve -p 3000",
+		"serve": "gatsby serve -H 0.0.0.0 -p 3000",
 		"lint": "prettier --check . && eslint '**/*.{js,jsx}'",
 		"format": "eslint --fix '**/*.{js,jsx}'; prettier --write ."
 	},

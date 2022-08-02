@@ -122,7 +122,7 @@ export default function AboutAymericBeaumet({ data }) {
 						<h2>Latest Projects</h2>
 						<div className={classes.projects}>
 							{projectsNodes.map((project) => (
-								<Post post={project} />
+								<Post post={project} key={project.fields.slug} />
 							))}
 						</div>
 					</div>

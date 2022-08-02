@@ -40,7 +40,8 @@ a:visited {
 		padding: 60px 120px;
 
 		@media screen and (max-width: $breakpoint1) {
-			padding: 30px;
+			padding: max(env(safe-area-inset-top), 30px) max(env(safe-area-inset-right), 30px)
+				max(env(safe-area-inset-bottom), 30px) max(env(safe-area-inset-left), 30px);
 		}
 	}
 }

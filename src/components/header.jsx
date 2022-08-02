@@ -34,6 +34,7 @@ function Header({ data }) {
 			siteMetadata: { author, menu },
 		},
 	} = data;
+
 	return (
 		<header className={classes.Header}>
 			<nav role="navigation">
@@ -43,6 +44,7 @@ function Header({ data }) {
 							<Logo />
 						</Link>
 					</li>
+
 					{menu.map(({ name, url, categorySlug }) => (
 						<li key={name}>
 							<CategoryLink to={url} activeClassName={classes.active} categorySlug={categorySlug}>
@@ -52,6 +54,7 @@ function Header({ data }) {
 					))}
 				</ul>
 			</nav>
+
 			<nav className={classes.contact}>
 				<Contact />
 			</nav>
