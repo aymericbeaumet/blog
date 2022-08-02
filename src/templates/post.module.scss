@@ -248,13 +248,13 @@
 
 	.newsletter {
 		margin: 50px auto 0;
+		border-radius: 8px;
+		text-align: center;
+		background-color: #eaedff;
+		padding: 13px;
 
 		& p {
-			padding: 20px;
-			border-radius: 8px;
-			line-height: 22px;
-			text-align: center;
-			background-color: #eaedff;
+			padding: 7px;
 		}
 
 		& a {

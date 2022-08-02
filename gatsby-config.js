@@ -10,8 +10,8 @@ const siteMetadata = {
 	// contacts
 	email: 'hi@aymericbeaumet.com',
 	github: 'https://github.com/aymericbeaumet',
-	linkedin: 'https://www.linkedin.com/in/aymericbeaumet/',
-	stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet?tab=topactivity',
+	linkedin: 'https://www.linkedin.com/in/aymericbeaumet',
+	stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet',
 	twitter: `https://twitter.com/${twitterHandle}`,
 	twitterHandle,
 	newsletter: 'https://newsletter.aymericbeaumet.com/subscribe',
