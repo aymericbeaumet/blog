@@ -34,6 +34,8 @@ interoperability.
 - accept to stay with your current stack if you are happy with it, but
   understand what you are missing
 - keeping your stack up to date
+- cut the noise, remove what you don't need so you can focus on what's most
+  important
 
 ## Optimizations
 
@@ -45,6 +47,7 @@ interoperability.
 
 ### Operating system
 
+- It doesn't matter which one you use
 - Learn how to get the most out of your OS
 - Learn how to customize your OS
 
@@ -54,6 +57,7 @@ https://github.com/aymericbeaumet/dotfiles/blob/master/.hammerspoon/init.lua
 
 ### Terminal / Shell
 
+- It doesn't matter which one you use
 - Must be fast
 - Stay away from distributions
 - Synchronize your dotfiles in a git repository
