@@ -36,6 +36,7 @@ interoperability.
 - keeping your stack up to date
 - cut the noise, remove what you don't need so you can focus on what's most
   important
+- autoreload, hotreload, tdd
 
 ## Optimizations
 
