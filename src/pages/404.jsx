@@ -3,6 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import ExternalLink from '../components/external-link';
 import Layout from '../components/layout';
 import * as classes from './404.module.scss';
 
@@ -54,7 +55,11 @@ export default function NotFoundPage({ data }) {
 				<h2>Fun fact</h2>
 
 				<p>
-					I love <a href="https://en.wikipedia.org/wiki/Vertical_wind_tunnel">indoor skydiving</a>!
+					I love{' '}
+					<ExternalLink href="https://en.wikipedia.org/wiki/Vertical_wind_tunnel">
+						indoor skydiving
+					</ExternalLink>
+					!
 				</p>
 				<figure>
 					<GatsbyImage
@@ -64,8 +69,8 @@ export default function NotFoundPage({ data }) {
 					<figcaption>Me flying for the first time :)</figcaption>
 				</figure>
 				<p>
-					Check <a href="https://www.tunnelflight.com/">tunnelflight.com</a> to find the closest
-					indoor skydiving station from your location.
+					Check <ExternalLink href="https://www.tunnelflight.com/">tunnelflight.com</ExternalLink>{' '}
+					to find the closest indoor skydiving station from your location.
 				</p>
 			</section>
 		</Layout>

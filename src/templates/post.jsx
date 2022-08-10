@@ -40,26 +40,11 @@ export const query = graphql`
 			fields {
 				slug
 				isDraft
-			}
 
-			frontmatter {
-				date
-				title
-				tags
-				timeToWatch
-				github
-				thumbnailSource: thumbnail_source
-
-				attachments {
-					publicURL
-					name
-					extension
-				}
-
-				thumbnail {
+				image {
 					publicURL
 				}
-				thumbnailCropped: thumbnail {
+				imageCropped: image {
 					childImageSharp {
 						gatsbyImageData(
 							layout: CONSTRAINED
@@ -70,7 +55,7 @@ export const query = graphql`
 						)
 					}
 				}
-				ogPreview: thumbnail {
+				ogPreview: image {
 					childImageSharp {
 						gatsbyImageData(
 							layout: CONSTRAINED
@@ -81,9 +66,31 @@ export const query = graphql`
 						)
 					}
 				}
-				twitterPreview: thumbnail {
+				twitterPreview: image {
 					childImageSharp {
 						gatsbyImageData(layout: CONSTRAINED, aspectRatio: 2, formats: [WEBP])
+					}
+				}
+			}
+
+			frontmatter {
+				date
+				title
+				tags
+				timeToWatch
+				github
+				unsplash
+			}
+		}
+
+		attachments: allFile(filter: { fields: { postSlug: { eq: $slug } } }) {
+			edges {
+				node {
+					publicURL
+					extension
+					fields {
+						prettyName
+						prettySize
 					}
 				}
 			}
@@ -102,37 +109,26 @@ export default function Post({ data }) {
 			html,
 			timeToRead,
 			wordCount,
-			frontmatter: {
-				date,
-				title,
-				github,
-				timeToWatch,
-				thumbnail,
-				thumbnailCropped,
-				thumbnailSource,
-				tags = [],
-				attachments = [],
-				ogPreview,
-				twitterPreview,
-			},
-			fields: { slug, isDraft },
+			fields: { slug, isDraft, image, imageCropped, ogPreview, twitterPreview },
+			frontmatter: { date, title, github, timeToWatch, unsplash, tags = [] },
 		},
+		attachments,
 	} = data;
 
-	const figure = thumbnailSource ? (
+	const figure = unsplash ? (
 		<figure>
-			<ExternalLink href={thumbnailSource}>
+			<ExternalLink href={unsplash}>
 				<GatsbyImage
-					image={thumbnailCropped.childImageSharp.gatsbyImageData}
-					alt="Thumbnail"
-					title={`Credit: ${thumbnailSource}`}
+					image={imageCropped.childImageSharp.gatsbyImageData}
+					alt="image"
+					title={`Credit: ${unsplash}`}
 				/>
 			</ExternalLink>
 		</figure>
 	) : (
 		<figure>
-			<ExternalLink href={thumbnail.publicURL}>
-				<GatsbyImage image={thumbnailCropped.childImageSharp.gatsbyImageData} alt="Thumbnail" />
+			<ExternalLink href={image.publicURL}>
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
 			</ExternalLink>
 		</figure>
 	);
@@ -210,20 +206,23 @@ export default function Post({ data }) {
 				/>
 
 				<aside>
-					{attachments && attachments.length > 0 ? (
+					{attachments?.edges?.length > 0 ? (
 						<section className={classes.attachments}>
 							<HeadingWithAnchor Level="h1" id="attachments">
 								Attachments
 							</HeadingWithAnchor>
 
 							<ul>
-								{attachments.map(({ publicURL, name, extension }) => (
-									<a href={publicURL}>
+								{attachments.edges.map(({ node }) => (
+									<ExternalLink
+										href={node.publicURL}
+										title={`Click to download (${node.fields.prettySize})`}
+									>
 										<li>
 											<FontAwesomeIcon width="32px" height="32px" icon={faSave} />
-											{`${name}.${extension}`}
+											{`${node.fields.prettyName}.${node.extension}`}
 										</li>
-									</a>
+									</ExternalLink>
 								))}
 							</ul>
 						</section>

@@ -1,11 +1,9 @@
 ---
 title: "Resilience: why, how, what?"
+category: talk
 tags: [resilience, nodejs, 🇫🇷]
 date: 2018-09-27
 timeToWatch: 27
-thumbnail: ./thumbnail.png
-attachments:
-  - ./slides.pdf
 ---
 
 We live in a world critically relying on a growing mass of information systems:

@@ -1,5 +1,13 @@
 const twitterHandle = 'aymericbeaumet';
 
+const flags = {
+	DETECT_NODE_MUTATIONS: true,
+	DEV_SSR: true, // catch SSR errors during dev
+	FAST_DEV: true,
+	PARALLEL_SOURCING: true,
+	PRESERVE_FILE_DOWNLOAD_CACHE: true,
+};
+
 const siteMetadata = {
 	// rss
 	title: 'Aymeric Beaumet | Posts, Talks & Projects',
@@ -39,19 +47,22 @@ const siteMetadata = {
 const plugins = [
 	{
 		resolve: 'gatsby-source-filesystem',
-		options: {
-			name: 'data',
-			path: `${__dirname}/data/`,
-			ignore: process.env.NODE_ENV === 'development' ? [] : ['**/drafts/**'],
-		},
+		options: { name: 'src', path: `${__dirname}/src/` },
 	},
+
 	{
 		resolve: 'gatsby-source-filesystem',
-		options: {
-			name: 'src',
-			path: `${__dirname}/src/`,
-		},
+		options: { name: 'posts', path: `${__dirname}/_posts/` },
 	},
+
+	...(process.env.NODE_ENV === 'development'
+		? [
+				{
+					resolve: 'gatsby-source-filesystem',
+					options: { name: 'drafts', path: `${__dirname}/_drafts/` },
+				},
+		  ]
+		: []),
 
 	'gatsby-plugin-image',
 	'gatsby-plugin-sharp',
@@ -175,4 +186,4 @@ const plugins = [
 	'gatsby-plugin-offline',
 ];
 
-module.exports = { siteMetadata, plugins };
+module.exports = { flags, siteMetadata, plugins };

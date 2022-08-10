@@ -2,8 +2,7 @@
 title: Developers, please nurture your coding experience
 tags: [productivity, workstation, dotfiles]
 date: 2022-07-31
-thumbnail: ./thumbnail.jpg
-thumbnail_source: https://unsplash.com/photos/Nw1Y7EAsrQk
+unsplash: https://unsplash.com/photos/Nw1Y7EAsrQk
 ---
 
 // Why?

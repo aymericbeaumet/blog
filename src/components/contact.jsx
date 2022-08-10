@@ -20,9 +20,9 @@ export default function ContactStaticQuery() {
 						siteMetadata {
 							email
 							twitter
+							linkedin
 							github
 							stackoverflow
-							linkedin
 						}
 					}
 				}
@@ -35,16 +35,16 @@ export default function ContactStaticQuery() {
 function Contact({ data }) {
 	const {
 		site: {
-			siteMetadata: { email, github, stackoverflow, linkedin, twitter },
+			siteMetadata: { email, twitter, linkedin, github, stackoverflow },
 		},
 	} = data;
 
 	return (
 		<ul>
 			<li>
-				<a href={`mailto:${email}`} title="Email">
+				<ExternalLink href={`mailto:${email}`} title="Email">
 					<FontAwesomeIcon width="64px" height="64px" icon={faEnvelope} />
-				</a>
+				</ExternalLink>
 			</li>
 			<li>
 				<ExternalLink href={twitter} title="Twitter">

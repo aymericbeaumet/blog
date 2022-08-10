@@ -1,8 +1,8 @@
 ---
 title: "Gors: an experimental Go compiler"
+category: project
 tags: [rust, go, parser, compiler]
 date: 2021-01-01
-thumbnail: ./thumbnail.png
 github: aymericbeaumet/gors
 ---
 

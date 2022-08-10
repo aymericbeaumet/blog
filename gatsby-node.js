@@ -1,9 +1,9 @@
 /* eslint-disable no-restricted-syntax, import/no-extraneous-dependencies */
 
 const fs = require('fs-extra');
-const { capitalize } = require('lodash');
 const path = require('path');
-const { singular } = require('pluralize');
+const { capitalize } = require('lodash');
+const filesize = require('filesize');
 const urlFromTag = require('./src/utils/urlFromTag');
 
 // map of { [absPath]: relPath } files to copy to the ./public directory
@@ -15,6 +15,45 @@ const tagsIndex = new Set();
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 	if (getConfig().mode === 'production') {
 		actions.setWebpackConfig({ devtool: false }); // disable source maps
+	}
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+	const { createNodeField } = actions;
+
+	if (node.internal.type === 'MarkdownRemark') {
+		const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath);
+		const slug = path.basename(node.fileAbsolutePath, path.extname(node.fileAbsolutePath));
+		const categorySlug = node.frontmatter.category || 'post';
+		const category = capitalize(categorySlug);
+		const isDraft = node.fileAbsolutePath.includes('/_drafts/');
+
+		createNodeField({ node, name: 'fileRelativePath', value: fileRelativePath });
+		createNodeField({ node, name: 'slug', value: slug });
+		createNodeField({ node, name: 'categorySlug', value: categorySlug });
+		createNodeField({ node, name: 'category', value: category });
+		createNodeField({ node, name: 'isDraft', value: isDraft });
+
+		// Find the post image (fallback to commitstrip image)
+		let image = './src/images/aymeric-beaumet-commitstrip.png';
+		for (const extension of ['.png', '.jpg', '.jpeg']) {
+			const imageAbsPath = path.join(
+				path.dirname(node.fileAbsolutePath),
+				`${path.basename(node.fileAbsolutePath, path.extname(node.fileAbsolutePath))}${extension}`,
+			);
+			if (fs.existsSync(imageAbsPath)) {
+				image = path.relative(path.dirname(node.fileAbsolutePath), imageAbsPath);
+				break;
+			}
+		}
+		createNodeField({ node, name: 'image', value: image });
+	} else if (node.internal.type === 'File') {
+		const split = node.name.split('--');
+		if (split.length === 2) {
+			createNodeField({ node, name: 'postSlug', value: split[0] });
+			createNodeField({ node, name: 'prettyName', value: split[1] });
+			createNodeField({ node, name: 'prettySize', value: filesize(node.size) });
+		}
 	}
 };
 
@@ -64,29 +103,6 @@ exports.createPages = async ({ graphql, actions }) => {
 			component: path.resolve('./src/templates/tag.jsx'),
 			context: { tag },
 		});
-	}
-};
-
-exports.onCreateNode = ({ node, actions }) => {
-	const { createNodeField } = actions;
-
-	if (node.internal.type === 'MarkdownRemark') {
-		const fileRelativePath = path.relative(__dirname, node.fileAbsolutePath);
-
-		const slug = fileRelativePath.replace(/^data\/[^/]+\/([^/]+)(?:\/|\.).*$/, '$1');
-
-		let categorySlug = singular(fileRelativePath.replace(/^data\/([^/]+)\/.*$/, '$1'));
-		const isDraft = categorySlug === 'draft';
-		if (isDraft) {
-			categorySlug = 'post';
-		}
-		const category = capitalize(categorySlug);
-
-		createNodeField({ node, name: 'fileRelativePath', value: fileRelativePath });
-		createNodeField({ node, name: 'slug', value: slug });
-		createNodeField({ node, name: 'category', value: category });
-		createNodeField({ node, name: 'categorySlug', value: categorySlug });
-		createNodeField({ node, name: 'isDraft', value: isDraft });
 	}
 };
 

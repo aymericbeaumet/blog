@@ -13,15 +13,7 @@ export const componentFragment = graphql`
 			fields {
 				slug
 				isDraft
-			}
-			timeToRead
-			excerpt(pruneLength: 300)
-			frontmatter {
-				title
-				tags
-				timeToWatch
-				date
-				thumbnail {
+				image {
 					childImageSharp {
 						gatsbyImageData(
 							layout: CONSTRAINED
@@ -32,14 +24,22 @@ export const componentFragment = graphql`
 					}
 				}
 			}
+			timeToRead
+			excerpt(pruneLength: 300)
+			frontmatter {
+				title
+				tags
+				timeToWatch
+				date
+			}
 		}
 	}
 `;
 
 export default function Post({ post }) {
 	const {
-		fields: { slug, isDraft },
-		frontmatter: { title, tags, thumbnail, timeToWatch, date },
+		fields: { slug, isDraft, image },
+		frontmatter: { title, tags, timeToWatch, date },
 		excerpt,
 		timeToRead,
 	} = post;
@@ -48,7 +48,7 @@ export default function Post({ post }) {
 		<div className={classes.Post}>
 			<Link to={`/${slug}`} title={excerpt}>
 				<figure>
-					<GatsbyImage image={thumbnail.childImageSharp.gatsbyImageData} alt={title} />
+					<GatsbyImage image={image.childImageSharp.gatsbyImageData} alt={title} />
 					<figcaption>
 						{DateComponent({ date })}
 						{Duration({ timeToRead, timeToWatch })}

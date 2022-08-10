@@ -2,8 +2,7 @@
 title: Faster git clones with sparse checkouts
 tags: [git, performance]
 date: 2022-07-23
-thumbnail: ./thumbnail.jpg
-thumbnail_source: https://unsplash.com/photos/zAZYuch7deE
+unsplash: https://unsplash.com/photos/zAZYuch7deE
 ---
 
 We at [REKKI](https://rekki.com) are working on a monorepo that contains all the
