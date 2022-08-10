@@ -35,18 +35,17 @@ exports.onCreateNode = ({ node, actions }) => {
 		createNodeField({ node, name: 'isDraft', value: isDraft });
 
 		// Find the post image (fallback to commitstrip image)
-		let image = './src/images/aymeric-beaumet-commitstrip.png';
 		for (const extension of ['.png', '.jpg', '.jpeg']) {
 			const imageAbsPath = path.join(
 				path.dirname(node.fileAbsolutePath),
 				`${path.basename(node.fileAbsolutePath, path.extname(node.fileAbsolutePath))}${extension}`,
 			);
 			if (fs.existsSync(imageAbsPath)) {
-				image = path.relative(path.dirname(node.fileAbsolutePath), imageAbsPath);
+				const image = path.relative(path.dirname(node.fileAbsolutePath), imageAbsPath);
+				createNodeField({ node, name: 'image', value: image });
 				break;
 			}
 		}
-		createNodeField({ node, name: 'image', value: image });
 	} else if (node.internal.type === 'File') {
 		const split = node.name.split('--');
 		if (split.length === 2) {
