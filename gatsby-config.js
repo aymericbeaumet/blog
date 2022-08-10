@@ -1,7 +1,6 @@
 const twitterHandle = 'aymericbeaumet';
 
 const flags = {
-	DETECT_NODE_MUTATIONS: true,
 	DEV_SSR: true, // catch SSR errors during dev
 	FAST_DEV: true,
 	PARALLEL_SOURCING: true,

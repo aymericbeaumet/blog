@@ -8,7 +8,7 @@ const path = require('path');
 const title = process.argv[2];
 const slug = slugify(title, { lower: true, strict: true });
 const date = format(new Date(), 'yyyy-MM-dd');
-const filepath = path.join(__dirname, `../_posts`, slug, 'index.md');
+const filepath = path.join(__dirname, `../_posts`, `${slug}.md`);
 
 fs.writeFileSync(
 	filepath,
