@@ -34,7 +34,6 @@ exports.onCreateNode = ({ node, actions }) => {
 		createNodeField({ node, name: 'category', value: category });
 		createNodeField({ node, name: 'isDraft', value: isDraft });
 
-		// Find the post image (fallback to commitstrip image)
 		for (const extension of ['.png', '.jpg', '.jpeg']) {
 			const imageAbsPath = path.join(
 				path.dirname(node.fileAbsolutePath),
