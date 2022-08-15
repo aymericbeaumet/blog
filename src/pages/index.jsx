@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Helmet from 'react-helmet';
 
@@ -39,6 +40,17 @@ export const query = graphql`
 		) {
 			...PostsFragment
 		}
+
+		rounded: file(relativePath: { eq: "images/aymeric-beaumet-profile.jpg" }) {
+			childImageSharp {
+				gatsbyImageData(
+					layout: CONSTRAINED
+					placeholder: BLURRED
+					width: 90
+					formats: [PNG, WEBP, AVIF]
+				)
+			}
+		}
 	}
 `;
 
@@ -50,6 +62,7 @@ export default function AboutAymericBeaumet({ data }) {
 		posts,
 		talks,
 		projects,
+		rounded,
 	} = data;
 	const postNode = posts.edges[0].node;
 	const talkNode = talks.edges[0].node;
@@ -63,8 +76,20 @@ export default function AboutAymericBeaumet({ data }) {
 
 			<div className={classes.wrapper}>
 				<section className={classes.About}>
-					<h1>Hey traveler,</h1>
-					<h2>Welcome to my part of the internet</h2>
+					<header>
+						<div className={classes.profile}>
+							<GatsbyImage
+								image={rounded.childImageSharp.gatsbyImageData}
+								alt="Aymeric Beaumet"
+								title="Aymeric Beaumet"
+							/>
+						</div>
+
+						<div>
+							<h1>Hey traveler,</h1>
+							<h2>Welcome to my part of the internet</h2>
+						</div>
+					</header>
 
 					<p>
 						My name is <strong>{author}</strong>. I&apos;m a 29 years old Software Engineer living
