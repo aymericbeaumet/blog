@@ -56,6 +56,17 @@
 			li {
 				display: inline-block;
 				margin-top: 10px;
+				height: 24px;
+				line-height: 24px;
+
+				a > div {
+					margin-right: 5px;
+				}
+
+				img {
+					width: 24px;
+					border-radius: 50%;
+				}
 			}
 
 			.edit {

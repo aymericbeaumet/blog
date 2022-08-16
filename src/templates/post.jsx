@@ -1,7 +1,7 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { GatsbyImage, getSrc } from 'gatsby-plugin-image';
 import 'prismjs/themes/prism-coy.css';
 import React from 'react';
@@ -95,6 +95,17 @@ export const query = graphql`
 				}
 			}
 		}
+
+		profile: file(relativePath: { eq: "images/aymeric-beaumet-profile.jpg" }) {
+			childImageSharp {
+				gatsbyImageData(
+					layout: CONSTRAINED
+					placeholder: NONE
+					width: 24
+					formats: [PNG, WEBP, AVIF]
+				)
+			}
+		}
 	}
 `;
 
@@ -113,6 +124,7 @@ export default function Post({ data }) {
 			frontmatter: { date, title, github, timeToWatch, unsplash, tags = [] },
 		},
 		attachments,
+		profile,
 	} = data;
 
 	const figure = unsplash ? (
@@ -165,6 +177,18 @@ export default function Post({ data }) {
 
 					<ul className={classes.info}>
 						<li>
+							<Link href="/" title={`Written by ${author}`}>
+								<GatsbyImage
+									image={profile.childImageSharp.gatsbyImageData}
+									alt="author profile picture"
+									title={author}
+								/>
+								{author}
+							</Link>
+						</li>
+
+						<li>
+							・&nbsp;
 							<DateComponent date={date} />
 						</li>
 
