@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Helmet from 'react-helmet';
@@ -98,7 +98,8 @@ export default function AboutAymericBeaumet({ data }) {
 
 					<p>
 						I am <strong>passionate about computer science</strong>, which have been so since I was
-						13. I am now lucky enough to live from that passion.
+						13. I often <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about it,
+						and I am also lucky enough to live from that passion.
 					</p>
 
 					<p>
@@ -112,11 +113,7 @@ export default function AboutAymericBeaumet({ data }) {
 					<p>
 						I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
 						best way to progress, and I always look for new challenges. This is one of the main
-						reasons why I work on{' '}
-						<ExternalLink href="https://github.com/aymericbeaumet?tab=repositories&type=public">
-							side projects
-						</ExternalLink>
-						.
+						reasons why I work on <Link to="/projects">side projects</Link>.
 					</p>
 
 					<p>
