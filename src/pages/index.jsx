@@ -41,7 +41,7 @@ export const query = graphql`
 			...PostsFragment
 		}
 
-		rounded: file(relativePath: { eq: "images/aymeric-beaumet-profile.jpg" }) {
+		profile: file(relativePath: { eq: "images/aymeric-beaumet-profile.jpg" }) {
 			childImageSharp {
 				gatsbyImageData(
 					layout: CONSTRAINED
@@ -62,7 +62,7 @@ export default function AboutAymericBeaumet({ data }) {
 		posts,
 		talks,
 		projects,
-		rounded,
+		profile,
 	} = data;
 	const postNode = posts.edges[0].node;
 	const talkNode = talks.edges[0].node;
@@ -79,7 +79,7 @@ export default function AboutAymericBeaumet({ data }) {
 					<header>
 						<div className={classes.profile}>
 							<GatsbyImage
-								image={rounded.childImageSharp.gatsbyImageData}
+								image={profile.childImageSharp.gatsbyImageData}
 								alt="Aymeric Beaumet"
 								title="Aymeric Beaumet"
 							/>

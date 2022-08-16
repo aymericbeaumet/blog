@@ -1,4 +1,4 @@
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faFirefoxBrowser } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, Link } from 'gatsby';
@@ -80,6 +80,7 @@ export const query = graphql`
 				timeToWatch
 				github
 				unsplash
+				website
 			}
 		}
 
@@ -121,7 +122,7 @@ export default function Post({ data }) {
 			timeToRead,
 			wordCount,
 			fields: { slug, isDraft, image, imageCropped, ogPreview, twitterPreview },
-			frontmatter: { date, title, github, timeToWatch, unsplash, tags = [] },
+			frontmatter: { date, title, github, website, timeToWatch, unsplash, tags = [] },
 		},
 		attachments,
 		profile,
@@ -206,6 +207,16 @@ export default function Post({ data }) {
 								>
 									<FontAwesomeIcon width="16px" height="16px" icon={faGithub} />
 									&nbsp; {github}
+								</ExternalLink>
+							</li>
+						) : null}
+
+						{website ? (
+							<li>
+								・&nbsp;
+								<ExternalLink href={website} title="Visit website">
+									<FontAwesomeIcon width="16px" height="16px" icon={faFirefoxBrowser} />
+									&nbsp; {website}
 								</ExternalLink>
 							</li>
 						) : null}

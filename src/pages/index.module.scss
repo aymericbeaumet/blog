@@ -20,6 +20,11 @@
 		gap: 25px;
 		margin-bottom: 30px;
 
+		div:first-child {
+			width: 90px;
+			height: 90px;
+		}
+
 		img {
 			border-radius: 50%;
 		}
