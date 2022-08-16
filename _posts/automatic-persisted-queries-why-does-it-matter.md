@@ -6,8 +6,7 @@ date: 2018-11-20
 ---
 
 [GraphQL](https://graphql.org/) is not to be presented anymore. One main
-drawback though in comparison to REST is the upstream bandwidth cost can become
-non-negligeable as the number of queries increases.
+drawback though in comparison to REST is the upstream bandwidth cost can become significant as the number of queries increases.
 
 [Automatic Persisted Queries](https://www.apollographql.com/docs/apollo-server/performance/apq/)
 aims at addressing this problem by allowing to cache the queries server-side.
