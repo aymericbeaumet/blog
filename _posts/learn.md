@@ -1,7 +1,7 @@
 ---
-title: "learn.aymericbeaumet.com"
+title: "Learn: teaching JavaScript within an editor"
 category: project
-tags: [javascript, svelte, sveltekit]
+tags: [javascript, svelte, sveltekit, vscode]
 date: 2022-01-01
 website: https://learn.aymericbeaumet.com
 ---
