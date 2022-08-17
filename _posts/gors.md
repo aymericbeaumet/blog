@@ -33,4 +33,4 @@ optimizations and inlining.
 
 The whole project can run in the browser, this is done by compiling the compiler
 to a WASM target. You can give it a try in the
-[experimental editor](https://aymericbeaumet.github.io/gors).
+[editor](https://aymericbeaumet.github.io/gors).
