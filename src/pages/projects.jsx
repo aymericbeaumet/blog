@@ -13,7 +13,7 @@ export const query = graphql`
 			}
 		}
 		posts: allMarkdownRemark(
-			sort: { order: DESC, fields: [frontmatter___date] }
+			sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
 			filter: { fields: { categorySlug: { eq: "project" } } }
 		) {
 			...PostsFragment

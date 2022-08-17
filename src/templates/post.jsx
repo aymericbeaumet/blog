@@ -40,10 +40,8 @@ export const query = graphql`
 			fields {
 				slug
 				isDraft
+				categorySlug
 
-				image {
-					publicURL
-				}
 				imageCropped: image {
 					childImageSharp {
 						gatsbyImageData(
@@ -121,28 +119,34 @@ export default function Post({ data }) {
 			html,
 			timeToRead,
 			wordCount,
-			fields: { slug, isDraft, image, imageCropped, ogPreview, twitterPreview },
+			fields: { slug, isDraft, imageCropped, ogPreview, twitterPreview, categorySlug },
 			frontmatter: { date, title, github, website, timeToWatch, unsplash, tags = [] },
 		},
 		attachments,
 		profile,
 	} = data;
 
-	const figure = unsplash ? (
+	const figure = website ? ( // eslint-disable-line
 		<figure>
-			<ExternalLink href={unsplash}>
-				<GatsbyImage
-					image={imageCropped.childImageSharp.gatsbyImageData}
-					alt="image"
-					title={`Credit: ${unsplash}`}
-				/>
+			<ExternalLink href={website} title={website}>
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
+			</ExternalLink>
+		</figure>
+	) : github ? ( // eslint-disable-line
+		<figure>
+			<ExternalLink href={`https://github.com/${github}`} title={`https://github.com/${github}`}>
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
+			</ExternalLink>
+		</figure>
+	) : unsplash ? (
+		<figure>
+			<ExternalLink href={unsplash} title={`Credit: ${unsplash}`}>
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
 			</ExternalLink>
 		</figure>
 	) : (
 		<figure>
-			<ExternalLink href={image.publicURL}>
-				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
-			</ExternalLink>
+			<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
 		</figure>
 	);
 
@@ -214,9 +218,9 @@ export default function Post({ data }) {
 						{website ? (
 							<li>
 								・&nbsp;
-								<ExternalLink href={website} title="Visit website">
+								<ExternalLink href={website} title="Open website">
 									<FontAwesomeIcon width="16px" height="16px" icon={faFirefoxBrowser} />
-									&nbsp; {website}
+									&nbsp; website
 								</ExternalLink>
 							</li>
 						) : null}

@@ -68,12 +68,6 @@
 					border-radius: 50%;
 				}
 			}
-
-			.edit {
-				font-size: 18px;
-				margin-right: 3px;
-				margin-bottom: -1px;
-			}
 		}
 
 		.tags {
@@ -92,7 +86,6 @@
 
 		figure {
 			margin-top: 40px;
-			margin-bottom: 10px;
 			border: 1px solid #f4f4f4;
 		}
 	}
@@ -178,7 +171,7 @@
 		:global(.gatsby-resp-iframe-wrapper) {
 			margin: 0 auto;
 			width: 80%;
-			margin-top: 15px;
+			margin-top: 25px;
 			border: 1px solid #eaeaea;
 		}
 

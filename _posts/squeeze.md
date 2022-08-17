@@ -12,6 +12,8 @@ I often do, and it is always resulting in me struggling to get `grep` to do what
 I need.
 
 This project aims at solving this frustration, and allows to extract data from
-arbitrary sources. Check the
+arbitrary sources. It is easily interoperable with other unix tools. I use it the nvim and tmux integrations on a daily basis.
+
+Check the
 [readme](https://github.com/aymericbeaumet/squeeze#squeeze-) to see all the
 posssible data formats recognized.

@@ -4,6 +4,7 @@ category: project
 tags: [rust, go, parser, compiler]
 date: 2021-01-01
 github: aymericbeaumet/gors
+website: https://aymericbeaumet.github.io/gors
 ---
 
 I'm a big fan of Go. I find that its pragmatism makes it extremely pleasant to
@@ -32,4 +33,4 @@ optimizations and inlining.
 
 The whole project can run in the browser, this is done by compiling the compiler
 to a WASM target. You can give it a try in the
-[experimental editor](https://aymericbeaumet.github.io/gors/).
+[experimental editor](https://aymericbeaumet.github.io/gors).
