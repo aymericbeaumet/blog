@@ -31,6 +31,7 @@ export const componentFragment = graphql`
 				tags
 				timeToWatch
 				date
+				until
 			}
 		}
 	}
@@ -39,7 +40,7 @@ export const componentFragment = graphql`
 export default function Post({ post }) {
 	const {
 		fields: { slug, isDraft, image },
-		frontmatter: { title, tags, timeToWatch, date },
+		frontmatter: { title, tags, timeToWatch, date, until },
 		excerpt,
 		timeToRead,
 	} = post;
@@ -50,7 +51,7 @@ export default function Post({ post }) {
 				<figure>
 					<GatsbyImage image={image.childImageSharp.gatsbyImageData} alt={title} />
 					<figcaption>
-						{DateComponent({ date })}
+						{DateComponent({ date, until })}
 						{Duration({ timeToRead, timeToWatch })}
 					</figcaption>
 				</figure>

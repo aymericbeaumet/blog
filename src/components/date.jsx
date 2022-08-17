@@ -22,7 +22,7 @@ export default function DateComponent({ date, until } = {}) {
 			const year = ddate.getUTCFullYear().toString();
 			return (
 				<time dateTime={year} title={`Started in ${year}`}>
-					Since {year}
+					Since {`${year}`}
 				</time>
 			);
 		}

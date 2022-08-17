@@ -78,6 +78,7 @@ export const query = graphql`
 				github
 				unsplash
 				website
+				until
 			}
 		}
 
@@ -119,7 +120,7 @@ export default function Post({ data }) {
 			timeToRead,
 			wordCount,
 			fields: { slug, isDraft, imageCropped, ogPreview, twitterPreview },
-			frontmatter: { date, title, github, website, timeToWatch, unsplash, tags = [] },
+			frontmatter: { date, title, github, website, timeToWatch, unsplash, tags = [], until },
 		},
 		attachments,
 		profile,
@@ -193,7 +194,7 @@ export default function Post({ data }) {
 
 						<li>
 							・&nbsp;
-							<DateComponent date={date} />
+							<DateComponent date={date} until={until} />
 						</li>
 
 						<li>

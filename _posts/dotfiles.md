@@ -1,5 +1,5 @@
 ---
-title: "Dotfiles: configuration files for my workstation"
+title: "Dotfiles: my configuration files"
 category: project
 tags: [dotfiles, nvim, tmux, zsh]
 date: 2011-01-01
