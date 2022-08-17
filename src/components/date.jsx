@@ -9,9 +9,8 @@ export default function DateComponent({ date, until } = {}) {
 	if (ddate && duntil) {
 		const dateYear = ddate.getFullYear();
 		const untilYear = duntil.getFullYear();
-		const duration = Math.max(untilYear - dateYear, 1);
 		return (
-			<time dateTime={ddate} title={`${duration} ${duration !== 1 ? 'years' : 'year'}`}>
+			<time dateTime={ddate} title={`Project active between ${dateYear} and ${untilYear}`}>
 				{`${format(ddate, 'yyyy')}–${format(duntil, 'yyyy')}`}
 			</time>
 		);
@@ -21,7 +20,7 @@ export default function DateComponent({ date, until } = {}) {
 		if (ddate.getMonth() === 0 && ddate.getDate() === 1) {
 			const year = ddate.getUTCFullYear().toString();
 			return (
-				<time dateTime={year} title={`Started in ${year}`}>
+				<time dateTime={year} title={`Project active since ${year}`}>
 					Since {`${year}`}
 				</time>
 			);
