@@ -1,5 +1,5 @@
 ---
-title: "Maps: interactive map with a medieval feel"
+title: "Maps: interactive map with a medieval vibe"
 category: project
 tags: [javascript, geojson, openlayers]
 date: 2022-01-01
