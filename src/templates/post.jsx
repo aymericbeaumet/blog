@@ -40,7 +40,6 @@ export const query = graphql`
 			fields {
 				slug
 				isDraft
-				categorySlug
 
 				imageCropped: image {
 					childImageSharp {
@@ -119,7 +118,7 @@ export default function Post({ data }) {
 			html,
 			timeToRead,
 			wordCount,
-			fields: { slug, isDraft, imageCropped, ogPreview, twitterPreview, categorySlug },
+			fields: { slug, isDraft, imageCropped, ogPreview, twitterPreview },
 			frontmatter: { date, title, github, website, timeToWatch, unsplash, tags = [] },
 		},
 		attachments,
@@ -129,24 +128,24 @@ export default function Post({ data }) {
 	const figure = website ? ( // eslint-disable-line
 		<figure>
 			<ExternalLink href={website} title={website}>
-				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="website preview" />
 			</ExternalLink>
 		</figure>
 	) : github ? ( // eslint-disable-line
 		<figure>
 			<ExternalLink href={`https://github.com/${github}`} title={`https://github.com/${github}`}>
-				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="github preview" />
 			</ExternalLink>
 		</figure>
 	) : unsplash ? (
 		<figure>
 			<ExternalLink href={unsplash} title={`Credit: ${unsplash}`}>
-				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="unsplash preview" />
 			</ExternalLink>
 		</figure>
 	) : (
 		<figure>
-			<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="image" />
+			<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="hero image" />
 		</figure>
 	);
 
