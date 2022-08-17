@@ -15,5 +15,4 @@ This project aims at solving this frustration, and allows to extract data from
 arbitrary sources. It is easily interoperable with other unix tools. I use it the nvim and tmux integrations on a daily basis.
 
 Check the
-[readme](https://github.com/aymericbeaumet/squeeze#squeeze-) to see all the
-posssible data formats recognized.
+[readme](https://github.com/aymericbeaumet/squeeze) to see the possibilities offered by the tool.

@@ -1,85 +1,46 @@
 ---
 title: Developers, please nurture your coding experience
-tags: [productivity, workstation, dotfiles]
-date: 2022-07-31
+tags: [productivity, workstation]
+date: 2022-08-17
 unsplash: https://unsplash.com/photos/Nw1Y7EAsrQk
 ---
 
-// Why?
+Whether you are writing code for a living, or just enjoying it as a hobby, it is very likely you are spending a good portion of your day on a computer if you are reading this article.
 
-We spend a lot of time on computers, worth improving. It's not about coding as
-fast as possible, it's about getting comfortable and maximizing the environment
-you are using everyday.
+I see writing code as an art. An art where we would each approach it from a different perspective, playing with the tools that we are being offered. We all enjoy at a different level of the stack. And yet it all comes down to solving problems by editing some code in a form or another.
 
-// How?
+Editing code in itself is trivial. Projecting and mapping our thoughts into concrete lines of code is a different kind of beast. But what is the link between you and the code you write? Your machine. Your workstation. Your work environment. You call it the way you want, but that's what enabling you to write code.
 
-Optimizing the whole stack. Identify painpoints and fix them. Only give
-examples, we'll write specific blog posts later.
+I believe taking ownership of one's environment is a key facet of becoming a better engineer. Some people would argue it brings a productivity boost. But I don't think that's the main reason. The main reason is getting all potential obstacles out of the way.
 
-This article is not meant to be followed to the letter, but it's food for
-thought.
+We should all get to know our environments. Caring about your work environment will be beneficial in the long run. For you. For your coworkers. Not only that, but it will give you a better understanding of what represents a good environment, and that will help you down the road.
 
-## Prioritize
+That being said, where can you start? There is so much to do. Well, the bad news is it's a never ending journey. The great news is that it's a never ending journey. Every second of it will make you better at your job. It is not about coding as fast as possible, it's about getting comfortable and maximizing the environment you are using every day.
 
-Get a few tools that you will learn to master, and find ways to improve their
-interoperability.
+## Your journey
 
-## Share
+This is a personal journey. You might (and should) take inspiration from others, but in the end you are designing the workstation that works the best for you. And you will carry it around across all your jobs and personal projects.
 
-- when you can, choose simplicity https://www.youtube.com/watch?v=SxdOUGdseq4
-- talk with people
-- read blog posts
-- challenge your existing stack with newcoming tools
-- accept to stay with your current stack if you are happy with it, but
-  understand what you are missing
-- keeping your stack up to date
-- cut the noise, remove what you don't need so you can focus on what's most
-  important
-- autoreload, hotreload, tdd
+The best way to start is by identifying pain points. Where are you wasting your time? Look at the tasks you are doing the most frequently, and try to optimize them. Look at the chores that feel the most daunting to you, and automate them away.
 
-## Optimizations
+- Do you find yourself doing a lot of typos? Go to [keybr.com](https://www.keybr.com/) and learn to touch type.
+- Do you waste a lot of time switching back and forth between your editor and your terminal to restart your project? Use an autoreloader like [watchexec](https://github.com/watchexec/watchexec)
+- Do you find your shell slow? Start from an empty configuration file and take the time to only add the bits you need. My [`.zshrc`](https://github.com/aymericbeaumet/dotfiles/blob/0d8dc7488ceae7262934ba17a5bf31b77a7264ff/.zshrc) is only 200 lines of code (+ 3 plugins).
+- Do you waste a lot of time adding debug logs to your code? Learn how to use a debugger
+- You waste a lot of time or struggle understanding how your code behaves in production? Learn how to instrument your code.
 
-- Use your keyboard more, use your mouse less.
-- Gradually learn the shortcuts for the apps you use often
-- Learn to touch type, it's not about speed but accuracy
-  (https://www.keybr.com/).
-- Consider an alternative layout like Colemak https://colemak.com/
+Some of these might sound silly, but I've seen people painfully repeating the same behaviors over and over. If that's your case: you can fix it. Identify the problems, find solutions, apply those solutions.
 
-### Operating system
+Find the smallest set of tools required to do the job. Get to know these tools really well, and find ways to integrate them together.
 
-- It doesn't matter which one you use
-- Learn how to get the most out of your OS
-- Learn how to customize your OS
+## Practical advices
 
-https://github.com/aymericbeaumet/dotfiles/blob/master/.hammerspoon/init.lua
+- Don't make your stack complicated. When you can, [choose simplicity over complexity](https://www.youtube.com/watch?v=SxdOUGdseq4). Remove the tools you don't need.
 
-- Learn how to use the terminal
+- Challenge your existing stack on a regular basis. Keep digging for ways to improve it.
 
-### Terminal / Shell
+- Know when to stop, but understand the limitations of your workflow.
 
-- It doesn't matter which one you use
-- Must be fast
-- Stay away from distributions
-- Synchronize your dotfiles in a git repository
-  https://github.com/aymericbeaumet/dotfiles
-- Public is great so you can easily share with other people
+## Final words
 
-https://github.com/aymericbeaumet/dotfiles/blob/master/.config/alacritty/alacritty.yml
-https://github.com/aymericbeaumet/dotfiles/blob/master/.zshrc
-
-### Code editor
-
-- It doesn't matter which one you use
-- Stay with something classic unless you are willing to spend a lot of time
-- Make sure you get completion and debugging working
-
-https://github.com/aymericbeaumet/dotfiles/blob/master/.config/nvim/init.lua
-
-## Conclusion
-
-- Create your own niche where you feel comfortable.
-- Practice and get used to your stack We've seen 3 main axis to improve your
-  workflow.
-- It's a never ending journey.
-
-Follow up article: how we improve the work environment at REKKI.
+This is _your_ journey. Give it time and you will be rewarded.

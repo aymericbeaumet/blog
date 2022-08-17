@@ -1,4 +1,4 @@
-import { faGithub, faFirefoxBrowser } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faFirefoxBrowser, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faSave } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { graphql, Link } from 'gatsby';
@@ -13,6 +13,7 @@ import ExternalLink from '../components/external-link';
 import Layout from '../components/layout';
 import LazyDisqus from '../components/lazy-disqus';
 import Tag from '../components/tag';
+import Utterances from '../components/utterances';
 import * as classes from './post.module.scss';
 
 export const query = graphql`
@@ -79,6 +80,8 @@ export const query = graphql`
 				unsplash
 				website
 				until
+				disqus
+				youtube
 			}
 		}
 
@@ -120,7 +123,18 @@ export default function Post({ data }) {
 			timeToRead,
 			wordCount,
 			fields: { slug, isDraft, imageCropped, ogPreview, twitterPreview },
-			frontmatter: { date, title, github, website, timeToWatch, unsplash, tags = [], until },
+			frontmatter: {
+				date,
+				title,
+				github,
+				website,
+				timeToWatch,
+				unsplash,
+				tags = [],
+				until,
+				disqus,
+				youtube,
+			},
 		},
 		attachments,
 		profile,
@@ -136,6 +150,12 @@ export default function Post({ data }) {
 		<figure>
 			<ExternalLink href={`https://github.com/${github}`} title={`https://github.com/${github}`}>
 				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="github preview" />
+			</ExternalLink>
+		</figure>
+	) : youtube ? ( // eslint-disable-line
+		<figure>
+			<ExternalLink href={youtube} title={youtube}>
+				<GatsbyImage image={imageCropped.childImageSharp.gatsbyImageData} alt="youtube preview" />
 			</ExternalLink>
 		</figure>
 	) : unsplash ? (
@@ -182,7 +202,7 @@ export default function Post({ data }) {
 
 					<ul className={classes.info}>
 						<li>
-							<Link href="/" title={`Written by ${author}`}>
+							<Link to="/" title={`Written by ${author}`}>
 								<GatsbyImage
 									image={profile.childImageSharp.gatsbyImageData}
 									alt="author profile picture"
@@ -211,6 +231,16 @@ export default function Post({ data }) {
 								>
 									<FontAwesomeIcon width="16px" height="16px" icon={faGithub} />
 									&nbsp; {github}
+								</ExternalLink>
+							</li>
+						) : null}
+
+						{youtube ? (
+							<li>
+								・&nbsp;
+								<ExternalLink href={youtube} title="View on YouTube">
+									<FontAwesomeIcon width="16px" height="16px" icon={faYoutube} />
+									&nbsp; youtube
 								</ExternalLink>
 							</li>
 						) : null}
@@ -279,13 +309,17 @@ export default function Post({ data }) {
 					</section>
 
 					<section className={classes.comments}>
-						<LazyDisqus
-							config={{
-								url: `${siteUrl}/${slug}`,
-								identifier: slug,
-								title,
-							}}
-						/>
+						<Utterances />
+
+						{disqus ? (
+							<LazyDisqus
+								config={{
+									url: `${siteUrl}/${slug}`,
+									identifier: slug,
+									title,
+								}}
+							/>
+						) : null}
 					</section>
 				</aside>
 			</section>

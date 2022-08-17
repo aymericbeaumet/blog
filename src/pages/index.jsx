@@ -92,14 +92,14 @@ export default function AboutAymericBeaumet({ data }) {
 					</header>
 
 					<p>
-						My name is <strong>{author}</strong>. I&apos;m a 29 years old Software Engineer living
-						in Paris, France.
+						My name is <strong>{author}</strong>. I&apos;m a French Software Engineer living in{' '}
+						Paris, France.
 					</p>
 
 					<p>
-						I am <strong>passionate about computer science</strong>, which have been so since I was
-						13. I often <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about it,
-						and I am also lucky enough to live from that passion.
+						I am <strong>passionate</strong> about computer science, which have been so since I was
+						13. I often <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about it. I
+						am also lucky enough to now live from my passion.
 					</p>
 
 					<p>
@@ -113,7 +113,7 @@ export default function AboutAymericBeaumet({ data }) {
 					<p>
 						I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
 						best way to progress, and I always look for new challenges. This is one of the main
-						reasons why I work on <Link to="/projects">side projects</Link>.
+						reasons why I experiment with many side <Link to="/projects">projects</Link>.
 					</p>
 
 					<p>
