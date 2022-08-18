@@ -238,7 +238,7 @@ export default function Post({ data }) {
 						{youtube ? (
 							<li>
 								・&nbsp;
-								<ExternalLink href={youtube} title="View on YouTube">
+								<ExternalLink href={youtube} title="Watch on YouTube">
 									<FontAwesomeIcon width="16px" height="16px" icon={faYoutube} />
 									&nbsp; youtube
 								</ExternalLink>
