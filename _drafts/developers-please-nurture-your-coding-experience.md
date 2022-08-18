@@ -17,7 +17,7 @@ We should all get to know our environments. Caring about your work environment w
 
 That being said, where can you start? There is so much to do. Well, the bad news is it's a never ending journey. The great news is that it's a never ending journey. Every second of it will make you better at your job. It is not about coding as fast as possible, it's about getting comfortable and maximizing the environment you are using every day.
 
-## Your journey
+## Begin your journey
 
 This is a personal journey. You might (and should) take inspiration from others, but in the end you are designing the workstation that works the best for you. And you will carry it around across all your jobs and personal projects.
 
@@ -29,17 +29,14 @@ The best way to start is by identifying pain points. Where are you wasting your 
 - Do you waste a lot of time adding debug logs to your code? Learn how to use a debugger
 - You waste a lot of time or struggle understanding how your code behaves in production? Learn how to instrument your code.
 
-Some of these might sound silly, but I've seen people painfully repeating the same behaviors over and over. If that's your case: you can fix it. Identify the problems, find solutions, apply those solutions.
-
-Find the smallest set of tools required to do the job. Get to know these tools really well, and find ways to integrate them together.
+These are only examples, and some of these might sound silly. But I've seen people painfully repeating the same behaviors over and over. If that's your case: you can fix it. Identify the problems, find solutions, apply those solutions.
 
 ## Practical advices
 
 - Don't make your stack complicated. When you can, [choose simplicity over complexity](https://www.youtube.com/watch?v=SxdOUGdseq4). Remove the tools you don't need.
-
 - Challenge your existing stack on a regular basis. Keep digging for ways to improve it.
-
 - Know when to stop, but understand the limitations of your workflow.
+- Find the smallest set of tools required to do the job. Get to know these tools really well, and find ways to integrate them together.
 
 ## Final words
 

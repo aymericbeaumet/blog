@@ -54,6 +54,16 @@ const plugins = [
 		options: { name: 'posts', path: `${__dirname}/_posts/` },
 	},
 
+	{
+		resolve: 'gatsby-source-filesystem',
+		options: { name: 'posts', path: `${__dirname}/_projects/` },
+	},
+
+	{
+		resolve: 'gatsby-source-filesystem',
+		options: { name: 'posts', path: `${__dirname}/_talks/` },
+	},
+
 	...(process.env.NODE_ENV === 'development'
 		? [
 				{
