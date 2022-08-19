@@ -223,4 +223,4 @@ knowledge is always (and will always be) shallow, which makes me strive to take
 the time to dig deeper whenever I have the opportunity.
 
 It is enjoyable how sometimes a simple problem will challenge you on something
-you thought was well inside your comfort zone.
+you thought was well outside your comfort zone.

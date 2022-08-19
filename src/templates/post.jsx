@@ -230,7 +230,7 @@ export default function Post({ data }) {
 									title="Browse source code on GitHub"
 								>
 									<FontAwesomeIcon width="16px" height="16px" icon={faGithub} />
-									&nbsp; {github}
+									&nbsp; github
 								</ExternalLink>
 							</li>
 						) : null}

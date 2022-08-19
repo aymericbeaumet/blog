@@ -93,7 +93,6 @@ const plugins = [
 				},
 				'gatsby-remark-external-links',
 				'gatsby-remark-smartypants',
-				'gatsby-remark-responsive-iframe',
 				'gatsby-remark-autolink-headers', // before gastby-remark-prismjs
 				{
 					resolve: 'gatsby-remark-prismjs',

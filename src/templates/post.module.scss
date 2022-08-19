@@ -4,7 +4,7 @@
 	// when adjusting the post width, the `maxWidth` option for
 	// 'gatsby-remark-images' in `./gatsby-config.js` must also
 	// be changed
-	max-width: 720px;
+	max-width: 600px;
 
 	h1,
 	h2,
@@ -140,15 +140,6 @@
 		}
 
 		div[data-language],
-		:global(div.gatsby-resp-iframe-wrapper) {
-			& + p > em:only-child {
-				display: inline-block;
-				text-align: center;
-				width: 100%;
-			}
-		}
-
-		div[data-language],
 		p,
 		blockquote,
 		ul,
@@ -164,15 +155,6 @@
 
 		ul {
 			list-style-type: circle;
-		}
-
-		// gatsby-remark-responsive-iframe
-
-		:global(.gatsby-resp-iframe-wrapper) {
-			margin: 0 auto;
-			width: 80%;
-			margin-top: 25px;
-			border: 1px solid #eaeaea;
 		}
 
 		// gatsby-remark-prismjs
