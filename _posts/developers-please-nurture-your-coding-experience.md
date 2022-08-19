@@ -1,7 +1,7 @@
 ---
 title: Developers, please nurture your coding experience
 tags: [productivity, workstation, mindset]
-date: 2022-08-17
+date: 2022-08-19
 unsplash: https://unsplash.com/photos/Nw1Y7EAsrQk
 ---
 
@@ -98,8 +98,9 @@ of typos when typing, so I looked it up and tried to find solutions. The first
 thing that comes up on the topic is to learn how to touch type (I couldn't
 recommend [keybr.com](https://www.keybr.com/) enough). But then my brain was
 tickled: if I'm ready to spend time to improve my typing skills, is there more I
-could do? It turns out I could, and long story short, I ultimately settled on learning to touch type [Colemak](https://colemak.com/). It's been so since
-2015, and I couldn't be happier.
+could do? It turns out I could, and long story short, I ultimately settled on
+learning to touch type [Colemak](https://colemak.com/). It's been so since 2015,
+and I couldn't be happier.
 
 The second one is about the feedback loop when working on Go and Rust projects.
 I was used to working with the Node.js ecosystem ([jest](https://jestjs.io/),
@@ -107,8 +108,7 @@ I was used to working with the Node.js ecosystem ([jest](https://jestjs.io/),
 etc) that natively integrates many ways to optimize the feedback loop (watching,
 reloading, hot-reloading, etc). I was missing this when I moved on working with
 different stacks, so I tried to find a way to replicate this. I have currently
-settled on using [watchexec](https://github.com/watchexec/watchexec).
-And I've
+settled on using [watchexec](https://github.com/watchexec/watchexec). And I've
 [aliased it to `w`](https://github.com/aymericbeaumet/dotfiles/blob/0d8dc7488ceae7262934ba17a5bf31b77a7264ff/.zshrc#L81)
 to make it convenient to use.
 
@@ -124,14 +124,14 @@ configuration file and only added the bits I needed. My
 [powerlevel10k](https://github.com/romkatv/powerlevel10k). And I'm now satisfied
 with my shell user experience.
 
-The last one is about my current position. I'm working for [REKKI](https://rekki.com)
-as a Lead Platform Engineer, and part of my job is to design and improve the
-Developer Experience. In doing so, I'm letting the vision shared in this blog
-post infuse in my every day tasks. We've for example recently released an
-[internal CLI](https://cli.rekki.team/), installed by default on all the
-engineers machines. It aims at solving several problems: including setting up
-the stack across all the machines (Linux, macOS), making it easier to access and
-manipulate the clusters, along with many other things.
+The last one is about my current position. I'm working for
+[REKKI](https://rekki.com) as a Lead Platform Engineer, and part of my job is to
+design and improve the Developer Experience. In doing so, I'm letting the vision
+shared in this blog post infuse in my every day tasks. We've for example
+recently released an [internal CLI](https://cli.rekki.team/), installed by
+default on all the engineers machines. It aims at solving several problems:
+including setting up the stack across all the machines (Linux, macOS), making it
+easier to access and manipulate the clusters, along with many other things.
 
 Each of those examples could be a blog post in itself. And I could continue over
 and over on other topics: learning how to debug and instrument my code, learning
@@ -153,6 +153,7 @@ workflow over the past few years.
 This is in the end a very personal experience, and is all about getting to know
 yourself. Introspection is key here: what works for you might not work for
 someone else, and vice versa. This is _your_ journey, and I hope this post
-inspired you to revisit your work environment. I'd love to hear how you improved your workflow.
+inspired you to revisit your work environment. I'd love to hear how you improved
+your workflow.
 
 Give it time, and you will be rewarded.
