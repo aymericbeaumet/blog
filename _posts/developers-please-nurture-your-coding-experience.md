@@ -5,11 +5,10 @@ date: 2022-08-19
 unsplash: https://unsplash.com/photos/Nw1Y7EAsrQk
 ---
 
-I see writing code as an art. An art where we would each approach from a
-different perspective, playing with the tools we are being offered. We all
-evolve at a different level of the stack. And yet, we all conceptually work very
-similarly: editing some code in a form or another to make the machines behave as
-we expect.
+I see writing code as an art. An art we would each approach from a different
+perspective, playing with the tools we are being offered. We all evolve at a
+different level of the stack. And yet, we all conceptually work very similarly:
+editing some code in a form or another to make the machines behave as we expect.
 
 What is the only interface between you and the code you write? Your machine.
 Your workstation. Your work environment. Your workflow. There are different ways
