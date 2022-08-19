@@ -8,4 +8,5 @@ github: aymericbeaumet/pimp
 website: https://aymericbeaumet.gitbook.io/pimp
 ---
 
-pimp is a shell-agnostic command expander and task runner with pattern matching, templating, and scripting capabilities that increases your productivity.
+pimp is a shell-agnostic command expander and task runner with pattern matching,
+templating, and scripting capabilities that increases your productivity.
