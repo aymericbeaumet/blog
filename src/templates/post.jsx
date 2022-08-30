@@ -47,9 +47,20 @@ export const query = graphql`
 						gatsbyImageData(
 							layout: CONSTRAINED
 							placeholder: BLURRED
-							width: 720
+							width: 600
 							height: 300
 							formats: [PNG, WEBP, AVIF]
+						)
+					}
+				}
+				instagramPreview: image {
+					childImageSharp {
+						gatsbyImageData(
+							layout: CONSTRAINED
+							placeholder: NONE
+							width: 1080
+							height: 1080
+							formats: [JPG]
 						)
 					}
 				}
@@ -122,7 +133,7 @@ export default function Post({ data }) {
 			html,
 			timeToRead,
 			wordCount,
-			fields: { slug, isDraft, imageCropped, ogPreview, twitterPreview },
+			fields: { slug, isDraft, imageCropped, ogPreview, twitterPreview, instagramPreview },
 			frontmatter: {
 				date,
 				title,
@@ -194,6 +205,8 @@ export default function Post({ data }) {
 				<meta name="twitter:image" content={`${siteUrl}${getSrc(twitterPreview)}`} />
 				<meta name="twitter:label1" content="Tags" />
 				<meta name="twitter:data1" content={tags.map((tag) => `#${tag}`).join(' ')} />
+
+				<meta name="instagram:image" content={`${siteUrl}${getSrc(instagramPreview)}`} />
 			</Helmet>
 
 			<section className={classes.Post}>
