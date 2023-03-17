@@ -98,22 +98,14 @@ export default function AboutAymericBeaumet({ data }) {
 
 					<p>
 						I am <strong>passionate</strong> about computer science, which have been so since I was
-						13. I often <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about it. I
-						am also lucky enough to now live from my passion.
-					</p>
-
-					<p>
-						I work for <ExternalLink href="https://rekki.com">REKKI</ExternalLink> as a{' '}
-						<strong>Lead Platform Engineer</strong>. The Platform team focuses on building a robust
-						foundation that can be leveraged by the Tech and Product teams to sustain the
-						company&apos;s growth. We deal with many topics, including infrastructure, performance,
-						observability, and developer experience.
+						13. I sometimes <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about
+						it. And I am now lucky enough to live from my passion.
 					</p>
 
 					<p>
 						I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
 						best way to progress, and I always look for new challenges. This is one of the main
-						reasons why I experiment with many side <Link to="/projects">projects</Link>.
+						reasons why I experiment with <Link to="/projects">side projects</Link>.
 					</p>
 
 					<p>
