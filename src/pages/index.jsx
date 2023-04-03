@@ -14,7 +14,6 @@ export const query = graphql`
 			siteMetadata {
 				author
 				email
-				twitter
 			}
 		}
 
@@ -57,7 +56,7 @@ export const query = graphql`
 export default function AboutAymericBeaumet({ data }) {
 	const {
 		site: {
-			siteMetadata: { author, email, twitter },
+			siteMetadata: { author, email },
 		},
 		posts,
 		talks,
@@ -109,8 +108,7 @@ export default function AboutAymericBeaumet({ data }) {
 					</p>
 
 					<p>
-						Feel free to get in touch by <ExternalLink href={`mailto:${email}`}>mail</ExternalLink>{' '}
-						or on <ExternalLink href={twitter}>Twitter</ExternalLink>.
+						Feel free to get in touch by <ExternalLink href={`mailto:${email}`}>mail</ExternalLink>.
 					</p>
 
 					<p>
