@@ -55,92 +55,91 @@ export const query = graphql`
 `;
 
 export default function AboutAymericBeaumet({ data }) {
-	const {
-		site: {
-			siteMetadata: { author, email, twitter },
-		},
-		posts,
-		talks,
-		projects,
-		profile,
-	} = data;
-	const postNode = posts.edges[0].node;
-	const talkNode = talks.edges[0].node;
-	const projectsNodes = projects.edges.map((edge) => edge.node);
+  const {
+    site: {
+      siteMetadata: { author },
+    },
+    posts,
+    talks,
+    projects,
+    profile,
+  } = data;
+  const postNode = posts.edges[0].node;
+  const talkNode = talks.edges[0].node;
+  const projectsNodes = projects.edges.map((edge) => edge.node);
 
-	return (
-		<Layout>
-			<Helmet>
-				<title>{author} Blog</title>
-			</Helmet>
+  return (
+    <Layout>
+      <Helmet>
+        <title>{author} Blog</title>
+      </Helmet>
 
-			<div className={classes.wrapper}>
-				<section className={classes.About}>
-					<header>
-						<div className={classes.profile}>
-							<GatsbyImage
-								image={profile.childImageSharp.gatsbyImageData}
-								alt="Aymeric Beaumet"
-								title="Aymeric Beaumet"
-							/>
-						</div>
+      <div className={classes.wrapper}>
+        <section className={classes.About}>
+          <header>
+            <div className={classes.profile}>
+              <GatsbyImage
+                image={profile.childImageSharp.gatsbyImageData}
+                alt="Aymeric Beaumet"
+                title="Aymeric Beaumet"
+              />
+            </div>
 
-						<div>
-							<h1>Hey traveler,</h1>
-							<h2>Welcome to my part of the internet</h2>
-						</div>
-					</header>
+            <div>
+              <h1>Hey traveler,</h1>
+              <h2>Welcome to my part of the internet</h2>
+            </div>
+          </header>
 
-					<p>
-						My name is <strong>{author}</strong>. I&apos;m a French Software Engineer living in{' '}
-						Paris, France.
-					</p>
+          <p>
+            My name is <strong>{author}</strong>. I&apos;m a French Software Engineer living in{' '}
+            Paris, France.
+          </p>
 
-					<p>
-						I am <strong>passionate</strong> about computer science, which have been so since I was
-						13. I sometimes <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about
-						it. And I am now lucky enough to live from my passion.
-					</p>
+          <p>
+            I am <strong>passionate</strong> about computer science, which have been so since I was
+            13. I sometimes <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about
+            it. And I am now lucky enough to live from my passion.
+          </p>
 
-					<p>
-						I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
-						best way to progress, and I always look for new challenges. This is one of the main
-						reasons why I experiment with <Link to="/projects">side projects</Link>.
-					</p>
+          <p>
+            I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
+            best way to progress, and I always look for new challenges. This is one of the main
+            reasons why I experiment with <Link to="/projects">side projects</Link>.
+          </p>
 
-					<p>
-						Feel free to get in touch by <ExternalLink href={`mailto:${email}`}>mail</ExternalLink>{' '}
-						or on <ExternalLink href={twitter}>Twitter</ExternalLink>.
-					</p>
+          <p>
+            I am currently CTO at <ExternalLink href="https://hearthands.tech">Heart Hands</ExternalLink>, where we leverage the latest AI breakthroughs to build the future of communications.
+          </p>
 
-					<p>
-						Best,
-						<br />
-						Aymeric
-					</p>
-				</section>
+          <p>
+            Best,
+            <br />
+            Aymeric
+          </p>
+        </section>
 
-				<aside className={classes.Aside}>
-					<div>
-						<h2>Latest Post</h2>
-						<Post post={postNode} />
-					</div>
+        <aside className={classes.Aside}>
+          <div>
+            <h2>Latest Post</h2>
+            <Post post={postNode} />
+          </div>
 
-					<div>
-						<h2>Latest Talk</h2>
-						<Post post={talkNode} />
-					</div>
+          <div>
+            <h2>Latest Talk</h2>
+            <Post post={talkNode} />
+          </div>
 
-					<div>
-						<h2>Featured Projects</h2>
-						<div className={classes.projects}>
-							{projectsNodes.map((project) => (
-								<Post post={project} key={project.fields.slug} />
-							))}
-						</div>
-					</div>
-				</aside>
-			</div>
-		</Layout>
-	);
+          <div>
+            <h2>Featured Projects</h2>
+            <div className={classes.projects}>
+              {projectsNodes.map((project) => (
+                <Post post={project} key={project.fields.slug} />
+              ))}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </Layout>
+  );
 }

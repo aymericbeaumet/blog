@@ -19,9 +19,8 @@ const siteMetadata = {
 	github: 'https://github.com/aymericbeaumet',
 	linkedin: 'https://www.linkedin.com/in/aymericbeaumet',
 	stackoverflow: 'https://stackoverflow.com/users/1071486/aymericbeaumet',
-	twitter: `https://twitter.com/${twitterHandle}`,
+	twitter: `https://x.com/${twitterHandle}`,
 	twitterHandle,
-	newsletter: 'https://newsletter.aymericbeaumet.com/subscribe',
 	// website
 	siteUrl: 'https://aymericbeaumet.com',
 	menu: [

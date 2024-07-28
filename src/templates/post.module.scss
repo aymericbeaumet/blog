@@ -213,24 +213,6 @@
 		}
 	}
 
-	.newsletter {
-		margin: 55px auto 0;
-		border-radius: 8px;
-		text-align: center;
-		background-color: #eaedff;
-		padding: 13px;
-
-		& p {
-			padding: 7px;
-			line-height: 22px;
-		}
-
-		& a {
-			color: $main;
-			font-weight: bold;
-		}
-	}
-
 	.comments {
 		margin-top: 40px;
 	}
