@@ -87,33 +87,32 @@ export default function AboutAymericBeaumet({ data }) {
 
             <div>
               <h1>Hey traveler,</h1>
-              <h2>Welcome to my part of the internet</h2>
+              <h2>Welcome to my corner of the internet</h2>
             </div>
           </header>
 
           <p>
-            My name is <strong>{author}</strong>. I&apos;m a French Software Engineer living in{' '}
-            Paris, France.
+            I&apos;m <strong>{author}</strong>, a French Software Engineer based in Paris, France.
           </p>
 
           <p>
-            I am <strong>passionate</strong> about computer science, which have been so since I was
-            13. I sometimes <Link to="/posts">write</Link> and <Link to="/talks">talk</Link> about
-            it. And I am now lucky enough to live from my passion.
+            My <strong>fascination</strong> for computer science has been a lifelong journey, and I feel fortunate to earn a living doing what I love.
           </p>
 
           <p>
-            I am an <strong>enthusiastic learner</strong>. I firmly believe that struggling is the
-            best way to progress, and I always look for new challenges. This is one of the main
-            reasons why I experiment with <Link to="/projects">side projects</Link>.
+            I <Link to="/posts">write</Link>, <Link to="/talks">speak</Link>, and <Link to="/projects">build projects</Link> that feed my curiosity and drive me to learn more every day.
           </p>
 
           <p>
-            I am currently CTO at <ExternalLink href="https://hearthands.tech">Heart Hands</ExternalLink>, where we leverage the latest AI breakthroughs to build the future of communications.
+            I believe real growth comes from embracing new challenges, leading me to always push myself out of my comfort zone.
           </p>
 
           <p>
-            Best,
+            Right now, I’m channeling that passion into <ExternalLink href="https://interfaceai.com">Interface, Inc</ExternalLink>  where we leverage cutting-edge AI to shape the future of communication.
+          </p>
+
+          <p>
+            Thanks for visiting,
             <br />
             Aymeric
           </p>
@@ -139,7 +138,7 @@ export default function AboutAymericBeaumet({ data }) {
             </div>
           </div>
         </aside>
-      </div>
-    </Layout>
+      </div >
+    </Layout >
   );
 }

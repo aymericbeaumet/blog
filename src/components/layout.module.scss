@@ -38,6 +38,7 @@ a:visited {
 	& > main {
 		flex-grow: 1;
 		padding: 60px 120px;
+    padding-right: 30px;
 
 		@media screen and (max-width: $breakpoint1) {
 			padding: max(env(safe-area-inset-top), 30px) max(env(safe-area-inset-right), 30px)
