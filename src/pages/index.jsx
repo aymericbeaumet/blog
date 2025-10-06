@@ -41,7 +41,7 @@ export const query = graphql`
 			...PostsFragment
 		}
 
-		profile: file(relativePath: { eq: "images/aymeric-beaumet-profile.jpg" }) {
+		profile: file(relativePath: { eq: "images/aymeric-beaumet-profile.png" }) {
 			childImageSharp {
 				gatsbyImageData(
 					layout: CONSTRAINED

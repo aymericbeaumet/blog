@@ -108,7 +108,7 @@ export const query = graphql`
 			}
 		}
 
-		profile: file(relativePath: { eq: "images/aymeric-beaumet-profile.jpg" }) {
+		profile: file(relativePath: { eq: "images/aymeric-beaumet-profile.png" }) {
 			childImageSharp {
 				gatsbyImageData(
 					layout: CONSTRAINED
