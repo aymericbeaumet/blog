@@ -9,7 +9,7 @@ npm run build
 npm run serve
 ```
 
-_The `master` branch is automatically built and deployed by Vercel._
+_The `master` branch is automatically built and deployed by GitHub Actions._
 
 ## Manual Tests
 
@@ -29,6 +29,4 @@ _The `master` branch is automatically built and deployed by Vercel._
 | Domain             | GSuite Toolbox Check MX                                                                             |
 | ------------------ | --------------------------------------------------------------------------------------------------- |
 | aymericbeaumet.com | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.com&dkim_selector=) |
-| aymericbeaumet.fr  | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=aymericbeaumet.fr&dkim_selector=)  |
-| beaumet.fr         | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.fr&dkim_selector=)         |
 | beaumet.me         | [check](https://toolbox.googleapps.com/apps/checkmx/check?domain=beaumet.me&dkim_selector=)         |

@@ -108,7 +108,7 @@ export default function AboutAymericBeaumet({ data }) {
           </p>
 
           <p>
-            Right now, I’m channeling that passion into <ExternalLink href="https://interfaceai.com">Interface, Inc</ExternalLink>  where we leverage cutting-edge AI to shape the future of communication.
+            Right now, I’m channeling that passion into <ExternalLink href="https://beside.com">Beside</ExternalLink> where we leverage cutting-edge AI to shape the future of communication.
           </p>
 
           <p>
