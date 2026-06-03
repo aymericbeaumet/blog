@@ -4,8 +4,6 @@ category: project
 tags: [javascript, svelte, sveltekit, vscode]
 date: 2022-01-01
 website: https://learn.aymericbeaumet.com
-slug: learn
-url: /learn/
 ---
 
 I was wondering how hard it would be to setup a basic teaching environment so I

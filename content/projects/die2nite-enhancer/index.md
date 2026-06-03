@@ -5,8 +5,6 @@ tags: [javascript, browser]
 date: 2013-01-01
 until: 2014-01-01
 github: aymericbeaumet/die2nite-enhancer
-slug: die2nite-enhancer
-url: /die2nite-enhancer/
 ---
 
 This is a browser extension for the game

@@ -4,8 +4,6 @@ tags: [macos, shell, zsh]
 date: 2018-02-14
 unsplash: https://unsplash.com/photos/gThfDnqgfMw
 disqus: true
-slug: behold-z-the-unsung-jewel-that-rethinks-shell-navigation
-url: /behold-z-the-unsung-jewel-that-rethinks-shell-navigation/
 ---
 
 I spend a fair amount of time wandering around in the terminal. The chances are

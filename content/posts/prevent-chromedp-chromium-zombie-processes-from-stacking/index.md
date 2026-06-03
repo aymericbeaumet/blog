@@ -3,8 +3,6 @@ title: Prevent chromedp Chromium zombie processes from stacking
 tags: [go, chromedp, chromium, macos]
 date: 2021-02-13
 unsplash: https://unsplash.com/photos/NMk1Vggt2hg
-slug: prevent-chromedp-chromium-zombie-processes-from-stacking
-url: /prevent-chromedp-chromium-zombie-processes-from-stacking/
 ---
 
 I have recently been playing with

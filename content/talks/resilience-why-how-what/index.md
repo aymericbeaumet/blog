@@ -5,8 +5,6 @@ tags: [resilience, nodejs, 🇫🇷]
 date: 2018-09-27
 timeToWatch: 27
 youtube: https://www.youtube.com/watch?v=szkeEneWsGM&t=3272s
-slug: resilience-why-how-what
-url: /resilience-why-how-what/
 ---
 
 We live in a world critically relying on a growing mass of information systems:

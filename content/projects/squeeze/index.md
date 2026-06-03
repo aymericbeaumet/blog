@@ -4,8 +4,6 @@ category: project
 tags: [rust, data, parser, cli]
 date: 2020-01-01
 github: aymericbeaumet/squeeze
-slug: squeeze
-url: /squeeze/
 ---
 
 I've always been frustrated at my ability to extract data when I was working

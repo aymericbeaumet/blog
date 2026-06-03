@@ -6,8 +6,6 @@ date: 2021-01-01
 until: 2022-01-01
 github: aymericbeaumet/pimp
 website: https://aymericbeaumet.gitbook.io/pimp
-slug: pimp
-url: /pimp/
 ---
 
 pimp is a shell-agnostic command expander and task runner with pattern matching,

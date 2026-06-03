@@ -7,9 +7,9 @@ taxonomies:
 
 permalinks:
   page:
-    posts: /:slug/
-    talks: /:slug/
-    projects: /:slug/
+    posts: /:contentbasename/
+    talks: /:contentbasename/
+    projects: /:contentbasename/
 
 outputs:
   home:

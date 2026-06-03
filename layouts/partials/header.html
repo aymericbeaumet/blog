@@ -3,7 +3,7 @@
 {{ if eq .Kind "term" }}
 	{{ $term := .Data.Term }}
 	{{ range .Site.RegularPages }}
-		{{ if and (eq .Section "projects") (eq .Params.slug $term) }}
+		{{ if and (eq .Section "projects") (eq .File.ContentBaseName $term) }}
 			{{ $activeSection = "projects" }}
 		{{ end }}
 	{{ end }}

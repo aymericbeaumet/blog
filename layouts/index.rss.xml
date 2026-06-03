@@ -6,14 +6,10 @@
 		<description>{{ .Site.Params.description }}</description>
 		{{ $pages := sort (where .Site.RegularPages "Section" "in" (slice "posts" "talks")) "Date" "desc" }}
 		{{ range $pages }}
-			{{ $url := .Permalink }}
-			{{ with .Params.slug }}
-				{{ $url = printf "%s%s" $.Site.BaseURL . }}
-			{{ end }}
 			<item>
 				<title>{{ .Title }}</title>
-				<link>{{ $url }}</link>
-				<guid>{{ $url }}</guid>
+				<link>{{ .Permalink }}</link>
+				<guid>{{ .Permalink }}</guid>
 				<pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
 				<description>{{ .Summary | plainify }}</description>
 				<content:encoded>{{ printf "<![CDATA[%s]]>" .Content | safeHTML }}</content:encoded>

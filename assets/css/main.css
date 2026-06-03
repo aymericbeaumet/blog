@@ -605,7 +605,9 @@ a:visited {
 	background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
 	background-attachment: local;
 	background-size: 3em 3em;
-	box-shadow: -1px 0 0 0 #358ccb, 0 0 0 1px #dfdfdf;
+	box-shadow:
+		-1px 0 0 0 #358ccb,
+		0 0 0 1px #dfdfdf;
 	color: #000000;
 	font-size: 14px;
 	line-height: 1.5;
@@ -707,21 +709,24 @@ a:visited {
 	display: inline-block;
 }
 
-.attachments a {
-	display: block;
-	padding: 20px;
+.attachments li a {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 18px;
 	border: 1px solid #ddd;
-	text-align: center;
+	line-height: 1;
 	color: #4d4d4d;
 }
 
-.attachments a:hover {
+.attachments li a:hover {
 	color: var(--main);
 	border-color: #3e53cda1;
 }
 
-.attachments a svg {
-	margin-right: 5px;
+.attachments li a svg {
+	width: 20px;
+	height: 20px;
 }
 
 .comments {

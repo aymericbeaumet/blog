@@ -4,8 +4,6 @@ category: project
 tags: [javascript, geojson, openlayers]
 date: 2022-01-01
 website: https://maps.aymericbeaumet.com
-slug: maps
-url: /maps/
 ---
 
 I wanted to create a Tolkien-like map with real-world data. The data comes from

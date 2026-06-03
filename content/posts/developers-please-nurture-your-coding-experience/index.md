@@ -3,8 +3,6 @@ title: Developers, please nurture your coding experience
 tags: [productivity, workstation, mindset]
 date: 2022-08-19
 unsplash: https://unsplash.com/photos/Nw1Y7EAsrQk
-slug: developers-please-nurture-your-coding-experience
-url: /developers-please-nurture-your-coding-experience/
 ---
 
 I see writing code as an art. An art we would each approach from a different

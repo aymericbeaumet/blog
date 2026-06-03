@@ -4,8 +4,6 @@ category: project
 tags: [dotfiles, nvim, tmux, zsh]
 date: 2011-01-01
 github: aymericbeaumet/dotfiles
-slug: dotfiles
-url: /dotfiles/
 ---
 
 These are my dotfiles I have accumulated over the years. I try to keep them neat

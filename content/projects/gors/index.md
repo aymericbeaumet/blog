@@ -5,8 +5,6 @@ tags: [rust, go, compiler, cli]
 date: 2021-01-01
 github: aymericbeaumet/gors
 website: https://aymericbeaumet.github.io/gors
-slug: gors
-url: /gors/
 ---
 
 I'm a big fan of Go. I find that its pragmatism makes it extremely pleasant to

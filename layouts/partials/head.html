@@ -6,6 +6,7 @@
 	{{ $description = .Summary | plainify | truncate 300 }}
 {{ end }}
 {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+{{ $instantpage := resources.Get "js/instantpage.js" | minify | fingerprint }}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -28,16 +29,13 @@
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 <link rel="alternate" type="application/rss+xml" href="{{ "feed.xml" | absURL }}" title="{{ .Site.Title }}">
 <link rel="manifest" href="{{ "manifest.webmanifest" | relURL }}">
+<script src="{{ $instantpage.RelPermalink }}" integrity="{{ $instantpage.Data.Integrity }}" defer></script>
 
 {{ if .IsPage }}
 	{{ $image := partial "hero-image.html" . }}
-	{{ $pageURL := .Permalink }}
-	{{ with .Params.slug }}
-		{{ $pageURL = printf "%s%s" $.Site.BaseURL . }}
-	{{ end }}
 	<meta property="og:title" content="{{ .Title }}">
 	<meta property="og:description" content="{{ .Summary | plainify | truncate 200 }}">
-	<meta property="og:url" content="{{ $pageURL }}">
+	<meta property="og:url" content="{{ .Permalink }}">
 	<meta property="og:type" content="article">
 	{{ with $image }}
 		{{ $og := .Fill "1200x630 Center jpg" }}

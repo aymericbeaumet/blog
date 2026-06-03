@@ -3,8 +3,6 @@ title: "Automatic Persisted Queries: why does it matter?"
 category: talk
 tags: [graphql, performance, caching]
 date: 2018-11-20
-slug: automatic-persisted-queries-why-does-it-matter
-url: /automatic-persisted-queries-why-does-it-matter/
 ---
 
 [GraphQL](https://graphql.org/) is not to be presented anymore. One main
