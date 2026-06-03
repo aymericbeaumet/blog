@@ -35,7 +35,7 @@ markup:
     renderer:
       unsafe: true
   highlight:
-    codeFences: false
+    codeFences: true
     guessSyntax: false
     lineNos: false
     noClasses: false
@@ -52,8 +52,8 @@ params:
   github: https://github.com/aymericbeaumet
   linkedin: https://www.linkedin.com/in/aymericbeaumet
   stackoverflow: https://stackoverflow.com/users/1071486/aymeric-beaumet
-  twitter: https://x.com/aymericbeaumet
-  twitterHandle: aymericbeaumet
+  x: https://x.com/aymericbeaumet
+  xHandle: aymericbeaumet
   disqusShortname: aymericbeaumet
   utterancesRepo: aymericbeaumet/comments
   menu:

@@ -5,9 +5,9 @@
 	"version": "1.0.0",
 	"author": "Aymeric Beaumet <hi@aymericbeaumet.com>",
 	"scripts": {
-		"dev": "hugo server --bind 0.0.0.0 --port 3000 --buildDrafts",
+		"dev": "hugo server --bind 0.0.0.0 --port 1313 --buildDrafts",
 		"build": "hugo --gc --minify && node scripts/copy-markdown.js",
-		"serve": "hugo server --bind 0.0.0.0 --port 3000 --disableFastRender",
+		"serve": "hugo server --bind 0.0.0.0 --port 1313 --disableFastRender",
 		"lint": "prettier --check '**/*.{css,js,json,md,yml,yaml}'",
 		"format": "prettier --write '**/*.{css,js,json,md,yml,yaml}'"
 	},
@@ -18,7 +18,6 @@
 		"pixelmatch": "^7.1.0",
 		"playwright": "^1.60.0",
 		"pngjs": "^7.0.0",
-		"prettier": "2.7.1",
-		"prismjs": "^1.30.0"
+		"prettier": "2.7.1"
 	}
 }

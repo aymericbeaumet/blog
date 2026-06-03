@@ -35,27 +35,27 @@
 
 		<aside class="home-aside">
 			{{ range $latestPost }}
-				<div>
+				<section>
 					<h2>Latest Post</h2>
 					{{ partial "card.html" . }}
-				</div>
+				</section>
 			{{ end }}
 
 			{{ range $latestTalk }}
-				<div>
+				<section>
 					<h2>Latest Talk</h2>
 					{{ partial "card.html" . }}
-				</div>
+				</section>
 			{{ end }}
 
-			<div>
+			<section>
 				<h2>Featured Projects</h2>
 				<div class="featured-projects">
 					{{ range $featuredProjects }}
 						{{ partial "card.html" . }}
 					{{ end }}
 				</div>
-			</div>
+			</section>
 		</aside>
 	</div>
 {{ end }}

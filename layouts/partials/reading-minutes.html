@@ -1,3 +1,0 @@
-{{ $wordsPerMinute := 265.0 }}
-{{ $minutes := math.Ceil (div (float .WordCount) $wordsPerMinute) }}
-{{ return (int (cond (lt $minutes 1.0) 1.0 $minutes)) }}

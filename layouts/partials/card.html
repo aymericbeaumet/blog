@@ -3,7 +3,7 @@
 {{ with .Params.slug }}
 	{{ $href = printf "/%s" . | relURL }}
 {{ end }}
-<div class="post-card">
+<article class="post-card">
 	<a href="{{ $href }}" title="{{ .Summary | plainify }}">
 		<figure>
 			{{ with $image }}
@@ -24,4 +24,4 @@
 	{{ with .Params.tags }}
 		<ul class="tags-list">{{ range . }}<li>{{ partial "tag-link.html" . }}</li>{{ end }}</ul>
 	{{ end }}
-</div>
+</article>

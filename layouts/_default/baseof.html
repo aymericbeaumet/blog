@@ -14,19 +14,5 @@
 			{{ partial "footer.html" . }}
 			{{ partial "mobile-nav.html" . }}
 		</div>
-		<script src="{{ "js/prism.js" | relURL }}"></script>
-		<script>
-			if (window.Prism) {
-				Prism.hooks.add('complete', (env) => {
-					if (env.language !== 'bash') {
-						return;
-					}
-					env.element.querySelectorAll('.token.parameter').forEach((node) => {
-						node.replaceWith(node.textContent);
-					});
-					env.element.normalize();
-				});
-			}
-		</script>
 	</body>
 </html>

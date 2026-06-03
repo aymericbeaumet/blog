@@ -4,7 +4,6 @@ tags: [macos, shell, zsh]
 date: 2018-02-14
 unsplash: https://unsplash.com/photos/gThfDnqgfMw
 disqus: true
-timeToRead: 4
 slug: behold-z-the-unsung-jewel-that-rethinks-shell-navigation
 url: /behold-z-the-unsung-jewel-that-rethinks-shell-navigation/
 ---

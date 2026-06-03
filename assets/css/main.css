@@ -398,6 +398,16 @@ a:visited {
 	visibility: hidden;
 }
 
+.content-page h1:hover > .anchor svg,
+.content-page h2:hover > .anchor svg,
+.content-page h3:hover > .anchor svg,
+.content-page h4:hover > .anchor svg,
+.content-page h5:hover > .anchor svg,
+.content-page h6:hover > .anchor svg,
+.anchor:focus svg {
+	visibility: visible;
+}
+
 .content-page header {
 	color: #535353;
 }
@@ -552,8 +562,7 @@ a:visited {
 	margin-top: 15px;
 }
 
-.post-content .highlight,
-.post-content div[data-language] {
+.post-content .highlight {
 	margin-top: 15px;
 }
 
@@ -655,87 +664,6 @@ a:visited {
 	color: #c92c2c;
 }
 
-.post-content .token.comment,
-.post-content .token.block-comment,
-.post-content .token.prolog,
-.post-content .token.doctype,
-.post-content .token.cdata {
-	color: #7d8b99;
-}
-
-.post-content .token.punctuation {
-	color: #5f6364;
-}
-
-.post-content .token.property,
-.post-content .token.tag,
-.post-content .token.boolean,
-.post-content .token.number,
-.post-content .token.function-name,
-.post-content .token.constant,
-.post-content .token.symbol,
-.post-content .token.deleted {
-	color: #c92c2c;
-}
-
-.post-content .token.selector,
-.post-content .token.attr-name,
-.post-content .token.string,
-.post-content .token.char,
-.post-content .token.function,
-.post-content .token.builtin,
-.post-content .token.inserted {
-	color: #2f9c0a;
-}
-
-.post-content .token.operator,
-.post-content .token.entity,
-.post-content .token.url,
-.post-content .token.variable {
-	background: #ffffff80;
-	color: #a67f59;
-}
-
-.post-content .language-bash .token.parameter {
-	background: transparent;
-	color: #000000;
-	display: contents;
-}
-
-.post-content .token.atrule,
-.post-content .token.attr-value,
-.post-content .token.keyword,
-.post-content .token.class-name {
-	color: #1990b8;
-}
-
-.post-content .token.regex,
-.post-content .token.important {
-	color: #e90;
-}
-
-.post-content .language-css .token.string,
-.post-content .style .token.string {
-	background: #ffffff80;
-	color: #a67f59;
-}
-
-.post-content .token.important {
-	font-weight: 400;
-}
-
-.post-content .token.bold {
-	font-weight: 700;
-}
-
-.post-content .token.italic {
-	font-style: italic;
-}
-
-.post-content .token.namespace {
-	opacity: 0.7;
-}
-
 .post-content :not(pre) > code {
 	position: relative;
 	box-sizing: border-box;
@@ -777,18 +705,22 @@ a:visited {
 
 .attachments li {
 	display: inline-block;
+}
+
+.attachments a {
+	display: block;
 	padding: 20px;
 	border: 1px solid #ddd;
 	text-align: center;
 	color: #4d4d4d;
 }
 
-.attachments li:hover {
+.attachments a:hover {
 	color: var(--main);
 	border-color: #3e53cda1;
 }
 
-.attachments li svg {
+.attachments a svg {
 	margin-right: 5px;
 }
 

@@ -5,7 +5,6 @@ tags: [rust, go, compiler, cli]
 date: 2021-01-01
 github: aymericbeaumet/gors
 website: https://aymericbeaumet.github.io/gors
-timeToRead: 1
 slug: gors
 url: /gors/
 ---

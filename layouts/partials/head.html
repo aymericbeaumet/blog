@@ -17,8 +17,8 @@
 <meta property="article:author" content="{{ $author }}">
 <meta property="og:site_name" content="{{ $siteTitle }}">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:site" content="@{{ .Site.Params.twitterHandle }}">
-<meta name="twitter:creator" content="@{{ .Site.Params.twitterHandle }}">
+<meta name="twitter:site" content="@{{ .Site.Params.xHandle }}">
+<meta name="twitter:creator" content="@{{ .Site.Params.xHandle }}">
 <meta name="twitter:dnt" content="on">
 
 <title>{{ $title }}</title>
@@ -41,11 +41,11 @@
 	<meta property="og:type" content="article">
 	{{ with $image }}
 		{{ $og := .Fill "1200x630 Center jpg" }}
-		{{ $twitter := .Fill "1200x600 Center webp" }}
+		{{ $xCard := .Fill "1200x600 Center webp" }}
 		{{ $instagram := .Fill "1080x1080 Center jpg" }}
 		<meta property="og:image" content="{{ $og.Permalink }}">
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:image" content="{{ $twitter.Permalink }}">
+		<meta name="twitter:image" content="{{ $xCard.Permalink }}">
 		<meta name="instagram:image" content="{{ $instagram.Permalink }}">
 	{{ end }}
 	{{ with .Params.tags }}

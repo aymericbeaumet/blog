@@ -3,7 +3,6 @@ title: Properly shim AngularJS applications using Browserify
 tags: [angularjs, browserify, javascript]
 date: 2014-10-12
 disqus: true
-timeToRead: 6
 slug: properly-shim-angularjs-applications-using-browserify
 url: /properly-shim-angularjs-applications-using-browserify/
 ---

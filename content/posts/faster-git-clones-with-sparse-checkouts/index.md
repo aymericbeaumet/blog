@@ -3,7 +3,6 @@ title: Faster git clones with sparse checkouts
 tags: [git, performance]
 date: 2022-07-23
 unsplash: https://unsplash.com/photos/zAZYuch7deE
-timeToRead: 4
 slug: faster-git-clones-with-sparse-checkouts
 url: /faster-git-clones-with-sparse-checkouts/
 ---
