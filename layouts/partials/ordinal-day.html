@@ -1,0 +1,14 @@
+{{ $day := int (.Format "2") }}
+{{ $mod100 := mod $day 100 }}
+{{ $mod10 := mod $day 10 }}
+{{ $suffix := "th" }}
+{{ if or (eq $mod100 11) (eq $mod100 12) (eq $mod100 13) }}
+	{{ $suffix = "th" }}
+{{ else if eq $mod10 1 }}
+	{{ $suffix = "st" }}
+{{ else if eq $mod10 2 }}
+	{{ $suffix = "nd" }}
+{{ else if eq $mod10 3 }}
+	{{ $suffix = "rd" }}
+{{ end }}
+{{ return (printf "%d%s" $day $suffix) }}

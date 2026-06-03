@@ -1,0 +1,8 @@
+{{- $ctx := . -}}
+{{- $entry := false -}}
+{{- with index hugo.Data.production_images $ctx.key -}}
+	{{- $entry = index . $ctx.role -}}
+{{- end -}}
+{{- with $entry -}}
+	<picture>{{- range .sources -}}<source type="{{ .type }}" srcset="{{ .srcset }}" sizes="{{ .sizes }}">{{- end -}}<img src="{{ .img.src }}"{{ with .img.srcset }} srcset="{{ . }}"{{ end }}{{ with .img.sizes }} sizes="{{ . }}"{{ end }} width="{{ .width }}" height="{{ .height }}" alt="{{ $ctx.alt }}"{{ with $ctx.title }} title="{{ . }}"{{ end }}></picture>
+{{- end -}}

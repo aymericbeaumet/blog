@@ -1,0 +1,59 @@
+{{ $author := .Site.Params.author }}
+{{ $siteTitle := printf "%s Blog" $author }}
+{{ $title := cond .IsHome $siteTitle (cond (eq .Kind "404") (printf "Page not found | %s" $author) (cond (eq .Kind "section") .Title (printf "%s | %s" .Title $author))) }}
+{{ $description := .Site.Params.description }}
+{{ if .IsPage }}
+	{{ $description = .Summary | plainify | truncate 300 }}
+{{ end }}
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="{{ $description }}">
+<meta name="referrer" content="no-referrer">
+<meta name="rating" content="General">
+<meta name="author" content="{{ $author }}">
+<meta name="publisher" content="{{ $siteTitle }}">
+<meta property="article:author" content="{{ $author }}">
+<meta property="og:site_name" content="{{ $siteTitle }}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:site" content="@{{ .Site.Params.twitterHandle }}">
+<meta name="twitter:creator" content="@{{ .Site.Params.twitterHandle }}">
+<meta name="twitter:dnt" content="on">
+
+<title>{{ $title }}</title>
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
+<link rel="icon" type="image/png" href="{{ "favicon.png" | relURL }}">
+<link rel="apple-touch-icon" href="{{ "images/aymeric-beaumet-profile-rounded.png" | relURL }}">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+<link rel="alternate" type="application/rss+xml" href="{{ "feed.xml" | absURL }}" title="{{ .Site.Title }}">
+<link rel="manifest" href="{{ "manifest.webmanifest" | relURL }}">
+
+{{ if .IsPage }}
+	{{ $image := partial "hero-image.html" . }}
+	{{ $pageURL := .Permalink }}
+	{{ with .Params.slug }}
+		{{ $pageURL = printf "%s%s" $.Site.BaseURL . }}
+	{{ end }}
+	<meta property="og:title" content="{{ .Title }}">
+	<meta property="og:description" content="{{ .Summary | plainify | truncate 200 }}">
+	<meta property="og:url" content="{{ $pageURL }}">
+	<meta property="og:type" content="article">
+	{{ with $image }}
+		{{ $og := .Fill "1200x630 Center jpg" }}
+		{{ $twitter := .Fill "1200x600 Center webp" }}
+		{{ $instagram := .Fill "1080x1080 Center jpg" }}
+		<meta property="og:image" content="{{ $og.Permalink }}">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:image" content="{{ $twitter.Permalink }}">
+		<meta name="instagram:image" content="{{ $instagram.Permalink }}">
+	{{ end }}
+	{{ with .Params.tags }}
+		<meta name="twitter:label1" content="Tags">
+		{{ $tags := slice }}
+		{{ range . }}
+			{{ $tags = $tags | append (printf "#%s" .) }}
+		{{ end }}
+		<meta name="twitter:data1" content="{{ delimit $tags " " }}">
+	{{ end }}
+{{ end }}

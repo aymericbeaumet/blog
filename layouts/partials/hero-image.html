@@ -1,0 +1,7 @@
+{{ $image := false }}
+{{ range .Resources.ByType "image" }}
+	{{ if not (strings.Contains .Name "--") }}
+		{{ $image = . }}
+	{{ end }}
+{{ end }}
+{{ return $image }}

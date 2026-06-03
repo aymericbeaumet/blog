@@ -1,0 +1,19 @@
+<nav class="mobile-nav">
+	<input type="checkbox" id="mobile_menu_toggle">
+	<label for="mobile_menu_toggle" class="mobile-toggle" aria-label="Toggle menu">
+		{{ partial "icon.html" "bars" }}
+		{{ partial "icon.html" "times" }}
+	</label>
+
+	<label for="mobile_menu_toggle" class="mobile-menu">
+		<ul class="mobile-entries">
+			<li class="contact">
+				{{ partial "contact.html" . }}
+			</li>
+			<li><a href="{{ "/" | relURL }}">Home</a></li>
+			{{ range .Site.Params.menu }}
+				<li><a href="{{ .url | relURL }}">{{ .name }}</a></li>
+			{{ end }}
+		</ul>
+	</label>
+</nav>

@@ -1,0 +1,12 @@
+{{- $date := .Date -}}
+{{- $isYearOnly := and (eq ($date.Format "01") "01") (eq ($date.Format "02") "01") -}}
+{{- with .Params.until -}}
+	{{- $until := time.AsTime . -}}
+	<time datetime="{{ $date.Format "2006-01-02" }}" title="Project active between {{ $date.Format "2006" }} and {{ $until.Format "2006" }}">{{ $date.Format "2006" }}–{{ $until.Format "2006" }}</time>
+{{- else -}}
+	{{- if $isYearOnly -}}
+		<time datetime="{{ $date.Format "2006" }}" title="Project active since {{ $date.Format "2006" }}">Since {{ $date.Format "2006" }}</time>
+	{{- else -}}
+		<time datetime="{{ $date.Format "2006-01-02" }}" title="Published on {{ $date.Format "Monday, January 2, 2006" }}">{{ $date.Format "2006 Jan" }} {{ partial "ordinal-day.html" $date }}</time>
+	{{- end -}}
+{{- end -}}

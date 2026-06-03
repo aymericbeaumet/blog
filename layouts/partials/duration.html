@@ -1,0 +1,8 @@
+{{- $timer := resources.Get "images/timer.svg" -}}
+{{- $timerSVG := replaceRE "\\s+$" "" $timer.Content -}}
+{{- with .Params.timeToWatch -}}
+	<time class="duration" datetime="{{ . }}m" title="Estimated watch of {{ . }} {{ cond (eq . 1) "minute" "minutes" }}">{{ $timerSVG | safeHTML }}{{ . }} min watch</time>
+{{- else -}}
+	{{- $minutes := default (partial "reading-minutes.html" .) .Params.timeToRead -}}
+	<time class="duration" datetime="{{ $minutes }}m" title="Estimated read of {{ $minutes }} {{ cond (eq $minutes 1) "minute" "minutes" }} ({{ .WordCount }} words)">{{ $timerSVG | safeHTML }}{{ $minutes }} min read</time>
+{{- end -}}

@@ -4,12 +4,15 @@
 
 ```
 npm install
+hugo version
 npm run dev
 npm run build
 npm run serve
 ```
 
-_The `master` branch is automatically built and deployed by GitHub Actions._
+Install [Hugo Extended](https://gohugo.io/installation/) before running the site
+locally. The `main` and `master` branches are automatically built and deployed
+by GitHub Actions.
 
 ## Manual Tests
 

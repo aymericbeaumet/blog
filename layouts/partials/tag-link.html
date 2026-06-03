@@ -1,0 +1,2 @@
+{{ $slug := partial "tag-slug.html" . }}
+<a href="{{ printf "/tags/%s" $slug | relURL }}" title="{{ . }}">#{{ $slug }}</a>
