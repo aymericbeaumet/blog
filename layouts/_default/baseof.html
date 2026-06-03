@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+	<head>
+		{{ partial "head.html" . }}
+	</head>
+	<body>
+		<div class="layout">
+			{{ partial "header.html" . }}
+
+			<main>
+				{{ block "main" . }}{{ end }}
+			</main>
+
+			{{ partial "footer.html" . }}
+			{{ partial "mobile-nav.html" . }}
+		</div>
+	</body>
+</html>

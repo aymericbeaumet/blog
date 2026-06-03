@@ -1,0 +1,6 @@
+{{- $destination := .Destination -}}
+{{- if or (hasPrefix $destination "http://") (hasPrefix $destination "https://") -}}
+	<a href="{{ $destination | safeURL }}" target="_blank" rel="nofollow noopener noreferrer">{{ .Text | safeHTML }}</a>
+{{- else -}}
+	<a href="{{ $destination | safeURL }}">{{ .Text | safeHTML }}</a>
+{{- end -}}

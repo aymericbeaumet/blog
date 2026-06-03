@@ -1,0 +1,25 @@
+{{ $logo := resources.Get "images/aymeric-beaumet-logo.svg" }}
+{{ $activeSection := .Section }}
+{{ if eq .Kind "term" }}
+	{{ $term := .Data.Term }}
+	{{ range .Site.RegularPages }}
+		{{ if and (eq .Section "projects") (eq .Params.slug $term) }}
+			{{ $activeSection = "projects" }}
+		{{ end }}
+	{{ end }}
+{{ end }}
+<header class="site-header">
+	<nav role="navigation">
+		<ul><li class="logo">
+				<a href="{{ "/" | relURL }}" class="{{ if .IsHome }}active{{ end }}" title="{{ .Site.Params.author }}">
+					{{ $logo.Content | safeHTML }}
+				</a>
+			</li>{{ range .Site.Params.menu }}<li>
+				<a href="{{ .url | relURL }}" class="{{ if eq $activeSection .section }}active{{ end }}">{{ .name }}</a>
+			</li>{{ end }}</ul>
+	</nav>
+
+	<nav class="contact">
+		{{ partial "contact.html" . }}
+	</nav>
+</header>

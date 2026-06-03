@@ -1,0 +1,15 @@
+{
+	"name": "Aymeric Beaumet | Posts, Talks & Projects",
+	"short_name": "A. Beaumet",
+	"start_url": "/",
+	"background_color": "#663399",
+	"theme_color": "#663399",
+	"display": "minimal-ui",
+	"icons": [
+		{
+			"src": "/images/aymeric-beaumet-profile-rounded.png",
+			"sizes": "any",
+			"type": "image/png"
+		}
+	]
+}

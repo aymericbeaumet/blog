@@ -1,0 +1,8 @@
+{{ $pages := sort (sort . "Title" "asc") "Date" "desc" }}
+<section class="posts">
+	<ul class="posts-list">
+		{{ range $pages }}
+			<li>{{ partial "card.html" . }}</li>
+		{{ end }}
+	</ul>
+</section>

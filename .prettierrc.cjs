@@ -3,8 +3,6 @@ module.exports = {
 	singleQuote: true,
 	trailingComma: 'all',
 	printWidth: 100,
-	importOrder: ['^[./]'],
-	importOrderSeparation: true,
 	overrides: [
 		{
 			files: '**/*.md',

@@ -9,9 +9,11 @@ const prettier = require('prettier');
 const filepath = process.argv[2];
 const filecontent = fs.readFileSync(filepath);
 const { content, data } = matter(filecontent);
-const canonicalURL = `https://aymericbeaumet.com/${path.basename(
-	path.basename(filepath, path.extname(filepath)),
-)}`;
+const slug =
+	path.basename(filepath) === 'index.md'
+		? path.basename(path.dirname(filepath))
+		: path.basename(filepath, path.extname(filepath));
+const canonicalURL = `https://aymericbeaumet.com/${slug}`;
 
 if (data.tags.length > 4) {
 	throw new Error('dev.to supports at most 4 tags');

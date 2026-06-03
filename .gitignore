@@ -1,4 +1,7 @@
 .cache/
+.hugo_build.lock
+.visual-diff/
+.visual-diff-target/
 .netlify/
 node_modules/
 public/

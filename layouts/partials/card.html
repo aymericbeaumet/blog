@@ -1,0 +1,27 @@
+{{ $image := partial "hero-image.html" . }}
+{{ $href := .RelPermalink }}
+{{ with .Params.slug }}
+	{{ $href = printf "/%s" . | relURL }}
+{{ end }}
+<article class="post-card">
+	<a href="{{ $href }}" title="{{ .Summary | plainify }}">
+		<figure>
+			{{ with $image }}
+				{{ $thumb := .Fill "266x160 Center webp" }}
+				{{ $thumb2x := .Fill "532x320 Center webp" }}
+				{{ $key := replaceRE "\\.[^.]+$" "" (path.Base .Name) }}
+				{{ $productionPicture := partial "production-picture.html" (dict "key" $key "role" "card" "alt" $.Title) }}
+				{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}<img src="{{ $thumb.RelPermalink }}" srcset="{{ $thumb.RelPermalink }} 1x, {{ $thumb2x.RelPermalink }} 2x" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $.Title }}">{{ end }}
+			{{ end }}
+			<figcaption>
+				{{ partial "date.html" . }}
+				{{ partial "duration.html" . }}
+			</figcaption>
+		</figure>
+		<h2>{{ if .Draft }}[DRAFT] {{ end }}{{ .Title }}</h2>
+	</a>
+
+	{{ with .Params.tags }}
+		<ul class="tags-list">{{ range . }}<li>{{ partial "tag-link.html" . }}</li>{{ end }}</ul>
+	{{ end }}
+</article>

@@ -1,0 +1,68 @@
+baseURL: https://aymericbeaumet.com/
+locale: en_US
+title: Aymeric Beaumet | Posts, Talks & Projects
+
+taxonomies:
+  tag: tags
+
+permalinks:
+  page:
+    posts: /:slug/
+    talks: /:slug/
+    projects: /:slug/
+
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+  taxonomy:
+    - HTML
+  term:
+    - HTML
+
+outputFormats:
+  RSS:
+    baseName: feed
+
+caches:
+  images:
+    dir: :cacheDir/images
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    codeFences: true
+    guessSyntax: false
+    lineNos: false
+    noClasses: false
+    style: friendly
+
+imaging:
+  quality: 92
+  resampleFilter: Lanczos
+
+params:
+  author: Aymeric Beaumet
+  description: Aymeric is a Senior Software Engineer with 7 years of experience in deploying resilient, scalable, and highly available back-end systems.
+  email: hi@aymericbeaumet.com
+  github: https://github.com/aymericbeaumet
+  linkedin: https://www.linkedin.com/in/aymericbeaumet
+  stackoverflow: https://stackoverflow.com/users/1071486/aymeric-beaumet
+  x: https://x.com/aymericbeaumet
+  xHandle: aymericbeaumet
+  disqusShortname: aymericbeaumet
+  utterancesRepo: aymericbeaumet/comments
+  menu:
+    - name: posts
+      url: /posts
+      section: posts
+    - name: talks
+      url: /talks
+      section: talks
+    - name: projects
+      url: /projects
+      section: projects
