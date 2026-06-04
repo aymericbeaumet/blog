@@ -5,7 +5,7 @@
 	{{ $profilePicture := partial "production-picture.html" (dict "key" "aymeric-beaumet-profile" "role" "profileHome" "alt" "Aymeric Beaumet" "title" "Aymeric Beaumet") }}
 	{{ $latestPost := first 1 (sort (where .Site.RegularPages "Section" "posts") "Date" "desc") }}
 	{{ $latestTalk := first 1 (sort (where .Site.RegularPages "Section" "talks") "Date" "desc") }}
-	{{ $featuredProjects := sort (where (where .Site.RegularPages "Section" "projects") "Params.slug" "in" (slice "gors" "squeeze")) "Date" "desc" }}
+	{{ $featuredProjects := sort (where (where .Site.RegularPages "Section" "projects") "File.ContentBaseName" "in" (slice "gors" "squeeze")) "Date" "desc" }}
 
 	<div class="home-wrapper">
 		<section class="about">
