@@ -1,37 +1,40 @@
-{{ if .Params.disqus }}
-	<div id="disqus_thread"></div>
-	<script>
-		window.disqus_config = function () {
-			this.page.url = "{{ .Permalink }}";
-			this.page.identifier = "{{ .File.ContentBaseName }}";
-			this.page.title = "{{ .Title }}";
-		};
-		(function () {
-			var loaded = false;
-			function loadDisqus() {
-				if (loaded) return;
-				var bottom = window.pageYOffset + window.innerHeight;
-				var total = window.document.documentElement.scrollHeight;
-				if (bottom / total <= 0.8) return;
-				loaded = true;
-				window.removeEventListener("scroll", loadDisqus);
-				var script = document.createElement("script");
-				script.src = "https://{{ .Site.Params.disqusShortname }}.disqus.com/embed.js";
-				script.setAttribute("data-timestamp", String(+new Date()));
-				(document.head || document.body).appendChild(script);
-			}
-			window.addEventListener("scroll", loadDisqus);
-			loadDisqus();
-		})();
+<section class="utterances-comments">
+	<script src="https://utteranc.es/client.js"
+		repo="{{ .Site.Params.utterancesRepo }}"
+		issue-term="pathname"
+		theme="preferred-color-scheme"
+		crossorigin="anonymous"
+		async>
 	</script>
-{{ else }}
-	<section class="utterances-comments">
-		<script src="https://utteranc.es/client.js"
-			repo="{{ .Site.Params.utterancesRepo }}"
-			issue-term="pathname"
-			theme="preferred-color-scheme"
-			crossorigin="anonymous"
-			async>
+</section>
+
+{{ if .Params.disqus }}
+	<section class="disqus-comments">
+		<h2 class="legacy-comments-title">Legacy comments</h2>
+		<div id="disqus_thread"></div>
+		<script>
+			window.disqus_config = function () {
+				this.page.url = "{{ .Permalink }}";
+				this.page.identifier = "{{ .File.ContentBaseName }}";
+				this.page.title = "{{ .Title }}";
+			};
+			(function () {
+				var loaded = false;
+				function loadDisqus() {
+					if (loaded) return;
+					var bottom = window.pageYOffset + window.innerHeight;
+					var total = window.document.documentElement.scrollHeight;
+					if (bottom / total <= 0.8) return;
+					loaded = true;
+					window.removeEventListener("scroll", loadDisqus);
+					var script = document.createElement("script");
+					script.src = "https://{{ .Site.Params.disqusShortname }}.disqus.com/embed.js";
+					script.setAttribute("data-timestamp", String(+new Date()));
+					(document.head || document.body).appendChild(script);
+				}
+				window.addEventListener("scroll", loadDisqus);
+				loadDisqus();
+			})();
 		</script>
 	</section>
 {{ end }}
