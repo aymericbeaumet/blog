@@ -842,13 +842,6 @@ a:visited {
 	margin-top: 60px;
 }
 
-.legacy-comments-title {
-	margin-bottom: 20px;
-	font-size: 18px;
-	font-weight: 100;
-	color: var(--fg-soft);
-}
-
 @media (prefers-color-scheme: dark) {
 	#disqus_thread {
 		filter: invert(0.92) hue-rotate(180deg);
