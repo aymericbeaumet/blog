@@ -826,6 +826,16 @@ a:visited {
 
 .comments {
 	margin-top: 40px;
+	min-height: 270px;
+}
+
+.utterances-comments,
+#disqus_thread {
+	min-height: 250px;
+}
+
+.utterances {
+	max-width: 100% !important;
 }
 
 #disqus_recommendations {
