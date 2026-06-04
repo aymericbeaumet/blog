@@ -1,4 +1,2 @@
 {{ $slug := partial "tag-slug.html" . }}
-{{ $labels := dict "french" "🇫🇷" }}
-{{ $label := index $labels $slug | default (printf "#%s" $slug) }}
-<a href="{{ printf "/tags/%s" $slug | relURL }}" title="{{ . }}">{{ $label }}</a>
+<a href="{{ printf "/tags/%s" $slug | relURL }}" title="{{ . }}">#{{ $slug }}</a>

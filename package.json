@@ -14,12 +14,14 @@
 		"lint": "prettier --check '**/*.{css,js,json,md,yml,yaml}'",
 		"format": "prettier --write '**/*.{css,js,json,md,yml,yaml}'"
 	},
-	"devDependencies": {
+	"dependencies": {
 		"@fontsource/lato": "^5.2.7",
+		"instant.page": "^5.2.0"
+	},
+	"devDependencies": {
 		"date-fns": "^4.4.0",
 		"gray-matter": "^4.0.3",
 		"hugo-extended": "^0.162.1",
-		"instant.page": "^5.2.0",
 		"pixelmatch": "^7.2.0",
 		"playwright": "^1.60.0",
 		"pngjs": "^7.0.0",
