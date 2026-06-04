@@ -1,7 +1,7 @@
 ---
 title: "Resilience: why, how, what?"
 category: talk
-tags: [resilience, nodejs, 🇫🇷]
+tags: [resilience, nodejs, french]
 date: 2018-09-27
 timeToWatch: 27
 youtube: https://www.youtube.com/watch?v=szkeEneWsGM&t=3272s
