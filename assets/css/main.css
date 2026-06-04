@@ -119,21 +119,6 @@ a:visited {
 	backdrop-filter: saturate(180%) blur(8px);
 }
 
-.site-footer .view-source {
-	display: inline-flex;
-	align-items: center;
-	gap: 4px;
-}
-
-.site-footer .view-source svg {
-	width: 1em;
-	height: 1em;
-	vertical-align: -0.15em;
-}
-
-.site-footer .view-source path {
-	fill: currentColor;
-}
 
 .site-header li {
 	display: inline-block;
