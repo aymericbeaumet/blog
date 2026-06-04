@@ -3,11 +3,7 @@
 	<a href="{{ .RelPermalink }}" title="{{ .Summary | plainify }}">
 		<figure>
 			{{ with $image }}
-				{{ $thumb := .Fill "266x160 Center webp" }}
-				{{ $thumb2x := .Fill "532x320 Center webp" }}
-				{{ $key := replaceRE "\\.[^.]+$" "" (path.Base .Name) }}
-				{{ $productionPicture := partial "production-picture.html" (dict "key" $key "role" "card" "alt" $.Title "loading" "lazy") }}
-				{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}<img src="{{ $thumb.RelPermalink }}" srcset="{{ $thumb.RelPermalink }} 1x, {{ $thumb2x.RelPermalink }} 2x" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $.Title }}" loading="lazy" decoding="async">{{ end }}
+				{{ partial "production-picture.html" (dict "image" . "width" 266 "height" 160 "alt" $.Title "loading" "lazy") | safeHTML }}
 			{{ end }}
 			<figcaption>
 				{{ partial "date.html" . }}

@@ -1,8 +1,6 @@
 {{ define "main" }}
 	{{ $profile := resources.Get "images/aymeric-beaumet-profile.png" }}
-	{{ $profileSmall := $profile.Fill "90x90 Center webp" }}
-	{{ $profileSmall2x := $profile.Fill "180x180 Center webp" }}
-	{{ $profilePicture := partial "production-picture.html" (dict "key" "aymeric-beaumet-profile" "role" "profileHome" "alt" "Aymeric Beaumet" "title" "Aymeric Beaumet" "loading" "eager" "fetchpriority" "high") }}
+	{{ $profilePicture := partial "production-picture.html" (dict "image" $profile "width" 90 "height" 90 "alt" "Aymeric Beaumet" "title" "Aymeric Beaumet" "loading" "eager" "fetchpriority" "high") }}
 	{{ $latestPost := first 1 (sort (where .Site.RegularPages "Section" "posts") "Date" "desc") }}
 	{{ $latestTalk := first 1 (sort (where .Site.RegularPages "Section" "talks") "Date" "desc") }}
 	{{ $featuredProjects := sort (where (where .Site.RegularPages "Section" "projects") "File.ContentBaseName" "in" (slice "gors" "squeeze")) "Date" "desc" }}
@@ -11,7 +9,7 @@
 		<section class="about">
 			<header>
 				<div class="profile">
-					{{ if $profilePicture }}{{ $profilePicture | safeHTML }}{{ else }}<img src="{{ $profileSmall.RelPermalink }}" srcset="{{ $profileSmall.RelPermalink }} 1x, {{ $profileSmall2x.RelPermalink }} 2x" width="{{ $profileSmall.Width }}" height="{{ $profileSmall.Height }}" alt="Aymeric Beaumet" title="Aymeric Beaumet" loading="eager" decoding="async" fetchpriority="high">{{ end }}
+					{{ $profilePicture | safeHTML }}
 				</div>
 
 				<div>

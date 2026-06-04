@@ -1,11 +1,27 @@
 {{- $ctx := . -}}
-{{- $entry := false -}}
-{{- $loading := cond (isset $ctx "loading") $ctx.loading "lazy" -}}
-{{- $decoding := cond (isset $ctx "decoding") $ctx.decoding "async" -}}
-{{- $fetchpriority := cond (isset $ctx "fetchpriority") $ctx.fetchpriority "" -}}
-{{- with index hugo.Data.production_images $ctx.key -}}
-	{{- $entry = index . $ctx.role -}}
-{{- end -}}
-{{- with $entry -}}
-	<picture>{{- range .sources -}}<source type="{{ .type }}" srcset="{{ .srcset }}" sizes="{{ .sizes }}">{{- end -}}<img src="{{ .img.src }}"{{ with .img.srcset }} srcset="{{ . }}"{{ end }}{{ with .img.sizes }} sizes="{{ . }}"{{ end }} width="{{ .width }}" height="{{ .height }}" alt="{{ $ctx.alt }}"{{ with $ctx.title }} title="{{ . }}"{{ end }} loading="{{ $loading }}" decoding="{{ $decoding }}"{{ with $fetchpriority }} fetchpriority="{{ . }}"{{ end }}></picture>
+{{- $img := $ctx.image -}}
+{{- $w := $ctx.width -}}
+{{- $h := $ctx.height -}}
+{{- $alt := default "" $ctx.alt -}}
+{{- $title := default "" $ctx.title -}}
+{{- $loading := default "lazy" $ctx.loading -}}
+{{- $decoding := default "async" $ctx.decoding -}}
+{{- $fetchpriority := default "" $ctx.fetchpriority -}}
+{{- with $img -}}
+	{{- $op := "Fill" -}}
+	{{- $spec1 := "" -}}
+	{{- $spec2 := "" -}}
+	{{- if $h -}}
+		{{- $spec1 = printf "%dx%d Center" $w $h -}}
+		{{- $spec2 = printf "%dx%d Center" (mul $w 2) (mul $h 2) -}}
+	{{- else -}}
+		{{- $op = "Resize" -}}
+		{{- $spec1 = printf "%dx" $w -}}
+		{{- $spec2 = printf "%dx" (mul $w 2) -}}
+	{{- end -}}
+	{{- $avif1 := .Process (printf "%s %s avif" $op $spec1) -}}
+	{{- $avif2 := .Process (printf "%s %s avif" $op $spec2) -}}
+	{{- $webp1 := .Process (printf "%s %s webp" $op $spec1) -}}
+	{{- $webp2 := .Process (printf "%s %s webp" $op $spec2) -}}
+	<picture><source type="image/avif" srcset="{{ $avif1.RelPermalink }} 1x, {{ $avif2.RelPermalink }} 2x"><source type="image/webp" srcset="{{ $webp1.RelPermalink }} 1x, {{ $webp2.RelPermalink }} 2x"><img src="{{ $webp1.RelPermalink }}" srcset="{{ $webp1.RelPermalink }} 1x, {{ $webp2.RelPermalink }} 2x" width="{{ $webp1.Width }}" height="{{ $webp1.Height }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }} loading="{{ $loading }}" decoding="{{ $decoding }}"{{ with $fetchpriority }} fetchpriority="{{ . }}"{{ end }}></picture>
 {{- end -}}

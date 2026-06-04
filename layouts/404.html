@@ -1,8 +1,6 @@
 {{ define "main" }}
 	{{ $skydiving := resources.Get "images/aymeric-beaumet-indoor-skydiving.jpg" }}
-	{{ $image := $skydiving.Resize "500x webp" }}
-	{{ $image2x := $skydiving.Resize "1000x webp" }}
-	{{ $productionPicture := partial "production-picture.html" (dict "key" "aymeric-beaumet-indoor-skydiving" "role" "notFound" "alt" "Me having a lot of fun :)" "loading" "lazy") }}
+	{{ $productionPicture := partial "production-picture.html" (dict "image" $skydiving "width" 500 "alt" "Me having a lot of fun :)" "loading" "lazy") }}
 	<article class="not-found">
 		<h1>Oups...</h1>
 
@@ -13,7 +11,7 @@
 
 		<p>I love <a href="https://en.wikipedia.org/wiki/Vertical_wind_tunnel" target="_blank" rel="nofollow noopener noreferrer">indoor skydiving</a>!</p>
 		<figure>
-			<div class="not-found-image">{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}<img src="{{ $image.RelPermalink }}" srcset="{{ $image.RelPermalink }} 1x, {{ $image2x.RelPermalink }} 2x" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="Me having a lot of fun :)" loading="lazy" decoding="async">{{ end }}</div>
+			<div class="not-found-image">{{ $productionPicture | safeHTML }}</div>
 			<figcaption>Me flying for the first time :)</figcaption>
 		</figure>
 		<p>Check <a href="https://www.tunnelflight.com/" target="_blank" rel="nofollow noopener noreferrer">tunnelflight.com</a> to find the closest indoor skydiving station from your location.</p>

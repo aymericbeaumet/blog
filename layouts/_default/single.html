@@ -1,9 +1,7 @@
 {{ define "main" }}
 	{{ $author := .Site.Params.author }}
 	{{ $profile := resources.Get "images/aymeric-beaumet-profile.png" }}
-	{{ $profileSmall := $profile.Fill "24x24 Center webp" }}
-	{{ $profileSmall2x := $profile.Fill "48x48 Center webp" }}
-	{{ $profilePicture := partial "production-picture.html" (dict "key" "aymeric-beaumet-profile" "role" "profileSmall" "alt" (printf "%s — author" $author) "loading" "lazy") }}
+	{{ $profilePicture := partial "production-picture.html" (dict "image" $profile "width" 24 "height" 24 "alt" (printf "%s — author" $author) "loading" "lazy") }}
 	{{ $image := partial "hero-image.html" . }}
 
 	<article class="content-page">
@@ -13,7 +11,7 @@
 			<ul class="post-info"><li>
 					<a href="{{ "/" | relURL }}">
 						<div class="profile-small" aria-hidden="true">
-							{{ if $profilePicture }}{{ $profilePicture | safeHTML }}{{ else }}<img src="{{ $profileSmall.RelPermalink }}" srcset="{{ $profileSmall.RelPermalink }} 1x, {{ $profileSmall2x.RelPermalink }} 2x" width="{{ $profileSmall.Width }}" height="{{ $profileSmall.Height }}" alt="" loading="lazy" decoding="async">{{ end }}
+							{{ $profilePicture | safeHTML }}
 						</div>{{ $author }}
 					</a>
 				</li><li><span aria-hidden="true">・</span>&nbsp;{{ partial "date.html" . }}</li><li><span aria-hidden="true">・</span>&nbsp;{{ partial "duration.html" . }}</li>
@@ -28,24 +26,20 @@
 			{{ end }}
 
 			{{ with $image }}
-				{{ $hero := .Fill "600x300 Center webp" }}
-				{{ $hero2x := .Fill "1200x600 Center webp" }}
-				{{ $key := replaceRE "\\.[^.]+$" "" (path.Base .Name) }}
 				{{ $alt := "hero image" }}
 				{{ if $.Params.website }}{{ $alt = "website preview" }}{{ else if $.Params.github }}{{ $alt = "github preview" }}{{ else if $.Params.youtube }}{{ $alt = "youtube preview" }}{{ else if $.Params.unsplash }}{{ $alt = "unsplash preview" }}{{ end }}
-				{{ $productionPicture := partial "production-picture.html" (dict "key" $key "role" "hero" "alt" $alt "loading" "eager" "fetchpriority" "high") }}
-				{{ $heroImg := printf `<img src="%s" srcset="%s 1x, %s 2x" width="%d" height="%d" alt="%s" loading="eager" decoding="async" fetchpriority="high">` $hero.RelPermalink $hero.RelPermalink $hero2x.RelPermalink $hero.Width $hero.Height $alt }}
+				{{ $heroPicture := partial "production-picture.html" (dict "image" . "width" 600 "height" 300 "alt" $alt "loading" "eager" "fetchpriority" "high") }}
 				<figure class="hero">
 					{{ if $.Params.website }}
-						<a href="{{ $.Params.website }}" title="{{ $.Params.website }}" target="_blank" rel="nofollow noopener noreferrer">{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}{{ $heroImg | safeHTML }}{{ end }}</a>
+						<a href="{{ $.Params.website }}" title="{{ $.Params.website }}" target="_blank" rel="nofollow noopener noreferrer">{{ $heroPicture | safeHTML }}</a>
 					{{ else if $.Params.github }}
-						<a href="https://github.com/{{ $.Params.github }}" title="https://github.com/{{ $.Params.github }}" target="_blank" rel="nofollow noopener noreferrer">{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}{{ $heroImg | safeHTML }}{{ end }}</a>
+						<a href="https://github.com/{{ $.Params.github }}" title="https://github.com/{{ $.Params.github }}" target="_blank" rel="nofollow noopener noreferrer">{{ $heroPicture | safeHTML }}</a>
 					{{ else if $.Params.youtube }}
-						<a href="{{ $.Params.youtube }}" title="{{ $.Params.youtube }}" target="_blank" rel="nofollow noopener noreferrer">{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}{{ $heroImg | safeHTML }}{{ end }}</a>
+						<a href="{{ $.Params.youtube }}" title="{{ $.Params.youtube }}" target="_blank" rel="nofollow noopener noreferrer">{{ $heroPicture | safeHTML }}</a>
 					{{ else if $.Params.unsplash }}
-						<a href="{{ $.Params.unsplash }}" title="Credit: {{ $.Params.unsplash }}" target="_blank" rel="nofollow noopener noreferrer">{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}{{ $heroImg | safeHTML }}{{ end }}</a>
+						<a href="{{ $.Params.unsplash }}" title="Credit: {{ $.Params.unsplash }}" target="_blank" rel="nofollow noopener noreferrer">{{ $heroPicture | safeHTML }}</a>
 					{{ else }}
-						{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}{{ $heroImg | safeHTML }}{{ end }}
+						{{ $heroPicture | safeHTML }}
 					{{ end }}
 				</figure>
 			{{ end }}

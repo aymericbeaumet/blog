@@ -1,7 +1,8 @@
 {{ $author := .Site.Params.author }}
 {{ $siteTitle := printf "%s Blog" $author }}
 {{ $homeTitle := printf "%s — Software Engineer | Posts, Talks & Projects" $author }}
-{{ $title := cond .IsHome $homeTitle (cond (eq .Kind "404") (printf "Page not found | %s" $author) (cond (eq .Kind "section") (printf "%s | %s" .Title $author) (printf "%s | %s" .Title $author))) }}
+{{ $sectionTitle := printf "%s by %s" (title .Title) $author }}
+{{ $title := cond .IsHome $homeTitle (cond (eq .Kind "404") (printf "Page not found | %s" $author) (cond (eq .Kind "section") (printf "%s | %s" $sectionTitle $author) (printf "%s | %s" .Title $author))) }}
 {{ $description := .Site.Params.description }}
 {{ if .IsPage }}
 	{{ $description = .Summary | plainify | truncate 160 }}
