@@ -844,12 +844,12 @@ a:visited {
 
 @media (prefers-color-scheme: dark) {
 	#disqus_thread {
-		filter: invert(0.92) hue-rotate(180deg);
+		filter: invert(1) hue-rotate(180deg) brightness(1.55) contrast(0.85);
 	}
 
 	#disqus_thread img,
 	#disqus_thread iframe {
-		filter: invert(0.92) hue-rotate(180deg);
+		filter: invert(1) hue-rotate(180deg);
 	}
 }
 
