@@ -108,49 +108,30 @@ a:visited {
 }
 
 .site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
-	gap: 12px;
 	padding: 20px 20px 10px 0;
 	border-bottom: 1px solid var(--border);
+	background-color: var(--bg);
+	backdrop-filter: saturate(180%) blur(8px);
 }
 
-.view-source {
+.site-footer .view-source {
 	display: inline-flex;
 	align-items: center;
-	gap: 6px;
-	padding: 6px 12px;
-	border: 1.5px solid var(--main);
-	border-radius: 999px;
-	color: var(--main) !important;
-	font-weight: 700;
-	font-size: 14px;
-	line-height: 1;
-	white-space: nowrap;
-	transition:
-		background-color 0.2s,
-		color 0.2s;
+	gap: 4px;
 }
 
-.view-source:hover,
-.view-source:focus {
-	background-color: var(--main);
-	color: var(--bg) !important;
-}
-
-.view-source:hover path,
-.view-source:focus path {
-	fill: var(--bg);
-}
-
-.view-source-icon svg {
+.site-footer .view-source svg {
 	width: 1em;
 	height: 1em;
 	vertical-align: -0.15em;
 }
 
-.view-source path {
+.site-footer .view-source path {
 	fill: currentColor;
 }
 
@@ -947,10 +928,6 @@ a:visited {
 	}
 
 	.site-header li:not(.logo) {
-		display: none;
-	}
-
-	.site-header .view-source {
 		display: none;
 	}
 
