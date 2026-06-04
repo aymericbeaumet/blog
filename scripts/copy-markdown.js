@@ -5,6 +5,7 @@ const path = require('path');
 
 const REPO = 'aymericbeaumet/blog';
 const BRANCH = 'main';
+const SUFFIXES = ['.md', '.markdown', '.txt', '.raw', '.source'];
 const sections = ['posts', 'projects', 'talks'];
 const publicDir = path.join(process.cwd(), 'public');
 
@@ -40,12 +41,14 @@ for (const section of sections) {
 		}
 
 		const githubUrl = `https://github.com/${REPO}/blob/${BRANCH}/content/${section}/${slug}/index.md`;
-		const outDir = path.join(publicDir, `${slug}.md`);
-		const stalePath = path.join(publicDir, `${slug}.md`);
-		if (fs.existsSync(stalePath) && fs.statSync(stalePath).isFile()) {
-			fs.unlinkSync(stalePath);
+		const html = redirectHtml(githubUrl);
+		for (const suffix of SUFFIXES) {
+			const target = path.join(publicDir, `${slug}${suffix}`);
+			if (fs.existsSync(target) && fs.statSync(target).isFile()) {
+				fs.unlinkSync(target);
+			}
+			fs.mkdirSync(target, { recursive: true });
+			fs.writeFileSync(path.join(target, 'index.html'), html);
 		}
-		fs.mkdirSync(outDir, { recursive: true });
-		fs.writeFileSync(path.join(outDir, 'index.html'), redirectHtml(githubUrl));
 	}
 }
