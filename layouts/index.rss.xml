@@ -1,17 +1,17 @@
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 	<channel>
-		<title>{{ .Site.Title }}</title>
+		<title>{{ .Site.Title | htmlUnescape | transform.XMLEscape | safeHTML }}</title>
 		<link>{{ .Site.BaseURL }}</link>
-		<description>{{ .Site.Params.description }}</description>
+		<description>{{ .Site.Params.description | htmlUnescape | transform.XMLEscape | safeHTML }}</description>
 		{{ $pages := sort (where .Site.RegularPages "Section" "in" (slice "posts" "talks")) "Date" "desc" }}
 		{{ range $pages }}
 			<item>
-				<title>{{ .Title }}</title>
+				<title>{{ .Title | htmlUnescape | transform.XMLEscape | safeHTML }}</title>
 				<link>{{ .Permalink }}</link>
 				<guid>{{ .Permalink }}</guid>
 				<pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
-				<description>{{ .Summary | plainify }}</description>
+				<description>{{ .Summary | plainify | htmlUnescape | transform.XMLEscape | safeHTML }}</description>
 				<content:encoded>{{ printf "<![CDATA[%s]]>" .Content | safeHTML }}</content:encoded>
 			</item>
 		{{ end }}
