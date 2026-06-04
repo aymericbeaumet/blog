@@ -9,17 +9,17 @@
 	{{ end }}
 {{ end }}
 <header class="site-header">
-	<nav role="navigation">
+	<nav aria-label="Main">
 		<ul><li class="logo">
-				<a href="{{ "/" | relURL }}" class="{{ if .IsHome }}active{{ end }}" title="{{ .Site.Params.author }}">
+				<a href="{{ "/" | relURL }}"{{ if .IsHome }} aria-current="page" class="active"{{ end }} title="{{ .Site.Params.author }}">
 					{{ $logo.Content | safeHTML }}
 				</a>
 			</li>{{ range .Site.Params.menu }}<li>
-				<a href="{{ .url | relURL }}" class="{{ if eq $activeSection .section }}active{{ end }}">{{ .name }}</a>
+				<a href="{{ .url | relURL }}"{{ if eq $activeSection .section }} aria-current="page" class="active"{{ end }}>{{ .name }}</a>
 			</li>{{ end }}</ul>
 	</nav>
 
-	<nav class="contact">
+	<nav class="contact" aria-label="Social">
 		{{ partial "contact.html" . }}
 	</nav>
 </header>

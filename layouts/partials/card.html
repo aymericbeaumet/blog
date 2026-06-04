@@ -6,8 +6,8 @@
 				{{ $thumb := .Fill "266x160 Center webp" }}
 				{{ $thumb2x := .Fill "532x320 Center webp" }}
 				{{ $key := replaceRE "\\.[^.]+$" "" (path.Base .Name) }}
-				{{ $productionPicture := partial "production-picture.html" (dict "key" $key "role" "card" "alt" $.Title) }}
-				{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}<img src="{{ $thumb.RelPermalink }}" srcset="{{ $thumb.RelPermalink }} 1x, {{ $thumb2x.RelPermalink }} 2x" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $.Title }}">{{ end }}
+				{{ $productionPicture := partial "production-picture.html" (dict "key" $key "role" "card" "alt" $.Title "loading" "lazy") }}
+				{{ if $productionPicture }}{{ $productionPicture | safeHTML }}{{ else }}<img src="{{ $thumb.RelPermalink }}" srcset="{{ $thumb.RelPermalink }} 1x, {{ $thumb2x.RelPermalink }} 2x" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $.Title }}" loading="lazy" decoding="async">{{ end }}
 			{{ end }}
 			<figcaption>
 				{{ partial "date.html" . }}

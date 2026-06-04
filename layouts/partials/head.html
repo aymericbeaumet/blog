@@ -1,47 +1,69 @@
 {{ $author := .Site.Params.author }}
 {{ $siteTitle := printf "%s Blog" $author }}
-{{ $title := cond .IsHome $siteTitle (cond (eq .Kind "404") (printf "Page not found | %s" $author) (cond (eq .Kind "section") .Title (printf "%s | %s" .Title $author))) }}
+{{ $homeTitle := printf "%s — Software Engineer | Posts, Talks & Projects" $author }}
+{{ $title := cond .IsHome $homeTitle (cond (eq .Kind "404") (printf "Page not found | %s" $author) (cond (eq .Kind "section") (printf "%s | %s" .Title $author) (printf "%s | %s" .Title $author))) }}
 {{ $description := .Site.Params.description }}
 {{ if .IsPage }}
-	{{ $description = .Summary | plainify | truncate 300 }}
+	{{ $description = .Summary | plainify | truncate 160 }}
 {{ end }}
 {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
 {{ $instantpage := resources.Get "js/instantpage.js" | minify | fingerprint }}
+{{ $isArticle := and .IsPage (or (eq .Section "posts") (eq .Section "talks")) }}
+{{ $ogType := cond .IsHome "profile" (cond $isArticle "article" "website") }}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="{{ $description }}">
-<meta name="referrer" content="no-referrer">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="rating" content="General">
 <meta name="author" content="{{ $author }}">
 <meta name="publisher" content="{{ $siteTitle }}">
-<meta property="article:author" content="{{ $author }}">
+<meta name="theme-color" content="#3e53cd">
 <meta property="og:site_name" content="{{ $siteTitle }}">
 <meta property="og:locale" content="en_US">
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:title" content="{{ cond .IsHome $homeTitle .Title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:url" content="{{ .Permalink }}">
 <meta name="twitter:site" content="@{{ .Site.Params.xHandle }}">
 <meta name="twitter:creator" content="@{{ .Site.Params.xHandle }}">
 <meta name="twitter:dnt" content="on">
 
 <title>{{ $title }}</title>
+<link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
 <link rel="icon" type="image/png" href="{{ "favicon.png" | relURL }}">
 <link rel="apple-touch-icon" href="{{ "images/aymeric-beaumet-profile-rounded.png" | relURL }}">
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 <link rel="alternate" type="application/rss+xml" href="{{ "feed.xml" | absURL }}" title="{{ .Site.Title }}">
 <link rel="manifest" href="{{ "manifest.webmanifest" | relURL }}">
+
+<link rel="preload" href="{{ "fonts/lato-latin-400-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+
+{{ if and .IsPage (eq .Section "posts") }}
+	<link rel="preconnect" href="https://utteranc.es" crossorigin>
+	<link rel="preconnect" href="https://api.github.com" crossorigin>
+{{ end }}
+
 <script src="{{ $instantpage.RelPermalink }}" integrity="{{ $instantpage.Data.Integrity }}" defer></script>
 
 {{ if .IsPage }}
 	{{ $image := partial "hero-image.html" . }}
-	<meta property="og:title" content="{{ .Title }}">
-	<meta property="og:description" content="{{ .Summary | plainify | truncate 200 }}">
-	<meta property="og:url" content="{{ .Permalink }}">
-	<meta property="og:type" content="article">
+	{{ if $isArticle }}
+		<meta property="article:author" content="{{ $author }}">
+		<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+		<meta property="article:modified_time" content="{{ (cond (not .Lastmod.IsZero) .Lastmod .Date).Format "2006-01-02T15:04:05Z07:00" }}">
+		{{ with .Section }}<meta property="article:section" content="{{ . }}">{{ end }}
+		{{ range .Params.tags }}<meta property="article:tag" content="{{ . }}">{{ end }}
+	{{ end }}
 	{{ with $image }}
 		{{ $og := .Fill "1200x630 Center jpg" }}
 		{{ $xCard := .Fill "1200x600 Center webp" }}
 		{{ $instagram := .Fill "1080x1080 Center jpg" }}
 		<meta property="og:image" content="{{ $og.Permalink }}">
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="630">
+		<meta property="og:image:alt" content="{{ $.Title }}">
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:image" content="{{ $xCard.Permalink }}">
 		<meta name="instagram:image" content="{{ $instagram.Permalink }}">
@@ -54,4 +76,58 @@
 		{{ end }}
 		<meta name="twitter:data1" content="{{ delimit $tags " " }}">
 	{{ end }}
+{{ end }}
+
+{{/* JSON-LD structured data */}}
+{{ if .IsHome }}
+	{{ $person := dict
+		"@context" "https://schema.org"
+		"@type" "Person"
+		"name" $author
+		"url" .Site.BaseURL
+		"image" ("images/aymeric-beaumet-profile-rounded.png" | absURL)
+		"jobTitle" "Software Engineer"
+		"email" (printf "mailto:%s" .Site.Params.email)
+		"sameAs" (slice .Site.Params.github .Site.Params.linkedin .Site.Params.stackoverflow .Site.Params.x)
+	}}
+	{{ $website := dict
+		"@context" "https://schema.org"
+		"@type" "WebSite"
+		"name" $siteTitle
+		"url" .Site.BaseURL
+	}}
+	<script type="application/ld+json">{{ $person | jsonify (dict "indent" "  ") | safeJS }}</script>
+	<script type="application/ld+json">{{ $website | jsonify (dict "indent" "  ") | safeJS }}</script>
+{{ else if $isArticle }}
+	{{ $image := partial "hero-image.html" . }}
+	{{ $ogImage := "" }}
+	{{ with $image }}{{ $ogImage = (.Fill "1200x630 Center jpg").Permalink }}{{ end }}
+	{{ $authorEntity := dict "@type" "Person" "name" $author "url" .Site.BaseURL }}
+	{{ $modified := cond (not .Lastmod.IsZero) .Lastmod .Date }}
+	{{ $blogPosting := dict
+		"@context" "https://schema.org"
+		"@type" "BlogPosting"
+		"headline" .Title
+		"description" $description
+		"url" .Permalink
+		"datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+		"dateModified" ($modified.Format "2006-01-02T15:04:05Z07:00")
+		"author" $authorEntity
+		"publisher" $authorEntity
+		"mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+	}}
+	{{ with $ogImage }}{{ $blogPosting = merge $blogPosting (dict "image" .) }}{{ end }}
+	{{ with .Params.tags }}{{ $blogPosting = merge $blogPosting (dict "keywords" (delimit . ", ")) }}{{ end }}
+	{{ $sectionTitle := title .Section }}
+	{{ $breadcrumb := dict
+		"@context" "https://schema.org"
+		"@type" "BreadcrumbList"
+		"itemListElement" (slice
+			(dict "@type" "ListItem" "position" 1 "name" "Home" "item" .Site.BaseURL)
+			(dict "@type" "ListItem" "position" 2 "name" $sectionTitle "item" ((printf "%s/" .Section) | absURL))
+			(dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
+		)
+	}}
+	<script type="application/ld+json">{{ $blogPosting | jsonify (dict "indent" "  ") | safeJS }}</script>
+	<script type="application/ld+json">{{ $breadcrumb | jsonify (dict "indent" "  ") | safeJS }}</script>
 {{ end }}
