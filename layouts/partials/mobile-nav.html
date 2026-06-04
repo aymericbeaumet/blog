@@ -14,6 +14,8 @@
 			{{ range .Site.Params.menu }}
 				<li><a href="{{ .url | relURL }}">{{ .name }}</a></li>
 			{{ end }}
+			{{ $sourceUrl := partial "source-link.html" . }}
+			<li><a href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer">.md source on GitHub</a></li>
 		</ul>
 	</label>
 </nav>

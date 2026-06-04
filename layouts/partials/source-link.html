@@ -1,0 +1,7 @@
+{{- $repo := .Site.Params.githubRepo -}}
+{{- $branch := default "main" .Site.Params.githubBranch -}}
+{{- $url := printf "https://github.com/%s" $repo -}}
+{{- if and (eq .Kind "page") .File -}}
+	{{- $url = printf "https://github.com/%s/blob/%s/content/%s" $repo $branch .File.Path -}}
+{{- end -}}
+{{- $url -}}

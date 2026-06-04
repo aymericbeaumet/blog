@@ -22,4 +22,10 @@
 	<nav class="contact" aria-label="Social">
 		{{ partial "contact.html" . }}
 	</nav>
+
+	{{ $sourceUrl := partial "source-link.html" . }}
+	<a class="view-source" href="{{ $sourceUrl }}" target="_blank" rel="noopener noreferrer" title="View Markdown source on GitHub">
+		<span class="view-source-icon" aria-hidden="true">{{ partial "icon.html" "github" | safeHTML }}</span>
+		<span class="view-source-label">.md</span>
+	</a>
 </header>

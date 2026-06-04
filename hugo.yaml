@@ -50,6 +50,8 @@ params:
   description: Aymeric is a Senior Software Engineer with 7 years of experience in deploying resilient, scalable, and highly available back-end systems.
   email: hi@aymericbeaumet.com
   github: https://github.com/aymericbeaumet
+  githubRepo: aymericbeaumet/blog
+  githubBranch: main
   linkedin: https://www.linkedin.com/in/aymericbeaumet
   stackoverflow: https://stackoverflow.com/users/1071486/aymeric-beaumet
   x: https://x.com/aymericbeaumet
