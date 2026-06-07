@@ -65,7 +65,7 @@ fetch, sparse checkouts will enable you to specify the _blob objects_ you wish
 to fetch.
 
 > While sparse checkouts exist since git
-> [2.25.0](https://github.com/git/git/blob/master/Documentation/RelNotes/2.25.0.txt),
+> [2.25.0](https://github.com/git/git/blob/master/Documentation/RelNotes/2.25.0.adoc),
 > they are still considered experimental. It is unlikely that the feature will
 > be removed in the future, but breaking changes might happen in both its
 > implementation and its usage.

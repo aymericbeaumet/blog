@@ -20,10 +20,7 @@ extensions for the game at the time, and was regularly
 
 It was published on the
 [Chrome](https://chrome.google.com/webstore/detail/die2nite-enhancer/imkkdabijgkodinlhgncdfmghdcdacmg),
-Firefox,
-[Opera](https://addons.opera.com/en/extensions/details/die2nite-enhancer/), and
-[Safari](http://safariaddons.com/en-US/safari/addon/227) stores. Furthermore, it
-was also available as a
+Firefox, Opera, and Safari stores. Furthermore, it was also available as a
 [GreaseMonkey](https://userscripts-mirror.org/scripts/show/242398) script.
 
 The extension was developed with Vanilla JS, with a handmade layer of code to
