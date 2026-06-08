@@ -934,7 +934,13 @@ a:visited {
 
 @media screen and (max-width: 620px) {
 	.site-header {
+		position: static;
 		padding: 30px 30px 30px 0;
+	}
+
+	html:has(#mobile_menu_toggle:checked),
+	body:has(#mobile_menu_toggle:checked) {
+		overflow: hidden;
 	}
 
 	.site-header li:not(.logo) {
