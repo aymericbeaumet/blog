@@ -3,6 +3,7 @@ title: "Unfold: interactive map with a medieval vibe"
 category: project
 tags: [javascript, geojson, openlayers]
 date: 2022-01-01
+github: aymericbeaumet/unfold
 website: https://unfold.aymericbeaumet.com
 ---
 

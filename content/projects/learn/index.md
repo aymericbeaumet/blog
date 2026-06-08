@@ -3,6 +3,7 @@ title: "Learn: teaching programming via JavaScript"
 category: project
 tags: [javascript, svelte, sveltekit, vscode]
 date: 2022-01-01
+github: aymericbeaumet/learn
 website: https://learn.aymericbeaumet.com
 ---
 
